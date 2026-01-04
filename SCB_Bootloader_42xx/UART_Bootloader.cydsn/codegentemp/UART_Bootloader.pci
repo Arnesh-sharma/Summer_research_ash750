@@ -1,0 +1,8 @@
+# UART_Bootloader
+# 2023-03-26 23:41:45Z
+
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "\UART:tx(0)\" iocell 4 1
+set_io "\UART:rx(0)\" iocell 4 0
+set_io "P1_6(0)" iocell 1 6
+set_io "Boot_P0_7(0)" iocell 0 7

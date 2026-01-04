@@ -1,0 +1,3199 @@
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.MY_ISR_TS,"ax",%progbits
+  20              		.align	2
+  21              		.global	MY_ISR_TS
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	MY_ISR_TS, %function
+  25              	MY_ISR_TS:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** 
+   2:main.c        **** #include "project.h"
+   3:main.c        **** 
+   4:main.c        **** 
+   5:main.c        **** #define TOTAL_RX_TX_PINS  CapSense_TOTAL_ELECTRODES
+   6:main.c        **** 
+   7:main.c        **** #define CAP_MEASUREMENT_RATE 5 //1 sec >= 5, timer tick rate is 0.2 second
+   8:main.c        **** 
+   9:main.c        **** volatile uint8 flag_sns = 0, flag_cp = 0;
+  10:main.c        **** uint32 c;
+  11:main.c        **** 
+  12:main.c        **** //---------------------------
+  13:main.c        **** // Uncomment only one
+  14:main.c        **** //#define MATLAB_ONLY_SENSOR_VALUE_MEASUREMENT
+  15:main.c        **** //#define MATLAB_ALL_DATA
+  16:main.c        **** #define MATLAB_EXTENDED_SET_MEASUREMENT
+  17:main.c        **** //#define MATLAB_CAPACITOR_MEASUREMENT
+  18:main.c        **** //#define TUNER
+  19:main.c        **** //---------------------------
+  20:main.c        **** 
+  21:main.c        **** #ifdef TUNER
+  22:main.c        **** uint8 header[] = {0x0Du, 0x0Au};
+  23:main.c        **** uint8 tail[] = {0x00u, 0xFFu, 0xFFu};
+  24:main.c        **** #endif
+  25:main.c        **** 
+  26:main.c        **** #ifdef MATLAB_EXTENDED_SET_MEASUREMENT
+  27:main.c        **** uint8 header[] = {0xffu, 0xffu};    
+  28:main.c        **** uint8 tail[] = {0x00u, 0xFFu};
+  29:main.c        **** 
+  30:main.c        **** uint16 sns_value[CapSense_TOTAL_CSX_NODES];
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 2
+
+
+  31:main.c        **** uint8 idac_comp[CapSense_TOTAL_CSX_NODES];
+  32:main.c        **** uint32 sns_capacitance[CapSense_TOTAL_CSX_NODES];
+  33:main.c        **** uint32 ext_capacitance[3]; // CMOD, CINTA, CINTB
+  34:main.c        **** uint8 i;
+  35:main.c        **** #endif
+  36:main.c        **** 
+  37:main.c        **** CY_ISR(MY_ISR_TS)
+  38:main.c        **** {
+  28              		.loc 1 38 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  39:main.c        **** /* ISR Code here */
+  40:main.c        ****     flag_sns++;
+  36              		.loc 1 40 0
+  37 0002 064A     		ldr	r2, .L2
+  38 0004 1378     		ldrb	r3, [r2]
+  39 0006 0133     		adds	r3, r3, #1
+  40 0008 DBB2     		uxtb	r3, r3
+  41 000a 1370     		strb	r3, [r2]
+  41:main.c        ****     flag_cp++;
+  42              		.loc 1 41 0
+  43 000c 5378     		ldrb	r3, [r2, #1]
+  44 000e 0133     		adds	r3, r3, #1
+  45 0010 DBB2     		uxtb	r3, r3
+  46 0012 5370     		strb	r3, [r2, #1]
+  42:main.c        ****     isr_TS_ClearPending();
+  47              		.loc 1 42 0
+  48 0014 FFF7FEFF 		bl	isr_TS_ClearPending
+  49              	.LVL0:
+  43:main.c        **** }
+  50              		.loc 1 43 0
+  51              		@ sp needed
+  52 0018 10BD     		pop	{r4, pc}
+  53              	.L3:
+  54 001a C046     		.align	2
+  55              	.L2:
+  56 001c 00000000 		.word	.LANCHOR0
+  57              		.cfi_endproc
+  58              	.LFE32:
+  59              		.size	MY_ISR_TS, .-MY_ISR_TS
+  60              		.section	.text.main,"ax",%progbits
+  61              		.align	2
+  62              		.global	main
+  63              		.code	16
+  64              		.thumb_func
+  65              		.type	main, %function
+  66              	main:
+  67              	.LFB33:
+  44:main.c        **** 
+  45:main.c        **** int main()
+  46:main.c        **** {
+  68              		.loc 1 46 0
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 3
+
+
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 8
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72 0000 70B5     		push	{r4, r5, r6, lr}
+  73              		.cfi_def_cfa_offset 16
+  74              		.cfi_offset 4, -16
+  75              		.cfi_offset 5, -12
+  76              		.cfi_offset 6, -8
+  77              		.cfi_offset 14, -4
+  78 0002 82B0     		sub	sp, sp, #8
+  79              		.cfi_def_cfa_offset 24
+  47:main.c        ****     uint32 *ptr32;
+  48:main.c        ****     CapSense_TST_MEASUREMENT_STATUS_ENUM StatusPtr;
+  49:main.c        ****     
+  50:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  80              		.loc 1 50 0
+  81              		.syntax divided
+  82              	@ 50 "main.c" 1
+  83 0004 62B6     		CPSIE   i
+  84              	@ 0 "" 2
+  51:main.c        **** //    __enable_irq(); /* Enable global interrupts. */
+  52:main.c        ****     UART_Start(); /* Start EZI2C Component */
+  85              		.loc 1 52 0
+  86              		.thumb
+  87              		.syntax unified
+  88 0006 FFF7FEFF 		bl	UART_Start
+  89              	.LVL1:
+  53:main.c        ****     L1_Write(0);
+  90              		.loc 1 53 0
+  91 000a 0020     		movs	r0, #0
+  92 000c FFF7FEFF 		bl	L1_Write
+  93              	.LVL2:
+  54:main.c        ****     L2_Write(0);
+  94              		.loc 1 54 0
+  95 0010 0020     		movs	r0, #0
+  96 0012 FFF7FEFF 		bl	L2_Write
+  97              	.LVL3:
+  55:main.c        ****     
+  56:main.c        **** // Timer for Cap sensing    
+  57:main.c        ****     isr_TS_StartEx(MY_ISR_TS);
+  98              		.loc 1 57 0
+  99 0016 4F48     		ldr	r0, .L15
+ 100 0018 FFF7FEFF 		bl	isr_TS_StartEx
+ 101              	.LVL4:
+  58:main.c        ****     isr_TS_ClearPending();
+ 102              		.loc 1 58 0
+ 103 001c FFF7FEFF 		bl	isr_TS_ClearPending
+ 104              	.LVL5:
+  59:main.c        ****     TSTimer_Start();
+ 105              		.loc 1 59 0
+ 106 0020 FFF7FEFF 		bl	TSTimer_Start
+ 107              	.LVL6:
+  60:main.c        **** 
+  61:main.c        **** // TIMER TEST
+  62:main.c        **** //    while(1)
+  63:main.c        **** //    {
+  64:main.c        **** //        if (flag_sns > 0)
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 4
+
+
+  65:main.c        **** //        {
+  66:main.c        **** //            L2_Write(!L2_Read());
+  67:main.c        **** //            flag_sns = 0;
+  68:main.c        **** //        }
+  69:main.c        **** //        if (flag_cp > 5)
+  70:main.c        **** //        {
+  71:main.c        **** //            L1_Write(!L1_Read());
+  72:main.c        **** //            flag_cp = 0;
+  73:main.c        **** //        } 
+  74:main.c        **** //    }
+  75:main.c        ****     
+  76:main.c        ****     
+  77:main.c        ****     
+  78:main.c        ****  /* 
+  79:main.c        ****  * Set up communication and initialize data buffer to CapSense data structure
+  80:main.c        ****  * to use Tuner application
+  81:main.c        ****  */
+  82:main.c        **** // EZI2C_EzI2CSetBuffer1(sizeof(CapSense_dsRam), sizeof(CapSense_dsRam), (uint8_t *)&(CapSense_dsRa
+  83:main.c        ****     CapSense_Start(); /* Initialize Component */
+ 108              		.loc 1 83 0
+ 109 0024 FFF7FEFF 		bl	CapSense_Start
+ 110              	.LVL7:
+  84:main.c        ****     CapSense_ScanAllWidgets(); /* Scan all widgets */
+ 111              		.loc 1 84 0
+ 112 0028 FFF7FEFF 		bl	CapSense_ScanAllWidgets
+ 113              	.LVL8:
+  85:main.c        ****     ptr32 = (uint32*)(&CapSense_dsRam) + 336;
+ 114              		.loc 1 85 0
+ 115 002c 4A4C     		ldr	r4, .L15+4
+ 116              	.LVL9:
+ 117              	.L5:
+  86:main.c        ****      for(;;)
+  87:main.c        ****      {
+  88:main.c        ****      /* Do this only when a scan is done */
+  89:main.c        ****          if(CapSense_NOT_BUSY == CapSense_IsBusy())
+ 118              		.loc 1 89 0
+ 119 002e FFF7FEFF 		bl	CapSense_IsBusy
+ 120              	.LVL10:
+ 121 0032 0028     		cmp	r0, #0
+ 122 0034 FBD1     		bne	.L5
+  90:main.c        ****          {
+  91:main.c        ****             CapSense_ProcessAllWidgets(); /* Process all widgets */
+ 123              		.loc 1 91 0
+ 124 0036 FFF7FEFF 		bl	CapSense_ProcessAllWidgets
+ 125              	.LVL11:
+  92:main.c        ****             CapSense_RunTuner(); /* To sync with Tuner application */
+ 126              		.loc 1 92 0
+ 127 003a FFF7FEFF 		bl	CapSense_RunTuner
+ 128              	.LVL12:
+  93:main.c        **** 
+  94:main.c        **** #ifdef TUNER                        
+  95:main.c        ****             UART_SpiUartPutArray((uint8 *)(&header), sizeof(header));
+  96:main.c        ****             UART_SpiUartPutArray((uint8 *)(&CapSense_dsRam), sizeof(CapSense_dsRam));
+  97:main.c        ****             UART_SpiUartPutArray((uint8 *)(&tail), sizeof(tail));
+  98:main.c        **** #endif
+  99:main.c        **** 
+ 100:main.c        ****     #ifdef MATLAB_EXTENDED_SET_MEASUREMENT
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 5
+
+
+ 101:main.c        ****             if (flag_sns > 0)
+ 129              		.loc 1 101 0
+ 130 003e 474B     		ldr	r3, .L15+8
+ 131 0040 1B78     		ldrb	r3, [r3]
+ 132 0042 002B     		cmp	r3, #0
+ 133 0044 36D0     		beq	.L6
+ 102:main.c        ****             {
+ 103:main.c        ****                 for (i = 0; i < CapSense_TOTAL_CSX_NODES; i++)
+ 134              		.loc 1 103 0
+ 135 0046 0022     		movs	r2, #0
+ 136 0048 454B     		ldr	r3, .L15+12
+ 137 004a 1A70     		strb	r2, [r3]
+ 138 004c 10E0     		b	.L7
+ 139              	.LVL13:
+ 140              	.L8:
+ 104:main.c        ****                 {
+ 105:main.c        ****                     sns_value[i] = CapSense_dsRam.snsList.button0[i].raw[0u];
+ 141              		.loc 1 105 0 discriminator 3
+ 142 004e 5900     		lsls	r1, r3, #1
+ 143 0050 C818     		adds	r0, r1, r3
+ 144 0052 8200     		lsls	r2, r0, #2
+ 145 0054 4348     		ldr	r0, .L15+16
+ 146 0056 8218     		adds	r2, r0, r2
+ 147 0058 1000     		movs	r0, r2
+ 148 005a 8830     		adds	r0, r0, #136
+ 149 005c 0488     		ldrh	r4, [r0]
+ 150 005e 4248     		ldr	r0, .L15+20
+ 151 0060 0C52     		strh	r4, [r1, r0]
+ 106:main.c        ****                     idac_comp[i] = CapSense_dsRam.snsList.button0[i].idacComp[0u];
+ 152              		.loc 1 106 0 discriminator 3
+ 153 0062 9332     		adds	r2, r2, #147
+ 154 0064 1178     		ldrb	r1, [r2]
+ 155 0066 414A     		ldr	r2, .L15+24
+ 156 0068 D154     		strb	r1, [r2, r3]
+ 103:main.c        ****                 {
+ 157              		.loc 1 103 0 discriminator 3
+ 158 006a 0133     		adds	r3, r3, #1
+ 159 006c 3C4A     		ldr	r2, .L15+12
+ 160 006e 1370     		strb	r3, [r2]
+ 161              	.L7:
+ 103:main.c        ****                 {
+ 162              		.loc 1 103 0 is_stmt 0 discriminator 1
+ 163 0070 3B4B     		ldr	r3, .L15+12
+ 164 0072 1B78     		ldrb	r3, [r3]
+ 165 0074 0B2B     		cmp	r3, #11
+ 166 0076 EAD9     		bls	.L8
+ 167              	.LVL14:
+ 107:main.c        ****                 }
+ 108:main.c        ****                 ptr32 = (uint32*)(&CapSense_dsRam) + 336;                     
+ 109:main.c        ****     //            UART_SpiUartPutArray((uint8 *)(&header), sizeof(header));
+ 110:main.c        ****                 UART_SpiUartPutArray((uint8 *)(&sns_value[0]), CapSense_TOTAL_CSX_NODES*sizeof(uint
+ 168              		.loc 1 110 0 is_stmt 1
+ 169 0078 1821     		movs	r1, #24
+ 170 007a 3B48     		ldr	r0, .L15+20
+ 171 007c FFF7FEFF 		bl	UART_SpiUartPutArray
+ 172              	.LVL15:
+ 111:main.c        ****                 UART_SpiUartPutArray((uint8 *)(&idac_comp[0]), CapSense_TOTAL_CSX_NODES*sizeof(uint
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 6
+
+
+ 173              		.loc 1 111 0
+ 174 0080 0C21     		movs	r1, #12
+ 175 0082 3A48     		ldr	r0, .L15+24
+ 176 0084 FFF7FEFF 		bl	UART_SpiUartPutArray
+ 177              	.LVL16:
+ 112:main.c        ****     //            UART_SpiUartPutArray((uint8 *)(&sns_capacitance[0]), TOTAL_RX_TX_PINS*sizeof(uint
+ 113:main.c        ****                 UART_SpiUartPutArray((uint8 *)(ptr32), TOTAL_RX_TX_PINS*sizeof(uint32));
+ 178              		.loc 1 113 0
+ 179 0088 334C     		ldr	r4, .L15+4
+ 180              	.LVL17:
+ 181 008a 4821     		movs	r1, #72
+ 182 008c 2000     		movs	r0, r4
+ 183 008e FFF7FEFF 		bl	UART_SpiUartPutArray
+ 184              	.LVL18:
+ 114:main.c        ****                 UART_SpiUartPutArray((uint8 *)(&ext_capacitance[0]), 3*sizeof(uint32));
+ 185              		.loc 1 114 0
+ 186 0092 0C21     		movs	r1, #12
+ 187 0094 3648     		ldr	r0, .L15+28
+ 188 0096 FFF7FEFF 		bl	UART_SpiUartPutArray
+ 189              	.LVL19:
+ 115:main.c        ****     //            UART_SpiUartPutArray((uint8 *)(&tail), sizeof(tail));
+ 116:main.c        ****                 UART_UartPutCRLF(0xff);
+ 190              		.loc 1 116 0
+ 191 009a FF20     		movs	r0, #255
+ 192 009c FFF7FEFF 		bl	UART_UartPutCRLF
+ 193              	.LVL20:
+ 117:main.c        ****                 L1_Write(!L1_Read());
+ 194              		.loc 1 117 0
+ 195 00a0 FFF7FEFF 		bl	L1_Read
+ 196              	.LVL21:
+ 197 00a4 4342     		rsbs	r3, r0, #0
+ 198 00a6 5841     		adcs	r0, r0, r3
+ 199 00a8 C0B2     		uxtb	r0, r0
+ 200 00aa FFF7FEFF 		bl	L1_Write
+ 201              	.LVL22:
+ 118:main.c        ****                 flag_sns = 0;
+ 202              		.loc 1 118 0
+ 203 00ae 0022     		movs	r2, #0
+ 204 00b0 2A4B     		ldr	r3, .L15+8
+ 205 00b2 1A70     		strb	r2, [r3]
+ 206              	.L6:
+ 119:main.c        ****             }
+ 120:main.c        ****             if (flag_cp >= CAP_MEASUREMENT_RATE)
+ 207              		.loc 1 120 0
+ 208 00b4 294B     		ldr	r3, .L15+8
+ 209 00b6 5B78     		ldrb	r3, [r3, #1]
+ 210 00b8 DBB2     		uxtb	r3, r3
+ 211 00ba 042B     		cmp	r3, #4
+ 212 00bc 45D9     		bls	.L9
+ 121:main.c        ****             {
+ 122:main.c        **** //                ptr32 = (uint32*)(&CapSense_dsRam) + 336;
+ 123:main.c        **** //                for (i = 0; i < TOTAL_RX_TX_PINS; i++)
+ 124:main.c        **** //                {
+ 125:main.c        **** //                    *(ptr32+i)  = CapSense_GetSensorCapacitance(CapSense_MATRIXBUTTONS0_WDGT_ID, 
+ 126:main.c        **** //                    while(CapSense_NOT_BUSY != CapSense_IsBusy()){}
+ 127:main.c        **** //                }            
+ 128:main.c        ****                 
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 7
+
+
+ 129:main.c        ****                 for (i = 0; i < 6; i++)
+ 213              		.loc 1 129 0
+ 214 00be 0022     		movs	r2, #0
+ 215 00c0 274B     		ldr	r3, .L15+12
+ 216 00c2 1A70     		strb	r2, [r3]
+ 217 00c4 29E0     		b	.L10
+ 218              	.L11:
+ 130:main.c        ****                 {
+ 131:main.c        ****                     while(CapSense_NOT_BUSY != CapSense_IsBusy()){};
+ 219              		.loc 1 131 0 discriminator 1
+ 220 00c6 FFF7FEFF 		bl	CapSense_IsBusy
+ 221              	.LVL23:
+ 222 00ca 0028     		cmp	r0, #0
+ 223 00cc FBD1     		bne	.L11
+ 224              	.LVL24:
+ 132:main.c        ****                     *(ptr32++) =  CapSense_GetSensorCapacitance(i, 0, &StatusPtr);
+ 225              		.loc 1 132 0
+ 226 00ce 244B     		ldr	r3, .L15+12
+ 227 00d0 1878     		ldrb	r0, [r3]
+ 228 00d2 6B46     		mov	r3, sp
+ 229 00d4 DA1D     		adds	r2, r3, #7
+ 230 00d6 0021     		movs	r1, #0
+ 231 00d8 FFF7FEFF 		bl	CapSense_GetSensorCapacitance
+ 232              	.LVL25:
+ 233 00dc 2060     		str	r0, [r4]
+ 234              	.L12:
+ 133:main.c        ****                     
+ 134:main.c        ****                     while(CapSense_NOT_BUSY != CapSense_IsBusy()){};
+ 235              		.loc 1 134 0 discriminator 1
+ 236 00de FFF7FEFF 		bl	CapSense_IsBusy
+ 237              	.LVL26:
+ 238 00e2 0028     		cmp	r0, #0
+ 239 00e4 FBD1     		bne	.L12
+ 240              	.LVL27:
+ 135:main.c        ****                     *(ptr32++) =  CapSense_GetSensorCapacitance(i, 1, &StatusPtr);
+ 241              		.loc 1 135 0
+ 242 00e6 1E4B     		ldr	r3, .L15+12
+ 243 00e8 1878     		ldrb	r0, [r3]
+ 244 00ea 6B46     		mov	r3, sp
+ 245 00ec DA1D     		adds	r2, r3, #7
+ 246 00ee 0121     		movs	r1, #1
+ 247 00f0 FFF7FEFF 		bl	CapSense_GetSensorCapacitance
+ 248              	.LVL28:
+ 249 00f4 6060     		str	r0, [r4, #4]
+ 250              	.L13:
+ 136:main.c        ****                     
+ 137:main.c        ****                     while(CapSense_NOT_BUSY != CapSense_IsBusy()){};
+ 251              		.loc 1 137 0 discriminator 1
+ 252 00f6 FFF7FEFF 		bl	CapSense_IsBusy
+ 253              	.LVL29:
+ 254 00fa 0028     		cmp	r0, #0
+ 255 00fc FBD1     		bne	.L13
+ 138:main.c        ****                     *(ptr32++) =  CapSense_GetSensorCapacitance(i, 2, &StatusPtr);
+ 256              		.loc 1 138 0 discriminator 2
+ 257 00fe 2600     		movs	r6, r4
+ 258 0100 0C36     		adds	r6, r6, #12
+ 259              	.LVL30:
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 8
+
+
+ 260 0102 174D     		ldr	r5, .L15+12
+ 261 0104 2878     		ldrb	r0, [r5]
+ 262 0106 6B46     		mov	r3, sp
+ 263 0108 DA1D     		adds	r2, r3, #7
+ 264 010a 0221     		movs	r1, #2
+ 265 010c FFF7FEFF 		bl	CapSense_GetSensorCapacitance
+ 266              	.LVL31:
+ 267 0110 A060     		str	r0, [r4, #8]
+ 129:main.c        ****                 {
+ 268              		.loc 1 129 0 discriminator 2
+ 269 0112 2B78     		ldrb	r3, [r5]
+ 270 0114 0133     		adds	r3, r3, #1
+ 271 0116 2B70     		strb	r3, [r5]
+ 272              		.loc 1 138 0 discriminator 2
+ 273 0118 3400     		movs	r4, r6
+ 274              	.LVL32:
+ 275              	.L10:
+ 129:main.c        ****                 {
+ 276              		.loc 1 129 0 discriminator 1
+ 277 011a 114B     		ldr	r3, .L15+12
+ 278 011c 1B78     		ldrb	r3, [r3]
+ 279 011e 052B     		cmp	r3, #5
+ 280 0120 D1D9     		bls	.L11
+ 139:main.c        ****                 }
+ 140:main.c        ****                 
+ 141:main.c        **** //                CapSense_RunSelfTest(CapSense_TST_RUN_SELF_TEST_MASK);
+ 142:main.c        **** //                while(CapSense_NOT_BUSY != CapSense_IsBusy()){}
+ 143:main.c        **** //                CapSense_RunSelfTest(CapSense_TST_SNS_CAP);
+ 144:main.c        ****                 
+ 145:main.c        ****                 
+ 146:main.c        ****                 // NOTE: MEasuring CMOD not available in library - contrary to datasheet!
+ 147:main.c        ****                 ext_capacitance[0] = 0u;    //CapSense_GetExtCapCapacitance(CapSense_TST_CMOD_ID); 
+ 281              		.loc 1 147 0
+ 282 0122 134D     		ldr	r5, .L15+28
+ 283 0124 0026     		movs	r6, #0
+ 284 0126 2E60     		str	r6, [r5]
+ 148:main.c        ****                 ext_capacitance[1] = CapSense_GetExtCapCapacitance(CapSense_TST_CINTA_ID);
+ 285              		.loc 1 148 0
+ 286 0128 0020     		movs	r0, #0
+ 287 012a FFF7FEFF 		bl	CapSense_GetExtCapCapacitance
+ 288              	.LVL33:
+ 289 012e 6860     		str	r0, [r5, #4]
+ 149:main.c        ****                 ext_capacitance[2] = CapSense_GetExtCapCapacitance(CapSense_TST_CINTB_ID);
+ 290              		.loc 1 149 0
+ 291 0130 0120     		movs	r0, #1
+ 292 0132 FFF7FEFF 		bl	CapSense_GetExtCapCapacitance
+ 293              	.LVL34:
+ 294 0136 A860     		str	r0, [r5, #8]
+ 150:main.c        ****                 
+ 151:main.c        ****                 flag_cp = 0;                
+ 295              		.loc 1 151 0
+ 296 0138 084B     		ldr	r3, .L15+8
+ 297 013a 5E70     		strb	r6, [r3, #1]
+ 152:main.c        ****                 L2_Write(!L2_Read());
+ 298              		.loc 1 152 0
+ 299 013c FFF7FEFF 		bl	L2_Read
+ 300              	.LVL35:
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 9
+
+
+ 301 0140 4342     		rsbs	r3, r0, #0
+ 302 0142 5841     		adcs	r0, r0, r3
+ 303 0144 C0B2     		uxtb	r0, r0
+ 304 0146 FFF7FEFF 		bl	L2_Write
+ 305              	.LVL36:
+ 306              	.L9:
+ 153:main.c        ****             }
+ 154:main.c        ****             
+ 155:main.c        ****     #endif
+ 156:main.c        **** 
+ 157:main.c        **** 
+ 158:main.c        **** 
+ 159:main.c        ****             if (CapSense_IsAnyWidgetActive()) /* Scan result verification */
+ 307              		.loc 1 159 0
+ 308 014a FFF7FEFF 		bl	CapSense_IsAnyWidgetActive
+ 309              	.LVL37:
+ 160:main.c        ****             {
+ 161:main.c        ****      /* add custom tasks to execute when touch detected */
+ 162:main.c        ****             }
+ 163:main.c        ****      
+ 164:main.c        ****             CapSense_ScanAllWidgets(); /* Start next scan */
+ 310              		.loc 1 164 0
+ 311 014e FFF7FEFF 		bl	CapSense_ScanAllWidgets
+ 312              	.LVL38:
+ 313 0152 6CE7     		b	.L5
+ 314              	.L16:
+ 315              		.align	2
+ 316              	.L15:
+ 317 0154 00000000 		.word	MY_ISR_TS
+ 318 0158 40050000 		.word	CapSense_dsRam+1344
+ 319 015c 00000000 		.word	.LANCHOR0
+ 320 0160 00000000 		.word	i
+ 321 0164 00000000 		.word	CapSense_dsRam
+ 322 0168 00000000 		.word	sns_value
+ 323 016c 00000000 		.word	idac_comp
+ 324 0170 00000000 		.word	ext_capacitance
+ 325              		.cfi_endproc
+ 326              	.LFE33:
+ 327              		.size	main, .-main
+ 328              		.comm	i,1,1
+ 329              		.comm	ext_capacitance,12,4
+ 330              		.comm	sns_capacitance,48,4
+ 331              		.comm	idac_comp,12,4
+ 332              		.comm	sns_value,24,4
+ 333              		.global	tail
+ 334              		.global	header
+ 335              		.comm	c,4,4
+ 336              		.global	flag_cp
+ 337              		.global	flag_sns
+ 338              		.data
+ 339              		.align	2
+ 340              		.type	tail, %object
+ 341              		.size	tail, 2
+ 342              	tail:
+ 343 0000 00       		.byte	0
+ 344 0001 FF       		.byte	-1
+ 345 0002 0000     		.space	2
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 10
+
+
+ 346              		.type	header, %object
+ 347              		.size	header, 2
+ 348              	header:
+ 349 0004 FF       		.byte	-1
+ 350 0005 FF       		.byte	-1
+ 351              		.bss
+ 352              		.set	.LANCHOR0,. + 0
+ 353              		.type	flag_sns, %object
+ 354              		.size	flag_sns, 1
+ 355              	flag_sns:
+ 356 0000 00       		.space	1
+ 357              		.type	flag_cp, %object
+ 358              		.size	flag_cp, 1
+ 359              	flag_cp:
+ 360 0001 00       		.space	1
+ 361              		.text
+ 362              	.Letext0:
+ 363              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 364              		.file 3 "Generated_Source\\PSoC4/CapSense_Configuration.h"
+ 365              		.file 4 "Generated_Source\\PSoC4/CapSense_Structure.h"
+ 366              		.file 5 "Generated_Source\\PSoC4/isr_TS.h"
+ 367              		.file 6 "Generated_Source\\PSoC4/UART.h"
+ 368              		.file 7 "Generated_Source\\PSoC4/L1.h"
+ 369              		.file 8 "Generated_Source\\PSoC4/L2.h"
+ 370              		.file 9 "Generated_Source\\PSoC4/TSTimer.h"
+ 371              		.file 10 "Generated_Source\\PSoC4/CapSense_Control.h"
+ 372              		.file 11 "Generated_Source\\PSoC4/CapSense_Sensing.h"
+ 373              		.file 12 "Generated_Source\\PSoC4/CapSense_Tuner.h"
+ 374              		.file 13 "Generated_Source\\PSoC4/UART_SPI_UART.h"
+ 375              		.file 14 "Generated_Source\\PSoC4/CapSense_SelfTest.h"
+ 376              		.section	.debug_info,"",%progbits
+ 377              	.Ldebug_info0:
+ 378 0000 DD0A0000 		.4byte	0xadd
+ 379 0004 0400     		.2byte	0x4
+ 380 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 381 000a 04       		.byte	0x4
+ 382 000b 01       		.uleb128 0x1
+ 383 000c 51020000 		.4byte	.LASF141
+ 384 0010 0C       		.byte	0xc
+ 385 0011 19000000 		.4byte	.LASF142
+ 386 0015 93010000 		.4byte	.LASF143
+ 387 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 388 001d 00000000 		.4byte	0
+ 389 0021 00000000 		.4byte	.Ldebug_line0
+ 390 0025 02       		.uleb128 0x2
+ 391 0026 01       		.byte	0x1
+ 392 0027 06       		.byte	0x6
+ 393 0028 49080000 		.4byte	.LASF0
+ 394 002c 02       		.uleb128 0x2
+ 395 002d 01       		.byte	0x1
+ 396 002e 08       		.byte	0x8
+ 397 002f 73070000 		.4byte	.LASF1
+ 398 0033 02       		.uleb128 0x2
+ 399 0034 02       		.byte	0x2
+ 400 0035 05       		.byte	0x5
+ 401 0036 31060000 		.4byte	.LASF2
+ 402 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 11
+
+
+ 403 003b 02       		.byte	0x2
+ 404 003c 07       		.byte	0x7
+ 405 003d 5A080000 		.4byte	.LASF3
+ 406 0041 02       		.uleb128 0x2
+ 407 0042 04       		.byte	0x4
+ 408 0043 05       		.byte	0x5
+ 409 0044 64060000 		.4byte	.LASF4
+ 410 0048 02       		.uleb128 0x2
+ 411 0049 04       		.byte	0x4
+ 412 004a 07       		.byte	0x7
+ 413 004b 14070000 		.4byte	.LASF5
+ 414 004f 02       		.uleb128 0x2
+ 415 0050 08       		.byte	0x8
+ 416 0051 05       		.byte	0x5
+ 417 0052 35040000 		.4byte	.LASF6
+ 418 0056 02       		.uleb128 0x2
+ 419 0057 08       		.byte	0x8
+ 420 0058 07       		.byte	0x7
+ 421 0059 7C010000 		.4byte	.LASF7
+ 422 005d 03       		.uleb128 0x3
+ 423 005e 04       		.byte	0x4
+ 424 005f 05       		.byte	0x5
+ 425 0060 696E7400 		.ascii	"int\000"
+ 426 0064 02       		.uleb128 0x2
+ 427 0065 04       		.byte	0x4
+ 428 0066 07       		.byte	0x7
+ 429 0067 4B000000 		.4byte	.LASF8
+ 430 006b 04       		.uleb128 0x4
+ 431 006c C7080000 		.4byte	.LASF9
+ 432 0070 02       		.byte	0x2
+ 433 0071 E701     		.2byte	0x1e7
+ 434 0073 2C000000 		.4byte	0x2c
+ 435 0077 04       		.uleb128 0x4
+ 436 0078 B5030000 		.4byte	.LASF10
+ 437 007c 02       		.byte	0x2
+ 438 007d E801     		.2byte	0x1e8
+ 439 007f 3A000000 		.4byte	0x3a
+ 440 0083 04       		.uleb128 0x4
+ 441 0084 E7040000 		.4byte	.LASF11
+ 442 0088 02       		.byte	0x2
+ 443 0089 E901     		.2byte	0x1e9
+ 444 008b 48000000 		.4byte	0x48
+ 445 008f 02       		.uleb128 0x2
+ 446 0090 04       		.byte	0x4
+ 447 0091 04       		.byte	0x4
+ 448 0092 66010000 		.4byte	.LASF12
+ 449 0096 02       		.uleb128 0x2
+ 450 0097 08       		.byte	0x8
+ 451 0098 04       		.byte	0x4
+ 452 0099 CD080000 		.4byte	.LASF13
+ 453 009d 02       		.uleb128 0x2
+ 454 009e 01       		.byte	0x1
+ 455 009f 08       		.byte	0x8
+ 456 00a0 87030000 		.4byte	.LASF14
+ 457 00a4 05       		.uleb128 0x5
+ 458 00a5 6B000000 		.4byte	0x6b
+ 459 00a9 05       		.uleb128 0x5
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 12
+
+
+ 460 00aa 83000000 		.4byte	0x83
+ 461 00ae 02       		.uleb128 0x2
+ 462 00af 08       		.byte	0x8
+ 463 00b0 04       		.byte	0x4
+ 464 00b1 92050000 		.4byte	.LASF15
+ 465 00b5 02       		.uleb128 0x2
+ 466 00b6 04       		.byte	0x4
+ 467 00b7 07       		.byte	0x7
+ 468 00b8 0B070000 		.4byte	.LASF16
+ 469 00bc 04       		.uleb128 0x4
+ 470 00bd C2070000 		.4byte	.LASF17
+ 471 00c1 03       		.byte	0x3
+ 472 00c2 6E01     		.2byte	0x16e
+ 473 00c4 77000000 		.4byte	0x77
+ 474 00c8 04       		.uleb128 0x4
+ 475 00c9 E1030000 		.4byte	.LASF18
+ 476 00cd 03       		.byte	0x3
+ 477 00ce 7201     		.2byte	0x172
+ 478 00d0 6B000000 		.4byte	0x6b
+ 479 00d4 06       		.uleb128 0x6
+ 480 00d5 01       		.byte	0x1
+ 481 00d6 2C000000 		.4byte	0x2c
+ 482 00da 04       		.byte	0x4
+ 483 00db 87       		.byte	0x87
+ 484 00dc 11010000 		.4byte	0x111
+ 485 00e0 07       		.uleb128 0x7
+ 486 00e1 5F040000 		.4byte	.LASF19
+ 487 00e5 00       		.byte	0
+ 488 00e6 07       		.uleb128 0x7
+ 489 00e7 81070000 		.4byte	.LASF20
+ 490 00eb 01       		.byte	0x1
+ 491 00ec 07       		.uleb128 0x7
+ 492 00ed 7B000000 		.4byte	.LASF21
+ 493 00f1 02       		.byte	0x2
+ 494 00f2 07       		.uleb128 0x7
+ 495 00f3 E2070000 		.4byte	.LASF22
+ 496 00f7 03       		.byte	0x3
+ 497 00f8 07       		.uleb128 0x7
+ 498 00f9 72080000 		.4byte	.LASF23
+ 499 00fd 04       		.byte	0x4
+ 500 00fe 07       		.uleb128 0x7
+ 501 00ff DF020000 		.4byte	.LASF24
+ 502 0103 05       		.byte	0x5
+ 503 0104 07       		.uleb128 0x7
+ 504 0105 9C080000 		.4byte	.LASF25
+ 505 0109 06       		.byte	0x6
+ 506 010a 07       		.uleb128 0x7
+ 507 010b 62050000 		.4byte	.LASF26
+ 508 010f 07       		.byte	0x7
+ 509 0110 00       		.byte	0
+ 510 0111 08       		.uleb128 0x8
+ 511 0112 19050000 		.4byte	.LASF27
+ 512 0116 04       		.byte	0x4
+ 513 0117 9E       		.byte	0x9e
+ 514 0118 D4000000 		.4byte	0xd4
+ 515 011c 09       		.uleb128 0x9
+ 516 011d 10       		.byte	0x10
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 13
+
+
+ 517 011e 04       		.byte	0x4
+ 518 011f F1       		.byte	0xf1
+ 519 0120 B2010000 		.4byte	0x1b2
+ 520 0124 0A       		.uleb128 0xa
+ 521 0125 63726300 		.ascii	"crc\000"
+ 522 0129 04       		.byte	0x4
+ 523 012a F6       		.byte	0xf6
+ 524 012b 77000000 		.4byte	0x77
+ 525 012f 00       		.byte	0
+ 526 0130 0B       		.uleb128 0xb
+ 527 0131 CF030000 		.4byte	.LASF28
+ 528 0135 04       		.byte	0x4
+ 529 0136 FB       		.byte	0xfb
+ 530 0137 77000000 		.4byte	0x77
+ 531 013b 02       		.byte	0x2
+ 532 013c 0C       		.uleb128 0xc
+ 533 013d 44070000 		.4byte	.LASF29
+ 534 0141 04       		.byte	0x4
+ 535 0142 0001     		.2byte	0x100
+ 536 0144 BC000000 		.4byte	0xbc
+ 537 0148 04       		.byte	0x4
+ 538 0149 0C       		.uleb128 0xc
+ 539 014a 7F030000 		.4byte	.LASF30
+ 540 014e 04       		.byte	0x4
+ 541 014f 0501     		.2byte	0x105
+ 542 0151 6B000000 		.4byte	0x6b
+ 543 0155 06       		.byte	0x6
+ 544 0156 0C       		.uleb128 0xc
+ 545 0157 D3040000 		.4byte	.LASF31
+ 546 015b 04       		.byte	0x4
+ 547 015c 0A01     		.2byte	0x10a
+ 548 015e 6B000000 		.4byte	0x6b
+ 549 0162 07       		.byte	0x7
+ 550 0163 0C       		.uleb128 0xc
+ 551 0164 12030000 		.4byte	.LASF32
+ 552 0168 04       		.byte	0x4
+ 553 0169 1001     		.2byte	0x110
+ 554 016b 6B000000 		.4byte	0x6b
+ 555 016f 08       		.byte	0x8
+ 556 0170 0C       		.uleb128 0xc
+ 557 0171 54040000 		.4byte	.LASF33
+ 558 0175 04       		.byte	0x4
+ 559 0176 1601     		.2byte	0x116
+ 560 0178 6B000000 		.4byte	0x6b
+ 561 017c 09       		.byte	0x9
+ 562 017d 0C       		.uleb128 0xc
+ 563 017e 35030000 		.4byte	.LASF34
+ 564 0182 04       		.byte	0x4
+ 565 0183 1D01     		.2byte	0x11d
+ 566 0185 C8000000 		.4byte	0xc8
+ 567 0189 0A       		.byte	0xa
+ 568 018a 0C       		.uleb128 0xc
+ 569 018b 4C010000 		.4byte	.LASF35
+ 570 018f 04       		.byte	0x4
+ 571 0190 2201     		.2byte	0x122
+ 572 0192 6B000000 		.4byte	0x6b
+ 573 0196 0B       		.byte	0xb
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 14
+
+
+ 574 0197 0C       		.uleb128 0xc
+ 575 0198 19080000 		.4byte	.LASF36
+ 576 019c 04       		.byte	0x4
+ 577 019d 2A01     		.2byte	0x12a
+ 578 019f 77000000 		.4byte	0x77
+ 579 01a3 0C       		.byte	0xc
+ 580 01a4 0C       		.uleb128 0xc
+ 581 01a5 1C060000 		.4byte	.LASF37
+ 582 01a9 04       		.byte	0x4
+ 583 01aa 2F01     		.2byte	0x12f
+ 584 01ac 6B000000 		.4byte	0x6b
+ 585 01b0 0E       		.byte	0xe
+ 586 01b1 00       		.byte	0
+ 587 01b2 04       		.uleb128 0x4
+ 588 01b3 55070000 		.4byte	.LASF38
+ 589 01b7 04       		.byte	0x4
+ 590 01b8 3001     		.2byte	0x130
+ 591 01ba 1C010000 		.4byte	0x11c
+ 592 01be 0D       		.uleb128 0xd
+ 593 01bf 60       		.byte	0x60
+ 594 01c0 04       		.byte	0x4
+ 595 01c1 3601     		.2byte	0x136
+ 596 01c3 16020000 		.4byte	0x216
+ 597 01c7 0C       		.uleb128 0xc
+ 598 01c8 86060000 		.4byte	.LASF39
+ 599 01cc 04       		.byte	0x4
+ 600 01cd 3B01     		.2byte	0x13b
+ 601 01cf B2010000 		.4byte	0x1b2
+ 602 01d3 00       		.byte	0
+ 603 01d4 0C       		.uleb128 0xc
+ 604 01d5 8E060000 		.4byte	.LASF40
+ 605 01d9 04       		.byte	0x4
+ 606 01da 4001     		.2byte	0x140
+ 607 01dc B2010000 		.4byte	0x1b2
+ 608 01e0 10       		.byte	0x10
+ 609 01e1 0C       		.uleb128 0xc
+ 610 01e2 96060000 		.4byte	.LASF41
+ 611 01e6 04       		.byte	0x4
+ 612 01e7 4501     		.2byte	0x145
+ 613 01e9 B2010000 		.4byte	0x1b2
+ 614 01ed 20       		.byte	0x20
+ 615 01ee 0C       		.uleb128 0xc
+ 616 01ef 9E060000 		.4byte	.LASF42
+ 617 01f3 04       		.byte	0x4
+ 618 01f4 4A01     		.2byte	0x14a
+ 619 01f6 B2010000 		.4byte	0x1b2
+ 620 01fa 30       		.byte	0x30
+ 621 01fb 0C       		.uleb128 0xc
+ 622 01fc A6060000 		.4byte	.LASF43
+ 623 0200 04       		.byte	0x4
+ 624 0201 4F01     		.2byte	0x14f
+ 625 0203 B2010000 		.4byte	0x1b2
+ 626 0207 40       		.byte	0x40
+ 627 0208 0C       		.uleb128 0xc
+ 628 0209 AE060000 		.4byte	.LASF44
+ 629 020d 04       		.byte	0x4
+ 630 020e 5401     		.2byte	0x154
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 15
+
+
+ 631 0210 B2010000 		.4byte	0x1b2
+ 632 0214 50       		.byte	0x50
+ 633 0215 00       		.byte	0
+ 634 0216 04       		.uleb128 0x4
+ 635 0217 10010000 		.4byte	.LASF45
+ 636 021b 04       		.byte	0x4
+ 637 021c 5501     		.2byte	0x155
+ 638 021e BE010000 		.4byte	0x1be
+ 639 0222 0D       		.uleb128 0xd
+ 640 0223 0C       		.byte	0xc
+ 641 0224 04       		.byte	0x4
+ 642 0225 5B01     		.2byte	0x15b
+ 643 0227 87020000 		.4byte	0x287
+ 644 022b 0E       		.uleb128 0xe
+ 645 022c 72617700 		.ascii	"raw\000"
+ 646 0230 04       		.byte	0x4
+ 647 0231 6001     		.2byte	0x160
+ 648 0233 87020000 		.4byte	0x287
+ 649 0237 00       		.byte	0
+ 650 0238 0C       		.uleb128 0xc
+ 651 0239 55080000 		.4byte	.LASF46
+ 652 023d 04       		.byte	0x4
+ 653 023e 6501     		.2byte	0x165
+ 654 0240 87020000 		.4byte	0x287
+ 655 0244 02       		.byte	0x2
+ 656 0245 0C       		.uleb128 0xc
+ 657 0246 DA070000 		.4byte	.LASF47
+ 658 024a 04       		.byte	0x4
+ 659 024b 6A01     		.2byte	0x16a
+ 660 024d 87020000 		.4byte	0x287
+ 661 0251 04       		.byte	0x4
+ 662 0252 0C       		.uleb128 0xc
+ 663 0253 4D070000 		.4byte	.LASF48
+ 664 0257 04       		.byte	0x4
+ 665 0258 7001     		.2byte	0x170
+ 666 025a 97020000 		.4byte	0x297
+ 667 025e 06       		.byte	0x6
+ 668 025f 0C       		.uleb128 0xc
+ 669 0260 78060000 		.4byte	.LASF49
+ 670 0264 04       		.byte	0x4
+ 671 0265 7501     		.2byte	0x175
+ 672 0267 BC000000 		.4byte	0xbc
+ 673 026b 08       		.byte	0x8
+ 674 026c 0C       		.uleb128 0xc
+ 675 026d D4080000 		.4byte	.LASF50
+ 676 0271 04       		.byte	0x4
+ 677 0272 7A01     		.2byte	0x17a
+ 678 0274 A7020000 		.4byte	0x2a7
+ 679 0278 0A       		.byte	0xa
+ 680 0279 0C       		.uleb128 0xc
+ 681 027a 0E040000 		.4byte	.LASF51
+ 682 027e 04       		.byte	0x4
+ 683 027f 7F01     		.2byte	0x17f
+ 684 0281 97020000 		.4byte	0x297
+ 685 0285 0B       		.byte	0xb
+ 686 0286 00       		.byte	0
+ 687 0287 0F       		.uleb128 0xf
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 16
+
+
+ 688 0288 77000000 		.4byte	0x77
+ 689 028c 97020000 		.4byte	0x297
+ 690 0290 10       		.uleb128 0x10
+ 691 0291 B5000000 		.4byte	0xb5
+ 692 0295 00       		.byte	0
+ 693 0296 00       		.byte	0
+ 694 0297 0F       		.uleb128 0xf
+ 695 0298 6B000000 		.4byte	0x6b
+ 696 029c A7020000 		.4byte	0x2a7
+ 697 02a0 10       		.uleb128 0x10
+ 698 02a1 B5000000 		.4byte	0xb5
+ 699 02a5 00       		.byte	0
+ 700 02a6 00       		.byte	0
+ 701 02a7 0F       		.uleb128 0xf
+ 702 02a8 C8000000 		.4byte	0xc8
+ 703 02ac B7020000 		.4byte	0x2b7
+ 704 02b0 10       		.uleb128 0x10
+ 705 02b1 B5000000 		.4byte	0xb5
+ 706 02b5 00       		.byte	0
+ 707 02b6 00       		.byte	0
+ 708 02b7 04       		.uleb128 0x4
+ 709 02b8 1D030000 		.4byte	.LASF52
+ 710 02bc 04       		.byte	0x4
+ 711 02bd 8001     		.2byte	0x180
+ 712 02bf 22020000 		.4byte	0x222
+ 713 02c3 0D       		.uleb128 0xd
+ 714 02c4 90       		.byte	0x90
+ 715 02c5 04       		.byte	0x4
+ 716 02c6 8601     		.2byte	0x186
+ 717 02c8 1B030000 		.4byte	0x31b
+ 718 02cc 0C       		.uleb128 0xc
+ 719 02cd 86060000 		.4byte	.LASF39
+ 720 02d1 04       		.byte	0x4
+ 721 02d2 8B01     		.2byte	0x18b
+ 722 02d4 1B030000 		.4byte	0x31b
+ 723 02d8 00       		.byte	0
+ 724 02d9 0C       		.uleb128 0xc
+ 725 02da 8E060000 		.4byte	.LASF40
+ 726 02de 04       		.byte	0x4
+ 727 02df 9001     		.2byte	0x190
+ 728 02e1 1B030000 		.4byte	0x31b
+ 729 02e5 18       		.byte	0x18
+ 730 02e6 0C       		.uleb128 0xc
+ 731 02e7 96060000 		.4byte	.LASF41
+ 732 02eb 04       		.byte	0x4
+ 733 02ec 9501     		.2byte	0x195
+ 734 02ee 1B030000 		.4byte	0x31b
+ 735 02f2 30       		.byte	0x30
+ 736 02f3 0C       		.uleb128 0xc
+ 737 02f4 9E060000 		.4byte	.LASF42
+ 738 02f8 04       		.byte	0x4
+ 739 02f9 9A01     		.2byte	0x19a
+ 740 02fb 1B030000 		.4byte	0x31b
+ 741 02ff 48       		.byte	0x48
+ 742 0300 0C       		.uleb128 0xc
+ 743 0301 A6060000 		.4byte	.LASF43
+ 744 0305 04       		.byte	0x4
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 17
+
+
+ 745 0306 9F01     		.2byte	0x19f
+ 746 0308 1B030000 		.4byte	0x31b
+ 747 030c 60       		.byte	0x60
+ 748 030d 0C       		.uleb128 0xc
+ 749 030e AE060000 		.4byte	.LASF44
+ 750 0312 04       		.byte	0x4
+ 751 0313 A401     		.2byte	0x1a4
+ 752 0315 1B030000 		.4byte	0x31b
+ 753 0319 78       		.byte	0x78
+ 754 031a 00       		.byte	0
+ 755 031b 0F       		.uleb128 0xf
+ 756 031c B7020000 		.4byte	0x2b7
+ 757 0320 2B030000 		.4byte	0x32b
+ 758 0324 10       		.uleb128 0x10
+ 759 0325 B5000000 		.4byte	0xb5
+ 760 0329 01       		.byte	0x1
+ 761 032a 00       		.byte	0
+ 762 032b 04       		.uleb128 0x4
+ 763 032c FC080000 		.4byte	.LASF53
+ 764 0330 04       		.byte	0x4
+ 765 0331 A501     		.2byte	0x1a5
+ 766 0333 C3020000 		.4byte	0x2c3
+ 767 0337 0D       		.uleb128 0xd
+ 768 0338 18       		.byte	0x18
+ 769 0339 04       		.byte	0x4
+ 770 033a AB01     		.2byte	0x1ab
+ 771 033c DD030000 		.4byte	0x3dd
+ 772 0340 0C       		.uleb128 0xc
+ 773 0341 50030000 		.4byte	.LASF54
+ 774 0345 04       		.byte	0x4
+ 775 0346 B001     		.2byte	0x1b0
+ 776 0348 83000000 		.4byte	0x83
+ 777 034c 00       		.byte	0
+ 778 034d 0C       		.uleb128 0xc
+ 779 034e D8060000 		.4byte	.LASF55
+ 780 0352 04       		.byte	0x4
+ 781 0353 B501     		.2byte	0x1b5
+ 782 0355 DD030000 		.4byte	0x3dd
+ 783 0359 04       		.byte	0x4
+ 784 035a 0C       		.uleb128 0xc
+ 785 035b FF060000 		.4byte	.LASF56
+ 786 035f 04       		.byte	0x4
+ 787 0360 BA01     		.2byte	0x1ba
+ 788 0362 77000000 		.4byte	0x77
+ 789 0366 08       		.byte	0x8
+ 790 0367 0C       		.uleb128 0xc
+ 791 0368 AA030000 		.4byte	.LASF57
+ 792 036c 04       		.byte	0x4
+ 793 036d BF01     		.2byte	0x1bf
+ 794 036f 77000000 		.4byte	0x77
+ 795 0373 0A       		.byte	0xa
+ 796 0374 0C       		.uleb128 0xc
+ 797 0375 38070000 		.4byte	.LASF58
+ 798 0379 04       		.byte	0x4
+ 799 037a C501     		.2byte	0x1c5
+ 800 037c 77000000 		.4byte	0x77
+ 801 0380 0C       		.byte	0xc
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 18
+
+
+ 802 0381 0C       		.uleb128 0xc
+ 803 0382 DF060000 		.4byte	.LASF59
+ 804 0386 04       		.byte	0x4
+ 805 0387 CB01     		.2byte	0x1cb
+ 806 0389 6B000000 		.4byte	0x6b
+ 807 038d 0E       		.byte	0xe
+ 808 038e 0C       		.uleb128 0xc
+ 809 038f B6060000 		.4byte	.LASF60
+ 810 0393 04       		.byte	0x4
+ 811 0394 D001     		.2byte	0x1d0
+ 812 0396 6B000000 		.4byte	0x6b
+ 813 039a 0F       		.byte	0xf
+ 814 039b 0C       		.uleb128 0xc
+ 815 039c BC030000 		.4byte	.LASF61
+ 816 03a0 04       		.byte	0x4
+ 817 03a1 D501     		.2byte	0x1d5
+ 818 03a3 6B000000 		.4byte	0x6b
+ 819 03a7 10       		.byte	0x10
+ 820 03a8 0C       		.uleb128 0xc
+ 821 03a9 43020000 		.4byte	.LASF62
+ 822 03ad 04       		.byte	0x4
+ 823 03ae DA01     		.2byte	0x1da
+ 824 03b0 6B000000 		.4byte	0x6b
+ 825 03b4 11       		.byte	0x11
+ 826 03b5 0C       		.uleb128 0xc
+ 827 03b6 C6040000 		.4byte	.LASF63
+ 828 03ba 04       		.byte	0x4
+ 829 03bb DF01     		.2byte	0x1df
+ 830 03bd 6B000000 		.4byte	0x6b
+ 831 03c1 12       		.byte	0x12
+ 832 03c2 0C       		.uleb128 0xc
+ 833 03c3 4C010000 		.4byte	.LASF35
+ 834 03c7 04       		.byte	0x4
+ 835 03c8 E401     		.2byte	0x1e4
+ 836 03ca 6B000000 		.4byte	0x6b
+ 837 03ce 13       		.byte	0x13
+ 838 03cf 0C       		.uleb128 0xc
+ 839 03d0 19080000 		.4byte	.LASF36
+ 840 03d4 04       		.byte	0x4
+ 841 03d5 E901     		.2byte	0x1e9
+ 842 03d7 77000000 		.4byte	0x77
+ 843 03db 14       		.byte	0x14
+ 844 03dc 00       		.byte	0
+ 845 03dd 0F       		.uleb128 0xf
+ 846 03de 77000000 		.4byte	0x77
+ 847 03e2 ED030000 		.4byte	0x3ed
+ 848 03e6 10       		.uleb128 0x10
+ 849 03e7 B5000000 		.4byte	0xb5
+ 850 03eb 01       		.byte	0x1
+ 851 03ec 00       		.byte	0
+ 852 03ed 04       		.uleb128 0x4
+ 853 03ee 8C030000 		.4byte	.LASF64
+ 854 03f2 04       		.byte	0x4
+ 855 03f3 EA01     		.2byte	0x1ea
+ 856 03f5 37030000 		.4byte	0x337
+ 857 03f9 0D       		.uleb128 0xd
+ 858 03fa 48       		.byte	0x48
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 19
+
+
+ 859 03fb 04       		.byte	0x4
+ 860 03fc F001     		.2byte	0x1f0
+ 861 03fe 51040000 		.4byte	0x451
+ 862 0402 0C       		.uleb128 0xc
+ 863 0403 86060000 		.4byte	.LASF39
+ 864 0407 04       		.byte	0x4
+ 865 0408 F501     		.2byte	0x1f5
+ 866 040a 51040000 		.4byte	0x451
+ 867 040e 00       		.byte	0
+ 868 040f 0C       		.uleb128 0xc
+ 869 0410 8E060000 		.4byte	.LASF40
+ 870 0414 04       		.byte	0x4
+ 871 0415 F901     		.2byte	0x1f9
+ 872 0417 51040000 		.4byte	0x451
+ 873 041b 0C       		.byte	0xc
+ 874 041c 0C       		.uleb128 0xc
+ 875 041d 96060000 		.4byte	.LASF41
+ 876 0421 04       		.byte	0x4
+ 877 0422 FD01     		.2byte	0x1fd
+ 878 0424 51040000 		.4byte	0x451
+ 879 0428 18       		.byte	0x18
+ 880 0429 0C       		.uleb128 0xc
+ 881 042a 9E060000 		.4byte	.LASF42
+ 882 042e 04       		.byte	0x4
+ 883 042f 0102     		.2byte	0x201
+ 884 0431 51040000 		.4byte	0x451
+ 885 0435 24       		.byte	0x24
+ 886 0436 0C       		.uleb128 0xc
+ 887 0437 A6060000 		.4byte	.LASF43
+ 888 043b 04       		.byte	0x4
+ 889 043c 0502     		.2byte	0x205
+ 890 043e 51040000 		.4byte	0x451
+ 891 0442 30       		.byte	0x30
+ 892 0443 0C       		.uleb128 0xc
+ 893 0444 AE060000 		.4byte	.LASF44
+ 894 0448 04       		.byte	0x4
+ 895 0449 0902     		.2byte	0x209
+ 896 044b 51040000 		.4byte	0x451
+ 897 044f 3C       		.byte	0x3c
+ 898 0450 00       		.byte	0
+ 899 0451 0F       		.uleb128 0xf
+ 900 0452 83000000 		.4byte	0x83
+ 901 0456 61040000 		.4byte	0x461
+ 902 045a 10       		.uleb128 0x10
+ 903 045b B5000000 		.4byte	0xb5
+ 904 045f 02       		.byte	0x2
+ 905 0460 00       		.byte	0
+ 906 0461 04       		.uleb128 0x4
+ 907 0462 AD000000 		.4byte	.LASF65
+ 908 0466 04       		.byte	0x4
+ 909 0467 0A02     		.2byte	0x20a
+ 910 0469 F9030000 		.4byte	0x3f9
+ 911 046d 0D       		.uleb128 0xd
+ 912 046e 20       		.byte	0x20
+ 913 046f 04       		.byte	0x4
+ 914 0470 0F02     		.2byte	0x20f
+ 915 0472 7B050000 		.4byte	0x57b
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 20
+
+
+ 916 0476 0C       		.uleb128 0xc
+ 917 0477 19090000 		.4byte	.LASF66
+ 918 047b 04       		.byte	0x4
+ 919 047c 1402     		.2byte	0x214
+ 920 047e 83000000 		.4byte	0x83
+ 921 0482 00       		.byte	0
+ 922 0483 0C       		.uleb128 0xc
+ 923 0484 E8000000 		.4byte	.LASF67
+ 924 0488 04       		.byte	0x4
+ 925 0489 1902     		.2byte	0x219
+ 926 048b 77000000 		.4byte	0x77
+ 927 048f 04       		.byte	0x4
+ 928 0490 0C       		.uleb128 0xc
+ 929 0491 25040000 		.4byte	.LASF68
+ 930 0495 04       		.byte	0x4
+ 931 0496 1E02     		.2byte	0x21e
+ 932 0498 77000000 		.4byte	0x77
+ 933 049c 06       		.byte	0x6
+ 934 049d 0C       		.uleb128 0xc
+ 935 049e C4060000 		.4byte	.LASF69
+ 936 04a2 04       		.byte	0x4
+ 937 04a3 2302     		.2byte	0x223
+ 938 04a5 77000000 		.4byte	0x77
+ 939 04a9 08       		.byte	0x8
+ 940 04aa 0C       		.uleb128 0xc
+ 941 04ab 28080000 		.4byte	.LASF70
+ 942 04af 04       		.byte	0x4
+ 943 04b0 2802     		.2byte	0x228
+ 944 04b2 77000000 		.4byte	0x77
+ 945 04b6 0A       		.byte	0xa
+ 946 04b7 0C       		.uleb128 0xc
+ 947 04b8 DB050000 		.4byte	.LASF71
+ 948 04bc 04       		.byte	0x4
+ 949 04bd 2D02     		.2byte	0x22d
+ 950 04bf 77000000 		.4byte	0x77
+ 951 04c3 0C       		.byte	0xc
+ 952 04c4 0C       		.uleb128 0xc
+ 953 04c5 26070000 		.4byte	.LASF72
+ 954 04c9 04       		.byte	0x4
+ 955 04ca 3202     		.2byte	0x232
+ 956 04cc 77000000 		.4byte	0x77
+ 957 04d0 0E       		.byte	0xe
+ 958 04d1 0C       		.uleb128 0xc
+ 959 04d2 07020000 		.4byte	.LASF73
+ 960 04d6 04       		.byte	0x4
+ 961 04d7 3702     		.2byte	0x237
+ 962 04d9 6B000000 		.4byte	0x6b
+ 963 04dd 10       		.byte	0x10
+ 964 04de 0C       		.uleb128 0xc
+ 965 04df 55050000 		.4byte	.LASF74
+ 966 04e3 04       		.byte	0x4
+ 967 04e4 3C02     		.2byte	0x23c
+ 968 04e6 6B000000 		.4byte	0x6b
+ 969 04ea 11       		.byte	0x11
+ 970 04eb 0C       		.uleb128 0xc
+ 971 04ec 83050000 		.4byte	.LASF75
+ 972 04f0 04       		.byte	0x4
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 21
+
+
+ 973 04f1 4102     		.2byte	0x241
+ 974 04f3 6B000000 		.4byte	0x6b
+ 975 04f7 12       		.byte	0x12
+ 976 04f8 0C       		.uleb128 0xc
+ 977 04f9 40030000 		.4byte	.LASF76
+ 978 04fd 04       		.byte	0x4
+ 979 04fe 4602     		.2byte	0x246
+ 980 0500 6B000000 		.4byte	0x6b
+ 981 0504 13       		.byte	0x13
+ 982 0505 0C       		.uleb128 0xc
+ 983 0506 6E030000 		.4byte	.LASF77
+ 984 050a 04       		.byte	0x4
+ 985 050b 4B02     		.2byte	0x24b
+ 986 050d 6B000000 		.4byte	0x6b
+ 987 0511 14       		.byte	0x14
+ 988 0512 0C       		.uleb128 0xc
+ 989 0513 5F030000 		.4byte	.LASF78
+ 990 0517 04       		.byte	0x4
+ 991 0518 5002     		.2byte	0x250
+ 992 051a 6B000000 		.4byte	0x6b
+ 993 051e 15       		.byte	0x15
+ 994 051f 0C       		.uleb128 0xc
+ 995 0520 43040000 		.4byte	.LASF79
+ 996 0524 04       		.byte	0x4
+ 997 0525 5502     		.2byte	0x255
+ 998 0527 6B000000 		.4byte	0x6b
+ 999 052b 16       		.byte	0x16
+ 1000 052c 0C       		.uleb128 0xc
+ 1001 052d C8000000 		.4byte	.LASF80
+ 1002 0531 04       		.byte	0x4
+ 1003 0532 5A02     		.2byte	0x25a
+ 1004 0534 6B000000 		.4byte	0x6b
+ 1005 0538 17       		.byte	0x17
+ 1006 0539 0C       		.uleb128 0xc
+ 1007 053a 2C010000 		.4byte	.LASF81
+ 1008 053e 04       		.byte	0x4
+ 1009 053f 5F02     		.2byte	0x25f
+ 1010 0541 6B000000 		.4byte	0x6b
+ 1011 0545 18       		.byte	0x18
+ 1012 0546 0C       		.uleb128 0xc
+ 1013 0547 3A080000 		.4byte	.LASF82
+ 1014 054b 04       		.byte	0x4
+ 1015 054c 6402     		.2byte	0x264
+ 1016 054e 6B000000 		.4byte	0x6b
+ 1017 0552 19       		.byte	0x19
+ 1018 0553 0C       		.uleb128 0xc
+ 1019 0554 19020000 		.4byte	.LASF83
+ 1020 0558 04       		.byte	0x4
+ 1021 0559 6902     		.2byte	0x269
+ 1022 055b 6B000000 		.4byte	0x6b
+ 1023 055f 1A       		.byte	0x1a
+ 1024 0560 0C       		.uleb128 0xc
+ 1025 0561 48050000 		.4byte	.LASF84
+ 1026 0565 04       		.byte	0x4
+ 1027 0566 6E02     		.2byte	0x26e
+ 1028 0568 6B000000 		.4byte	0x6b
+ 1029 056c 1B       		.byte	0x1b
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 22
+
+
+ 1030 056d 0C       		.uleb128 0xc
+ 1031 056e D9000000 		.4byte	.LASF85
+ 1032 0572 04       		.byte	0x4
+ 1033 0573 7302     		.2byte	0x273
+ 1034 0575 6B000000 		.4byte	0x6b
+ 1035 0579 1C       		.byte	0x1c
+ 1036 057a 00       		.byte	0
+ 1037 057b 04       		.uleb128 0x4
+ 1038 057c A9050000 		.4byte	.LASF86
+ 1039 0580 04       		.byte	0x4
+ 1040 0581 7402     		.2byte	0x274
+ 1041 0583 6D040000 		.4byte	0x46d
+ 1042 0587 11       		.uleb128 0x11
+ 1043 0588 A001     		.2byte	0x1a0
+ 1044 058a 04       		.byte	0x4
+ 1045 058b 7A02     		.2byte	0x27a
+ 1046 058d D3060000 		.4byte	0x6d3
+ 1047 0591 0C       		.uleb128 0xc
+ 1048 0592 EB050000 		.4byte	.LASF87
+ 1049 0596 04       		.byte	0x4
+ 1050 0597 8102     		.2byte	0x281
+ 1051 0599 77000000 		.4byte	0x77
+ 1052 059d 00       		.byte	0
+ 1053 059e 0C       		.uleb128 0xc
+ 1054 059f E2080000 		.4byte	.LASF88
+ 1055 05a3 04       		.byte	0x4
+ 1056 05a4 8602     		.2byte	0x286
+ 1057 05a6 77000000 		.4byte	0x77
+ 1058 05aa 02       		.byte	0x2
+ 1059 05ab 0C       		.uleb128 0xc
+ 1060 05ac 64000000 		.4byte	.LASF89
+ 1061 05b0 04       		.byte	0x4
+ 1062 05b1 8B02     		.2byte	0x28b
+ 1063 05b3 77000000 		.4byte	0x77
+ 1064 05b7 04       		.byte	0x4
+ 1065 05b8 0C       		.uleb128 0xc
+ 1066 05b9 7D060000 		.4byte	.LASF90
+ 1067 05bd 04       		.byte	0x4
+ 1068 05be 9102     		.2byte	0x291
+ 1069 05c0 77000000 		.4byte	0x77
+ 1070 05c4 06       		.byte	0x6
+ 1071 05c5 0C       		.uleb128 0xc
+ 1072 05c6 58000000 		.4byte	.LASF91
+ 1073 05ca 04       		.byte	0x4
+ 1074 05cb 9602     		.2byte	0x296
+ 1075 05cd 77000000 		.4byte	0x77
+ 1076 05d1 08       		.byte	0x8
+ 1077 05d2 0C       		.uleb128 0xc
+ 1078 05d3 DA030000 		.4byte	.LASF92
+ 1079 05d7 04       		.byte	0x4
+ 1080 05d8 9B02     		.2byte	0x29b
+ 1081 05da A9000000 		.4byte	0xa9
+ 1082 05de 0C       		.byte	0xc
+ 1083 05df 0C       		.uleb128 0xc
+ 1084 05e0 6D060000 		.4byte	.LASF93
+ 1085 05e4 04       		.byte	0x4
+ 1086 05e5 A102     		.2byte	0x2a1
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 23
+
+
+ 1087 05e7 D3060000 		.4byte	0x6d3
+ 1088 05eb 10       		.byte	0x10
+ 1089 05ec 0C       		.uleb128 0xc
+ 1090 05ed 5A010000 		.4byte	.LASF94
+ 1091 05f1 04       		.byte	0x4
+ 1092 05f2 A702     		.2byte	0x2a7
+ 1093 05f4 D3060000 		.4byte	0x6d3
+ 1094 05f8 14       		.byte	0x14
+ 1095 05f9 0C       		.uleb128 0xc
+ 1096 05fa E9060000 		.4byte	.LASF95
+ 1097 05fe 04       		.byte	0x4
+ 1098 05ff AE02     		.2byte	0x2ae
+ 1099 0601 D3060000 		.4byte	0x6d3
+ 1100 0605 18       		.byte	0x18
+ 1101 0606 0C       		.uleb128 0xc
+ 1102 0607 12060000 		.4byte	.LASF96
+ 1103 060b 04       		.byte	0x4
+ 1104 060c BE02     		.2byte	0x2be
+ 1105 060e E3060000 		.4byte	0x6e3
+ 1106 0612 1C       		.byte	0x1c
+ 1107 0613 0C       		.uleb128 0xc
+ 1108 0614 DC040000 		.4byte	.LASF97
+ 1109 0618 04       		.byte	0x4
+ 1110 0619 C402     		.2byte	0x2c4
+ 1111 061b 77000000 		.4byte	0x77
+ 1112 061f 22       		.byte	0x22
+ 1113 0620 0C       		.uleb128 0xc
+ 1114 0621 A4070000 		.4byte	.LASF98
+ 1115 0625 04       		.byte	0x4
+ 1116 0626 C902     		.2byte	0x2c9
+ 1117 0628 6B000000 		.4byte	0x6b
+ 1118 062c 24       		.byte	0x24
+ 1119 062d 0C       		.uleb128 0xc
+ 1120 062e 95080000 		.4byte	.LASF99
+ 1121 0632 04       		.byte	0x4
+ 1122 0633 CE02     		.2byte	0x2ce
+ 1123 0635 77000000 		.4byte	0x77
+ 1124 0639 26       		.byte	0x26
+ 1125 063a 0C       		.uleb128 0xc
+ 1126 063b 80040000 		.4byte	.LASF100
+ 1127 063f 04       		.byte	0x4
+ 1128 0640 D302     		.2byte	0x2d3
+ 1129 0642 16020000 		.4byte	0x216
+ 1130 0646 28       		.byte	0x28
+ 1131 0647 0C       		.uleb128 0xc
+ 1132 0648 6C010000 		.4byte	.LASF101
+ 1133 064c 04       		.byte	0x4
+ 1134 064d D802     		.2byte	0x2d8
+ 1135 064f 2B030000 		.4byte	0x32b
+ 1136 0653 88       		.byte	0x88
+ 1137 0654 12       		.uleb128 0x12
+ 1138 0655 10050000 		.4byte	.LASF102
+ 1139 0659 04       		.byte	0x4
+ 1140 065a DD02     		.2byte	0x2dd
+ 1141 065c ED030000 		.4byte	0x3ed
+ 1142 0660 1801     		.2byte	0x118
+ 1143 0662 12       		.uleb128 0x12
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 24
+
+
+ 1144 0663 0A000000 		.4byte	.LASF103
+ 1145 0667 04       		.byte	0x4
+ 1146 0668 E202     		.2byte	0x2e2
+ 1147 066a 7B050000 		.4byte	0x57b
+ 1148 066e 3001     		.2byte	0x130
+ 1149 0670 12       		.uleb128 0x12
+ 1150 0671 0C030000 		.4byte	.LASF104
+ 1151 0675 04       		.byte	0x4
+ 1152 0676 E702     		.2byte	0x2e7
+ 1153 0678 61040000 		.4byte	0x461
+ 1154 067c 5001     		.2byte	0x150
+ 1155 067e 12       		.uleb128 0x12
+ 1156 067f 20000000 		.4byte	.LASF105
+ 1157 0683 04       		.byte	0x4
+ 1158 0684 EC02     		.2byte	0x2ec
+ 1159 0686 6B000000 		.4byte	0x6b
+ 1160 068a 9801     		.2byte	0x198
+ 1161 068c 12       		.uleb128 0x12
+ 1162 068d E7010000 		.4byte	.LASF106
+ 1163 0691 04       		.byte	0x4
+ 1164 0692 F102     		.2byte	0x2f1
+ 1165 0694 6B000000 		.4byte	0x6b
+ 1166 0698 9901     		.2byte	0x199
+ 1167 069a 12       		.uleb128 0x12
+ 1168 069b C8050000 		.4byte	.LASF107
+ 1169 069f 04       		.byte	0x4
+ 1170 06a0 F602     		.2byte	0x2f6
+ 1171 06a2 77000000 		.4byte	0x77
+ 1172 06a6 9A01     		.2byte	0x19a
+ 1173 06a8 12       		.uleb128 0x12
+ 1174 06a9 B6040000 		.4byte	.LASF108
+ 1175 06ad 04       		.byte	0x4
+ 1176 06ae FB02     		.2byte	0x2fb
+ 1177 06b0 87020000 		.4byte	0x287
+ 1178 06b4 9C01     		.2byte	0x19c
+ 1179 06b6 12       		.uleb128 0x12
+ 1180 06b7 9E050000 		.4byte	.LASF109
+ 1181 06bb 04       		.byte	0x4
+ 1182 06bc 0003     		.2byte	0x300
+ 1183 06be 6B000000 		.4byte	0x6b
+ 1184 06c2 9E01     		.2byte	0x19e
+ 1185 06c4 12       		.uleb128 0x12
+ 1186 06c5 AE070000 		.4byte	.LASF110
+ 1187 06c9 04       		.byte	0x4
+ 1188 06ca 0503     		.2byte	0x305
+ 1189 06cc 6B000000 		.4byte	0x6b
+ 1190 06d0 9F01     		.2byte	0x19f
+ 1191 06d2 00       		.byte	0
+ 1192 06d3 0F       		.uleb128 0xf
+ 1193 06d4 83000000 		.4byte	0x83
+ 1194 06d8 E3060000 		.4byte	0x6e3
+ 1195 06dc 10       		.uleb128 0x10
+ 1196 06dd B5000000 		.4byte	0xb5
+ 1197 06e1 00       		.byte	0
+ 1198 06e2 00       		.byte	0
+ 1199 06e3 0F       		.uleb128 0xf
+ 1200 06e4 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 25
+
+
+ 1201 06e8 F3060000 		.4byte	0x6f3
+ 1202 06ec 10       		.uleb128 0x10
+ 1203 06ed B5000000 		.4byte	0xb5
+ 1204 06f1 05       		.byte	0x5
+ 1205 06f2 00       		.byte	0
+ 1206 06f3 04       		.uleb128 0x4
+ 1207 06f4 3B060000 		.4byte	.LASF111
+ 1208 06f8 04       		.byte	0x4
+ 1209 06f9 0603     		.2byte	0x306
+ 1210 06fb 87050000 		.4byte	0x587
+ 1211 06ff 13       		.uleb128 0x13
+ 1212 0700 04       		.byte	0x4
+ 1213 0701 83000000 		.4byte	0x83
+ 1214 0705 14       		.uleb128 0x14
+ 1215 0706 26020000 		.4byte	.LASF144
+ 1216 070a 01       		.byte	0x1
+ 1217 070b 25       		.byte	0x25
+ 1218 070c 00000000 		.4byte	.LFB32
+ 1219 0710 20000000 		.4byte	.LFE32-.LFB32
+ 1220 0714 01       		.uleb128 0x1
+ 1221 0715 9C       		.byte	0x9c
+ 1222 0716 24070000 		.4byte	0x724
+ 1223 071a 15       		.uleb128 0x15
+ 1224 071b 18000000 		.4byte	.LVL0
+ 1225 071f 170A0000 		.4byte	0xa17
+ 1226 0723 00       		.byte	0
+ 1227 0724 16       		.uleb128 0x16
+ 1228 0725 6D080000 		.4byte	.LASF145
+ 1229 0729 01       		.byte	0x1
+ 1230 072a 2D       		.byte	0x2d
+ 1231 072b 5D000000 		.4byte	0x5d
+ 1232 072f 00000000 		.4byte	.LFB33
+ 1233 0733 74010000 		.4byte	.LFE33-.LFB33
+ 1234 0737 01       		.uleb128 0x1
+ 1235 0738 9C       		.byte	0x9c
+ 1236 0739 25090000 		.4byte	0x925
+ 1237 073d 17       		.uleb128 0x17
+ 1238 073e C9030000 		.4byte	.LASF112
+ 1239 0742 01       		.byte	0x1
+ 1240 0743 2F       		.byte	0x2f
+ 1241 0744 FF060000 		.4byte	0x6ff
+ 1242 0748 00000000 		.4byte	.LLST0
+ 1243 074c 18       		.uleb128 0x18
+ 1244 074d 30020000 		.4byte	.LASF113
+ 1245 0751 01       		.byte	0x1
+ 1246 0752 30       		.byte	0x30
+ 1247 0753 11010000 		.4byte	0x111
+ 1248 0757 02       		.uleb128 0x2
+ 1249 0758 91       		.byte	0x91
+ 1250 0759 6F       		.sleb128 -17
+ 1251 075a 15       		.uleb128 0x15
+ 1252 075b 0A000000 		.4byte	.LVL1
+ 1253 075f 220A0000 		.4byte	0xa22
+ 1254 0763 19       		.uleb128 0x19
+ 1255 0764 10000000 		.4byte	.LVL2
+ 1256 0768 2D0A0000 		.4byte	0xa2d
+ 1257 076c 76070000 		.4byte	0x776
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 26
+
+
+ 1258 0770 1A       		.uleb128 0x1a
+ 1259 0771 01       		.uleb128 0x1
+ 1260 0772 50       		.byte	0x50
+ 1261 0773 01       		.uleb128 0x1
+ 1262 0774 30       		.byte	0x30
+ 1263 0775 00       		.byte	0
+ 1264 0776 19       		.uleb128 0x19
+ 1265 0777 16000000 		.4byte	.LVL3
+ 1266 077b 380A0000 		.4byte	0xa38
+ 1267 077f 89070000 		.4byte	0x789
+ 1268 0783 1A       		.uleb128 0x1a
+ 1269 0784 01       		.uleb128 0x1
+ 1270 0785 50       		.byte	0x50
+ 1271 0786 01       		.uleb128 0x1
+ 1272 0787 30       		.byte	0x30
+ 1273 0788 00       		.byte	0
+ 1274 0789 19       		.uleb128 0x19
+ 1275 078a 1C000000 		.4byte	.LVL4
+ 1276 078e 430A0000 		.4byte	0xa43
+ 1277 0792 A0070000 		.4byte	0x7a0
+ 1278 0796 1A       		.uleb128 0x1a
+ 1279 0797 01       		.uleb128 0x1
+ 1280 0798 50       		.byte	0x50
+ 1281 0799 05       		.uleb128 0x5
+ 1282 079a 03       		.byte	0x3
+ 1283 079b 00000000 		.4byte	MY_ISR_TS
+ 1284 079f 00       		.byte	0
+ 1285 07a0 15       		.uleb128 0x15
+ 1286 07a1 20000000 		.4byte	.LVL5
+ 1287 07a5 170A0000 		.4byte	0xa17
+ 1288 07a9 15       		.uleb128 0x15
+ 1289 07aa 24000000 		.4byte	.LVL6
+ 1290 07ae 4E0A0000 		.4byte	0xa4e
+ 1291 07b2 15       		.uleb128 0x15
+ 1292 07b3 28000000 		.4byte	.LVL7
+ 1293 07b7 590A0000 		.4byte	0xa59
+ 1294 07bb 15       		.uleb128 0x15
+ 1295 07bc 2C000000 		.4byte	.LVL8
+ 1296 07c0 640A0000 		.4byte	0xa64
+ 1297 07c4 15       		.uleb128 0x15
+ 1298 07c5 32000000 		.4byte	.LVL10
+ 1299 07c9 6F0A0000 		.4byte	0xa6f
+ 1300 07cd 15       		.uleb128 0x15
+ 1301 07ce 3A000000 		.4byte	.LVL11
+ 1302 07d2 7A0A0000 		.4byte	0xa7a
+ 1303 07d6 15       		.uleb128 0x15
+ 1304 07d7 3E000000 		.4byte	.LVL12
+ 1305 07db 850A0000 		.4byte	0xa85
+ 1306 07df 19       		.uleb128 0x19
+ 1307 07e0 80000000 		.4byte	.LVL15
+ 1308 07e4 900A0000 		.4byte	0xa90
+ 1309 07e8 FB070000 		.4byte	0x7fb
+ 1310 07ec 1A       		.uleb128 0x1a
+ 1311 07ed 01       		.uleb128 0x1
+ 1312 07ee 50       		.byte	0x50
+ 1313 07ef 05       		.uleb128 0x5
+ 1314 07f0 03       		.byte	0x3
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 27
+
+
+ 1315 07f1 00000000 		.4byte	sns_value
+ 1316 07f5 1A       		.uleb128 0x1a
+ 1317 07f6 01       		.uleb128 0x1
+ 1318 07f7 51       		.byte	0x51
+ 1319 07f8 01       		.uleb128 0x1
+ 1320 07f9 48       		.byte	0x48
+ 1321 07fa 00       		.byte	0
+ 1322 07fb 19       		.uleb128 0x19
+ 1323 07fc 88000000 		.4byte	.LVL16
+ 1324 0800 900A0000 		.4byte	0xa90
+ 1325 0804 17080000 		.4byte	0x817
+ 1326 0808 1A       		.uleb128 0x1a
+ 1327 0809 01       		.uleb128 0x1
+ 1328 080a 50       		.byte	0x50
+ 1329 080b 05       		.uleb128 0x5
+ 1330 080c 03       		.byte	0x3
+ 1331 080d 00000000 		.4byte	idac_comp
+ 1332 0811 1A       		.uleb128 0x1a
+ 1333 0812 01       		.uleb128 0x1
+ 1334 0813 51       		.byte	0x51
+ 1335 0814 01       		.uleb128 0x1
+ 1336 0815 3C       		.byte	0x3c
+ 1337 0816 00       		.byte	0
+ 1338 0817 19       		.uleb128 0x19
+ 1339 0818 92000000 		.4byte	.LVL18
+ 1340 081c 900A0000 		.4byte	0xa90
+ 1341 0820 31080000 		.4byte	0x831
+ 1342 0824 1A       		.uleb128 0x1a
+ 1343 0825 01       		.uleb128 0x1
+ 1344 0826 50       		.byte	0x50
+ 1345 0827 02       		.uleb128 0x2
+ 1346 0828 74       		.byte	0x74
+ 1347 0829 00       		.sleb128 0
+ 1348 082a 1A       		.uleb128 0x1a
+ 1349 082b 01       		.uleb128 0x1
+ 1350 082c 51       		.byte	0x51
+ 1351 082d 02       		.uleb128 0x2
+ 1352 082e 08       		.byte	0x8
+ 1353 082f 48       		.byte	0x48
+ 1354 0830 00       		.byte	0
+ 1355 0831 19       		.uleb128 0x19
+ 1356 0832 9A000000 		.4byte	.LVL19
+ 1357 0836 900A0000 		.4byte	0xa90
+ 1358 083a 4D080000 		.4byte	0x84d
+ 1359 083e 1A       		.uleb128 0x1a
+ 1360 083f 01       		.uleb128 0x1
+ 1361 0840 50       		.byte	0x50
+ 1362 0841 05       		.uleb128 0x5
+ 1363 0842 03       		.byte	0x3
+ 1364 0843 00000000 		.4byte	ext_capacitance
+ 1365 0847 1A       		.uleb128 0x1a
+ 1366 0848 01       		.uleb128 0x1
+ 1367 0849 51       		.byte	0x51
+ 1368 084a 01       		.uleb128 0x1
+ 1369 084b 3C       		.byte	0x3c
+ 1370 084c 00       		.byte	0
+ 1371 084d 19       		.uleb128 0x19
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 28
+
+
+ 1372 084e A0000000 		.4byte	.LVL20
+ 1373 0852 9C0A0000 		.4byte	0xa9c
+ 1374 0856 61080000 		.4byte	0x861
+ 1375 085a 1A       		.uleb128 0x1a
+ 1376 085b 01       		.uleb128 0x1
+ 1377 085c 50       		.byte	0x50
+ 1378 085d 02       		.uleb128 0x2
+ 1379 085e 08       		.byte	0x8
+ 1380 085f FF       		.byte	0xff
+ 1381 0860 00       		.byte	0
+ 1382 0861 15       		.uleb128 0x15
+ 1383 0862 A4000000 		.4byte	.LVL21
+ 1384 0866 A80A0000 		.4byte	0xaa8
+ 1385 086a 15       		.uleb128 0x15
+ 1386 086b AE000000 		.4byte	.LVL22
+ 1387 086f 2D0A0000 		.4byte	0xa2d
+ 1388 0873 15       		.uleb128 0x15
+ 1389 0874 CA000000 		.4byte	.LVL23
+ 1390 0878 6F0A0000 		.4byte	0xa6f
+ 1391 087c 19       		.uleb128 0x19
+ 1392 087d DC000000 		.4byte	.LVL25
+ 1393 0881 B30A0000 		.4byte	0xab3
+ 1394 0885 95080000 		.4byte	0x895
+ 1395 0889 1A       		.uleb128 0x1a
+ 1396 088a 01       		.uleb128 0x1
+ 1397 088b 51       		.byte	0x51
+ 1398 088c 01       		.uleb128 0x1
+ 1399 088d 30       		.byte	0x30
+ 1400 088e 1A       		.uleb128 0x1a
+ 1401 088f 01       		.uleb128 0x1
+ 1402 0890 52       		.byte	0x52
+ 1403 0891 02       		.uleb128 0x2
+ 1404 0892 7D       		.byte	0x7d
+ 1405 0893 07       		.sleb128 7
+ 1406 0894 00       		.byte	0
+ 1407 0895 15       		.uleb128 0x15
+ 1408 0896 E2000000 		.4byte	.LVL26
+ 1409 089a 6F0A0000 		.4byte	0xa6f
+ 1410 089e 19       		.uleb128 0x19
+ 1411 089f F4000000 		.4byte	.LVL28
+ 1412 08a3 B30A0000 		.4byte	0xab3
+ 1413 08a7 B7080000 		.4byte	0x8b7
+ 1414 08ab 1A       		.uleb128 0x1a
+ 1415 08ac 01       		.uleb128 0x1
+ 1416 08ad 51       		.byte	0x51
+ 1417 08ae 01       		.uleb128 0x1
+ 1418 08af 31       		.byte	0x31
+ 1419 08b0 1A       		.uleb128 0x1a
+ 1420 08b1 01       		.uleb128 0x1
+ 1421 08b2 52       		.byte	0x52
+ 1422 08b3 02       		.uleb128 0x2
+ 1423 08b4 7D       		.byte	0x7d
+ 1424 08b5 07       		.sleb128 7
+ 1425 08b6 00       		.byte	0
+ 1426 08b7 15       		.uleb128 0x15
+ 1427 08b8 FA000000 		.4byte	.LVL29
+ 1428 08bc 6F0A0000 		.4byte	0xa6f
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 29
+
+
+ 1429 08c0 19       		.uleb128 0x19
+ 1430 08c1 10010000 		.4byte	.LVL31
+ 1431 08c5 B30A0000 		.4byte	0xab3
+ 1432 08c9 D9080000 		.4byte	0x8d9
+ 1433 08cd 1A       		.uleb128 0x1a
+ 1434 08ce 01       		.uleb128 0x1
+ 1435 08cf 51       		.byte	0x51
+ 1436 08d0 01       		.uleb128 0x1
+ 1437 08d1 32       		.byte	0x32
+ 1438 08d2 1A       		.uleb128 0x1a
+ 1439 08d3 01       		.uleb128 0x1
+ 1440 08d4 52       		.byte	0x52
+ 1441 08d5 02       		.uleb128 0x2
+ 1442 08d6 7D       		.byte	0x7d
+ 1443 08d7 07       		.sleb128 7
+ 1444 08d8 00       		.byte	0
+ 1445 08d9 19       		.uleb128 0x19
+ 1446 08da 2E010000 		.4byte	.LVL33
+ 1447 08de BE0A0000 		.4byte	0xabe
+ 1448 08e2 ED080000 		.4byte	0x8ed
+ 1449 08e6 1A       		.uleb128 0x1a
+ 1450 08e7 01       		.uleb128 0x1
+ 1451 08e8 50       		.byte	0x50
+ 1452 08e9 02       		.uleb128 0x2
+ 1453 08ea 76       		.byte	0x76
+ 1454 08eb 00       		.sleb128 0
+ 1455 08ec 00       		.byte	0
+ 1456 08ed 19       		.uleb128 0x19
+ 1457 08ee 36010000 		.4byte	.LVL34
+ 1458 08f2 BE0A0000 		.4byte	0xabe
+ 1459 08f6 00090000 		.4byte	0x900
+ 1460 08fa 1A       		.uleb128 0x1a
+ 1461 08fb 01       		.uleb128 0x1
+ 1462 08fc 50       		.byte	0x50
+ 1463 08fd 01       		.uleb128 0x1
+ 1464 08fe 31       		.byte	0x31
+ 1465 08ff 00       		.byte	0
+ 1466 0900 15       		.uleb128 0x15
+ 1467 0901 40010000 		.4byte	.LVL35
+ 1468 0905 C90A0000 		.4byte	0xac9
+ 1469 0909 15       		.uleb128 0x15
+ 1470 090a 4A010000 		.4byte	.LVL36
+ 1471 090e 380A0000 		.4byte	0xa38
+ 1472 0912 15       		.uleb128 0x15
+ 1473 0913 4E010000 		.4byte	.LVL37
+ 1474 0917 D40A0000 		.4byte	0xad4
+ 1475 091b 15       		.uleb128 0x15
+ 1476 091c 52010000 		.4byte	.LVL38
+ 1477 0920 640A0000 		.4byte	0xa64
+ 1478 0924 00       		.byte	0
+ 1479 0925 1B       		.uleb128 0x1b
+ 1480 0926 A7040000 		.4byte	.LASF114
+ 1481 092a 04       		.byte	0x4
+ 1482 092b 6305     		.2byte	0x563
+ 1483 092d F3060000 		.4byte	0x6f3
+ 1484 0931 1C       		.uleb128 0x1c
+ 1485 0932 3A020000 		.4byte	.LASF115
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 30
+
+
+ 1486 0936 01       		.byte	0x1
+ 1487 0937 09       		.byte	0x9
+ 1488 0938 A4000000 		.4byte	0xa4
+ 1489 093c 05       		.uleb128 0x5
+ 1490 093d 03       		.byte	0x3
+ 1491 093e 00000000 		.4byte	flag_sns
+ 1492 0942 1C       		.uleb128 0x1c
+ 1493 0943 29060000 		.4byte	.LASF116
+ 1494 0947 01       		.byte	0x1
+ 1495 0948 09       		.byte	0x9
+ 1496 0949 A4000000 		.4byte	0xa4
+ 1497 094d 05       		.uleb128 0x5
+ 1498 094e 03       		.byte	0x3
+ 1499 094f 00000000 		.4byte	flag_cp
+ 1500 0953 1D       		.uleb128 0x1d
+ 1501 0954 6300     		.ascii	"c\000"
+ 1502 0956 01       		.byte	0x1
+ 1503 0957 0A       		.byte	0xa
+ 1504 0958 83000000 		.4byte	0x83
+ 1505 095c 05       		.uleb128 0x5
+ 1506 095d 03       		.byte	0x3
+ 1507 095e 00000000 		.4byte	c
+ 1508 0962 0F       		.uleb128 0xf
+ 1509 0963 6B000000 		.4byte	0x6b
+ 1510 0967 72090000 		.4byte	0x972
+ 1511 096b 10       		.uleb128 0x10
+ 1512 096c B5000000 		.4byte	0xb5
+ 1513 0970 01       		.byte	0x1
+ 1514 0971 00       		.byte	0
+ 1515 0972 1C       		.uleb128 0x1c
+ 1516 0973 09050000 		.4byte	.LASF117
+ 1517 0977 01       		.byte	0x1
+ 1518 0978 1B       		.byte	0x1b
+ 1519 0979 62090000 		.4byte	0x962
+ 1520 097d 05       		.uleb128 0x5
+ 1521 097e 03       		.byte	0x3
+ 1522 097f 00000000 		.4byte	header
+ 1523 0983 1C       		.uleb128 0x1c
+ 1524 0984 BD070000 		.4byte	.LASF118
+ 1525 0988 01       		.byte	0x1
+ 1526 0989 1C       		.byte	0x1c
+ 1527 098a 62090000 		.4byte	0x962
+ 1528 098e 05       		.uleb128 0x5
+ 1529 098f 03       		.byte	0x3
+ 1530 0990 00000000 		.4byte	tail
+ 1531 0994 0F       		.uleb128 0xf
+ 1532 0995 77000000 		.4byte	0x77
+ 1533 0999 A4090000 		.4byte	0x9a4
+ 1534 099d 10       		.uleb128 0x10
+ 1535 099e B5000000 		.4byte	0xb5
+ 1536 09a2 0B       		.byte	0xb
+ 1537 09a3 00       		.byte	0
+ 1538 09a4 1C       		.uleb128 0x1c
+ 1539 09a5 00000000 		.4byte	.LASF119
+ 1540 09a9 01       		.byte	0x1
+ 1541 09aa 1E       		.byte	0x1e
+ 1542 09ab 94090000 		.4byte	0x994
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 31
+
+
+ 1543 09af 05       		.uleb128 0x5
+ 1544 09b0 03       		.byte	0x3
+ 1545 09b1 00000000 		.4byte	sns_value
+ 1546 09b5 0F       		.uleb128 0xf
+ 1547 09b6 6B000000 		.4byte	0x6b
+ 1548 09ba C5090000 		.4byte	0x9c5
+ 1549 09be 10       		.uleb128 0x10
+ 1550 09bf B5000000 		.4byte	0xb5
+ 1551 09c3 0B       		.byte	0xb
+ 1552 09c4 00       		.byte	0
+ 1553 09c5 1C       		.uleb128 0x1c
+ 1554 09c6 3E050000 		.4byte	.LASF120
+ 1555 09ca 01       		.byte	0x1
+ 1556 09cb 1F       		.byte	0x1f
+ 1557 09cc B5090000 		.4byte	0x9b5
+ 1558 09d0 05       		.uleb128 0x5
+ 1559 09d1 03       		.byte	0x3
+ 1560 09d2 00000000 		.4byte	idac_comp
+ 1561 09d6 0F       		.uleb128 0xf
+ 1562 09d7 83000000 		.4byte	0x83
+ 1563 09db E6090000 		.4byte	0x9e6
+ 1564 09df 10       		.uleb128 0x10
+ 1565 09e0 B5000000 		.4byte	0xb5
+ 1566 09e4 0B       		.byte	0xb
+ 1567 09e5 00       		.byte	0
+ 1568 09e6 1C       		.uleb128 0x1c
+ 1569 09e7 3C010000 		.4byte	.LASF121
+ 1570 09eb 01       		.byte	0x1
+ 1571 09ec 20       		.byte	0x20
+ 1572 09ed D6090000 		.4byte	0x9d6
+ 1573 09f1 05       		.uleb128 0x5
+ 1574 09f2 03       		.byte	0x3
+ 1575 09f3 00000000 		.4byte	sns_capacitance
+ 1576 09f7 1C       		.uleb128 0x1c
+ 1577 09f8 F7010000 		.4byte	.LASF122
+ 1578 09fc 01       		.byte	0x1
+ 1579 09fd 21       		.byte	0x21
+ 1580 09fe 51040000 		.4byte	0x451
+ 1581 0a02 05       		.uleb128 0x5
+ 1582 0a03 03       		.byte	0x3
+ 1583 0a04 00000000 		.4byte	ext_capacitance
+ 1584 0a08 1D       		.uleb128 0x1d
+ 1585 0a09 6900     		.ascii	"i\000"
+ 1586 0a0b 01       		.byte	0x1
+ 1587 0a0c 22       		.byte	0x22
+ 1588 0a0d 6B000000 		.4byte	0x6b
+ 1589 0a11 05       		.uleb128 0x5
+ 1590 0a12 03       		.byte	0x3
+ 1591 0a13 00000000 		.4byte	i
+ 1592 0a17 1E       		.uleb128 0x1e
+ 1593 0a18 FC000000 		.4byte	.LASF123
+ 1594 0a1c FC000000 		.4byte	.LASF123
+ 1595 0a20 05       		.byte	0x5
+ 1596 0a21 28       		.byte	0x28
+ 1597 0a22 1E       		.uleb128 0x1e
+ 1598 0a23 F4060000 		.4byte	.LASF124
+ 1599 0a27 F4060000 		.4byte	.LASF124
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 32
+
+
+ 1600 0a2b 06       		.byte	0x6
+ 1601 0a2c 72       		.byte	0x72
+ 1602 0a2d 1E       		.uleb128 0x1e
+ 1603 0a2e BE080000 		.4byte	.LASF125
+ 1604 0a32 BE080000 		.4byte	.LASF125
+ 1605 0a36 07       		.byte	0x7
+ 1606 0a37 33       		.byte	0x33
+ 1607 0a38 1E       		.uleb128 0x1e
+ 1608 0a39 03030000 		.4byte	.LASF126
+ 1609 0a3d 03030000 		.4byte	.LASF126
+ 1610 0a41 08       		.byte	0x8
+ 1611 0a42 33       		.byte	0x33
+ 1612 0a43 1E       		.uleb128 0x1e
+ 1613 0a44 D8010000 		.4byte	.LASF127
+ 1614 0a48 D8010000 		.4byte	.LASF127
+ 1615 0a4c 05       		.byte	0x5
+ 1616 0a4d 18       		.byte	0x18
+ 1617 0a4e 1E       		.uleb128 0x1e
+ 1618 0a4f 17040000 		.4byte	.LASF128
+ 1619 0a53 17040000 		.4byte	.LASF128
+ 1620 0a57 09       		.byte	0x9
+ 1621 0a58 5A       		.byte	0x5a
+ 1622 0a59 1E       		.uleb128 0x1e
+ 1623 0a5a 6C000000 		.4byte	.LASF129
+ 1624 0a5e 6C000000 		.4byte	.LASF129
+ 1625 0a62 0A       		.byte	0xa
+ 1626 0a63 3B       		.byte	0x3b
+ 1627 0a64 1E       		.uleb128 0x1e
+ 1628 0a65 01080000 		.4byte	.LASF130
+ 1629 0a69 01080000 		.4byte	.LASF130
+ 1630 0a6d 0B       		.byte	0xb
+ 1631 0a6e 59       		.byte	0x59
+ 1632 0a6f 1E       		.uleb128 0x1e
+ 1633 0a70 9D000000 		.4byte	.LASF131
+ 1634 0a74 9D000000 		.4byte	.LASF131
+ 1635 0a78 0B       		.byte	0xb
+ 1636 0a79 5A       		.byte	0x5a
+ 1637 0a7a 1E       		.uleb128 0x1e
+ 1638 0a7b EE040000 		.4byte	.LASF132
+ 1639 0a7f EE040000 		.4byte	.LASF132
+ 1640 0a83 0A       		.byte	0xa
+ 1641 0a84 3F       		.byte	0x3f
+ 1642 0a85 1E       		.uleb128 0x1e
+ 1643 0a86 FC030000 		.4byte	.LASF133
+ 1644 0a8a FC030000 		.4byte	.LASF133
+ 1645 0a8e 0C       		.byte	0xc
+ 1646 0a8f 49       		.byte	0x49
+ 1647 0a90 1F       		.uleb128 0x1f
+ 1648 0a91 4F060000 		.4byte	.LASF134
+ 1649 0a95 4F060000 		.4byte	.LASF134
+ 1650 0a99 0D       		.byte	0xd
+ 1651 0a9a 4503     		.2byte	0x345
+ 1652 0a9c 1F       		.uleb128 0x1f
+ 1653 0a9d EB080000 		.4byte	.LASF135
+ 1654 0aa1 EB080000 		.4byte	.LASF135
+ 1655 0aa5 0D       		.byte	0xd
+ 1656 0aa6 2B03     		.2byte	0x32b
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 33
+
+
+ 1657 0aa8 1E       		.uleb128 0x1e
+ 1658 0aa9 74010000 		.4byte	.LASF136
+ 1659 0aad 74010000 		.4byte	.LASF136
+ 1660 0ab1 07       		.byte	0x7
+ 1661 0ab2 32       		.byte	0x32
+ 1662 0ab3 1E       		.uleb128 0x1e
+ 1663 0ab4 F4050000 		.4byte	.LASF137
+ 1664 0ab8 F4050000 		.4byte	.LASF137
+ 1665 0abc 0E       		.byte	0xe
+ 1666 0abd 64       		.byte	0x64
+ 1667 0abe 1E       		.uleb128 0x1e
+ 1668 0abf 89040000 		.4byte	.LASF138
+ 1669 0ac3 89040000 		.4byte	.LASF138
+ 1670 0ac7 0E       		.byte	0xe
+ 1671 0ac8 6E       		.byte	0x6e
+ 1672 0ac9 1E       		.uleb128 0x1e
+ 1673 0aca 20080000 		.4byte	.LASF139
+ 1674 0ace 20080000 		.4byte	.LASF139
+ 1675 0ad2 08       		.byte	0x8
+ 1676 0ad3 32       		.byte	0x32
+ 1677 0ad4 1F       		.uleb128 0x1f
+ 1678 0ad5 30000000 		.4byte	.LASF140
+ 1679 0ad9 30000000 		.4byte	.LASF140
+ 1680 0add 04       		.byte	0x4
+ 1681 0ade 7C05     		.2byte	0x57c
+ 1682 0ae0 00       		.byte	0
+ 1683              		.section	.debug_abbrev,"",%progbits
+ 1684              	.Ldebug_abbrev0:
+ 1685 0000 01       		.uleb128 0x1
+ 1686 0001 11       		.uleb128 0x11
+ 1687 0002 01       		.byte	0x1
+ 1688 0003 25       		.uleb128 0x25
+ 1689 0004 0E       		.uleb128 0xe
+ 1690 0005 13       		.uleb128 0x13
+ 1691 0006 0B       		.uleb128 0xb
+ 1692 0007 03       		.uleb128 0x3
+ 1693 0008 0E       		.uleb128 0xe
+ 1694 0009 1B       		.uleb128 0x1b
+ 1695 000a 0E       		.uleb128 0xe
+ 1696 000b 55       		.uleb128 0x55
+ 1697 000c 17       		.uleb128 0x17
+ 1698 000d 11       		.uleb128 0x11
+ 1699 000e 01       		.uleb128 0x1
+ 1700 000f 10       		.uleb128 0x10
+ 1701 0010 17       		.uleb128 0x17
+ 1702 0011 00       		.byte	0
+ 1703 0012 00       		.byte	0
+ 1704 0013 02       		.uleb128 0x2
+ 1705 0014 24       		.uleb128 0x24
+ 1706 0015 00       		.byte	0
+ 1707 0016 0B       		.uleb128 0xb
+ 1708 0017 0B       		.uleb128 0xb
+ 1709 0018 3E       		.uleb128 0x3e
+ 1710 0019 0B       		.uleb128 0xb
+ 1711 001a 03       		.uleb128 0x3
+ 1712 001b 0E       		.uleb128 0xe
+ 1713 001c 00       		.byte	0
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 34
+
+
+ 1714 001d 00       		.byte	0
+ 1715 001e 03       		.uleb128 0x3
+ 1716 001f 24       		.uleb128 0x24
+ 1717 0020 00       		.byte	0
+ 1718 0021 0B       		.uleb128 0xb
+ 1719 0022 0B       		.uleb128 0xb
+ 1720 0023 3E       		.uleb128 0x3e
+ 1721 0024 0B       		.uleb128 0xb
+ 1722 0025 03       		.uleb128 0x3
+ 1723 0026 08       		.uleb128 0x8
+ 1724 0027 00       		.byte	0
+ 1725 0028 00       		.byte	0
+ 1726 0029 04       		.uleb128 0x4
+ 1727 002a 16       		.uleb128 0x16
+ 1728 002b 00       		.byte	0
+ 1729 002c 03       		.uleb128 0x3
+ 1730 002d 0E       		.uleb128 0xe
+ 1731 002e 3A       		.uleb128 0x3a
+ 1732 002f 0B       		.uleb128 0xb
+ 1733 0030 3B       		.uleb128 0x3b
+ 1734 0031 05       		.uleb128 0x5
+ 1735 0032 49       		.uleb128 0x49
+ 1736 0033 13       		.uleb128 0x13
+ 1737 0034 00       		.byte	0
+ 1738 0035 00       		.byte	0
+ 1739 0036 05       		.uleb128 0x5
+ 1740 0037 35       		.uleb128 0x35
+ 1741 0038 00       		.byte	0
+ 1742 0039 49       		.uleb128 0x49
+ 1743 003a 13       		.uleb128 0x13
+ 1744 003b 00       		.byte	0
+ 1745 003c 00       		.byte	0
+ 1746 003d 06       		.uleb128 0x6
+ 1747 003e 04       		.uleb128 0x4
+ 1748 003f 01       		.byte	0x1
+ 1749 0040 0B       		.uleb128 0xb
+ 1750 0041 0B       		.uleb128 0xb
+ 1751 0042 49       		.uleb128 0x49
+ 1752 0043 13       		.uleb128 0x13
+ 1753 0044 3A       		.uleb128 0x3a
+ 1754 0045 0B       		.uleb128 0xb
+ 1755 0046 3B       		.uleb128 0x3b
+ 1756 0047 0B       		.uleb128 0xb
+ 1757 0048 01       		.uleb128 0x1
+ 1758 0049 13       		.uleb128 0x13
+ 1759 004a 00       		.byte	0
+ 1760 004b 00       		.byte	0
+ 1761 004c 07       		.uleb128 0x7
+ 1762 004d 28       		.uleb128 0x28
+ 1763 004e 00       		.byte	0
+ 1764 004f 03       		.uleb128 0x3
+ 1765 0050 0E       		.uleb128 0xe
+ 1766 0051 1C       		.uleb128 0x1c
+ 1767 0052 0B       		.uleb128 0xb
+ 1768 0053 00       		.byte	0
+ 1769 0054 00       		.byte	0
+ 1770 0055 08       		.uleb128 0x8
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 35
+
+
+ 1771 0056 16       		.uleb128 0x16
+ 1772 0057 00       		.byte	0
+ 1773 0058 03       		.uleb128 0x3
+ 1774 0059 0E       		.uleb128 0xe
+ 1775 005a 3A       		.uleb128 0x3a
+ 1776 005b 0B       		.uleb128 0xb
+ 1777 005c 3B       		.uleb128 0x3b
+ 1778 005d 0B       		.uleb128 0xb
+ 1779 005e 49       		.uleb128 0x49
+ 1780 005f 13       		.uleb128 0x13
+ 1781 0060 00       		.byte	0
+ 1782 0061 00       		.byte	0
+ 1783 0062 09       		.uleb128 0x9
+ 1784 0063 13       		.uleb128 0x13
+ 1785 0064 01       		.byte	0x1
+ 1786 0065 0B       		.uleb128 0xb
+ 1787 0066 0B       		.uleb128 0xb
+ 1788 0067 3A       		.uleb128 0x3a
+ 1789 0068 0B       		.uleb128 0xb
+ 1790 0069 3B       		.uleb128 0x3b
+ 1791 006a 0B       		.uleb128 0xb
+ 1792 006b 01       		.uleb128 0x1
+ 1793 006c 13       		.uleb128 0x13
+ 1794 006d 00       		.byte	0
+ 1795 006e 00       		.byte	0
+ 1796 006f 0A       		.uleb128 0xa
+ 1797 0070 0D       		.uleb128 0xd
+ 1798 0071 00       		.byte	0
+ 1799 0072 03       		.uleb128 0x3
+ 1800 0073 08       		.uleb128 0x8
+ 1801 0074 3A       		.uleb128 0x3a
+ 1802 0075 0B       		.uleb128 0xb
+ 1803 0076 3B       		.uleb128 0x3b
+ 1804 0077 0B       		.uleb128 0xb
+ 1805 0078 49       		.uleb128 0x49
+ 1806 0079 13       		.uleb128 0x13
+ 1807 007a 38       		.uleb128 0x38
+ 1808 007b 0B       		.uleb128 0xb
+ 1809 007c 00       		.byte	0
+ 1810 007d 00       		.byte	0
+ 1811 007e 0B       		.uleb128 0xb
+ 1812 007f 0D       		.uleb128 0xd
+ 1813 0080 00       		.byte	0
+ 1814 0081 03       		.uleb128 0x3
+ 1815 0082 0E       		.uleb128 0xe
+ 1816 0083 3A       		.uleb128 0x3a
+ 1817 0084 0B       		.uleb128 0xb
+ 1818 0085 3B       		.uleb128 0x3b
+ 1819 0086 0B       		.uleb128 0xb
+ 1820 0087 49       		.uleb128 0x49
+ 1821 0088 13       		.uleb128 0x13
+ 1822 0089 38       		.uleb128 0x38
+ 1823 008a 0B       		.uleb128 0xb
+ 1824 008b 00       		.byte	0
+ 1825 008c 00       		.byte	0
+ 1826 008d 0C       		.uleb128 0xc
+ 1827 008e 0D       		.uleb128 0xd
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 36
+
+
+ 1828 008f 00       		.byte	0
+ 1829 0090 03       		.uleb128 0x3
+ 1830 0091 0E       		.uleb128 0xe
+ 1831 0092 3A       		.uleb128 0x3a
+ 1832 0093 0B       		.uleb128 0xb
+ 1833 0094 3B       		.uleb128 0x3b
+ 1834 0095 05       		.uleb128 0x5
+ 1835 0096 49       		.uleb128 0x49
+ 1836 0097 13       		.uleb128 0x13
+ 1837 0098 38       		.uleb128 0x38
+ 1838 0099 0B       		.uleb128 0xb
+ 1839 009a 00       		.byte	0
+ 1840 009b 00       		.byte	0
+ 1841 009c 0D       		.uleb128 0xd
+ 1842 009d 13       		.uleb128 0x13
+ 1843 009e 01       		.byte	0x1
+ 1844 009f 0B       		.uleb128 0xb
+ 1845 00a0 0B       		.uleb128 0xb
+ 1846 00a1 3A       		.uleb128 0x3a
+ 1847 00a2 0B       		.uleb128 0xb
+ 1848 00a3 3B       		.uleb128 0x3b
+ 1849 00a4 05       		.uleb128 0x5
+ 1850 00a5 01       		.uleb128 0x1
+ 1851 00a6 13       		.uleb128 0x13
+ 1852 00a7 00       		.byte	0
+ 1853 00a8 00       		.byte	0
+ 1854 00a9 0E       		.uleb128 0xe
+ 1855 00aa 0D       		.uleb128 0xd
+ 1856 00ab 00       		.byte	0
+ 1857 00ac 03       		.uleb128 0x3
+ 1858 00ad 08       		.uleb128 0x8
+ 1859 00ae 3A       		.uleb128 0x3a
+ 1860 00af 0B       		.uleb128 0xb
+ 1861 00b0 3B       		.uleb128 0x3b
+ 1862 00b1 05       		.uleb128 0x5
+ 1863 00b2 49       		.uleb128 0x49
+ 1864 00b3 13       		.uleb128 0x13
+ 1865 00b4 38       		.uleb128 0x38
+ 1866 00b5 0B       		.uleb128 0xb
+ 1867 00b6 00       		.byte	0
+ 1868 00b7 00       		.byte	0
+ 1869 00b8 0F       		.uleb128 0xf
+ 1870 00b9 01       		.uleb128 0x1
+ 1871 00ba 01       		.byte	0x1
+ 1872 00bb 49       		.uleb128 0x49
+ 1873 00bc 13       		.uleb128 0x13
+ 1874 00bd 01       		.uleb128 0x1
+ 1875 00be 13       		.uleb128 0x13
+ 1876 00bf 00       		.byte	0
+ 1877 00c0 00       		.byte	0
+ 1878 00c1 10       		.uleb128 0x10
+ 1879 00c2 21       		.uleb128 0x21
+ 1880 00c3 00       		.byte	0
+ 1881 00c4 49       		.uleb128 0x49
+ 1882 00c5 13       		.uleb128 0x13
+ 1883 00c6 2F       		.uleb128 0x2f
+ 1884 00c7 0B       		.uleb128 0xb
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 37
+
+
+ 1885 00c8 00       		.byte	0
+ 1886 00c9 00       		.byte	0
+ 1887 00ca 11       		.uleb128 0x11
+ 1888 00cb 13       		.uleb128 0x13
+ 1889 00cc 01       		.byte	0x1
+ 1890 00cd 0B       		.uleb128 0xb
+ 1891 00ce 05       		.uleb128 0x5
+ 1892 00cf 3A       		.uleb128 0x3a
+ 1893 00d0 0B       		.uleb128 0xb
+ 1894 00d1 3B       		.uleb128 0x3b
+ 1895 00d2 05       		.uleb128 0x5
+ 1896 00d3 01       		.uleb128 0x1
+ 1897 00d4 13       		.uleb128 0x13
+ 1898 00d5 00       		.byte	0
+ 1899 00d6 00       		.byte	0
+ 1900 00d7 12       		.uleb128 0x12
+ 1901 00d8 0D       		.uleb128 0xd
+ 1902 00d9 00       		.byte	0
+ 1903 00da 03       		.uleb128 0x3
+ 1904 00db 0E       		.uleb128 0xe
+ 1905 00dc 3A       		.uleb128 0x3a
+ 1906 00dd 0B       		.uleb128 0xb
+ 1907 00de 3B       		.uleb128 0x3b
+ 1908 00df 05       		.uleb128 0x5
+ 1909 00e0 49       		.uleb128 0x49
+ 1910 00e1 13       		.uleb128 0x13
+ 1911 00e2 38       		.uleb128 0x38
+ 1912 00e3 05       		.uleb128 0x5
+ 1913 00e4 00       		.byte	0
+ 1914 00e5 00       		.byte	0
+ 1915 00e6 13       		.uleb128 0x13
+ 1916 00e7 0F       		.uleb128 0xf
+ 1917 00e8 00       		.byte	0
+ 1918 00e9 0B       		.uleb128 0xb
+ 1919 00ea 0B       		.uleb128 0xb
+ 1920 00eb 49       		.uleb128 0x49
+ 1921 00ec 13       		.uleb128 0x13
+ 1922 00ed 00       		.byte	0
+ 1923 00ee 00       		.byte	0
+ 1924 00ef 14       		.uleb128 0x14
+ 1925 00f0 2E       		.uleb128 0x2e
+ 1926 00f1 01       		.byte	0x1
+ 1927 00f2 3F       		.uleb128 0x3f
+ 1928 00f3 19       		.uleb128 0x19
+ 1929 00f4 03       		.uleb128 0x3
+ 1930 00f5 0E       		.uleb128 0xe
+ 1931 00f6 3A       		.uleb128 0x3a
+ 1932 00f7 0B       		.uleb128 0xb
+ 1933 00f8 3B       		.uleb128 0x3b
+ 1934 00f9 0B       		.uleb128 0xb
+ 1935 00fa 27       		.uleb128 0x27
+ 1936 00fb 19       		.uleb128 0x19
+ 1937 00fc 11       		.uleb128 0x11
+ 1938 00fd 01       		.uleb128 0x1
+ 1939 00fe 12       		.uleb128 0x12
+ 1940 00ff 06       		.uleb128 0x6
+ 1941 0100 40       		.uleb128 0x40
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 38
+
+
+ 1942 0101 18       		.uleb128 0x18
+ 1943 0102 9742     		.uleb128 0x2117
+ 1944 0104 19       		.uleb128 0x19
+ 1945 0105 01       		.uleb128 0x1
+ 1946 0106 13       		.uleb128 0x13
+ 1947 0107 00       		.byte	0
+ 1948 0108 00       		.byte	0
+ 1949 0109 15       		.uleb128 0x15
+ 1950 010a 898201   		.uleb128 0x4109
+ 1951 010d 00       		.byte	0
+ 1952 010e 11       		.uleb128 0x11
+ 1953 010f 01       		.uleb128 0x1
+ 1954 0110 31       		.uleb128 0x31
+ 1955 0111 13       		.uleb128 0x13
+ 1956 0112 00       		.byte	0
+ 1957 0113 00       		.byte	0
+ 1958 0114 16       		.uleb128 0x16
+ 1959 0115 2E       		.uleb128 0x2e
+ 1960 0116 01       		.byte	0x1
+ 1961 0117 3F       		.uleb128 0x3f
+ 1962 0118 19       		.uleb128 0x19
+ 1963 0119 03       		.uleb128 0x3
+ 1964 011a 0E       		.uleb128 0xe
+ 1965 011b 3A       		.uleb128 0x3a
+ 1966 011c 0B       		.uleb128 0xb
+ 1967 011d 3B       		.uleb128 0x3b
+ 1968 011e 0B       		.uleb128 0xb
+ 1969 011f 49       		.uleb128 0x49
+ 1970 0120 13       		.uleb128 0x13
+ 1971 0121 8701     		.uleb128 0x87
+ 1972 0123 19       		.uleb128 0x19
+ 1973 0124 11       		.uleb128 0x11
+ 1974 0125 01       		.uleb128 0x1
+ 1975 0126 12       		.uleb128 0x12
+ 1976 0127 06       		.uleb128 0x6
+ 1977 0128 40       		.uleb128 0x40
+ 1978 0129 18       		.uleb128 0x18
+ 1979 012a 9742     		.uleb128 0x2117
+ 1980 012c 19       		.uleb128 0x19
+ 1981 012d 01       		.uleb128 0x1
+ 1982 012e 13       		.uleb128 0x13
+ 1983 012f 00       		.byte	0
+ 1984 0130 00       		.byte	0
+ 1985 0131 17       		.uleb128 0x17
+ 1986 0132 34       		.uleb128 0x34
+ 1987 0133 00       		.byte	0
+ 1988 0134 03       		.uleb128 0x3
+ 1989 0135 0E       		.uleb128 0xe
+ 1990 0136 3A       		.uleb128 0x3a
+ 1991 0137 0B       		.uleb128 0xb
+ 1992 0138 3B       		.uleb128 0x3b
+ 1993 0139 0B       		.uleb128 0xb
+ 1994 013a 49       		.uleb128 0x49
+ 1995 013b 13       		.uleb128 0x13
+ 1996 013c 02       		.uleb128 0x2
+ 1997 013d 17       		.uleb128 0x17
+ 1998 013e 00       		.byte	0
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 39
+
+
+ 1999 013f 00       		.byte	0
+ 2000 0140 18       		.uleb128 0x18
+ 2001 0141 34       		.uleb128 0x34
+ 2002 0142 00       		.byte	0
+ 2003 0143 03       		.uleb128 0x3
+ 2004 0144 0E       		.uleb128 0xe
+ 2005 0145 3A       		.uleb128 0x3a
+ 2006 0146 0B       		.uleb128 0xb
+ 2007 0147 3B       		.uleb128 0x3b
+ 2008 0148 0B       		.uleb128 0xb
+ 2009 0149 49       		.uleb128 0x49
+ 2010 014a 13       		.uleb128 0x13
+ 2011 014b 02       		.uleb128 0x2
+ 2012 014c 18       		.uleb128 0x18
+ 2013 014d 00       		.byte	0
+ 2014 014e 00       		.byte	0
+ 2015 014f 19       		.uleb128 0x19
+ 2016 0150 898201   		.uleb128 0x4109
+ 2017 0153 01       		.byte	0x1
+ 2018 0154 11       		.uleb128 0x11
+ 2019 0155 01       		.uleb128 0x1
+ 2020 0156 31       		.uleb128 0x31
+ 2021 0157 13       		.uleb128 0x13
+ 2022 0158 01       		.uleb128 0x1
+ 2023 0159 13       		.uleb128 0x13
+ 2024 015a 00       		.byte	0
+ 2025 015b 00       		.byte	0
+ 2026 015c 1A       		.uleb128 0x1a
+ 2027 015d 8A8201   		.uleb128 0x410a
+ 2028 0160 00       		.byte	0
+ 2029 0161 02       		.uleb128 0x2
+ 2030 0162 18       		.uleb128 0x18
+ 2031 0163 9142     		.uleb128 0x2111
+ 2032 0165 18       		.uleb128 0x18
+ 2033 0166 00       		.byte	0
+ 2034 0167 00       		.byte	0
+ 2035 0168 1B       		.uleb128 0x1b
+ 2036 0169 34       		.uleb128 0x34
+ 2037 016a 00       		.byte	0
+ 2038 016b 03       		.uleb128 0x3
+ 2039 016c 0E       		.uleb128 0xe
+ 2040 016d 3A       		.uleb128 0x3a
+ 2041 016e 0B       		.uleb128 0xb
+ 2042 016f 3B       		.uleb128 0x3b
+ 2043 0170 05       		.uleb128 0x5
+ 2044 0171 49       		.uleb128 0x49
+ 2045 0172 13       		.uleb128 0x13
+ 2046 0173 3F       		.uleb128 0x3f
+ 2047 0174 19       		.uleb128 0x19
+ 2048 0175 3C       		.uleb128 0x3c
+ 2049 0176 19       		.uleb128 0x19
+ 2050 0177 00       		.byte	0
+ 2051 0178 00       		.byte	0
+ 2052 0179 1C       		.uleb128 0x1c
+ 2053 017a 34       		.uleb128 0x34
+ 2054 017b 00       		.byte	0
+ 2055 017c 03       		.uleb128 0x3
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 40
+
+
+ 2056 017d 0E       		.uleb128 0xe
+ 2057 017e 3A       		.uleb128 0x3a
+ 2058 017f 0B       		.uleb128 0xb
+ 2059 0180 3B       		.uleb128 0x3b
+ 2060 0181 0B       		.uleb128 0xb
+ 2061 0182 49       		.uleb128 0x49
+ 2062 0183 13       		.uleb128 0x13
+ 2063 0184 3F       		.uleb128 0x3f
+ 2064 0185 19       		.uleb128 0x19
+ 2065 0186 02       		.uleb128 0x2
+ 2066 0187 18       		.uleb128 0x18
+ 2067 0188 00       		.byte	0
+ 2068 0189 00       		.byte	0
+ 2069 018a 1D       		.uleb128 0x1d
+ 2070 018b 34       		.uleb128 0x34
+ 2071 018c 00       		.byte	0
+ 2072 018d 03       		.uleb128 0x3
+ 2073 018e 08       		.uleb128 0x8
+ 2074 018f 3A       		.uleb128 0x3a
+ 2075 0190 0B       		.uleb128 0xb
+ 2076 0191 3B       		.uleb128 0x3b
+ 2077 0192 0B       		.uleb128 0xb
+ 2078 0193 49       		.uleb128 0x49
+ 2079 0194 13       		.uleb128 0x13
+ 2080 0195 3F       		.uleb128 0x3f
+ 2081 0196 19       		.uleb128 0x19
+ 2082 0197 02       		.uleb128 0x2
+ 2083 0198 18       		.uleb128 0x18
+ 2084 0199 00       		.byte	0
+ 2085 019a 00       		.byte	0
+ 2086 019b 1E       		.uleb128 0x1e
+ 2087 019c 2E       		.uleb128 0x2e
+ 2088 019d 00       		.byte	0
+ 2089 019e 3F       		.uleb128 0x3f
+ 2090 019f 19       		.uleb128 0x19
+ 2091 01a0 3C       		.uleb128 0x3c
+ 2092 01a1 19       		.uleb128 0x19
+ 2093 01a2 6E       		.uleb128 0x6e
+ 2094 01a3 0E       		.uleb128 0xe
+ 2095 01a4 03       		.uleb128 0x3
+ 2096 01a5 0E       		.uleb128 0xe
+ 2097 01a6 3A       		.uleb128 0x3a
+ 2098 01a7 0B       		.uleb128 0xb
+ 2099 01a8 3B       		.uleb128 0x3b
+ 2100 01a9 0B       		.uleb128 0xb
+ 2101 01aa 00       		.byte	0
+ 2102 01ab 00       		.byte	0
+ 2103 01ac 1F       		.uleb128 0x1f
+ 2104 01ad 2E       		.uleb128 0x2e
+ 2105 01ae 00       		.byte	0
+ 2106 01af 3F       		.uleb128 0x3f
+ 2107 01b0 19       		.uleb128 0x19
+ 2108 01b1 3C       		.uleb128 0x3c
+ 2109 01b2 19       		.uleb128 0x19
+ 2110 01b3 6E       		.uleb128 0x6e
+ 2111 01b4 0E       		.uleb128 0xe
+ 2112 01b5 03       		.uleb128 0x3
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 41
+
+
+ 2113 01b6 0E       		.uleb128 0xe
+ 2114 01b7 3A       		.uleb128 0x3a
+ 2115 01b8 0B       		.uleb128 0xb
+ 2116 01b9 3B       		.uleb128 0x3b
+ 2117 01ba 05       		.uleb128 0x5
+ 2118 01bb 00       		.byte	0
+ 2119 01bc 00       		.byte	0
+ 2120 01bd 00       		.byte	0
+ 2121              		.section	.debug_loc,"",%progbits
+ 2122              	.Ldebug_loc0:
+ 2123              	.LLST0:
+ 2124 0000 2E000000 		.4byte	.LVL9
+ 2125 0004 4E000000 		.4byte	.LVL13
+ 2126 0008 0100     		.2byte	0x1
+ 2127 000a 54       		.byte	0x54
+ 2128 000b 8A000000 		.4byte	.LVL17
+ 2129 000f CE000000 		.4byte	.LVL24
+ 2130 0013 0100     		.2byte	0x1
+ 2131 0015 54       		.byte	0x54
+ 2132 0016 CE000000 		.4byte	.LVL24
+ 2133 001a E6000000 		.4byte	.LVL27
+ 2134 001e 0300     		.2byte	0x3
+ 2135 0020 74       		.byte	0x74
+ 2136 0021 04       		.sleb128 4
+ 2137 0022 9F       		.byte	0x9f
+ 2138 0023 E6000000 		.4byte	.LVL27
+ 2139 0027 02010000 		.4byte	.LVL30
+ 2140 002b 0300     		.2byte	0x3
+ 2141 002d 74       		.byte	0x74
+ 2142 002e 08       		.sleb128 8
+ 2143 002f 9F       		.byte	0x9f
+ 2144 0030 02010000 		.4byte	.LVL30
+ 2145 0034 1A010000 		.4byte	.LVL32
+ 2146 0038 0100     		.2byte	0x1
+ 2147 003a 56       		.byte	0x56
+ 2148 003b 1A010000 		.4byte	.LVL32
+ 2149 003f 74010000 		.4byte	.LFE33
+ 2150 0043 0100     		.2byte	0x1
+ 2151 0045 54       		.byte	0x54
+ 2152 0046 00000000 		.4byte	0
+ 2153 004a 00000000 		.4byte	0
+ 2154              		.section	.debug_aranges,"",%progbits
+ 2155 0000 24000000 		.4byte	0x24
+ 2156 0004 0200     		.2byte	0x2
+ 2157 0006 00000000 		.4byte	.Ldebug_info0
+ 2158 000a 04       		.byte	0x4
+ 2159 000b 00       		.byte	0
+ 2160 000c 0000     		.2byte	0
+ 2161 000e 0000     		.2byte	0
+ 2162 0010 00000000 		.4byte	.LFB32
+ 2163 0014 20000000 		.4byte	.LFE32-.LFB32
+ 2164 0018 00000000 		.4byte	.LFB33
+ 2165 001c 74010000 		.4byte	.LFE33-.LFB33
+ 2166 0020 00000000 		.4byte	0
+ 2167 0024 00000000 		.4byte	0
+ 2168              		.section	.debug_ranges,"",%progbits
+ 2169              	.Ldebug_ranges0:
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 42
+
+
+ 2170 0000 00000000 		.4byte	.LFB32
+ 2171 0004 20000000 		.4byte	.LFE32
+ 2172 0008 00000000 		.4byte	.LFB33
+ 2173 000c 74010000 		.4byte	.LFE33
+ 2174 0010 00000000 		.4byte	0
+ 2175 0014 00000000 		.4byte	0
+ 2176              		.section	.debug_line,"",%progbits
+ 2177              	.Ldebug_line0:
+ 2178 0000 A2010000 		.section	.debug_str,"MS",%progbits,1
+ 2178      02001201 
+ 2178      00000201 
+ 2178      FB0E0D00 
+ 2178      01010101 
+ 2179              	.LASF119:
+ 2180 0000 736E735F 		.ascii	"sns_value\000"
+ 2180      76616C75 
+ 2180      6500
+ 2181              	.LASF103:
+ 2182 000a 73656C66 		.ascii	"selfTestConfig\000"
+ 2182      54657374 
+ 2182      436F6E66 
+ 2182      696700
+ 2183              	.LASF142:
+ 2184 0019 6D61696E 		.ascii	"main.c\000"
+ 2184      2E6300
+ 2185              	.LASF105:
+ 2186 0020 736E7254 		.ascii	"snrTestWidgetId\000"
+ 2186      65737457 
+ 2186      69646765 
+ 2186      74496400 
+ 2187              	.LASF140:
+ 2188 0030 43617053 		.ascii	"CapSense_IsAnyWidgetActive\000"
+ 2188      656E7365 
+ 2188      5F497341 
+ 2188      6E795769 
+ 2188      64676574 
+ 2189              	.LASF8:
+ 2190 004b 756E7369 		.ascii	"unsigned int\000"
+ 2190      676E6564 
+ 2190      20696E74 
+ 2190      00
+ 2191              	.LASF91:
+ 2192 0058 7363616E 		.ascii	"scanCounter\000"
+ 2192      436F756E 
+ 2192      74657200 
+ 2193              	.LASF89:
+ 2194 0064 6877436C 		.ascii	"hwClock\000"
+ 2194      6F636B00 
+ 2195              	.LASF129:
+ 2196 006c 43617053 		.ascii	"CapSense_Start\000"
+ 2196      656E7365 
+ 2196      5F537461 
+ 2196      727400
+ 2197              	.LASF21:
+ 2198 007b 43617053 		.ascii	"CapSense_TST_MEASUREMENT_BAD_DATA\000"
+ 2198      656E7365 
+ 2198      5F545354 
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 43
+
+
+ 2198      5F4D4541 
+ 2198      53555245 
+ 2199              	.LASF131:
+ 2200 009d 43617053 		.ascii	"CapSense_IsBusy\000"
+ 2200      656E7365 
+ 2200      5F497342 
+ 2200      75737900 
+ 2201              	.LASF65:
+ 2202 00ad 43617053 		.ascii	"CapSense_RAM_SNS_CP_STRUCT\000"
+ 2202      656E7365 
+ 2202      5F52414D 
+ 2202      5F534E53 
+ 2202      5F43505F 
+ 2203              	.LASF80:
+ 2204 00c8 62697374 		.ascii	"bistCsxSnsCapISC\000"
+ 2204      43737853 
+ 2204      6E734361 
+ 2204      70495343 
+ 2204      00
+ 2205              	.LASF85:
+ 2206 00d9 736E7353 		.ascii	"snsShortTimeUs\000"
+ 2206      686F7274 
+ 2206      54696D65 
+ 2206      557300
+ 2207              	.LASF67:
+ 2208 00e8 736E7343 		.ascii	"snsCapSnsClkDivider\000"
+ 2208      6170536E 
+ 2208      73436C6B 
+ 2208      44697669 
+ 2208      64657200 
+ 2209              	.LASF123:
+ 2210 00fc 6973725F 		.ascii	"isr_TS_ClearPending\000"
+ 2210      54535F43 
+ 2210      6C656172 
+ 2210      50656E64 
+ 2210      696E6700 
+ 2211              	.LASF45:
+ 2212 0110 43617053 		.ascii	"CapSense_RAM_WD_LIST_STRUCT\000"
+ 2212      656E7365 
+ 2212      5F52414D 
+ 2212      5F57445F 
+ 2212      4C495354 
+ 2213              	.LASF81:
+ 2214 012c 62697374 		.ascii	"bistCsdShCapISC\000"
+ 2214      43736453 
+ 2214      68436170 
+ 2214      49534300 
+ 2215              	.LASF121:
+ 2216 013c 736E735F 		.ascii	"sns_capacitance\000"
+ 2216      63617061 
+ 2216      63697461 
+ 2216      6E636500 
+ 2217              	.LASF35:
+ 2218 014c 69646163 		.ascii	"idacGainIndex\000"
+ 2218      4761696E 
+ 2218      496E6465 
+ 2218      7800
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 44
+
+
+ 2219              	.LASF94:
+ 2220 015a 77646774 		.ascii	"wdgtWorking\000"
+ 2220      576F726B 
+ 2220      696E6700 
+ 2221              	.LASF12:
+ 2222 0166 666C6F61 		.ascii	"float\000"
+ 2222      7400
+ 2223              	.LASF101:
+ 2224 016c 736E734C 		.ascii	"snsList\000"
+ 2224      69737400 
+ 2225              	.LASF136:
+ 2226 0174 4C315F52 		.ascii	"L1_Read\000"
+ 2226      65616400 
+ 2227              	.LASF7:
+ 2228 017c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2228      206C6F6E 
+ 2228      6720756E 
+ 2228      7369676E 
+ 2228      65642069 
+ 2229              	.LASF143:
+ 2230 0193 433A5C55 		.ascii	"C:\\Users\\ash750\\Documents\\GitHub\\Summer_resear"
+ 2230      73657273 
+ 2230      5C617368 
+ 2230      3735305C 
+ 2230      446F6375 
+ 2231 01c1 63685F61 		.ascii	"ch_ash750\\v1_6x1.cydsn\000"
+ 2231      73683735 
+ 2231      305C7631 
+ 2231      5F367831 
+ 2231      2E637964 
+ 2232              	.LASF127:
+ 2233 01d8 6973725F 		.ascii	"isr_TS_StartEx\000"
+ 2233      54535F53 
+ 2233      74617274 
+ 2233      457800
+ 2234              	.LASF106:
+ 2235 01e7 736E7254 		.ascii	"snrTestSensorId\000"
+ 2235      65737453 
+ 2235      656E736F 
+ 2235      72496400 
+ 2236              	.LASF122:
+ 2237 01f7 6578745F 		.ascii	"ext_capacitance\000"
+ 2237      63617061 
+ 2237      63697461 
+ 2237      6E636500 
+ 2238              	.LASF73:
+ 2239 0207 76646461 		.ascii	"vddaModClkDivider\000"
+ 2239      4D6F6443 
+ 2239      6C6B4469 
+ 2239      76696465 
+ 2239      7200
+ 2240              	.LASF83:
+ 2241 0219 73746172 		.ascii	"startupDelay\000"
+ 2241      74757044 
+ 2241      656C6179 
+ 2241      00
+ 2242              	.LASF144:
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 45
+
+
+ 2243 0226 4D595F49 		.ascii	"MY_ISR_TS\000"
+ 2243      53525F54 
+ 2243      5300
+ 2244              	.LASF113:
+ 2245 0230 53746174 		.ascii	"StatusPtr\000"
+ 2245      75735074 
+ 2245      7200
+ 2246              	.LASF115:
+ 2247 023a 666C6167 		.ascii	"flag_sns\000"
+ 2247      5F736E73 
+ 2247      00
+ 2248              	.LASF62:
+ 2249 0243 73686F72 		.ascii	"shortedWdgtId\000"
+ 2249      74656457 
+ 2249      64677449 
+ 2249      6400
+ 2250              	.LASF141:
+ 2251 0251 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2251      43313120 
+ 2251      352E342E 
+ 2251      31203230 
+ 2251      31363036 
+ 2252 0284 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 2252      20726576 
+ 2252      6973696F 
+ 2252      6E203233 
+ 2252      37373135 
+ 2253 02b7 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2253      66756E63 
+ 2253      74696F6E 
+ 2253      2D736563 
+ 2253      74696F6E 
+ 2254              	.LASF24:
+ 2255 02df 43617053 		.ascii	"CapSense_TST_MEASUREMENT_HIGH_LIMIT\000"
+ 2255      656E7365 
+ 2255      5F545354 
+ 2255      5F4D4541 
+ 2255      53555245 
+ 2256              	.LASF126:
+ 2257 0303 4C325F57 		.ascii	"L2_Write\000"
+ 2257      72697465 
+ 2257      00
+ 2258              	.LASF104:
+ 2259 030c 736E7343 		.ascii	"snsCp\000"
+ 2259      7000
+ 2260              	.LASF32:
+ 2261 0312 68797374 		.ascii	"hysteresis\000"
+ 2261      65726573 
+ 2261      697300
+ 2262              	.LASF52:
+ 2263 031d 43617053 		.ascii	"CapSense_RAM_SNS_STRUCT\000"
+ 2263      656E7365 
+ 2263      5F52414D 
+ 2263      5F534E53 
+ 2263      5F535452 
+ 2264              	.LASF34:
+ 2265 0335 6C6F7742 		.ascii	"lowBslnRst\000"
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 46
+
+
+ 2265      736C6E52 
+ 2265      737400
+ 2266              	.LASF76:
+ 2267 0340 76646461 		.ascii	"vddaIdacDefault\000"
+ 2267      49646163 
+ 2267      44656661 
+ 2267      756C7400 
+ 2268              	.LASF54:
+ 2269 0350 74657374 		.ascii	"testResultMask\000"
+ 2269      52657375 
+ 2269      6C744D61 
+ 2269      736B00
+ 2270              	.LASF78:
+ 2271 035f 736E7343 		.ascii	"snsCapVrefGain\000"
+ 2271      61705672 
+ 2271      65664761 
+ 2271      696E00
+ 2272              	.LASF77:
+ 2273 036e 736E7343 		.ascii	"snsCapResolution\000"
+ 2273      61705265 
+ 2273      736F6C75 
+ 2273      74696F6E 
+ 2273      00
+ 2274              	.LASF30:
+ 2275 037f 6E6F6973 		.ascii	"noiseTh\000"
+ 2275      65546800 
+ 2276              	.LASF14:
+ 2277 0387 63686172 		.ascii	"char\000"
+ 2277      00
+ 2278              	.LASF64:
+ 2279 038c 43617053 		.ascii	"CapSense_RAM_SELF_TEST_STRUCT\000"
+ 2279      656E7365 
+ 2279      5F52414D 
+ 2279      5F53454C 
+ 2279      465F5445 
+ 2280              	.LASF57:
+ 2281 03aa 676C6243 		.ascii	"glbCrcCalc\000"
+ 2281      72634361 
+ 2281      6C6300
+ 2282              	.LASF10:
+ 2283 03b5 75696E74 		.ascii	"uint16\000"
+ 2283      313600
+ 2284              	.LASF61:
+ 2285 03bc 696E7642 		.ascii	"invBslnSnsId\000"
+ 2285      736C6E53 
+ 2285      6E734964 
+ 2285      00
+ 2286              	.LASF112:
+ 2287 03c9 70747233 		.ascii	"ptr32\000"
+ 2287      3200
+ 2288              	.LASF28:
+ 2289 03cf 7265736F 		.ascii	"resolution\000"
+ 2289      6C757469 
+ 2289      6F6E00
+ 2290              	.LASF92:
+ 2291 03da 73746174 		.ascii	"status\000"
+ 2291      757300
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 47
+
+
+ 2292              	.LASF18:
+ 2293 03e1 43617053 		.ascii	"CapSense_LOW_BSLN_RST_TYPE\000"
+ 2293      656E7365 
+ 2293      5F4C4F57 
+ 2293      5F42534C 
+ 2293      4E5F5253 
+ 2294              	.LASF133:
+ 2295 03fc 43617053 		.ascii	"CapSense_RunTuner\000"
+ 2295      656E7365 
+ 2295      5F52756E 
+ 2295      54756E65 
+ 2295      7200
+ 2296              	.LASF51:
+ 2297 040e 69646163 		.ascii	"idacComp\000"
+ 2297      436F6D70 
+ 2297      00
+ 2298              	.LASF128:
+ 2299 0417 54535469 		.ascii	"TSTimer_Start\000"
+ 2299      6D65725F 
+ 2299      53746172 
+ 2299      7400
+ 2300              	.LASF68:
+ 2301 0425 736E7343 		.ascii	"snsCapModClkKHz\000"
+ 2301      61704D6F 
+ 2301      64436C6B 
+ 2301      4B487A00 
+ 2302              	.LASF6:
+ 2303 0435 6C6F6E67 		.ascii	"long long int\000"
+ 2303      206C6F6E 
+ 2303      6720696E 
+ 2303      7400
+ 2304              	.LASF79:
+ 2305 0443 62697374 		.ascii	"bistCsdSnsCapISC\000"
+ 2305      43736453 
+ 2305      6E734361 
+ 2305      70495343 
+ 2305      00
+ 2306              	.LASF33:
+ 2307 0454 6F6E4465 		.ascii	"onDebounce\000"
+ 2307      626F756E 
+ 2307      636500
+ 2308              	.LASF19:
+ 2309 045f 43617053 		.ascii	"CapSense_TST_MEASUREMENT_SUCCESS\000"
+ 2309      656E7365 
+ 2309      5F545354 
+ 2309      5F4D4541 
+ 2309      53555245 
+ 2310              	.LASF100:
+ 2311 0480 77646774 		.ascii	"wdgtList\000"
+ 2311      4C697374 
+ 2311      00
+ 2312              	.LASF138:
+ 2313 0489 43617053 		.ascii	"CapSense_GetExtCapCapacitance\000"
+ 2313      656E7365 
+ 2313      5F476574 
+ 2313      45787443 
+ 2313      61704361 
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 48
+
+
+ 2314              	.LASF114:
+ 2315 04a7 43617053 		.ascii	"CapSense_dsRam\000"
+ 2315      656E7365 
+ 2315      5F647352 
+ 2315      616D00
+ 2316              	.LASF108:
+ 2317 04b6 736E7254 		.ascii	"snrTestRawCount\000"
+ 2317      65737452 
+ 2317      6177436F 
+ 2317      756E7400 
+ 2318              	.LASF63:
+ 2319 04c6 73686F72 		.ascii	"shortedSnsId\000"
+ 2319      74656453 
+ 2319      6E734964 
+ 2319      00
+ 2320              	.LASF31:
+ 2321 04d3 6E4E6F69 		.ascii	"nNoiseTh\000"
+ 2321      73655468 
+ 2321      00
+ 2322              	.LASF97:
+ 2323 04dc 63736430 		.ascii	"csd0Config\000"
+ 2323      436F6E66 
+ 2323      696700
+ 2324              	.LASF11:
+ 2325 04e7 75696E74 		.ascii	"uint32\000"
+ 2325      333200
+ 2326              	.LASF132:
+ 2327 04ee 43617053 		.ascii	"CapSense_ProcessAllWidgets\000"
+ 2327      656E7365 
+ 2327      5F50726F 
+ 2327      63657373 
+ 2327      416C6C57 
+ 2328              	.LASF117:
+ 2329 0509 68656164 		.ascii	"header\000"
+ 2329      657200
+ 2330              	.LASF102:
+ 2331 0510 73656C66 		.ascii	"selfTest\000"
+ 2331      54657374 
+ 2331      00
+ 2332              	.LASF27:
+ 2333 0519 43617053 		.ascii	"CapSense_TST_MEASUREMENT_STATUS_ENUM\000"
+ 2333      656E7365 
+ 2333      5F545354 
+ 2333      5F4D4541 
+ 2333      53555245 
+ 2334              	.LASF120:
+ 2335 053e 69646163 		.ascii	"idac_comp\000"
+ 2335      5F636F6D 
+ 2335      7000
+ 2336              	.LASF84:
+ 2337 0548 66696E65 		.ascii	"fineInitTime\000"
+ 2337      496E6974 
+ 2337      54696D65 
+ 2337      00
+ 2338              	.LASF74:
+ 2339 0555 76646461 		.ascii	"vddaVrefGain\000"
+ 2339      56726566 
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 49
+
+
+ 2339      4761696E 
+ 2339      00
+ 2340              	.LASF26:
+ 2341 0562 43617053 		.ascii	"CapSense_TST_MEASUREMENT_TIMEOUT\000"
+ 2341      656E7365 
+ 2341      5F545354 
+ 2341      5F4D4541 
+ 2341      53555245 
+ 2342              	.LASF75:
+ 2343 0583 76646461 		.ascii	"vddaResolution\000"
+ 2343      5265736F 
+ 2343      6C757469 
+ 2343      6F6E00
+ 2344              	.LASF15:
+ 2345 0592 6C6F6E67 		.ascii	"long double\000"
+ 2345      20646F75 
+ 2345      626C6500 
+ 2346              	.LASF109:
+ 2347 059e 7363616E 		.ascii	"scanCsxISC\000"
+ 2347      43737849 
+ 2347      534300
+ 2348              	.LASF86:
+ 2349 05a9 43617053 		.ascii	"CapSense_RAM_TST_CONFIG_STRUCT\000"
+ 2349      656E7365 
+ 2349      5F52414D 
+ 2349      5F545354 
+ 2349      5F434F4E 
+ 2350              	.LASF107:
+ 2351 05c8 736E7254 		.ascii	"snrTestScanCounter\000"
+ 2351      65737453 
+ 2351      63616E43 
+ 2351      6F756E74 
+ 2351      657200
+ 2352              	.LASF71:
+ 2353 05db 76646461 		.ascii	"vddaVrefVoltage\000"
+ 2353      56726566 
+ 2353      566F6C74 
+ 2353      61676500 
+ 2354              	.LASF87:
+ 2355 05eb 636F6E66 		.ascii	"configId\000"
+ 2355      69674964 
+ 2355      00
+ 2356              	.LASF137:
+ 2357 05f4 43617053 		.ascii	"CapSense_GetSensorCapacitance\000"
+ 2357      656E7365 
+ 2357      5F476574 
+ 2357      53656E73 
+ 2357      6F724361 
+ 2358              	.LASF96:
+ 2359 0612 736E7353 		.ascii	"snsStatus\000"
+ 2359      74617475 
+ 2359      7300
+ 2360              	.LASF37:
+ 2361 061c 736E7343 		.ascii	"snsClkSource\000"
+ 2361      6C6B536F 
+ 2361      75726365 
+ 2361      00
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 50
+
+
+ 2362              	.LASF116:
+ 2363 0629 666C6167 		.ascii	"flag_cp\000"
+ 2363      5F637000 
+ 2364              	.LASF2:
+ 2365 0631 73686F72 		.ascii	"short int\000"
+ 2365      7420696E 
+ 2365      7400
+ 2366              	.LASF111:
+ 2367 063b 43617053 		.ascii	"CapSense_RAM_STRUCT\000"
+ 2367      656E7365 
+ 2367      5F52414D 
+ 2367      5F535452 
+ 2367      55435400 
+ 2368              	.LASF134:
+ 2369 064f 55415254 		.ascii	"UART_SpiUartPutArray\000"
+ 2369      5F537069 
+ 2369      55617274 
+ 2369      50757441 
+ 2369      72726179 
+ 2370              	.LASF4:
+ 2371 0664 6C6F6E67 		.ascii	"long int\000"
+ 2371      20696E74 
+ 2371      00
+ 2372              	.LASF93:
+ 2373 066d 77646774 		.ascii	"wdgtEnable\000"
+ 2373      456E6162 
+ 2373      6C6500
+ 2374              	.LASF49:
+ 2375 0678 64696666 		.ascii	"diff\000"
+ 2375      00
+ 2376              	.LASF90:
+ 2377 067d 74756E65 		.ascii	"tunerCmd\000"
+ 2377      72436D64 
+ 2377      00
+ 2378              	.LASF39:
+ 2379 0686 62757474 		.ascii	"button0\000"
+ 2379      6F6E3000 
+ 2380              	.LASF40:
+ 2381 068e 62757474 		.ascii	"button1\000"
+ 2381      6F6E3100 
+ 2382              	.LASF41:
+ 2383 0696 62757474 		.ascii	"button2\000"
+ 2383      6F6E3200 
+ 2384              	.LASF42:
+ 2385 069e 62757474 		.ascii	"button3\000"
+ 2385      6F6E3300 
+ 2386              	.LASF43:
+ 2387 06a6 62757474 		.ascii	"button4\000"
+ 2387      6F6E3400 
+ 2388              	.LASF44:
+ 2389 06ae 62757474 		.ascii	"button5\000"
+ 2389      6F6E3500 
+ 2390              	.LASF60:
+ 2391 06b6 696E7642 		.ascii	"invBslnWdgtId\000"
+ 2391      736C6E57 
+ 2391      64677449 
+ 2391      6400
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 51
+
+
+ 2392              	.LASF69:
+ 2393 06c4 736E7343 		.ascii	"snsCapModClkDivider\000"
+ 2393      61704D6F 
+ 2393      64436C6B 
+ 2393      44697669 
+ 2393      64657200 
+ 2394              	.LASF55:
+ 2395 06d8 65787443 		.ascii	"extCap\000"
+ 2395      617000
+ 2396              	.LASF59:
+ 2397 06df 77646774 		.ascii	"wdgtCrcId\000"
+ 2397      43726349 
+ 2397      6400
+ 2398              	.LASF95:
+ 2399 06e9 77646774 		.ascii	"wdgtStatus\000"
+ 2399      53746174 
+ 2399      757300
+ 2400              	.LASF124:
+ 2401 06f4 55415254 		.ascii	"UART_Start\000"
+ 2401      5F537461 
+ 2401      727400
+ 2402              	.LASF56:
+ 2403 06ff 76646461 		.ascii	"vddaVoltage\000"
+ 2403      566F6C74 
+ 2403      61676500 
+ 2404              	.LASF16:
+ 2405 070b 73697A65 		.ascii	"sizetype\000"
+ 2405      74797065 
+ 2405      00
+ 2406              	.LASF5:
+ 2407 0714 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2407      20756E73 
+ 2407      69676E65 
+ 2407      6420696E 
+ 2407      7400
+ 2408              	.LASF72:
+ 2409 0726 65787443 		.ascii	"extCapVrefVoltage\000"
+ 2409      61705672 
+ 2409      6566566F 
+ 2409      6C746167 
+ 2409      6500
+ 2410              	.LASF58:
+ 2411 0738 77646774 		.ascii	"wdgtCrcCalc\000"
+ 2411      43726343 
+ 2411      616C6300 
+ 2412              	.LASF29:
+ 2413 0744 66696E67 		.ascii	"fingerTh\000"
+ 2413      65725468 
+ 2413      00
+ 2414              	.LASF48:
+ 2415 074d 62736C6E 		.ascii	"bslnExt\000"
+ 2415      45787400 
+ 2416              	.LASF38:
+ 2417 0755 43617053 		.ascii	"CapSense_RAM_WD_BUTTON_STRUCT\000"
+ 2417      656E7365 
+ 2417      5F52414D 
+ 2417      5F57445F 
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 52
+
+
+ 2417      42555454 
+ 2418              	.LASF1:
+ 2419 0773 756E7369 		.ascii	"unsigned char\000"
+ 2419      676E6564 
+ 2419      20636861 
+ 2419      7200
+ 2420              	.LASF20:
+ 2421 0781 43617053 		.ascii	"CapSense_TST_MEASUREMENT_BAD_PARAM\000"
+ 2421      656E7365 
+ 2421      5F545354 
+ 2421      5F4D4541 
+ 2421      53555245 
+ 2422              	.LASF98:
+ 2423 07a4 6D6F6443 		.ascii	"modCsxClk\000"
+ 2423      7378436C 
+ 2423      6B00
+ 2424              	.LASF110:
+ 2425 07ae 7363616E 		.ascii	"scanCurrentISC\000"
+ 2425      43757272 
+ 2425      656E7449 
+ 2425      534300
+ 2426              	.LASF118:
+ 2427 07bd 7461696C 		.ascii	"tail\000"
+ 2427      00
+ 2428              	.LASF17:
+ 2429 07c2 43617053 		.ascii	"CapSense_THRESHOLD_TYPE\000"
+ 2429      656E7365 
+ 2429      5F544852 
+ 2429      4553484F 
+ 2429      4C445F54 
+ 2430              	.LASF47:
+ 2431 07da 62736C6E 		.ascii	"bslnInv\000"
+ 2431      496E7600 
+ 2432              	.LASF22:
+ 2433 07e2 43617053 		.ascii	"CapSense_TST_MEASUREMENT_ERROR\000"
+ 2433      656E7365 
+ 2433      5F545354 
+ 2433      5F4D4541 
+ 2433      53555245 
+ 2434              	.LASF130:
+ 2435 0801 43617053 		.ascii	"CapSense_ScanAllWidgets\000"
+ 2435      656E7365 
+ 2435      5F536361 
+ 2435      6E416C6C 
+ 2435      57696467 
+ 2436              	.LASF36:
+ 2437 0819 736E7343 		.ascii	"snsClk\000"
+ 2437      6C6B00
+ 2438              	.LASF139:
+ 2439 0820 4C325F52 		.ascii	"L2_Read\000"
+ 2439      65616400 
+ 2440              	.LASF70:
+ 2441 0828 736E7343 		.ascii	"snsCapVrefVoltage\000"
+ 2441      61705672 
+ 2441      6566566F 
+ 2441      6C746167 
+ 2441      6500
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 53
+
+
+ 2442              	.LASF82:
+ 2443 083a 65787443 		.ascii	"extCapVrefGain\000"
+ 2443      61705672 
+ 2443      65664761 
+ 2443      696E00
+ 2444              	.LASF0:
+ 2445 0849 7369676E 		.ascii	"signed char\000"
+ 2445      65642063 
+ 2445      68617200 
+ 2446              	.LASF46:
+ 2447 0855 62736C6E 		.ascii	"bsln\000"
+ 2447      00
+ 2448              	.LASF3:
+ 2449 085a 73686F72 		.ascii	"short unsigned int\000"
+ 2449      7420756E 
+ 2449      7369676E 
+ 2449      65642069 
+ 2449      6E7400
+ 2450              	.LASF145:
+ 2451 086d 6D61696E 		.ascii	"main\000"
+ 2451      00
+ 2452              	.LASF23:
+ 2453 0872 43617053 		.ascii	"CapSense_TST_MEASUREMENT_LOW_LIMIT\000"
+ 2453      656E7365 
+ 2453      5F545354 
+ 2453      5F4D4541 
+ 2453      53555245 
+ 2454              	.LASF99:
+ 2455 0895 676C6243 		.ascii	"glbCrc\000"
+ 2455      726300
+ 2456              	.LASF25:
+ 2457 089c 43617053 		.ascii	"CapSense_TST_MEASUREMENT_OVERFLOW\000"
+ 2457      656E7365 
+ 2457      5F545354 
+ 2457      5F4D4541 
+ 2457      53555245 
+ 2458              	.LASF125:
+ 2459 08be 4C315F57 		.ascii	"L1_Write\000"
+ 2459      72697465 
+ 2459      00
+ 2460              	.LASF9:
+ 2461 08c7 75696E74 		.ascii	"uint8\000"
+ 2461      3800
+ 2462              	.LASF13:
+ 2463 08cd 646F7562 		.ascii	"double\000"
+ 2463      6C6500
+ 2464              	.LASF50:
+ 2465 08d4 6E656742 		.ascii	"negBslnRstCnt\000"
+ 2465      736C6E52 
+ 2465      7374436E 
+ 2465      7400
+ 2466              	.LASF88:
+ 2467 08e2 64657669 		.ascii	"deviceId\000"
+ 2467      63654964 
+ 2467      00
+ 2468              	.LASF135:
+ 2469 08eb 55415254 		.ascii	"UART_UartPutCRLF\000"
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\ccWC5bOe.s 			page 54
+
+
+ 2469      5F556172 
+ 2469      74507574 
+ 2469      43524C46 
+ 2469      00
+ 2470              	.LASF53:
+ 2471 08fc 43617053 		.ascii	"CapSense_RAM_SNS_LIST_STRUCT\000"
+ 2471      656E7365 
+ 2471      5F52414D 
+ 2471      5F534E53 
+ 2471      5F4C4953 
+ 2472              	.LASF66:
+ 2473 0919 736E7343 		.ascii	"snsCapSnsClkHz\000"
+ 2473      6170536E 
+ 2473      73436C6B 
+ 2473      487A00
+ 2474              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

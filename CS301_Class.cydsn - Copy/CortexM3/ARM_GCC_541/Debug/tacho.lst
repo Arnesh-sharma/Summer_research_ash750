@@ -1,0 +1,824 @@
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"tacho.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.get_position,"ax",%progbits
+  20              		.align	2
+  21              		.global	get_position
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	get_position, %function
+  25              	get_position:
+  26              	.LFB63:
+  27              		.file 1 "tacho.c"
+   1:tacho.c       **** /* ========================================
+   2:tacho.c       ****  *
+   3:tacho.c       ****  * Copyright YOUR COMPANY, THE YEAR
+   4:tacho.c       ****  * All Rights Reserved
+   5:tacho.c       ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:tacho.c       ****  *
+   7:tacho.c       ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:tacho.c       ****  * WHICH IS THE PROPERTY OF your company.
+   9:tacho.c       ****  *
+  10:tacho.c       ****  * ========================================
+  11:tacho.c       **** */
+  12:tacho.c       **** 
+  13:tacho.c       **** #include <project.h>
+  14:tacho.c       **** #include "defines.h"
+  15:tacho.c       **** 
+  16:tacho.c       **** extern int16 speedL, speedR;
+  17:tacho.c       **** extern int16 posL, posR;
+  18:tacho.c       **** 
+  19:tacho.c       **** 
+  20:tacho.c       **** void get_position(void);
+  21:tacho.c       **** void get_speed(void);
+  22:tacho.c       **** 
+  23:tacho.c       **** //------------------------------------------------------
+  24:tacho.c       **** void get_position()
+  25:tacho.c       **** {
+  28              		.loc 1 25 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 2
+
+
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  26:tacho.c       ****     int pl, pr;
+  27:tacho.c       **** 
+  28:tacho.c       ****     pl = QuadDec_M1_GetCounter();
+  40              		.loc 1 28 0
+  41 0006 FFF7FEFF 		bl	QuadDec_M1_GetCounter
+  42 000a 7860     		str	r0, [r7, #4]
+  29:tacho.c       ****     pr = QuadDec_M2_GetCounter();
+  43              		.loc 1 29 0
+  44 000c FFF7FEFF 		bl	QuadDec_M2_GetCounter
+  45 0010 3860     		str	r0, [r7]
+  30:tacho.c       **** 
+  31:tacho.c       ****     posL = pl;
+  46              		.loc 1 31 0
+  47 0012 7B68     		ldr	r3, [r7, #4]
+  48 0014 1AB2     		sxth	r2, r3
+  49 0016 054B     		ldr	r3, .L2
+  50 0018 1A80     		strh	r2, [r3]	@ movhi
+  32:tacho.c       ****     posR = pr;
+  51              		.loc 1 32 0
+  52 001a 3B68     		ldr	r3, [r7]
+  53 001c 1AB2     		sxth	r2, r3
+  54 001e 044B     		ldr	r3, .L2+4
+  55 0020 1A80     		strh	r2, [r3]	@ movhi
+  33:tacho.c       **** }
+  56              		.loc 1 33 0
+  57 0022 00BF     		nop
+  58 0024 0837     		adds	r7, r7, #8
+  59              		.cfi_def_cfa_offset 8
+  60 0026 BD46     		mov	sp, r7
+  61              		.cfi_def_cfa_register 13
+  62              		@ sp needed
+  63 0028 80BD     		pop	{r7, pc}
+  64              	.L3:
+  65 002a 00BF     		.align	2
+  66              	.L2:
+  67 002c 00000000 		.word	posL
+  68 0030 00000000 		.word	posR
+  69              		.cfi_endproc
+  70              	.LFE63:
+  71              		.size	get_position, .-get_position
+  72              		.section	.text.get_speed,"ax",%progbits
+  73              		.align	2
+  74              		.global	get_speed
+  75              		.thumb
+  76              		.thumb_func
+  77              		.type	get_speed, %function
+  78              	get_speed:
+  79              	.LFB64:
+  34:tacho.c       **** //------------------------------------------------------
+  35:tacho.c       **** void get_speed()
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 3
+
+
+  36:tacho.c       **** {
+  80              		.loc 1 36 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 8
+  83              		@ frame_needed = 1, uses_anonymous_args = 0
+  84 0000 80B5     		push	{r7, lr}
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 7, -8
+  87              		.cfi_offset 14, -4
+  88 0002 82B0     		sub	sp, sp, #8
+  89              		.cfi_def_cfa_offset 16
+  90 0004 00AF     		add	r7, sp, #0
+  91              		.cfi_def_cfa_register 7
+  37:tacho.c       ****     int16 pl, pr;
+  38:tacho.c       ****     
+  39:tacho.c       ****     // get current position.
+  40:tacho.c       ****     pl = QuadDec_M1_GetCounter();
+  92              		.loc 1 40 0
+  93 0006 FFF7FEFF 		bl	QuadDec_M1_GetCounter
+  94 000a 0346     		mov	r3, r0
+  95 000c FB80     		strh	r3, [r7, #6]	@ movhi
+  41:tacho.c       ****     pr = QuadDec_M2_GetCounter();
+  96              		.loc 1 41 0
+  97 000e FFF7FEFF 		bl	QuadDec_M2_GetCounter
+  98 0012 0346     		mov	r3, r0
+  99 0014 BB80     		strh	r3, [r7, #4]	@ movhi
+  42:tacho.c       ****     
+  43:tacho.c       ****     speedL = pl - posL;
+ 100              		.loc 1 43 0
+ 101 0016 FA88     		ldrh	r2, [r7, #6]
+ 102 0018 0E4B     		ldr	r3, .L5
+ 103 001a B3F90030 		ldrsh	r3, [r3]
+ 104 001e 9BB2     		uxth	r3, r3
+ 105 0020 D31A     		subs	r3, r2, r3
+ 106 0022 9BB2     		uxth	r3, r3
+ 107 0024 1AB2     		sxth	r2, r3
+ 108 0026 0C4B     		ldr	r3, .L5+4
+ 109 0028 1A80     		strh	r2, [r3]	@ movhi
+  44:tacho.c       ****     speedR = pr - posR;
+ 110              		.loc 1 44 0
+ 111 002a BA88     		ldrh	r2, [r7, #4]
+ 112 002c 0B4B     		ldr	r3, .L5+8
+ 113 002e B3F90030 		ldrsh	r3, [r3]
+ 114 0032 9BB2     		uxth	r3, r3
+ 115 0034 D31A     		subs	r3, r2, r3
+ 116 0036 9BB2     		uxth	r3, r3
+ 117 0038 1AB2     		sxth	r2, r3
+ 118 003a 094B     		ldr	r3, .L5+12
+ 119 003c 1A80     		strh	r2, [r3]	@ movhi
+  45:tacho.c       ****     posL = pl;
+ 120              		.loc 1 45 0
+ 121 003e 054A     		ldr	r2, .L5
+ 122 0040 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 123 0042 1380     		strh	r3, [r2]	@ movhi
+  46:tacho.c       ****     posR = pr;
+ 124              		.loc 1 46 0
+ 125 0044 054A     		ldr	r2, .L5+8
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 4
+
+
+ 126 0046 BB88     		ldrh	r3, [r7, #4]	@ movhi
+ 127 0048 1380     		strh	r3, [r2]	@ movhi
+  47:tacho.c       ****     
+  48:tacho.c       ****     
+  49:tacho.c       **** //    // Speed of Motor 1
+  50:tacho.c       **** //    state = QuadDec_M1_GetEvents();
+  51:tacho.c       **** //    speed = pl - posL;
+  52:tacho.c       **** //    if ((state & QuadDec_M1_COUNTER_OVERFLOW) != 0x00)
+  53:tacho.c       **** //        speed += 32767;
+  54:tacho.c       **** //    
+  55:tacho.c       **** //    if ((state & QuadDec_M1_COUNTER_UNDERFLOW) != 0x00)
+  56:tacho.c       **** //        speed += -32768;
+  57:tacho.c       **** //    speedL = speed;
+  58:tacho.c       **** //    posL = pl;
+  59:tacho.c       **** //    
+  60:tacho.c       **** //    // Speed of Motor 2
+  61:tacho.c       **** //    state = QuadDec_M2_GetEvents();
+  62:tacho.c       **** //    speed = pr - posR;
+  63:tacho.c       **** //    if ((state & QuadDec_M2_COUNTER_OVERFLOW) != 0x00)
+  64:tacho.c       **** //        speed += 32767;
+  65:tacho.c       **** //    
+  66:tacho.c       **** //    if ((state & QuadDec_M2_COUNTER_UNDERFLOW) != 0x00)
+  67:tacho.c       **** //        speed += -32768;
+  68:tacho.c       **** //    speedR = speed;    
+  69:tacho.c       **** //    posR = pr;
+  70:tacho.c       **** }
+ 128              		.loc 1 70 0
+ 129 004a 00BF     		nop
+ 130 004c 0837     		adds	r7, r7, #8
+ 131              		.cfi_def_cfa_offset 8
+ 132 004e BD46     		mov	sp, r7
+ 133              		.cfi_def_cfa_register 13
+ 134              		@ sp needed
+ 135 0050 80BD     		pop	{r7, pc}
+ 136              	.L6:
+ 137 0052 00BF     		.align	2
+ 138              	.L5:
+ 139 0054 00000000 		.word	posL
+ 140 0058 00000000 		.word	speedL
+ 141 005c 00000000 		.word	posR
+ 142 0060 00000000 		.word	speedR
+ 143              		.cfi_endproc
+ 144              	.LFE64:
+ 145              		.size	get_speed, .-get_speed
+ 146              		.text
+ 147              	.Letext0:
+ 148              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 149              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 150              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 151              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 152              		.section	.debug_info,"",%progbits
+ 153              	.Ldebug_info0:
+ 154 0000 86010000 		.4byte	0x186
+ 155 0004 0400     		.2byte	0x4
+ 156 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 157 000a 04       		.byte	0x4
+ 158 000b 01       		.uleb128 0x1
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 5
+
+
+ 159 000c 05000000 		.4byte	.LASF26
+ 160 0010 0C       		.byte	0xc
+ 161 0011 D8010000 		.4byte	.LASF27
+ 162 0015 55010000 		.4byte	.LASF28
+ 163 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 164 001d 00000000 		.4byte	0
+ 165 0021 00000000 		.4byte	.Ldebug_line0
+ 166 0025 02       		.uleb128 0x2
+ 167 0026 01       		.byte	0x1
+ 168 0027 06       		.byte	0x6
+ 169 0028 FA010000 		.4byte	.LASF0
+ 170 002c 02       		.uleb128 0x2
+ 171 002d 01       		.byte	0x1
+ 172 002e 08       		.byte	0x8
+ 173 002f C1000000 		.4byte	.LASF1
+ 174 0033 02       		.uleb128 0x2
+ 175 0034 02       		.byte	0x2
+ 176 0035 05       		.byte	0x5
+ 177 0036 E0010000 		.4byte	.LASF2
+ 178 003a 02       		.uleb128 0x2
+ 179 003b 02       		.byte	0x2
+ 180 003c 07       		.byte	0x7
+ 181 003d E7000000 		.4byte	.LASF3
+ 182 0041 03       		.uleb128 0x3
+ 183 0042 93000000 		.4byte	.LASF9
+ 184 0046 02       		.byte	0x2
+ 185 0047 3F       		.byte	0x3f
+ 186 0048 4C000000 		.4byte	0x4c
+ 187 004c 02       		.uleb128 0x2
+ 188 004d 04       		.byte	0x4
+ 189 004e 05       		.byte	0x5
+ 190 004f EA010000 		.4byte	.LASF4
+ 191 0053 02       		.uleb128 0x2
+ 192 0054 04       		.byte	0x4
+ 193 0055 07       		.byte	0x7
+ 194 0056 D5000000 		.4byte	.LASF5
+ 195 005a 02       		.uleb128 0x2
+ 196 005b 08       		.byte	0x8
+ 197 005c 05       		.byte	0x5
+ 198 005d C5010000 		.4byte	.LASF6
+ 199 0061 02       		.uleb128 0x2
+ 200 0062 08       		.byte	0x8
+ 201 0063 07       		.byte	0x7
+ 202 0064 3E010000 		.4byte	.LASF7
+ 203 0068 04       		.uleb128 0x4
+ 204 0069 04       		.byte	0x4
+ 205 006a 05       		.byte	0x5
+ 206 006b 696E7400 		.ascii	"int\000"
+ 207 006f 02       		.uleb128 0x2
+ 208 0070 04       		.byte	0x4
+ 209 0071 07       		.byte	0x7
+ 210 0072 31010000 		.4byte	.LASF8
+ 211 0076 03       		.uleb128 0x3
+ 212 0077 B3000000 		.4byte	.LASF10
+ 213 007b 03       		.byte	0x3
+ 214 007c 2C       		.byte	0x2c
+ 215 007d 41000000 		.4byte	0x41
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 6
+
+
+ 216 0081 05       		.uleb128 0x5
+ 217 0082 CF000000 		.4byte	.LASF11
+ 218 0086 04       		.byte	0x4
+ 219 0087 EB01     		.2byte	0x1eb
+ 220 0089 33000000 		.4byte	0x33
+ 221 008d 02       		.uleb128 0x2
+ 222 008e 04       		.byte	0x4
+ 223 008f 04       		.byte	0x4
+ 224 0090 BB000000 		.4byte	.LASF12
+ 225 0094 02       		.uleb128 0x2
+ 226 0095 08       		.byte	0x8
+ 227 0096 04       		.byte	0x4
+ 228 0097 14010000 		.4byte	.LASF13
+ 229 009b 02       		.uleb128 0x2
+ 230 009c 01       		.byte	0x1
+ 231 009d 08       		.byte	0x8
+ 232 009e D3010000 		.4byte	.LASF14
+ 233 00a2 02       		.uleb128 0x2
+ 234 00a3 08       		.byte	0x8
+ 235 00a4 04       		.byte	0x4
+ 236 00a5 A6010000 		.4byte	.LASF15
+ 237 00a9 02       		.uleb128 0x2
+ 238 00aa 04       		.byte	0x4
+ 239 00ab 07       		.byte	0x7
+ 240 00ac BC010000 		.4byte	.LASF16
+ 241 00b0 06       		.uleb128 0x6
+ 242 00b1 07010000 		.4byte	.LASF17
+ 243 00b5 01       		.byte	0x1
+ 244 00b6 18       		.byte	0x18
+ 245 00b7 00000000 		.4byte	.LFB63
+ 246 00bb 34000000 		.4byte	.LFE63-.LFB63
+ 247 00bf 01       		.uleb128 0x1
+ 248 00c0 9C       		.byte	0x9c
+ 249 00c1 FE000000 		.4byte	0xfe
+ 250 00c5 07       		.uleb128 0x7
+ 251 00c6 706C00   		.ascii	"pl\000"
+ 252 00c9 01       		.byte	0x1
+ 253 00ca 1A       		.byte	0x1a
+ 254 00cb 68000000 		.4byte	0x68
+ 255 00cf 02       		.uleb128 0x2
+ 256 00d0 91       		.byte	0x91
+ 257 00d1 74       		.sleb128 -12
+ 258 00d2 07       		.uleb128 0x7
+ 259 00d3 707200   		.ascii	"pr\000"
+ 260 00d6 01       		.byte	0x1
+ 261 00d7 1A       		.byte	0x1a
+ 262 00d8 68000000 		.4byte	0x68
+ 263 00dc 02       		.uleb128 0x2
+ 264 00dd 91       		.byte	0x91
+ 265 00de 70       		.sleb128 -16
+ 266 00df 08       		.uleb128 0x8
+ 267 00e0 9D000000 		.4byte	.LASF19
+ 268 00e4 01       		.byte	0x1
+ 269 00e5 1C       		.byte	0x1c
+ 270 00e6 68000000 		.4byte	0x68
+ 271 00ea F0000000 		.4byte	0xf0
+ 272 00ee 09       		.uleb128 0x9
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 7
+
+
+ 273 00ef 00       		.byte	0
+ 274 00f0 0A       		.uleb128 0xa
+ 275 00f1 1B010000 		.4byte	.LASF20
+ 276 00f5 01       		.byte	0x1
+ 277 00f6 1D       		.byte	0x1d
+ 278 00f7 68000000 		.4byte	0x68
+ 279 00fb 09       		.uleb128 0x9
+ 280 00fc 00       		.byte	0
+ 281 00fd 00       		.byte	0
+ 282 00fe 06       		.uleb128 0x6
+ 283 00ff B2010000 		.4byte	.LASF18
+ 284 0103 01       		.byte	0x1
+ 285 0104 23       		.byte	0x23
+ 286 0105 00000000 		.4byte	.LFB64
+ 287 0109 64000000 		.4byte	.LFE64-.LFB64
+ 288 010d 01       		.uleb128 0x1
+ 289 010e 9C       		.byte	0x9c
+ 290 010f 4C010000 		.4byte	0x14c
+ 291 0113 07       		.uleb128 0x7
+ 292 0114 706C00   		.ascii	"pl\000"
+ 293 0117 01       		.byte	0x1
+ 294 0118 25       		.byte	0x25
+ 295 0119 81000000 		.4byte	0x81
+ 296 011d 02       		.uleb128 0x2
+ 297 011e 91       		.byte	0x91
+ 298 011f 76       		.sleb128 -10
+ 299 0120 07       		.uleb128 0x7
+ 300 0121 707200   		.ascii	"pr\000"
+ 301 0124 01       		.byte	0x1
+ 302 0125 25       		.byte	0x25
+ 303 0126 81000000 		.4byte	0x81
+ 304 012a 02       		.uleb128 0x2
+ 305 012b 91       		.byte	0x91
+ 306 012c 74       		.sleb128 -12
+ 307 012d 08       		.uleb128 0x8
+ 308 012e 9D000000 		.4byte	.LASF19
+ 309 0132 01       		.byte	0x1
+ 310 0133 1C       		.byte	0x1c
+ 311 0134 68000000 		.4byte	0x68
+ 312 0138 3E010000 		.4byte	0x13e
+ 313 013c 09       		.uleb128 0x9
+ 314 013d 00       		.byte	0
+ 315 013e 0A       		.uleb128 0xa
+ 316 013f 1B010000 		.4byte	.LASF20
+ 317 0143 01       		.byte	0x1
+ 318 0144 1D       		.byte	0x1d
+ 319 0145 68000000 		.4byte	0x68
+ 320 0149 09       		.uleb128 0x9
+ 321 014a 00       		.byte	0
+ 322 014b 00       		.byte	0
+ 323 014c 0B       		.uleb128 0xb
+ 324 014d FA000000 		.4byte	.LASF21
+ 325 0151 05       		.byte	0x5
+ 326 0152 1207     		.2byte	0x712
+ 327 0154 58010000 		.4byte	0x158
+ 328 0158 0C       		.uleb128 0xc
+ 329 0159 76000000 		.4byte	0x76
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 8
+
+
+ 330 015d 0D       		.uleb128 0xd
+ 331 015e F3010000 		.4byte	.LASF22
+ 332 0162 01       		.byte	0x1
+ 333 0163 10       		.byte	0x10
+ 334 0164 81000000 		.4byte	0x81
+ 335 0168 0D       		.uleb128 0xd
+ 336 0169 9F010000 		.4byte	.LASF23
+ 337 016d 01       		.byte	0x1
+ 338 016e 10       		.byte	0x10
+ 339 016f 81000000 		.4byte	0x81
+ 340 0173 0D       		.uleb128 0xd
+ 341 0174 06020000 		.4byte	.LASF24
+ 342 0178 01       		.byte	0x1
+ 343 0179 11       		.byte	0x11
+ 344 017a 81000000 		.4byte	0x81
+ 345 017e 0D       		.uleb128 0xd
+ 346 017f 00000000 		.4byte	.LASF25
+ 347 0183 01       		.byte	0x1
+ 348 0184 11       		.byte	0x11
+ 349 0185 81000000 		.4byte	0x81
+ 350 0189 00       		.byte	0
+ 351              		.section	.debug_abbrev,"",%progbits
+ 352              	.Ldebug_abbrev0:
+ 353 0000 01       		.uleb128 0x1
+ 354 0001 11       		.uleb128 0x11
+ 355 0002 01       		.byte	0x1
+ 356 0003 25       		.uleb128 0x25
+ 357 0004 0E       		.uleb128 0xe
+ 358 0005 13       		.uleb128 0x13
+ 359 0006 0B       		.uleb128 0xb
+ 360 0007 03       		.uleb128 0x3
+ 361 0008 0E       		.uleb128 0xe
+ 362 0009 1B       		.uleb128 0x1b
+ 363 000a 0E       		.uleb128 0xe
+ 364 000b 55       		.uleb128 0x55
+ 365 000c 17       		.uleb128 0x17
+ 366 000d 11       		.uleb128 0x11
+ 367 000e 01       		.uleb128 0x1
+ 368 000f 10       		.uleb128 0x10
+ 369 0010 17       		.uleb128 0x17
+ 370 0011 00       		.byte	0
+ 371 0012 00       		.byte	0
+ 372 0013 02       		.uleb128 0x2
+ 373 0014 24       		.uleb128 0x24
+ 374 0015 00       		.byte	0
+ 375 0016 0B       		.uleb128 0xb
+ 376 0017 0B       		.uleb128 0xb
+ 377 0018 3E       		.uleb128 0x3e
+ 378 0019 0B       		.uleb128 0xb
+ 379 001a 03       		.uleb128 0x3
+ 380 001b 0E       		.uleb128 0xe
+ 381 001c 00       		.byte	0
+ 382 001d 00       		.byte	0
+ 383 001e 03       		.uleb128 0x3
+ 384 001f 16       		.uleb128 0x16
+ 385 0020 00       		.byte	0
+ 386 0021 03       		.uleb128 0x3
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 9
+
+
+ 387 0022 0E       		.uleb128 0xe
+ 388 0023 3A       		.uleb128 0x3a
+ 389 0024 0B       		.uleb128 0xb
+ 390 0025 3B       		.uleb128 0x3b
+ 391 0026 0B       		.uleb128 0xb
+ 392 0027 49       		.uleb128 0x49
+ 393 0028 13       		.uleb128 0x13
+ 394 0029 00       		.byte	0
+ 395 002a 00       		.byte	0
+ 396 002b 04       		.uleb128 0x4
+ 397 002c 24       		.uleb128 0x24
+ 398 002d 00       		.byte	0
+ 399 002e 0B       		.uleb128 0xb
+ 400 002f 0B       		.uleb128 0xb
+ 401 0030 3E       		.uleb128 0x3e
+ 402 0031 0B       		.uleb128 0xb
+ 403 0032 03       		.uleb128 0x3
+ 404 0033 08       		.uleb128 0x8
+ 405 0034 00       		.byte	0
+ 406 0035 00       		.byte	0
+ 407 0036 05       		.uleb128 0x5
+ 408 0037 16       		.uleb128 0x16
+ 409 0038 00       		.byte	0
+ 410 0039 03       		.uleb128 0x3
+ 411 003a 0E       		.uleb128 0xe
+ 412 003b 3A       		.uleb128 0x3a
+ 413 003c 0B       		.uleb128 0xb
+ 414 003d 3B       		.uleb128 0x3b
+ 415 003e 05       		.uleb128 0x5
+ 416 003f 49       		.uleb128 0x49
+ 417 0040 13       		.uleb128 0x13
+ 418 0041 00       		.byte	0
+ 419 0042 00       		.byte	0
+ 420 0043 06       		.uleb128 0x6
+ 421 0044 2E       		.uleb128 0x2e
+ 422 0045 01       		.byte	0x1
+ 423 0046 3F       		.uleb128 0x3f
+ 424 0047 19       		.uleb128 0x19
+ 425 0048 03       		.uleb128 0x3
+ 426 0049 0E       		.uleb128 0xe
+ 427 004a 3A       		.uleb128 0x3a
+ 428 004b 0B       		.uleb128 0xb
+ 429 004c 3B       		.uleb128 0x3b
+ 430 004d 0B       		.uleb128 0xb
+ 431 004e 27       		.uleb128 0x27
+ 432 004f 19       		.uleb128 0x19
+ 433 0050 11       		.uleb128 0x11
+ 434 0051 01       		.uleb128 0x1
+ 435 0052 12       		.uleb128 0x12
+ 436 0053 06       		.uleb128 0x6
+ 437 0054 40       		.uleb128 0x40
+ 438 0055 18       		.uleb128 0x18
+ 439 0056 9642     		.uleb128 0x2116
+ 440 0058 19       		.uleb128 0x19
+ 441 0059 01       		.uleb128 0x1
+ 442 005a 13       		.uleb128 0x13
+ 443 005b 00       		.byte	0
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 10
+
+
+ 444 005c 00       		.byte	0
+ 445 005d 07       		.uleb128 0x7
+ 446 005e 34       		.uleb128 0x34
+ 447 005f 00       		.byte	0
+ 448 0060 03       		.uleb128 0x3
+ 449 0061 08       		.uleb128 0x8
+ 450 0062 3A       		.uleb128 0x3a
+ 451 0063 0B       		.uleb128 0xb
+ 452 0064 3B       		.uleb128 0x3b
+ 453 0065 0B       		.uleb128 0xb
+ 454 0066 49       		.uleb128 0x49
+ 455 0067 13       		.uleb128 0x13
+ 456 0068 02       		.uleb128 0x2
+ 457 0069 18       		.uleb128 0x18
+ 458 006a 00       		.byte	0
+ 459 006b 00       		.byte	0
+ 460 006c 08       		.uleb128 0x8
+ 461 006d 2E       		.uleb128 0x2e
+ 462 006e 01       		.byte	0x1
+ 463 006f 3F       		.uleb128 0x3f
+ 464 0070 19       		.uleb128 0x19
+ 465 0071 03       		.uleb128 0x3
+ 466 0072 0E       		.uleb128 0xe
+ 467 0073 3A       		.uleb128 0x3a
+ 468 0074 0B       		.uleb128 0xb
+ 469 0075 3B       		.uleb128 0x3b
+ 470 0076 0B       		.uleb128 0xb
+ 471 0077 49       		.uleb128 0x49
+ 472 0078 13       		.uleb128 0x13
+ 473 0079 3C       		.uleb128 0x3c
+ 474 007a 19       		.uleb128 0x19
+ 475 007b 01       		.uleb128 0x1
+ 476 007c 13       		.uleb128 0x13
+ 477 007d 00       		.byte	0
+ 478 007e 00       		.byte	0
+ 479 007f 09       		.uleb128 0x9
+ 480 0080 18       		.uleb128 0x18
+ 481 0081 00       		.byte	0
+ 482 0082 00       		.byte	0
+ 483 0083 00       		.byte	0
+ 484 0084 0A       		.uleb128 0xa
+ 485 0085 2E       		.uleb128 0x2e
+ 486 0086 01       		.byte	0x1
+ 487 0087 3F       		.uleb128 0x3f
+ 488 0088 19       		.uleb128 0x19
+ 489 0089 03       		.uleb128 0x3
+ 490 008a 0E       		.uleb128 0xe
+ 491 008b 3A       		.uleb128 0x3a
+ 492 008c 0B       		.uleb128 0xb
+ 493 008d 3B       		.uleb128 0x3b
+ 494 008e 0B       		.uleb128 0xb
+ 495 008f 49       		.uleb128 0x49
+ 496 0090 13       		.uleb128 0x13
+ 497 0091 3C       		.uleb128 0x3c
+ 498 0092 19       		.uleb128 0x19
+ 499 0093 00       		.byte	0
+ 500 0094 00       		.byte	0
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 11
+
+
+ 501 0095 0B       		.uleb128 0xb
+ 502 0096 34       		.uleb128 0x34
+ 503 0097 00       		.byte	0
+ 504 0098 03       		.uleb128 0x3
+ 505 0099 0E       		.uleb128 0xe
+ 506 009a 3A       		.uleb128 0x3a
+ 507 009b 0B       		.uleb128 0xb
+ 508 009c 3B       		.uleb128 0x3b
+ 509 009d 05       		.uleb128 0x5
+ 510 009e 49       		.uleb128 0x49
+ 511 009f 13       		.uleb128 0x13
+ 512 00a0 3F       		.uleb128 0x3f
+ 513 00a1 19       		.uleb128 0x19
+ 514 00a2 3C       		.uleb128 0x3c
+ 515 00a3 19       		.uleb128 0x19
+ 516 00a4 00       		.byte	0
+ 517 00a5 00       		.byte	0
+ 518 00a6 0C       		.uleb128 0xc
+ 519 00a7 35       		.uleb128 0x35
+ 520 00a8 00       		.byte	0
+ 521 00a9 49       		.uleb128 0x49
+ 522 00aa 13       		.uleb128 0x13
+ 523 00ab 00       		.byte	0
+ 524 00ac 00       		.byte	0
+ 525 00ad 0D       		.uleb128 0xd
+ 526 00ae 34       		.uleb128 0x34
+ 527 00af 00       		.byte	0
+ 528 00b0 03       		.uleb128 0x3
+ 529 00b1 0E       		.uleb128 0xe
+ 530 00b2 3A       		.uleb128 0x3a
+ 531 00b3 0B       		.uleb128 0xb
+ 532 00b4 3B       		.uleb128 0x3b
+ 533 00b5 0B       		.uleb128 0xb
+ 534 00b6 49       		.uleb128 0x49
+ 535 00b7 13       		.uleb128 0x13
+ 536 00b8 3F       		.uleb128 0x3f
+ 537 00b9 19       		.uleb128 0x19
+ 538 00ba 3C       		.uleb128 0x3c
+ 539 00bb 19       		.uleb128 0x19
+ 540 00bc 00       		.byte	0
+ 541 00bd 00       		.byte	0
+ 542 00be 00       		.byte	0
+ 543              		.section	.debug_aranges,"",%progbits
+ 544 0000 24000000 		.4byte	0x24
+ 545 0004 0200     		.2byte	0x2
+ 546 0006 00000000 		.4byte	.Ldebug_info0
+ 547 000a 04       		.byte	0x4
+ 548 000b 00       		.byte	0
+ 549 000c 0000     		.2byte	0
+ 550 000e 0000     		.2byte	0
+ 551 0010 00000000 		.4byte	.LFB63
+ 552 0014 34000000 		.4byte	.LFE63-.LFB63
+ 553 0018 00000000 		.4byte	.LFB64
+ 554 001c 64000000 		.4byte	.LFE64-.LFB64
+ 555 0020 00000000 		.4byte	0
+ 556 0024 00000000 		.4byte	0
+ 557              		.section	.debug_ranges,"",%progbits
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 12
+
+
+ 558              	.Ldebug_ranges0:
+ 559 0000 00000000 		.4byte	.LFB63
+ 560 0004 34000000 		.4byte	.LFE63
+ 561 0008 00000000 		.4byte	.LFB64
+ 562 000c 64000000 		.4byte	.LFE64
+ 563 0010 00000000 		.4byte	0
+ 564 0014 00000000 		.4byte	0
+ 565              		.section	.debug_line,"",%progbits
+ 566              	.Ldebug_line0:
+ 567 0000 7F010000 		.section	.debug_str,"MS",%progbits,1
+ 567      02004D01 
+ 567      00000201 
+ 567      FB0E0D00 
+ 567      01010101 
+ 568              	.LASF25:
+ 569 0000 706F7352 		.ascii	"posR\000"
+ 569      00
+ 570              	.LASF26:
+ 571 0005 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 571      43313120 
+ 571      352E342E 
+ 571      31203230 
+ 571      31363036 
+ 572 0038 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 572      20726576 
+ 572      6973696F 
+ 572      6E203233 
+ 572      37373135 
+ 573 006b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 573      66756E63 
+ 573      74696F6E 
+ 573      2D736563 
+ 573      74696F6E 
+ 574              	.LASF9:
+ 575 0093 5F5F696E 		.ascii	"__int32_t\000"
+ 575      7433325F 
+ 575      7400
+ 576              	.LASF19:
+ 577 009d 51756164 		.ascii	"QuadDec_M1_GetCounter\000"
+ 577      4465635F 
+ 577      4D315F47 
+ 577      6574436F 
+ 577      756E7465 
+ 578              	.LASF10:
+ 579 00b3 696E7433 		.ascii	"int32_t\000"
+ 579      325F7400 
+ 580              	.LASF12:
+ 581 00bb 666C6F61 		.ascii	"float\000"
+ 581      7400
+ 582              	.LASF1:
+ 583 00c1 756E7369 		.ascii	"unsigned char\000"
+ 583      676E6564 
+ 583      20636861 
+ 583      7200
+ 584              	.LASF11:
+ 585 00cf 696E7431 		.ascii	"int16\000"
+ 585      3600
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 13
+
+
+ 586              	.LASF5:
+ 587 00d5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 587      20756E73 
+ 587      69676E65 
+ 587      6420696E 
+ 587      7400
+ 588              	.LASF3:
+ 589 00e7 73686F72 		.ascii	"short unsigned int\000"
+ 589      7420756E 
+ 589      7369676E 
+ 589      65642069 
+ 589      6E7400
+ 590              	.LASF21:
+ 591 00fa 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 591      52784275 
+ 591      66666572 
+ 591      00
+ 592              	.LASF17:
+ 593 0107 6765745F 		.ascii	"get_position\000"
+ 593      706F7369 
+ 593      74696F6E 
+ 593      00
+ 594              	.LASF13:
+ 595 0114 646F7562 		.ascii	"double\000"
+ 595      6C6500
+ 596              	.LASF20:
+ 597 011b 51756164 		.ascii	"QuadDec_M2_GetCounter\000"
+ 597      4465635F 
+ 597      4D325F47 
+ 597      6574436F 
+ 597      756E7465 
+ 598              	.LASF8:
+ 599 0131 756E7369 		.ascii	"unsigned int\000"
+ 599      676E6564 
+ 599      20696E74 
+ 599      00
+ 600              	.LASF7:
+ 601 013e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 601      206C6F6E 
+ 601      6720756E 
+ 601      7369676E 
+ 601      65642069 
+ 602              	.LASF28:
+ 603 0155 433A5C55 		.ascii	"C:\\Users\\ash750\\Documents\\GitHub\\Summer_resear"
+ 603      73657273 
+ 603      5C617368 
+ 603      3735305C 
+ 603      446F6375 
+ 604 0183 63685F61 		.ascii	"ch_ash750\\CS301_Class.cydsn\000"
+ 604      73683735 
+ 604      305C4353 
+ 604      3330315F 
+ 604      436C6173 
+ 605              	.LASF23:
+ 606 019f 73706565 		.ascii	"speedR\000"
+ 606      645200
+ 607              	.LASF15:
+ARM GAS  C:\Users\ash750\AppData\Local\Temp\cc2lV1tk.s 			page 14
+
+
+ 608 01a6 6C6F6E67 		.ascii	"long double\000"
+ 608      20646F75 
+ 608      626C6500 
+ 609              	.LASF18:
+ 610 01b2 6765745F 		.ascii	"get_speed\000"
+ 610      73706565 
+ 610      6400
+ 611              	.LASF16:
+ 612 01bc 73697A65 		.ascii	"sizetype\000"
+ 612      74797065 
+ 612      00
+ 613              	.LASF6:
+ 614 01c5 6C6F6E67 		.ascii	"long long int\000"
+ 614      206C6F6E 
+ 614      6720696E 
+ 614      7400
+ 615              	.LASF14:
+ 616 01d3 63686172 		.ascii	"char\000"
+ 616      00
+ 617              	.LASF27:
+ 618 01d8 74616368 		.ascii	"tacho.c\000"
+ 618      6F2E6300 
+ 619              	.LASF2:
+ 620 01e0 73686F72 		.ascii	"short int\000"
+ 620      7420696E 
+ 620      7400
+ 621              	.LASF4:
+ 622 01ea 6C6F6E67 		.ascii	"long int\000"
+ 622      20696E74 
+ 622      00
+ 623              	.LASF22:
+ 624 01f3 73706565 		.ascii	"speedL\000"
+ 624      644C00
+ 625              	.LASF0:
+ 626 01fa 7369676E 		.ascii	"signed char\000"
+ 626      65642063 
+ 626      68617200 
+ 627              	.LASF24:
+ 628 0206 706F734C 		.ascii	"posL\000"
+ 628      00
+ 629              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

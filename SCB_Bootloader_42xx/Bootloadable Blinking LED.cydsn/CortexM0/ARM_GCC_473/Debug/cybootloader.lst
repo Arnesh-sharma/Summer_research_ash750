@@ -1,0 +1,4651 @@
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"cybootloader.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	cy_meta_loader
+  18              		.section	.cyloadermeta,"a",%progbits
+  19              		.align	2
+  20              		.type	cy_meta_loader, %object
+  21              		.size	cy_meta_loader, 64
+  22              	cy_meta_loader:
+  23 0000 00       		.byte	0
+  24 0001 00       		.byte	0
+  25 0002 00       		.byte	0
+  26 0003 00       		.byte	0
+  27 0004 00       		.byte	0
+  28 0005 00       		.byte	0
+  29 0006 00       		.byte	0
+  30 0007 00       		.byte	0
+  31 0008 00       		.byte	0
+  32 0009 00       		.byte	0
+  33 000a 00       		.byte	0
+  34 000b 00       		.byte	0
+  35 000c 00       		.byte	0
+  36 000d 00       		.byte	0
+  37 000e 00       		.byte	0
+  38 000f 00       		.byte	0
+  39 0010 00       		.byte	0
+  40 0011 00       		.byte	0
+  41 0012 01       		.byte	1
+  42 0013 00       		.byte	0
+  43 0014 01       		.byte	1
+  44 0015 00       		.byte	0
+  45 0016 00       		.byte	0
+  46 0017 00       		.byte	0
+  47 0018 00       		.byte	0
+  48 0019 00       		.byte	0
+  49 001a 00       		.byte	0
+  50 001b 00       		.byte	0
+  51 001c 00       		.byte	0
+  52 001d 00       		.byte	0
+  53 001e 00       		.byte	0
+  54 001f 00       		.byte	0
+  55 0020 00       		.byte	0
+  56 0021 00       		.byte	0
+  57 0022 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 2
+
+
+  58 0023 00       		.byte	0
+  59 0024 00       		.byte	0
+  60 0025 00       		.byte	0
+  61 0026 00       		.byte	0
+  62 0027 00       		.byte	0
+  63 0028 00       		.byte	0
+  64 0029 00       		.byte	0
+  65 002a 00       		.byte	0
+  66 002b 00       		.byte	0
+  67 002c 00       		.byte	0
+  68 002d 00       		.byte	0
+  69 002e 00       		.byte	0
+  70 002f 00       		.byte	0
+  71 0030 00       		.byte	0
+  72 0031 00       		.byte	0
+  73 0032 00       		.byte	0
+  74 0033 00       		.byte	0
+  75 0034 00       		.byte	0
+  76 0035 00       		.byte	0
+  77 0036 00       		.byte	0
+  78 0037 00       		.byte	0
+  79 0038 00       		.byte	0
+  80 0039 00       		.byte	0
+  81 003a 00       		.byte	0
+  82 003b 00       		.byte	0
+  83 003c 00       		.byte	0
+  84 003d 00       		.byte	0
+  85 003e 00       		.byte	0
+  86 003f 00       		.byte	0
+  87              		.global	cy_bootloader
+  88              		.section	.cybootloader,"a",%progbits
+  89              		.align	2
+  90              		.type	cy_bootloader, %object
+  91              		.size	cy_bootloader, 3840
+  92              	cy_bootloader:
+  93 0000 00       		.byte	0
+  94 0001 10       		.byte	16
+  95 0002 00       		.byte	0
+  96 0003 20       		.byte	32
+  97 0004 11       		.byte	17
+  98 0005 00       		.byte	0
+  99 0006 00       		.byte	0
+ 100 0007 00       		.byte	0
+ 101 0008 81       		.byte	-127
+ 102 0009 03       		.byte	3
+ 103 000a 00       		.byte	0
+ 104 000b 00       		.byte	0
+ 105 000c 81       		.byte	-127
+ 106 000d 03       		.byte	3
+ 107 000e 00       		.byte	0
+ 108 000f 00       		.byte	0
+ 109 0010 08       		.byte	8
+ 110 0011 B5       		.byte	-75
+ 111 0012 00       		.byte	0
+ 112 0013 F0       		.byte	-16
+ 113 0014 A3       		.byte	-93
+ 114 0015 FD       		.byte	-3
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 3
+
+
+ 115 0016 00       		.byte	0
+ 116 0017 F0       		.byte	-16
+ 117 0018 B5       		.byte	-75
+ 118 0019 F9       		.byte	-7
+ 119 001a 00       		.byte	0
+ 120 001b 00       		.byte	0
+ 121 001c F8       		.byte	-8
+ 122 001d B5       		.byte	-75
+ 123 001e 72       		.byte	114
+ 124 001f B6       		.byte	-74
+ 125 0020 80       		.byte	-128
+ 126 0021 22       		.byte	34
+ 127 0022 00       		.byte	0
+ 128 0023 21       		.byte	33
+ 129 0024 D2       		.byte	-46
+ 130 0025 00       		.byte	0
+ 131 0026 4F       		.byte	79
+ 132 0027 48       		.byte	72
+ 133 0028 00       		.byte	0
+ 134 0029 F0       		.byte	-16
+ 135 002a 17       		.byte	23
+ 136 002b FF       		.byte	-1
+ 137 002c 80       		.byte	-128
+ 138 002d 23       		.byte	35
+ 139 002e 00       		.byte	0
+ 140 002f 21       		.byte	33
+ 141 0030 DA       		.byte	-38
+ 142 0031 00       		.byte	0
+ 143 0032 4D       		.byte	77
+ 144 0033 48       		.byte	72
+ 145 0034 00       		.byte	0
+ 146 0035 F0       		.byte	-16
+ 147 0036 11       		.byte	17
+ 148 0037 FF       		.byte	-1
+ 149 0038 00       		.byte	0
+ 150 0039 23       		.byte	35
+ 151 003a 19       		.byte	25
+ 152 003b 1C       		.byte	28
+ 153 003c 4B       		.byte	75
+ 154 003d 4F       		.byte	79
+ 155 003e FF       		.byte	-1
+ 156 003f 25       		.byte	37
+ 157 0040 D8       		.byte	-40
+ 158 0041 59       		.byte	89
+ 159 0042 4A       		.byte	74
+ 160 0043 00       		.byte	0
+ 161 0044 06       		.byte	6
+ 162 0045 1C       		.byte	28
+ 163 0046 AE       		.byte	-82
+ 164 0047 43       		.byte	67
+ 165 0048 10       		.byte	16
+ 166 0049 37       		.byte	55
+ 167 004a C4       		.byte	-60
+ 168 004b B2       		.byte	-78
+ 169 004c 35       		.byte	53
+ 170 004d 1C       		.byte	28
+ 171 004e BA       		.byte	-70
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 4
+
+
+ 172 004f 18       		.byte	24
+ 173 0050 00       		.byte	0
+ 174 0051 2C       		.byte	44
+ 175 0052 07       		.byte	7
+ 176 0053 D0       		.byte	-48
+ 177 0054 17       		.byte	23
+ 178 0055 78       		.byte	120
+ 179 0056 01       		.byte	1
+ 180 0057 3C       		.byte	60
+ 181 0058 7E       		.byte	126
+ 182 0059 19       		.byte	25
+ 183 005a 57       		.byte	87
+ 184 005b 78       		.byte	120
+ 185 005c E4       		.byte	-28
+ 186 005d B2       		.byte	-78
+ 187 005e 37       		.byte	55
+ 188 005f 70       		.byte	112
+ 189 0060 02       		.byte	2
+ 190 0061 32       		.byte	50
+ 191 0062 F5       		.byte	-11
+ 192 0063 E7       		.byte	-25
+ 193 0064 C0       		.byte	-64
+ 194 0065 B2       		.byte	-78
+ 195 0066 04       		.byte	4
+ 196 0067 33       		.byte	51
+ 197 0068 09       		.byte	9
+ 198 0069 18       		.byte	24
+ 199 006a 10       		.byte	16
+ 200 006b 2B       		.byte	43
+ 201 006c E6       		.byte	-26
+ 202 006d D1       		.byte	-47
+ 203 006e C0       		.byte	-64
+ 204 006f 24       		.byte	36
+ 205 0070 3F       		.byte	63
+ 206 0071 4B       		.byte	75
+ 207 0072 A7       		.byte	-89
+ 208 0073 04       		.byte	4
+ 209 0074 1F       		.byte	31
+ 210 0075 60       		.byte	96
+ 211 0076 EE       		.byte	-18
+ 212 0077 25       		.byte	37
+ 213 0078 3E       		.byte	62
+ 214 0079 4A       		.byte	74
+ 215 007a 3F       		.byte	63
+ 216 007b 49       		.byte	73
+ 217 007c 3F       		.byte	63
+ 218 007d 4F       		.byte	79
+ 219 007e 2E       		.byte	46
+ 220 007f 02       		.byte	2
+ 221 0080 80       		.byte	-128
+ 222 0081 24       		.byte	36
+ 223 0082 99       		.byte	-103
+ 224 0083 20       		.byte	32
+ 225 0084 16       		.byte	22
+ 226 0085 60       		.byte	96
+ 227 0086 E5       		.byte	-27
+ 228 0087 03       		.byte	3
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 5
+
+
+ 229 0088 08       		.byte	8
+ 230 0089 60       		.byte	96
+ 231 008a 3D       		.byte	61
+ 232 008b 4B       		.byte	75
+ 233 008c 3C       		.byte	60
+ 234 008d 60       		.byte	96
+ 235 008e 3D       		.byte	61
+ 236 008f 4A       		.byte	74
+ 237 0090 C0       		.byte	-64
+ 238 0091 20       		.byte	32
+ 239 0092 3D       		.byte	61
+ 240 0093 4C       		.byte	76
+ 241 0094 41       		.byte	65
+ 242 0095 03       		.byte	3
+ 243 0096 40       		.byte	64
+ 244 0097 26       		.byte	38
+ 245 0098 1D       		.byte	29
+ 246 0099 60       		.byte	96
+ 247 009a D8       		.byte	-40
+ 248 009b 27       		.byte	39
+ 249 009c 16       		.byte	22
+ 250 009d 60       		.byte	96
+ 251 009e 3B       		.byte	59
+ 252 009f 4B       		.byte	75
+ 253 00a0 21       		.byte	33
+ 254 00a1 60       		.byte	96
+ 255 00a2 3B       		.byte	59
+ 256 00a3 4A       		.byte	74
+ 257 00a4 3B       		.byte	59
+ 258 00a5 49       		.byte	73
+ 259 00a6 3D       		.byte	61
+ 260 00a7 01       		.byte	1
+ 261 00a8 02       		.byte	2
+ 262 00a9 26       		.byte	38
+ 263 00aa 31       		.byte	49
+ 264 00ab 20       		.byte	32
+ 265 00ac 1D       		.byte	29
+ 266 00ad 60       		.byte	96
+ 267 00ae 99       		.byte	-103
+ 268 00af 24       		.byte	36
+ 269 00b0 16       		.byte	22
+ 270 00b1 60       		.byte	96
+ 271 00b2 39       		.byte	57
+ 272 00b3 4D       		.byte	77
+ 273 00b4 08       		.byte	8
+ 274 00b5 60       		.byte	96
+ 275 00b6 80       		.byte	-128
+ 276 00b7 23       		.byte	35
+ 277 00b8 38       		.byte	56
+ 278 00b9 48       		.byte	72
+ 279 00ba 27       		.byte	39
+ 280 00bb 04       		.byte	4
+ 281 00bc 1A       		.byte	26
+ 282 00bd 06       		.byte	6
+ 283 00be 2F       		.byte	47
+ 284 00bf 60       		.byte	96
+ 285 00c0 37       		.byte	55
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 6
+
+
+ 286 00c1 49       		.byte	73
+ 287 00c2 02       		.byte	2
+ 288 00c3 60       		.byte	96
+ 289 00c4 80       		.byte	-128
+ 290 00c5 24       		.byte	36
+ 291 00c6 37       		.byte	55
+ 292 00c7 4B       		.byte	75
+ 293 00c8 37       		.byte	55
+ 294 00c9 4A       		.byte	74
+ 295 00ca A5       		.byte	-91
+ 296 00cb 05       		.byte	5
+ 297 00cc 0F       		.byte	15
+ 298 00cd 60       		.byte	96
+ 299 00ce 37       		.byte	55
+ 300 00cf 48       		.byte	72
+ 301 00d0 1D       		.byte	29
+ 302 00d1 60       		.byte	96
+ 303 00d2 17       		.byte	23
+ 304 00d3 60       		.byte	96
+ 305 00d4 36       		.byte	54
+ 306 00d5 4F       		.byte	79
+ 307 00d6 37       		.byte	55
+ 308 00d7 4C       		.byte	76
+ 309 00d8 07       		.byte	7
+ 310 00d9 60       		.byte	96
+ 311 00da 21       		.byte	33
+ 312 00db 78       		.byte	120
+ 313 00dc 06       		.byte	6
+ 314 00dd 25       		.byte	37
+ 315 00de 0E       		.byte	14
+ 316 00df 43       		.byte	67
+ 317 00e0 26       		.byte	38
+ 318 00e1 70       		.byte	112
+ 319 00e2 26       		.byte	38
+ 320 00e3 78       		.byte	120
+ 321 00e4 34       		.byte	52
+ 322 00e5 4A       		.byte	74
+ 323 00e6 2E       		.byte	46
+ 324 00e7 43       		.byte	67
+ 325 00e8 26       		.byte	38
+ 326 00e9 70       		.byte	112
+ 327 00ea 17       		.byte	23
+ 328 00eb 68       		.byte	104
+ 329 00ec 80       		.byte	-128
+ 330 00ed 23       		.byte	35
+ 331 00ee D8       		.byte	-40
+ 332 00ef 02       		.byte	2
+ 333 00f0 38       		.byte	56
+ 334 00f1 43       		.byte	67
+ 335 00f2 32       		.byte	50
+ 336 00f3 4C       		.byte	76
+ 337 00f4 32       		.byte	50
+ 338 00f5 49       		.byte	73
+ 339 00f6 10       		.byte	16
+ 340 00f7 60       		.byte	96
+ 341 00f8 20       		.byte	32
+ 342 00f9 78       		.byte	120
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 7
+
+
+ 343 00fa 32       		.byte	50
+ 344 00fb 4D       		.byte	77
+ 345 00fc 0C       		.byte	12
+ 346 00fd 78       		.byte	120
+ 347 00fe 17       		.byte	23
+ 348 00ff 1C       		.byte	28
+ 349 0100 2E       		.byte	46
+ 350 0101 78       		.byte	120
+ 351 0102 17       		.byte	23
+ 352 0103 2E       		.byte	46
+ 353 0104 05       		.byte	5
+ 354 0105 D9       		.byte	-39
+ 355 0106 30       		.byte	48
+ 356 0107 4A       		.byte	74
+ 357 0108 68       		.byte	104
+ 358 0109 78       		.byte	120
+ 359 010a AC       		.byte	-84
+ 360 010b 78       		.byte	120
+ 361 010c 03       		.byte	3
+ 362 010d 3D       		.byte	61
+ 363 010e 95       		.byte	-107
+ 364 010f 42       		.byte	66
+ 365 0110 F6       		.byte	-10
+ 366 0111 D1       		.byte	-47
+ 367 0112 2E       		.byte	46
+ 368 0113 4B       		.byte	75
+ 369 0114 2E       		.byte	46
+ 370 0115 49       		.byte	73
+ 371 0116 2F       		.byte	47
+ 372 0117 4D       		.byte	77
+ 373 0118 19       		.byte	25
+ 374 0119 26       		.byte	38
+ 375 011a 18       		.byte	24
+ 376 011b 60       		.byte	96
+ 377 011c 0C       		.byte	12
+ 378 011d 60       		.byte	96
+ 379 011e 05       		.byte	5
+ 380 011f 20       		.byte	32
+ 381 0120 2E       		.byte	46
+ 382 0121 60       		.byte	96
+ 383 0122 00       		.byte	0
+ 384 0123 F0       		.byte	-16
+ 385 0124 DD       		.byte	-35
+ 386 0125 FA       		.byte	-6
+ 387 0126 2C       		.byte	44
+ 388 0127 48       		.byte	72
+ 389 0128 2C       		.byte	44
+ 390 0129 4A       		.byte	74
+ 391 012a 04       		.byte	4
+ 392 012b 78       		.byte	120
+ 393 012c 05       		.byte	5
+ 394 012d 20       		.byte	32
+ 395 012e 14       		.byte	20
+ 396 012f 60       		.byte	96
+ 397 0130 00       		.byte	0
+ 398 0131 F0       		.byte	-16
+ 399 0132 0A       		.byte	10
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 8
+
+
+ 400 0133 FB       		.byte	-5
+ 401 0134 39       		.byte	57
+ 402 0135 68       		.byte	104
+ 403 0136 2A       		.byte	42
+ 404 0137 4B       		.byte	75
+ 405 0138 2A       		.byte	42
+ 406 0139 4E       		.byte	78
+ 407 013a 0B       		.byte	11
+ 408 013b 40       		.byte	64
+ 409 013c 2A       		.byte	42
+ 410 013d 48       		.byte	72
+ 411 013e 3B       		.byte	59
+ 412 013f 60       		.byte	96
+ 413 0140 20       		.byte	32
+ 414 0141 25       		.byte	37
+ 415 0142 10       		.byte	16
+ 416 0143 27       		.byte	39
+ 417 0144 37       		.byte	55
+ 418 0145 60       		.byte	96
+ 419 0146 80       		.byte	-128
+ 420 0147 24       		.byte	36
+ 421 0148 05       		.byte	5
+ 422 0149 60       		.byte	96
+ 423 014a 28       		.byte	40
+ 424 014b 4F       		.byte	79
+ 425 014c 28       		.byte	40
+ 426 014d 4E       		.byte	78
+ 427 014e 29       		.byte	41
+ 428 014f 4D       		.byte	77
+ 429 0150 29       		.byte	41
+ 430 0151 4A       		.byte	74
+ 431 0152 2A       		.byte	42
+ 432 0153 4B       		.byte	75
+ 433 0154 2A       		.byte	42
+ 434 0155 48       		.byte	72
+ 435 0156 21       		.byte	33
+ 436 0157 06       		.byte	6
+ 437 0158 11       		.byte	17
+ 438 0159 60       		.byte	96
+ 439 015a 19       		.byte	25
+ 440 015b 60       		.byte	96
+ 441 015c 37       		.byte	55
+ 442 015d 60       		.byte	96
+ 443 015e 05       		.byte	5
+ 444 015f 60       		.byte	96
+ 445 0160 F8       		.byte	-8
+ 446 0161 BD       		.byte	-67
+ 447 0162 C0       		.byte	-64
+ 448 0163 46       		.byte	70
+ 449 0164 00       		.byte	0
+ 450 0165 30       		.byte	48
+ 451 0166 0F       		.byte	15
+ 452 0167 40       		.byte	64
+ 453 0168 00       		.byte	0
+ 454 0169 40       		.byte	64
+ 455 016a 0F       		.byte	15
+ 456 016b 40       		.byte	64
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 9
+
+
+ 457 016c 78       		.byte	120
+ 458 016d 0E       		.byte	14
+ 459 016e 00       		.byte	0
+ 460 016f 00       		.byte	0
+ 461 0170 04       		.byte	4
+ 462 0171 00       		.byte	0
+ 463 0172 01       		.byte	1
+ 464 0173 40       		.byte	64
+ 465 0174 0C       		.byte	12
+ 466 0175 00       		.byte	0
+ 467 0176 01       		.byte	1
+ 468 0177 40       		.byte	64
+ 469 0178 10       		.byte	16
+ 470 0179 00       		.byte	0
+ 471 017a 01       		.byte	1
+ 472 017b 40       		.byte	64
+ 473 017c 00       		.byte	0
+ 474 017d 00       		.byte	0
+ 475 017e 04       		.byte	4
+ 476 017f 40       		.byte	64
+ 477 0180 08       		.byte	8
+ 478 0181 00       		.byte	0
+ 479 0182 04       		.byte	4
+ 480 0183 40       		.byte	64
+ 481 0184 00       		.byte	0
+ 482 0185 01       		.byte	1
+ 483 0186 04       		.byte	4
+ 484 0187 40       		.byte	64
+ 485 0188 08       		.byte	8
+ 486 0189 01       		.byte	1
+ 487 018a 04       		.byte	4
+ 488 018b 40       		.byte	64
+ 489 018c 08       		.byte	8
+ 490 018d 03       		.byte	3
+ 491 018e 04       		.byte	4
+ 492 018f 40       		.byte	64
+ 493 0190 00       		.byte	0
+ 494 0191 04       		.byte	4
+ 495 0192 04       		.byte	4
+ 496 0193 40       		.byte	64
+ 497 0194 08       		.byte	8
+ 498 0195 04       		.byte	4
+ 499 0196 04       		.byte	4
+ 500 0197 40       		.byte	64
+ 501 0198 00       		.byte	0
+ 502 0199 50       		.byte	80
+ 503 019a 0F       		.byte	15
+ 504 019b 40       		.byte	64
+ 505 019c 04       		.byte	4
+ 506 019d 50       		.byte	80
+ 507 019e 0F       		.byte	15
+ 508 019f 40       		.byte	64
+ 509 01a0 10       		.byte	16
+ 510 01a1 50       		.byte	80
+ 511 01a2 0F       		.byte	15
+ 512 01a3 40       		.byte	64
+ 513 01a4 18       		.byte	24
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 10
+
+
+ 514 01a5 50       		.byte	80
+ 515 01a6 0F       		.byte	15
+ 516 01a7 40       		.byte	64
+ 517 01a8 30       		.byte	48
+ 518 01a9 50       		.byte	80
+ 519 01aa 0F       		.byte	15
+ 520 01ab 40       		.byte	64
+ 521 01ac 20       		.byte	32
+ 522 01ad 01       		.byte	1
+ 523 01ae 05       		.byte	5
+ 524 01af 40       		.byte	64
+ 525 01b0 10       		.byte	16
+ 526 01b1 00       		.byte	0
+ 527 01b2 01       		.byte	1
+ 528 01b3 00       		.byte	0
+ 529 01b4 00       		.byte	0
+ 530 01b5 70       		.byte	112
+ 531 01b6 0F       		.byte	15
+ 532 01b7 40       		.byte	64
+ 533 01b8 00       		.byte	0
+ 534 01b9 01       		.byte	1
+ 535 01ba 0B       		.byte	11
+ 536 01bb 40       		.byte	64
+ 537 01bc CC       		.byte	-52
+ 538 01bd F1       		.byte	-15
+ 539 01be FF       		.byte	-1
+ 540 01bf 0F       		.byte	15
+ 541 01c0 CD       		.byte	-51
+ 542 01c1 F1       		.byte	-15
+ 543 01c2 FF       		.byte	-1
+ 544 01c3 0F       		.byte	15
+ 545 01c4 C9       		.byte	-55
+ 546 01c5 F1       		.byte	-15
+ 547 01c6 FF       		.byte	-1
+ 548 01c7 0F       		.byte	15
+ 549 01c8 BD       		.byte	-67
+ 550 01c9 F1       		.byte	-15
+ 551 01ca FF       		.byte	-1
+ 552 01cb 0F       		.byte	15
+ 553 01cc 1C       		.byte	28
+ 554 01cd FF       		.byte	-1
+ 555 01ce 0B       		.byte	11
+ 556 01cf 40       		.byte	64
+ 557 01d0 20       		.byte	32
+ 558 01d1 FF       		.byte	-1
+ 559 01d2 0B       		.byte	11
+ 560 01d3 40       		.byte	64
+ 561 01d4 2C       		.byte	44
+ 562 01d5 FF       		.byte	-1
+ 563 01d6 0B       		.byte	11
+ 564 01d7 40       		.byte	64
+ 565 01d8 E5       		.byte	-27
+ 566 01d9 F1       		.byte	-15
+ 567 01da FF       		.byte	-1
+ 568 01db 0F       		.byte	15
+ 569 01dc 28       		.byte	40
+ 570 01dd FF       		.byte	-1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 11
+
+
+ 571 01de 0B       		.byte	11
+ 572 01df 40       		.byte	64
+ 573 01e0 FF       		.byte	-1
+ 574 01e1 FF       		.byte	-1
+ 575 01e2 FB       		.byte	-5
+ 576 01e3 FF       		.byte	-1
+ 577 01e4 08       		.byte	8
+ 578 01e5 02       		.byte	2
+ 579 01e6 02       		.byte	2
+ 580 01e7 40       		.byte	64
+ 581 01e8 20       		.byte	32
+ 582 01e9 02       		.byte	2
+ 583 01ea 02       		.byte	2
+ 584 01eb 40       		.byte	64
+ 585 01ec 10       		.byte	16
+ 586 01ed 00       		.byte	0
+ 587 01ee 00       		.byte	0
+ 588 01ef 80       		.byte	-128
+ 589 01f0 00       		.byte	0
+ 590 01f1 00       		.byte	0
+ 591 01f2 02       		.byte	2
+ 592 01f3 40       		.byte	64
+ 593 01f4 AF       		.byte	-81
+ 594 01f5 04       		.byte	4
+ 595 01f6 00       		.byte	0
+ 596 01f7 80       		.byte	-128
+ 597 01f8 08       		.byte	8
+ 598 01f9 01       		.byte	1
+ 599 01fa 0B       		.byte	11
+ 600 01fb 40       		.byte	64
+ 601 01fc 04       		.byte	4
+ 602 01fd 01       		.byte	1
+ 603 01fe 0B       		.byte	11
+ 604 01ff 40       		.byte	64
+ 605 0200 40       		.byte	64
+ 606 0201 00       		.byte	0
+ 607 0202 02       		.byte	2
+ 608 0203 40       		.byte	64
+ 609 0204 10       		.byte	16
+ 610 0205 B5       		.byte	-75
+ 611 0206 06       		.byte	6
+ 612 0207 4C       		.byte	76
+ 613 0208 23       		.byte	35
+ 614 0209 78       		.byte	120
+ 615 020a 00       		.byte	0
+ 616 020b 2B       		.byte	43
+ 617 020c 07       		.byte	7
+ 618 020d D1       		.byte	-47
+ 619 020e 05       		.byte	5
+ 620 020f 48       		.byte	72
+ 621 0210 00       		.byte	0
+ 622 0211 28       		.byte	40
+ 623 0212 02       		.byte	2
+ 624 0213 D0       		.byte	-48
+ 625 0214 04       		.byte	4
+ 626 0215 48       		.byte	72
+ 627 0216 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 12
+
+
+ 628 0217 E0       		.byte	-32
+ 629 0218 00       		.byte	0
+ 630 0219 BF       		.byte	-65
+ 631 021a 01       		.byte	1
+ 632 021b 21       		.byte	33
+ 633 021c 21       		.byte	33
+ 634 021d 70       		.byte	112
+ 635 021e 10       		.byte	16
+ 636 021f BD       		.byte	-67
+ 637 0220 F0       		.byte	-16
+ 638 0221 00       		.byte	0
+ 639 0222 00       		.byte	0
+ 640 0223 20       		.byte	32
+ 641 0224 00       		.byte	0
+ 642 0225 00       		.byte	0
+ 643 0226 00       		.byte	0
+ 644 0227 00       		.byte	0
+ 645 0228 74       		.byte	116
+ 646 0229 0E       		.byte	14
+ 647 022a 00       		.byte	0
+ 648 022b 00       		.byte	0
+ 649 022c 08       		.byte	8
+ 650 022d B5       		.byte	-75
+ 651 022e 08       		.byte	8
+ 652 022f 4B       		.byte	75
+ 653 0230 00       		.byte	0
+ 654 0231 2B       		.byte	43
+ 655 0232 03       		.byte	3
+ 656 0233 D0       		.byte	-48
+ 657 0234 07       		.byte	7
+ 658 0235 48       		.byte	72
+ 659 0236 08       		.byte	8
+ 660 0237 49       		.byte	73
+ 661 0238 00       		.byte	0
+ 662 0239 E0       		.byte	-32
+ 663 023a 00       		.byte	0
+ 664 023b BF       		.byte	-65
+ 665 023c 07       		.byte	7
+ 666 023d 48       		.byte	72
+ 667 023e 01       		.byte	1
+ 668 023f 68       		.byte	104
+ 669 0240 00       		.byte	0
+ 670 0241 29       		.byte	41
+ 671 0242 03       		.byte	3
+ 672 0243 D0       		.byte	-48
+ 673 0244 06       		.byte	6
+ 674 0245 4A       		.byte	74
+ 675 0246 00       		.byte	0
+ 676 0247 2A       		.byte	42
+ 677 0248 00       		.byte	0
+ 678 0249 D0       		.byte	-48
+ 679 024a 90       		.byte	-112
+ 680 024b 47       		.byte	71
+ 681 024c 08       		.byte	8
+ 682 024d BD       		.byte	-67
+ 683 024e C0       		.byte	-64
+ 684 024f 46       		.byte	70
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 13
+
+
+ 685 0250 00       		.byte	0
+ 686 0251 00       		.byte	0
+ 687 0252 00       		.byte	0
+ 688 0253 00       		.byte	0
+ 689 0254 74       		.byte	116
+ 690 0255 0E       		.byte	14
+ 691 0256 00       		.byte	0
+ 692 0257 00       		.byte	0
+ 693 0258 F4       		.byte	-12
+ 694 0259 00       		.byte	0
+ 695 025a 00       		.byte	0
+ 696 025b 20       		.byte	32
+ 697 025c D0       		.byte	-48
+ 698 025d 00       		.byte	0
+ 699 025e 00       		.byte	0
+ 700 025f 20       		.byte	32
+ 701 0260 00       		.byte	0
+ 702 0261 00       		.byte	0
+ 703 0262 00       		.byte	0
+ 704 0263 00       		.byte	0
+ 705 0264 10       		.byte	16
+ 706 0265 B5       		.byte	-75
+ 707 0266 62       		.byte	98
+ 708 0267 B6       		.byte	-74
+ 709 0268 00       		.byte	0
+ 710 0269 F0       		.byte	-16
+ 711 026a DC       		.byte	-36
+ 712 026b FC       		.byte	-4
+ 713 026c 00       		.byte	0
+ 714 026d 28       		.byte	40
+ 715 026e 0E       		.byte	14
+ 716 026f D1       		.byte	-47
+ 717 0270 65       		.byte	101
+ 718 0271 24       		.byte	36
+ 719 0272 01       		.byte	1
+ 720 0273 20       		.byte	32
+ 721 0274 00       		.byte	0
+ 722 0275 F0       		.byte	-16
+ 723 0276 52       		.byte	82
+ 724 0277 FA       		.byte	-6
+ 725 0278 00       		.byte	0
+ 726 0279 F0       		.byte	-16
+ 727 027a D4       		.byte	-44
+ 728 027b FC       		.byte	-4
+ 729 027c 00       		.byte	0
+ 730 027d 28       		.byte	40
+ 731 027e 06       		.byte	6
+ 732 027f D1       		.byte	-47
+ 733 0280 01       		.byte	1
+ 734 0281 3C       		.byte	60
+ 735 0282 E4       		.byte	-28
+ 736 0283 B2       		.byte	-78
+ 737 0284 00       		.byte	0
+ 738 0285 2C       		.byte	44
+ 739 0286 F4       		.byte	-12
+ 740 0287 D1       		.byte	-47
+ 741 0288 03       		.byte	3
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 14
+
+
+ 742 0289 4B       		.byte	75
+ 743 028a 40       		.byte	64
+ 744 028b 22       		.byte	34
+ 745 028c 1A       		.byte	26
+ 746 028d 60       		.byte	96
+ 747 028e 00       		.byte	0
+ 748 028f F0       		.byte	-16
+ 749 0290 BB       		.byte	-69
+ 750 0291 FC       		.byte	-4
+ 751 0292 00       		.byte	0
+ 752 0293 F0       		.byte	-16
+ 753 0294 35       		.byte	53
+ 754 0295 FC       		.byte	-4
+ 755 0296 FE       		.byte	-2
+ 756 0297 E7       		.byte	-25
+ 757 0298 C0       		.byte	-64
+ 758 0299 00       		.byte	0
+ 759 029a 00       		.byte	0
+ 760 029b 20       		.byte	32
+ 761 029c 08       		.byte	8
+ 762 029d B5       		.byte	-75
+ 763 029e 00       		.byte	0
+ 764 029f F0       		.byte	-16
+ 765 02a0 C9       		.byte	-55
+ 766 02a1 F8       		.byte	-8
+ 767 02a2 00       		.byte	0
+ 768 02a3 F0       		.byte	-16
+ 769 02a4 01       		.byte	1
+ 770 02a5 F9       		.byte	-7
+ 771 02a6 00       		.byte	0
+ 772 02a7 F0       		.byte	-16
+ 773 02a8 69       		.byte	105
+ 774 02a9 F9       		.byte	-7
+ 775 02aa 08       		.byte	8
+ 776 02ab BD       		.byte	-67
+ 777 02ac 70       		.byte	112
+ 778 02ad B5       		.byte	-75
+ 779 02ae 05       		.byte	5
+ 780 02af 4B       		.byte	75
+ 781 02b0 0D       		.byte	13
+ 782 02b1 1C       		.byte	28
+ 783 02b2 16       		.byte	22
+ 784 02b3 1C       		.byte	28
+ 785 02b4 00       		.byte	0
+ 786 02b5 24       		.byte	36
+ 787 02b6 C9       		.byte	-55
+ 788 02b7 B2       		.byte	-78
+ 789 02b8 1C       		.byte	28
+ 790 02b9 80       		.byte	-128
+ 791 02ba 00       		.byte	0
+ 792 02bb F0       		.byte	-16
+ 793 02bc 53       		.byte	83
+ 794 02bd F9       		.byte	-7
+ 795 02be 35       		.byte	53
+ 796 02bf 80       		.byte	-128
+ 797 02c0 20       		.byte	32
+ 798 02c1 1C       		.byte	28
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 15
+
+
+ 799 02c2 70       		.byte	112
+ 800 02c3 BD       		.byte	-67
+ 801 02c4 0C       		.byte	12
+ 802 02c5 01       		.byte	1
+ 803 02c6 00       		.byte	0
+ 804 02c7 20       		.byte	32
+ 805 02c8 F0       		.byte	-16
+ 806 02c9 B5       		.byte	-75
+ 807 02ca 0A       		.byte	10
+ 808 02cb 27       		.byte	39
+ 809 02cc 5F       		.byte	95
+ 810 02cd 43       		.byte	67
+ 811 02ce 87       		.byte	-121
+ 812 02cf B0       		.byte	-80
+ 813 02d0 02       		.byte	2
+ 814 02d1 90       		.byte	-112
+ 815 02d2 05       		.byte	5
+ 816 02d3 91       		.byte	-111
+ 817 02d4 16       		.byte	22
+ 818 02d5 1C       		.byte	28
+ 819 02d6 00       		.byte	0
+ 820 02d7 25       		.byte	37
+ 821 02d8 28       		.byte	40
+ 822 02d9 4C       		.byte	76
+ 823 02da BD       		.byte	-67
+ 824 02db 42       		.byte	66
+ 825 02dc 1A       		.byte	26
+ 826 02dd DA       		.byte	-38
+ 827 02de 00       		.byte	0
+ 828 02df F0       		.byte	-16
+ 829 02e0 D1       		.byte	-47
+ 830 02e1 F8       		.byte	-8
+ 831 02e2 80       		.byte	-128
+ 832 02e3 B2       		.byte	-78
+ 833 02e4 20       		.byte	32
+ 834 02e5 80       		.byte	-128
+ 835 02e6 23       		.byte	35
+ 836 02e7 88       		.byte	-120
+ 837 02e8 00       		.byte	0
+ 838 02e9 2B       		.byte	43
+ 839 02ea 0D       		.byte	13
+ 840 02eb D0       		.byte	-48
+ 841 02ec 02       		.byte	2
+ 842 02ed 20       		.byte	32
+ 843 02ee 27       		.byte	39
+ 844 02ef 88       		.byte	-120
+ 845 02f0 00       		.byte	0
+ 846 02f1 F0       		.byte	-16
+ 847 02f2 14       		.byte	20
+ 848 02f3 FA       		.byte	-6
+ 849 02f4 00       		.byte	0
+ 850 02f5 F0       		.byte	-16
+ 851 02f6 C6       		.byte	-58
+ 852 02f7 F8       		.byte	-8
+ 853 02f8 81       		.byte	-127
+ 854 02f9 B2       		.byte	-78
+ 855 02fa 21       		.byte	33
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 16
+
+
+ 856 02fb 80       		.byte	-128
+ 857 02fc 22       		.byte	34
+ 858 02fd 88       		.byte	-120
+ 859 02fe BA       		.byte	-70
+ 860 02ff 42       		.byte	66
+ 861 0300 F4       		.byte	-12
+ 862 0301 D8       		.byte	-40
+ 863 0302 00       		.byte	0
+ 864 0303 20       		.byte	32
+ 865 0304 01       		.byte	1
+ 866 0305 90       		.byte	-112
+ 867 0306 07       		.byte	7
+ 868 0307 E0       		.byte	-32
+ 869 0308 01       		.byte	1
+ 870 0309 20       		.byte	32
+ 871 030a 01       		.byte	1
+ 872 030b 35       		.byte	53
+ 873 030c 00       		.byte	0
+ 874 030d F0       		.byte	-16
+ 875 030e 06       		.byte	6
+ 876 030f FA       		.byte	-6
+ 877 0310 AD       		.byte	-83
+ 878 0311 B2       		.byte	-78
+ 879 0312 E1       		.byte	-31
+ 880 0313 E7       		.byte	-25
+ 881 0314 05       		.byte	5
+ 882 0315 22       		.byte	34
+ 883 0316 01       		.byte	1
+ 884 0317 92       		.byte	-110
+ 885 0318 00       		.byte	0
+ 886 0319 25       		.byte	37
+ 887 031a 35       		.byte	53
+ 888 031b 80       		.byte	-128
+ 889 031c 23       		.byte	35
+ 890 031d 88       		.byte	-120
+ 891 031e 00       		.byte	0
+ 892 031f 2B       		.byte	43
+ 893 0320 28       		.byte	40
+ 894 0321 D0       		.byte	-48
+ 895 0322 27       		.byte	39
+ 896 0323 88       		.byte	-120
+ 897 0324 30       		.byte	48
+ 898 0325 88       		.byte	-120
+ 899 0326 05       		.byte	5
+ 900 0327 9B       		.byte	-101
+ 901 0328 C1       		.byte	-63
+ 902 0329 19       		.byte	25
+ 903 032a 8A       		.byte	-118
+ 904 032b B2       		.byte	-78
+ 905 032c 32       		.byte	50
+ 906 032d 80       		.byte	-128
+ 907 032e 9A       		.byte	-102
+ 908 032f 42       		.byte	66
+ 909 0330 1F       		.byte	31
+ 910 0331 D2       		.byte	-46
+ 911 0332 E8       		.byte	-24
+ 912 0333 19       		.byte	25
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 17
+
+
+ 913 0334 81       		.byte	-127
+ 914 0335 B2       		.byte	-78
+ 915 0336 04       		.byte	4
+ 916 0337 91       		.byte	-111
+ 917 0338 04       		.byte	4
+ 918 0339 9A       		.byte	-102
+ 919 033a 95       		.byte	-107
+ 920 033b 42       		.byte	66
+ 921 033c 09       		.byte	9
+ 922 033d D0       		.byte	-48
+ 923 033e 02       		.byte	2
+ 924 033f 98       		.byte	-104
+ 925 0340 41       		.byte	65
+ 926 0341 19       		.byte	25
+ 927 0342 03       		.byte	3
+ 928 0343 91       		.byte	-111
+ 929 0344 00       		.byte	0
+ 930 0345 F0       		.byte	-16
+ 931 0346 84       		.byte	-124
+ 932 0347 F8       		.byte	-8
+ 933 0348 03       		.byte	3
+ 934 0349 9A       		.byte	-102
+ 935 034a 01       		.byte	1
+ 936 034b 35       		.byte	53
+ 937 034c 10       		.byte	16
+ 938 034d 70       		.byte	112
+ 939 034e AD       		.byte	-83
+ 940 034f B2       		.byte	-78
+ 941 0350 F2       		.byte	-14
+ 942 0351 E7       		.byte	-25
+ 943 0352 72       		.byte	114
+ 944 0353 B6       		.byte	-74
+ 945 0354 23       		.byte	35
+ 946 0355 88       		.byte	-120
+ 947 0356 DF       		.byte	-33
+ 948 0357 1B       		.byte	27
+ 949 0358 B8       		.byte	-72
+ 950 0359 B2       		.byte	-78
+ 951 035a 20       		.byte	32
+ 952 035b 80       		.byte	-128
+ 953 035c 62       		.byte	98
+ 954 035d B6       		.byte	-74
+ 955 035e 02       		.byte	2
+ 956 035f 99       		.byte	-103
+ 957 0360 4A       		.byte	74
+ 958 0361 19       		.byte	25
+ 959 0362 01       		.byte	1
+ 960 0363 3A       		.byte	58
+ 961 0364 13       		.byte	19
+ 962 0365 78       		.byte	120
+ 963 0366 17       		.byte	23
+ 964 0367 2B       		.byte	43
+ 965 0368 D8       		.byte	-40
+ 966 0369 D0       		.byte	-48
+ 967 036a 05       		.byte	5
+ 968 036b 20       		.byte	32
+ 969 036c 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 18
+
+
+ 970 036d F0       		.byte	-16
+ 971 036e D6       		.byte	-42
+ 972 036f F9       		.byte	-7
+ 973 0370 D4       		.byte	-44
+ 974 0371 E7       		.byte	-25
+ 975 0372 30       		.byte	48
+ 976 0373 80       		.byte	-128
+ 977 0374 01       		.byte	1
+ 978 0375 98       		.byte	-104
+ 979 0376 07       		.byte	7
+ 980 0377 B0       		.byte	-80
+ 981 0378 F0       		.byte	-16
+ 982 0379 BD       		.byte	-67
+ 983 037a C0       		.byte	-64
+ 984 037b 46       		.byte	70
+ 985 037c 0C       		.byte	12
+ 986 037d 01       		.byte	1
+ 987 037e 00       		.byte	0
+ 988 037f 20       		.byte	32
+ 989 0380 00       		.byte	0
+ 990 0381 B5       		.byte	-75
+ 991 0382 FE       		.byte	-2
+ 992 0383 E7       		.byte	-25
+ 993 0384 70       		.byte	112
+ 994 0385 B5       		.byte	-75
+ 995 0386 0F       		.byte	15
+ 996 0387 49       		.byte	73
+ 997 0388 0F       		.byte	15
+ 998 0389 4A       		.byte	74
+ 999 038a 01       		.byte	1
+ 1000 038b 39       		.byte	57
+ 1001 038c 4B       		.byte	75
+ 1002 038d 1C       		.byte	28
+ 1003 038e 14       		.byte	20
+ 1004 038f D0       		.byte	-48
+ 1005 0390 50       		.byte	80
+ 1006 0391 68       		.byte	104
+ 1007 0392 95       		.byte	-107
+ 1008 0393 68       		.byte	104
+ 1009 0394 14       		.byte	20
+ 1010 0395 68       		.byte	104
+ 1011 0396 03       		.byte	3
+ 1012 0397 1C       		.byte	28
+ 1013 0398 1E       		.byte	30
+ 1014 0399 1A       		.byte	26
+ 1015 039a AE       		.byte	-82
+ 1016 039b 42       		.byte	66
+ 1017 039c 02       		.byte	2
+ 1018 039d D0       		.byte	-48
+ 1019 039e 40       		.byte	64
+ 1020 039f CC       		.byte	-52
+ 1021 03a0 40       		.byte	64
+ 1022 03a1 C3       		.byte	-61
+ 1023 03a2 F9       		.byte	-7
+ 1024 03a3 E7       		.byte	-25
+ 1025 03a4 D0       		.byte	-48
+ 1026 03a5 68       		.byte	104
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 19
+
+
+ 1027 03a6 1D       		.byte	29
+ 1028 03a7 1C       		.byte	28
+ 1029 03a8 5C       		.byte	92
+ 1030 03a9 1B       		.byte	27
+ 1031 03aa 84       		.byte	-124
+ 1032 03ab 42       		.byte	66
+ 1033 03ac 02       		.byte	2
+ 1034 03ad D0       		.byte	-48
+ 1035 03ae 00       		.byte	0
+ 1036 03af 26       		.byte	38
+ 1037 03b0 40       		.byte	64
+ 1038 03b1 C3       		.byte	-61
+ 1039 03b2 F9       		.byte	-7
+ 1040 03b3 E7       		.byte	-25
+ 1041 03b4 10       		.byte	16
+ 1042 03b5 32       		.byte	50
+ 1043 03b6 01       		.byte	1
+ 1044 03b7 39       		.byte	57
+ 1045 03b8 E8       		.byte	-24
+ 1046 03b9 E7       		.byte	-25
+ 1047 03ba 00       		.byte	0
+ 1048 03bb F0       		.byte	-16
+ 1049 03bc 1F       		.byte	31
+ 1050 03bd FD       		.byte	-3
+ 1051 03be FF       		.byte	-1
+ 1052 03bf F7       		.byte	-9
+ 1053 03c0 51       		.byte	81
+ 1054 03c1 FF       		.byte	-1
+ 1055 03c2 FE       		.byte	-2
+ 1056 03c3 E7       		.byte	-25
+ 1057 03c4 01       		.byte	1
+ 1058 03c5 00       		.byte	0
+ 1059 03c6 00       		.byte	0
+ 1060 03c7 00       		.byte	0
+ 1061 03c8 C8       		.byte	-56
+ 1062 03c9 0E       		.byte	14
+ 1063 03ca 00       		.byte	0
+ 1064 03cb 00       		.byte	0
+ 1065 03cc 08       		.byte	8
+ 1066 03cd B5       		.byte	-75
+ 1067 03ce 00       		.byte	0
+ 1068 03cf 23       		.byte	35
+ 1069 03d0 9A       		.byte	-102
+ 1070 03d1 00       		.byte	0
+ 1071 03d2 03       		.byte	3
+ 1072 03d3 2B       		.byte	43
+ 1073 03d4 02       		.byte	2
+ 1074 03d5 D8       		.byte	-40
+ 1075 03d6 0C       		.byte	12
+ 1076 03d7 48       		.byte	72
+ 1077 03d8 81       		.byte	-127
+ 1078 03d9 58       		.byte	88
+ 1079 03da 00       		.byte	0
+ 1080 03db E0       		.byte	-32
+ 1081 03dc 0B       		.byte	11
+ 1082 03dd 49       		.byte	73
+ 1083 03de 0C       		.byte	12
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 20
+
+
+ 1084 03df 48       		.byte	72
+ 1085 03e0 01       		.byte	1
+ 1086 03e1 33       		.byte	51
+ 1087 03e2 81       		.byte	-127
+ 1088 03e3 50       		.byte	80
+ 1089 03e4 30       		.byte	48
+ 1090 03e5 2B       		.byte	43
+ 1091 03e6 F3       		.byte	-13
+ 1092 03e7 D1       		.byte	-47
+ 1093 03e8 FF       		.byte	-1
+ 1094 03e9 F7       		.byte	-9
+ 1095 03ea 18       		.byte	24
+ 1096 03eb FE       		.byte	-2
+ 1097 03ec 09       		.byte	9
+ 1098 03ed 49       		.byte	73
+ 1099 03ee 0A       		.byte	10
+ 1100 03ef 4B       		.byte	75
+ 1101 03f0 08       		.byte	8
+ 1102 03f1 68       		.byte	104
+ 1103 03f2 00       		.byte	0
+ 1104 03f3 22       		.byte	34
+ 1105 03f4 1A       		.byte	26
+ 1106 03f5 60       		.byte	96
+ 1107 03f6 00       		.byte	0
+ 1108 03f7 28       		.byte	40
+ 1109 03f8 00       		.byte	0
+ 1110 03f9 D1       		.byte	-47
+ 1111 03fa 08       		.byte	8
+ 1112 03fb 60       		.byte	96
+ 1113 03fc 80       		.byte	-128
+ 1114 03fd 23       		.byte	35
+ 1115 03fe 01       		.byte	1
+ 1116 03ff 22       		.byte	34
+ 1117 0400 D9       		.byte	-39
+ 1118 0401 05       		.byte	5
+ 1119 0402 0A       		.byte	10
+ 1120 0403 60       		.byte	96
+ 1121 0404 08       		.byte	8
+ 1122 0405 BD       		.byte	-67
+ 1123 0406 C0       		.byte	-64
+ 1124 0407 46       		.byte	70
+ 1125 0408 00       		.byte	0
+ 1126 0409 00       		.byte	0
+ 1127 040a 00       		.byte	0
+ 1128 040b 00       		.byte	0
+ 1129 040c 81       		.byte	-127
+ 1130 040d 03       		.byte	3
+ 1131 040e 00       		.byte	0
+ 1132 040f 00       		.byte	0
+ 1133 0410 00       		.byte	0
+ 1134 0411 00       		.byte	0
+ 1135 0412 00       		.byte	0
+ 1136 0413 20       		.byte	32
+ 1137 0414 C0       		.byte	-64
+ 1138 0415 00       		.byte	0
+ 1139 0416 00       		.byte	0
+ 1140 0417 20       		.byte	32
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 21
+
+
+ 1141 0418 C8       		.byte	-56
+ 1142 0419 00       		.byte	0
+ 1143 041a 00       		.byte	0
+ 1144 041b 20       		.byte	32
+ 1145 041c 08       		.byte	8
+ 1146 041d B5       		.byte	-75
+ 1147 041e 04       		.byte	4
+ 1148 041f 4B       		.byte	75
+ 1149 0420 80       		.byte	-128
+ 1150 0421 22       		.byte	34
+ 1151 0422 19       		.byte	25
+ 1152 0423 68       		.byte	104
+ 1153 0424 10       		.byte	16
+ 1154 0425 06       		.byte	6
+ 1155 0426 08       		.byte	8
+ 1156 0427 43       		.byte	67
+ 1157 0428 18       		.byte	24
+ 1158 0429 60       		.byte	96
+ 1159 042a 00       		.byte	0
+ 1160 042b F0       		.byte	-16
+ 1161 042c 49       		.byte	73
+ 1162 042d F9       		.byte	-7
+ 1163 042e 08       		.byte	8
+ 1164 042f BD       		.byte	-67
+ 1165 0430 00       		.byte	0
+ 1166 0431 00       		.byte	0
+ 1167 0432 06       		.byte	6
+ 1168 0433 40       		.byte	64
+ 1169 0434 08       		.byte	8
+ 1170 0435 B5       		.byte	-75
+ 1171 0436 05       		.byte	5
+ 1172 0437 4B       		.byte	75
+ 1173 0438 1A       		.byte	26
+ 1174 0439 78       		.byte	120
+ 1175 043a 00       		.byte	0
+ 1176 043b 2A       		.byte	42
+ 1177 043c 03       		.byte	3
+ 1178 043d D1       		.byte	-47
+ 1179 043e 01       		.byte	1
+ 1180 043f 20       		.byte	32
+ 1181 0440 18       		.byte	24
+ 1182 0441 70       		.byte	112
+ 1183 0442 00       		.byte	0
+ 1184 0443 F0       		.byte	-16
+ 1185 0444 BD       		.byte	-67
+ 1186 0445 F8       		.byte	-8
+ 1187 0446 FF       		.byte	-1
+ 1188 0447 F7       		.byte	-9
+ 1189 0448 E9       		.byte	-23
+ 1190 0449 FF       		.byte	-1
+ 1191 044a 08       		.byte	8
+ 1192 044b BD       		.byte	-67
+ 1193 044c 10       		.byte	16
+ 1194 044d 01       		.byte	1
+ 1195 044e 00       		.byte	0
+ 1196 044f 20       		.byte	32
+ 1197 0450 09       		.byte	9
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 22
+
+
+ 1198 0451 4B       		.byte	75
+ 1199 0452 00       		.byte	0
+ 1200 0453 B5       		.byte	-75
+ 1201 0454 19       		.byte	25
+ 1202 0455 68       		.byte	104
+ 1203 0456 09       		.byte	9
+ 1204 0457 4B       		.byte	75
+ 1205 0458 1A       		.byte	26
+ 1206 0459 68       		.byte	104
+ 1207 045a 91       		.byte	-111
+ 1208 045b 42       		.byte	66
+ 1209 045c 0A       		.byte	10
+ 1210 045d D0       		.byte	-48
+ 1211 045e 19       		.byte	25
+ 1212 045f 68       		.byte	104
+ 1213 0460 4A       		.byte	74
+ 1214 0461 1C       		.byte	28
+ 1215 0462 40       		.byte	64
+ 1216 0463 39       		.byte	57
+ 1217 0464 48       		.byte	72
+ 1218 0465 1E       		.byte	30
+ 1219 0466 81       		.byte	-127
+ 1220 0467 41       		.byte	65
+ 1221 0468 48       		.byte	72
+ 1222 0469 42       		.byte	66
+ 1223 046a 05       		.byte	5
+ 1224 046b 49       		.byte	73
+ 1225 046c 02       		.byte	2
+ 1226 046d 40       		.byte	64
+ 1227 046e 88       		.byte	-120
+ 1228 046f 5C       		.byte	92
+ 1229 0470 1A       		.byte	26
+ 1230 0471 60       		.byte	96
+ 1231 0472 00       		.byte	0
+ 1232 0473 E0       		.byte	-32
+ 1233 0474 00       		.byte	0
+ 1234 0475 20       		.byte	32
+ 1235 0476 00       		.byte	0
+ 1236 0477 BD       		.byte	-67
+ 1237 0478 AC       		.byte	-84
+ 1238 0479 01       		.byte	1
+ 1239 047a 00       		.byte	0
+ 1240 047b 20       		.byte	32
+ 1241 047c 24       		.byte	36
+ 1242 047d 01       		.byte	1
+ 1243 047e 00       		.byte	0
+ 1244 047f 20       		.byte	32
+ 1245 0480 68       		.byte	104
+ 1246 0481 01       		.byte	1
+ 1247 0482 00       		.byte	0
+ 1248 0483 20       		.byte	32
+ 1249 0484 06       		.byte	6
+ 1250 0485 4B       		.byte	75
+ 1251 0486 07       		.byte	7
+ 1252 0487 4A       		.byte	74
+ 1253 0488 1B       		.byte	27
+ 1254 0489 68       		.byte	104
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 23
+
+
+ 1255 048a 11       		.byte	17
+ 1256 048b 68       		.byte	104
+ 1257 048c 00       		.byte	0
+ 1258 048d B5       		.byte	-75
+ 1259 048e 8B       		.byte	-117
+ 1260 048f 42       		.byte	66
+ 1261 0490 02       		.byte	2
+ 1262 0491 D3       		.byte	-45
+ 1263 0492 12       		.byte	18
+ 1264 0493 68       		.byte	104
+ 1265 0494 98       		.byte	-104
+ 1266 0495 1A       		.byte	26
+ 1267 0496 02       		.byte	2
+ 1268 0497 E0       		.byte	-32
+ 1269 0498 10       		.byte	16
+ 1270 0499 68       		.byte	104
+ 1271 049a 41       		.byte	65
+ 1272 049b 33       		.byte	51
+ 1273 049c 18       		.byte	24
+ 1274 049d 1A       		.byte	26
+ 1275 049e 00       		.byte	0
+ 1276 049f BD       		.byte	-67
+ 1277 04a0 AC       		.byte	-84
+ 1278 04a1 01       		.byte	1
+ 1279 04a2 00       		.byte	0
+ 1280 04a3 20       		.byte	32
+ 1281 04a4 24       		.byte	36
+ 1282 04a5 01       		.byte	1
+ 1283 04a6 00       		.byte	0
+ 1284 04a7 20       		.byte	32
+ 1285 04a8 0C       		.byte	12
+ 1286 04a9 4A       		.byte	74
+ 1287 04aa 0D       		.byte	13
+ 1288 04ab 4B       		.byte	75
+ 1289 04ac 00       		.byte	0
+ 1290 04ad 21       		.byte	33
+ 1291 04ae 30       		.byte	48
+ 1292 04af B5       		.byte	-75
+ 1293 04b0 10       		.byte	16
+ 1294 04b1 68       		.byte	104
+ 1295 04b2 11       		.byte	17
+ 1296 04b3 60       		.byte	96
+ 1297 04b4 1D       		.byte	29
+ 1298 04b5 68       		.byte	104
+ 1299 04b6 80       		.byte	-128
+ 1300 04b7 24       		.byte	36
+ 1301 04b8 64       		.byte	100
+ 1302 04b9 02       		.byte	2
+ 1303 04ba 2C       		.byte	44
+ 1304 04bb 43       		.byte	67
+ 1305 04bc 1C       		.byte	28
+ 1306 04bd 60       		.byte	96
+ 1307 04be 1D       		.byte	29
+ 1308 04bf 68       		.byte	104
+ 1309 04c0 08       		.byte	8
+ 1310 04c1 4C       		.byte	76
+ 1311 04c2 2C       		.byte	44
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 24
+
+
+ 1312 04c3 40       		.byte	64
+ 1313 04c4 1C       		.byte	28
+ 1314 04c5 60       		.byte	96
+ 1315 04c6 08       		.byte	8
+ 1316 04c7 4B       		.byte	75
+ 1317 04c8 08       		.byte	8
+ 1318 04c9 4C       		.byte	76
+ 1319 04ca 1D       		.byte	29
+ 1320 04cb 68       		.byte	104
+ 1321 04cc 08       		.byte	8
+ 1322 04cd 4B       		.byte	75
+ 1323 04ce 25       		.byte	37
+ 1324 04cf 60       		.byte	96
+ 1325 04d0 19       		.byte	25
+ 1326 04d1 70       		.byte	112
+ 1327 04d2 08       		.byte	8
+ 1328 04d3 4D       		.byte	77
+ 1329 04d4 08       		.byte	8
+ 1330 04d5 49       		.byte	73
+ 1331 04d6 29       		.byte	41
+ 1332 04d7 60       		.byte	96
+ 1333 04d8 10       		.byte	16
+ 1334 04d9 60       		.byte	96
+ 1335 04da 30       		.byte	48
+ 1336 04db BD       		.byte	-67
+ 1337 04dc C8       		.byte	-56
+ 1338 04dd 0F       		.byte	15
+ 1339 04de 06       		.byte	6
+ 1340 04df 40       		.byte	64
+ 1341 04e0 04       		.byte	4
+ 1342 04e1 03       		.byte	3
+ 1343 04e2 06       		.byte	6
+ 1344 04e3 40       		.byte	64
+ 1345 04e4 FF       		.byte	-1
+ 1346 04e5 FF       		.byte	-1
+ 1347 04e6 FE       		.byte	-2
+ 1348 04e7 FF       		.byte	-1
+ 1349 04e8 24       		.byte	36
+ 1350 04e9 01       		.byte	1
+ 1351 04ea 00       		.byte	0
+ 1352 04eb 20       		.byte	32
+ 1353 04ec AC       		.byte	-84
+ 1354 04ed 01       		.byte	1
+ 1355 04ee 00       		.byte	0
+ 1356 04ef 20       		.byte	32
+ 1357 04f0 A9       		.byte	-87
+ 1358 04f1 01       		.byte	1
+ 1359 04f2 00       		.byte	0
+ 1360 04f3 20       		.byte	32
+ 1361 04f4 C0       		.byte	-64
+ 1362 04f5 0F       		.byte	15
+ 1363 04f6 06       		.byte	6
+ 1364 04f7 40       		.byte	64
+ 1365 04f8 ED       		.byte	-19
+ 1366 04f9 0F       		.byte	15
+ 1367 04fa 00       		.byte	0
+ 1368 04fb 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 25
+
+
+ 1369 04fc 12       		.byte	18
+ 1370 04fd 49       		.byte	73
+ 1371 04fe 10       		.byte	16
+ 1372 04ff B5       		.byte	-75
+ 1373 0500 0A       		.byte	10
+ 1374 0501 68       		.byte	104
+ 1375 0502 53       		.byte	83
+ 1376 0503 1C       		.byte	28
+ 1377 0504 3F       		.byte	63
+ 1378 0505 3A       		.byte	58
+ 1379 0506 54       		.byte	84
+ 1380 0507 1E       		.byte	30
+ 1381 0508 A2       		.byte	-94
+ 1382 0509 41       		.byte	65
+ 1383 050a 54       		.byte	84
+ 1384 050b 42       		.byte	66
+ 1385 050c 23       		.byte	35
+ 1386 050d 40       		.byte	64
+ 1387 050e 0F       		.byte	15
+ 1388 050f 4A       		.byte	74
+ 1389 0510 14       		.byte	20
+ 1390 0511 68       		.byte	104
+ 1391 0512 A3       		.byte	-93
+ 1392 0513 42       		.byte	66
+ 1393 0514 FB       		.byte	-5
+ 1394 0515 D0       		.byte	-48
+ 1395 0516 0C       		.byte	12
+ 1396 0517 68       		.byte	104
+ 1397 0518 12       		.byte	18
+ 1398 0519 68       		.byte	104
+ 1399 051a 94       		.byte	-108
+ 1400 051b 42       		.byte	66
+ 1401 051c 08       		.byte	8
+ 1402 051d D1       		.byte	-47
+ 1403 051e 0C       		.byte	12
+ 1404 051f 4C       		.byte	76
+ 1405 0520 0F       		.byte	15
+ 1406 0521 22       		.byte	34
+ 1407 0522 24       		.byte	36
+ 1408 0523 68       		.byte	104
+ 1409 0524 22       		.byte	34
+ 1410 0525 40       		.byte	64
+ 1411 0526 08       		.byte	8
+ 1412 0527 2A       		.byte	42
+ 1413 0528 02       		.byte	2
+ 1414 0529 D0       		.byte	-48
+ 1415 052a 0A       		.byte	10
+ 1416 052b 4A       		.byte	74
+ 1417 052c 10       		.byte	16
+ 1418 052d 60       		.byte	96
+ 1419 052e 0A       		.byte	10
+ 1420 052f E0       		.byte	-32
+ 1421 0530 09       		.byte	9
+ 1422 0531 4C       		.byte	76
+ 1423 0532 02       		.byte	2
+ 1424 0533 22       		.byte	34
+ 1425 0534 22       		.byte	34
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 26
+
+
+ 1426 0535 60       		.byte	96
+ 1427 0536 09       		.byte	9
+ 1428 0537 4C       		.byte	76
+ 1429 0538 C0       		.byte	-64
+ 1430 0539 B2       		.byte	-78
+ 1431 053a E0       		.byte	-32
+ 1432 053b 54       		.byte	84
+ 1433 053c 0B       		.byte	11
+ 1434 053d 60       		.byte	96
+ 1435 053e 08       		.byte	8
+ 1436 053f 4B       		.byte	75
+ 1437 0540 19       		.byte	25
+ 1438 0541 68       		.byte	104
+ 1439 0542 0A       		.byte	10
+ 1440 0543 43       		.byte	67
+ 1441 0544 1A       		.byte	26
+ 1442 0545 60       		.byte	96
+ 1443 0546 10       		.byte	16
+ 1444 0547 BD       		.byte	-67
+ 1445 0548 20       		.byte	32
+ 1446 0549 01       		.byte	1
+ 1447 054a 00       		.byte	0
+ 1448 054b 20       		.byte	32
+ 1449 054c 1C       		.byte	28
+ 1450 054d 01       		.byte	1
+ 1451 054e 00       		.byte	0
+ 1452 054f 20       		.byte	32
+ 1453 0550 08       		.byte	8
+ 1454 0551 02       		.byte	2
+ 1455 0552 06       		.byte	6
+ 1456 0553 40       		.byte	64
+ 1457 0554 40       		.byte	64
+ 1458 0555 02       		.byte	2
+ 1459 0556 06       		.byte	6
+ 1460 0557 40       		.byte	64
+ 1461 0558 80       		.byte	-128
+ 1462 0559 0F       		.byte	15
+ 1463 055a 06       		.byte	6
+ 1464 055b 40       		.byte	64
+ 1465 055c 28       		.byte	40
+ 1466 055d 01       		.byte	1
+ 1467 055e 00       		.byte	0
+ 1468 055f 20       		.byte	32
+ 1469 0560 88       		.byte	-120
+ 1470 0561 0F       		.byte	15
+ 1471 0562 06       		.byte	6
+ 1472 0563 40       		.byte	64
+ 1473 0564 38       		.byte	56
+ 1474 0565 B5       		.byte	-75
+ 1475 0566 04       		.byte	4
+ 1476 0567 1C       		.byte	28
+ 1477 0568 45       		.byte	69
+ 1478 0569 18       		.byte	24
+ 1479 056a AC       		.byte	-84
+ 1480 056b 42       		.byte	66
+ 1481 056c 04       		.byte	4
+ 1482 056d D0       		.byte	-48
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 27
+
+
+ 1483 056e 20       		.byte	32
+ 1484 056f 78       		.byte	120
+ 1485 0570 FF       		.byte	-1
+ 1486 0571 F7       		.byte	-9
+ 1487 0572 C4       		.byte	-60
+ 1488 0573 FF       		.byte	-1
+ 1489 0574 01       		.byte	1
+ 1490 0575 34       		.byte	52
+ 1491 0576 F8       		.byte	-8
+ 1492 0577 E7       		.byte	-25
+ 1493 0578 38       		.byte	56
+ 1494 0579 BD       		.byte	-67
+ 1495 057a 00       		.byte	0
+ 1496 057b 00       		.byte	0
+ 1497 057c 0B       		.byte	11
+ 1498 057d 4A       		.byte	74
+ 1499 057e 00       		.byte	0
+ 1500 057f 23       		.byte	35
+ 1501 0580 11       		.byte	17
+ 1502 0581 68       		.byte	104
+ 1503 0582 10       		.byte	16
+ 1504 0583 B5       		.byte	-75
+ 1505 0584 13       		.byte	19
+ 1506 0585 60       		.byte	96
+ 1507 0586 0A       		.byte	10
+ 1508 0587 4B       		.byte	75
+ 1509 0588 80       		.byte	-128
+ 1510 0589 20       		.byte	32
+ 1511 058a 1C       		.byte	28
+ 1512 058b 68       		.byte	104
+ 1513 058c 40       		.byte	64
+ 1514 058d 02       		.byte	2
+ 1515 058e 20       		.byte	32
+ 1516 058f 43       		.byte	67
+ 1517 0590 18       		.byte	24
+ 1518 0591 60       		.byte	96
+ 1519 0592 1C       		.byte	28
+ 1520 0593 68       		.byte	104
+ 1521 0594 07       		.byte	7
+ 1522 0595 48       		.byte	72
+ 1523 0596 20       		.byte	32
+ 1524 0597 40       		.byte	64
+ 1525 0598 18       		.byte	24
+ 1526 0599 60       		.byte	96
+ 1527 059a 07       		.byte	7
+ 1528 059b 4B       		.byte	75
+ 1529 059c 07       		.byte	7
+ 1530 059d 48       		.byte	72
+ 1531 059e 1C       		.byte	28
+ 1532 059f 68       		.byte	104
+ 1533 05a0 02       		.byte	2
+ 1534 05a1 23       		.byte	35
+ 1535 05a2 99       		.byte	-103
+ 1536 05a3 43       		.byte	67
+ 1537 05a4 04       		.byte	4
+ 1538 05a5 60       		.byte	96
+ 1539 05a6 11       		.byte	17
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 28
+
+
+ 1540 05a7 60       		.byte	96
+ 1541 05a8 10       		.byte	16
+ 1542 05a9 BD       		.byte	-67
+ 1543 05aa C0       		.byte	-64
+ 1544 05ab 46       		.byte	70
+ 1545 05ac 88       		.byte	-120
+ 1546 05ad 0F       		.byte	15
+ 1547 05ae 06       		.byte	6
+ 1548 05af 40       		.byte	64
+ 1549 05b0 04       		.byte	4
+ 1550 05b1 02       		.byte	2
+ 1551 05b2 06       		.byte	6
+ 1552 05b3 40       		.byte	64
+ 1553 05b4 FF       		.byte	-1
+ 1554 05b5 FF       		.byte	-1
+ 1555 05b6 FE       		.byte	-2
+ 1556 05b7 FF       		.byte	-1
+ 1557 05b8 1C       		.byte	28
+ 1558 05b9 01       		.byte	1
+ 1559 05ba 00       		.byte	0
+ 1560 05bb 20       		.byte	32
+ 1561 05bc 20       		.byte	32
+ 1562 05bd 01       		.byte	1
+ 1563 05be 00       		.byte	0
+ 1564 05bf 20       		.byte	32
+ 1565 05c0 1B       		.byte	27
+ 1566 05c1 4A       		.byte	74
+ 1567 05c2 1C       		.byte	28
+ 1568 05c3 4B       		.byte	75
+ 1569 05c4 1C       		.byte	28
+ 1570 05c5 48       		.byte	72
+ 1571 05c6 10       		.byte	16
+ 1572 05c7 B5       		.byte	-75
+ 1573 05c8 1C       		.byte	28
+ 1574 05c9 49       		.byte	73
+ 1575 05ca 00       		.byte	0
+ 1576 05cb 24       		.byte	36
+ 1577 05cc 1A       		.byte	26
+ 1578 05cd 60       		.byte	96
+ 1579 05ce 04       		.byte	4
+ 1580 05cf 60       		.byte	96
+ 1581 05d0 01       		.byte	1
+ 1582 05d1 22       		.byte	34
+ 1583 05d2 1B       		.byte	27
+ 1584 05d3 4B       		.byte	75
+ 1585 05d4 1B       		.byte	27
+ 1586 05d5 48       		.byte	72
+ 1587 05d6 0A       		.byte	10
+ 1588 05d7 60       		.byte	96
+ 1589 05d8 1B       		.byte	27
+ 1590 05d9 49       		.byte	73
+ 1591 05da 03       		.byte	3
+ 1592 05db 60       		.byte	96
+ 1593 05dc 07       		.byte	7
+ 1594 05dd 20       		.byte	32
+ 1595 05de 08       		.byte	8
+ 1596 05df 60       		.byte	96
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 29
+
+
+ 1597 05e0 1A       		.byte	26
+ 1598 05e1 49       		.byte	73
+ 1599 05e2 1B       		.byte	27
+ 1600 05e3 48       		.byte	72
+ 1601 05e4 04       		.byte	4
+ 1602 05e5 60       		.byte	96
+ 1603 05e6 0A       		.byte	10
+ 1604 05e7 60       		.byte	96
+ 1605 05e8 1A       		.byte	26
+ 1606 05e9 4A       		.byte	74
+ 1607 05ea 13       		.byte	19
+ 1608 05eb 60       		.byte	96
+ 1609 05ec 1A       		.byte	26
+ 1610 05ed 4B       		.byte	75
+ 1611 05ee 1C       		.byte	28
+ 1612 05ef 60       		.byte	96
+ 1613 05f0 00       		.byte	0
+ 1614 05f1 F0       		.byte	-16
+ 1615 05f2 6E       		.byte	110
+ 1616 05f3 F8       		.byte	-8
+ 1617 05f4 19       		.byte	25
+ 1618 05f5 48       		.byte	72
+ 1619 05f6 00       		.byte	0
+ 1620 05f7 F0       		.byte	-16
+ 1621 05f8 49       		.byte	73
+ 1622 05f9 F8       		.byte	-8
+ 1623 05fa 03       		.byte	3
+ 1624 05fb 20       		.byte	32
+ 1625 05fc 00       		.byte	0
+ 1626 05fd F0       		.byte	-16
+ 1627 05fe 4C       		.byte	76
+ 1628 05ff F8       		.byte	-8
+ 1629 0600 17       		.byte	23
+ 1630 0601 48       		.byte	72
+ 1631 0602 18       		.byte	24
+ 1632 0603 49       		.byte	73
+ 1633 0604 18       		.byte	24
+ 1634 0605 4A       		.byte	74
+ 1635 0606 19       		.byte	25
+ 1636 0607 4B       		.byte	75
+ 1637 0608 04       		.byte	4
+ 1638 0609 60       		.byte	96
+ 1639 060a 0C       		.byte	12
+ 1640 060b 60       		.byte	96
+ 1641 060c 14       		.byte	20
+ 1642 060d 60       		.byte	96
+ 1643 060e 18       		.byte	24
+ 1644 060f 49       		.byte	73
+ 1645 0610 1C       		.byte	28
+ 1646 0611 60       		.byte	96
+ 1647 0612 18       		.byte	24
+ 1648 0613 4A       		.byte	74
+ 1649 0614 18       		.byte	24
+ 1650 0615 4B       		.byte	75
+ 1651 0616 04       		.byte	4
+ 1652 0617 20       		.byte	32
+ 1653 0618 08       		.byte	8
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 30
+
+
+ 1654 0619 60       		.byte	96
+ 1655 061a 14       		.byte	20
+ 1656 061b 60       		.byte	96
+ 1657 061c 17       		.byte	23
+ 1658 061d 48       		.byte	72
+ 1659 061e 1C       		.byte	28
+ 1660 061f 60       		.byte	96
+ 1661 0620 17       		.byte	23
+ 1662 0621 49       		.byte	73
+ 1663 0622 18       		.byte	24
+ 1664 0623 4A       		.byte	74
+ 1665 0624 18       		.byte	24
+ 1666 0625 4B       		.byte	75
+ 1667 0626 04       		.byte	4
+ 1668 0627 60       		.byte	96
+ 1669 0628 0C       		.byte	12
+ 1670 0629 70       		.byte	112
+ 1671 062a 14       		.byte	20
+ 1672 062b 60       		.byte	96
+ 1673 062c 1C       		.byte	28
+ 1674 062d 60       		.byte	96
+ 1675 062e 10       		.byte	16
+ 1676 062f BD       		.byte	-67
+ 1677 0630 0B       		.byte	11
+ 1678 0631 00       		.byte	0
+ 1679 0632 00       		.byte	0
+ 1680 0633 02       		.byte	2
+ 1681 0634 00       		.byte	0
+ 1682 0635 00       		.byte	0
+ 1683 0636 06       		.byte	6
+ 1684 0637 40       		.byte	64
+ 1685 0638 40       		.byte	64
+ 1686 0639 00       		.byte	0
+ 1687 063a 06       		.byte	6
+ 1688 063b 40       		.byte	64
+ 1689 063c 48       		.byte	72
+ 1690 063d 00       		.byte	0
+ 1691 063e 06       		.byte	6
+ 1692 063f 40       		.byte	64
+ 1693 0640 07       		.byte	7
+ 1694 0641 00       		.byte	0
+ 1695 0642 00       		.byte	0
+ 1696 0643 80       		.byte	-128
+ 1697 0644 00       		.byte	0
+ 1698 0645 03       		.byte	3
+ 1699 0646 06       		.byte	6
+ 1700 0647 40       		.byte	64
+ 1701 0648 04       		.byte	4
+ 1702 0649 03       		.byte	3
+ 1703 064a 06       		.byte	6
+ 1704 064b 40       		.byte	64
+ 1705 064c 44       		.byte	68
+ 1706 064d 00       		.byte	0
+ 1707 064e 06       		.byte	6
+ 1708 064f 40       		.byte	64
+ 1709 0650 10       		.byte	16
+ 1710 0651 03       		.byte	3
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 31
+
+
+ 1711 0652 06       		.byte	6
+ 1712 0653 40       		.byte	64
+ 1713 0654 00       		.byte	0
+ 1714 0655 02       		.byte	2
+ 1715 0656 06       		.byte	6
+ 1716 0657 40       		.byte	64
+ 1717 0658 04       		.byte	4
+ 1718 0659 02       		.byte	2
+ 1719 065a 06       		.byte	6
+ 1720 065b 40       		.byte	64
+ 1721 065c 35       		.byte	53
+ 1722 065d 0C       		.byte	12
+ 1723 065e 00       		.byte	0
+ 1724 065f 00       		.byte	0
+ 1725 0660 88       		.byte	-120
+ 1726 0661 0E       		.byte	14
+ 1727 0662 06       		.byte	6
+ 1728 0663 40       		.byte	64
+ 1729 0664 C8       		.byte	-56
+ 1730 0665 0E       		.byte	14
+ 1731 0666 06       		.byte	6
+ 1732 0667 40       		.byte	64
+ 1733 0668 48       		.byte	72
+ 1734 0669 0F       		.byte	15
+ 1735 066a 06       		.byte	6
+ 1736 066b 40       		.byte	64
+ 1737 066c 08       		.byte	8
+ 1738 066d 0F       		.byte	15
+ 1739 066e 06       		.byte	6
+ 1740 066f 40       		.byte	64
+ 1741 0670 C8       		.byte	-56
+ 1742 0671 0F       		.byte	15
+ 1743 0672 06       		.byte	6
+ 1744 0673 40       		.byte	64
+ 1745 0674 88       		.byte	-120
+ 1746 0675 0F       		.byte	15
+ 1747 0676 06       		.byte	6
+ 1748 0677 40       		.byte	64
+ 1749 0678 AC       		.byte	-84
+ 1750 0679 01       		.byte	1
+ 1751 067a 00       		.byte	0
+ 1752 067b 20       		.byte	32
+ 1753 067c 24       		.byte	36
+ 1754 067d 01       		.byte	1
+ 1755 067e 00       		.byte	0
+ 1756 067f 20       		.byte	32
+ 1757 0680 A9       		.byte	-87
+ 1758 0681 01       		.byte	1
+ 1759 0682 00       		.byte	0
+ 1760 0683 20       		.byte	32
+ 1761 0684 20       		.byte	32
+ 1762 0685 01       		.byte	1
+ 1763 0686 00       		.byte	0
+ 1764 0687 20       		.byte	32
+ 1765 0688 1C       		.byte	28
+ 1766 0689 01       		.byte	1
+ 1767 068a 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 32
+
+
+ 1768 068b 20       		.byte	32
+ 1769 068c 01       		.byte	1
+ 1770 068d 4B       		.byte	75
+ 1771 068e 98       		.byte	-104
+ 1772 068f 66       		.byte	102
+ 1773 0690 70       		.byte	112
+ 1774 0691 47       		.byte	71
+ 1775 0692 C0       		.byte	-64
+ 1776 0693 46       		.byte	70
+ 1777 0694 00       		.byte	0
+ 1778 0695 00       		.byte	0
+ 1779 0696 00       		.byte	0
+ 1780 0697 20       		.byte	32
+ 1781 0698 38       		.byte	56
+ 1782 0699 B5       		.byte	-75
+ 1783 069a 04       		.byte	4
+ 1784 069b 1C       		.byte	28
+ 1785 069c 00       		.byte	0
+ 1786 069d F0       		.byte	-16
+ 1787 069e 29       		.byte	41
+ 1788 069f F8       		.byte	-8
+ 1789 06a0 05       		.byte	5
+ 1790 06a1 4B       		.byte	75
+ 1791 06a2 06       		.byte	6
+ 1792 06a3 49       		.byte	73
+ 1793 06a4 1D       		.byte	29
+ 1794 06a5 68       		.byte	104
+ 1795 06a6 A2       		.byte	-94
+ 1796 06a7 05       		.byte	5
+ 1797 06a8 2C       		.byte	44
+ 1798 06a9 1C       		.byte	28
+ 1799 06aa 0C       		.byte	12
+ 1800 06ab 40       		.byte	64
+ 1801 06ac 14       		.byte	20
+ 1802 06ad 43       		.byte	67
+ 1803 06ae 1C       		.byte	28
+ 1804 06af 60       		.byte	96
+ 1805 06b0 00       		.byte	0
+ 1806 06b1 F0       		.byte	-16
+ 1807 06b2 23       		.byte	35
+ 1808 06b3 F8       		.byte	-8
+ 1809 06b4 38       		.byte	56
+ 1810 06b5 BD       		.byte	-67
+ 1811 06b6 C0       		.byte	-64
+ 1812 06b7 46       		.byte	70
+ 1813 06b8 08       		.byte	8
+ 1814 06b9 E4       		.byte	-28
+ 1815 06ba 00       		.byte	0
+ 1816 06bb E0       		.byte	-32
+ 1817 06bc FF       		.byte	-1
+ 1818 06bd FF       		.byte	-1
+ 1819 06be 3F       		.byte	63
+ 1820 06bf FF       		.byte	-1
+ 1821 06c0 80       		.byte	-128
+ 1822 06c1 22       		.byte	34
+ 1823 06c2 02       		.byte	2
+ 1824 06c3 4B       		.byte	75
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 33
+
+
+ 1825 06c4 D0       		.byte	-48
+ 1826 06c5 00       		.byte	0
+ 1827 06c6 18       		.byte	24
+ 1828 06c7 60       		.byte	96
+ 1829 06c8 70       		.byte	112
+ 1830 06c9 47       		.byte	71
+ 1831 06ca C0       		.byte	-64
+ 1832 06cb 46       		.byte	70
+ 1833 06cc 00       		.byte	0
+ 1834 06cd E1       		.byte	-31
+ 1835 06ce 00       		.byte	0
+ 1836 06cf E0       		.byte	-32
+ 1837 06d0 80       		.byte	-128
+ 1838 06d1 22       		.byte	34
+ 1839 06d2 02       		.byte	2
+ 1840 06d3 4B       		.byte	75
+ 1841 06d4 D0       		.byte	-48
+ 1842 06d5 00       		.byte	0
+ 1843 06d6 18       		.byte	24
+ 1844 06d7 60       		.byte	96
+ 1845 06d8 70       		.byte	112
+ 1846 06d9 47       		.byte	71
+ 1847 06da C0       		.byte	-64
+ 1848 06db 46       		.byte	70
+ 1849 06dc 80       		.byte	-128
+ 1850 06dd E1       		.byte	-31
+ 1851 06de 00       		.byte	0
+ 1852 06df E0       		.byte	-32
+ 1853 06e0 02       		.byte	2
+ 1854 06e1 30       		.byte	48
+ 1855 06e2 80       		.byte	-128
+ 1856 06e3 08       		.byte	8
+ 1857 06e4 04       		.byte	4
+ 1858 06e5 D0       		.byte	-48
+ 1859 06e6 C0       		.byte	-64
+ 1860 06e7 46       		.byte	70
+ 1861 06e8 01       		.byte	1
+ 1862 06e9 38       		.byte	56
+ 1863 06ea FD       		.byte	-3
+ 1864 06eb D1       		.byte	-47
+ 1865 06ec C0       		.byte	-64
+ 1866 06ed 46       		.byte	70
+ 1867 06ee C0       		.byte	-64
+ 1868 06ef 46       		.byte	70
+ 1869 06f0 70       		.byte	112
+ 1870 06f1 47       		.byte	71
+ 1871 06f2 EF       		.byte	-17
+ 1872 06f3 F3       		.byte	-13
+ 1873 06f4 10       		.byte	16
+ 1874 06f5 80       		.byte	-128
+ 1875 06f6 72       		.byte	114
+ 1876 06f7 B6       		.byte	-74
+ 1877 06f8 70       		.byte	112
+ 1878 06f9 47       		.byte	71
+ 1879 06fa 80       		.byte	-128
+ 1880 06fb F3       		.byte	-13
+ 1881 06fc 10       		.byte	16
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 34
+
+
+ 1882 06fd 88       		.byte	-120
+ 1883 06fe 70       		.byte	112
+ 1884 06ff 47       		.byte	71
+ 1885 0700 01       		.byte	1
+ 1886 0701 BE       		.byte	-66
+ 1887 0702 70       		.byte	112
+ 1888 0703 47       		.byte	71
+ 1889 0704 03       		.byte	3
+ 1890 0705 4B       		.byte	75
+ 1891 0706 04       		.byte	4
+ 1892 0707 49       		.byte	73
+ 1893 0708 1A       		.byte	26
+ 1894 0709 68       		.byte	104
+ 1895 070a 90       		.byte	-112
+ 1896 070b B2       		.byte	-78
+ 1897 070c 08       		.byte	8
+ 1898 070d 43       		.byte	67
+ 1899 070e 18       		.byte	24
+ 1900 070f 60       		.byte	96
+ 1901 0710 70       		.byte	112
+ 1902 0711 47       		.byte	71
+ 1903 0712 C0       		.byte	-64
+ 1904 0713 46       		.byte	70
+ 1905 0714 0C       		.byte	12
+ 1906 0715 ED       		.byte	-19
+ 1907 0716 00       		.byte	0
+ 1908 0717 E0       		.byte	-32
+ 1909 0718 04       		.byte	4
+ 1910 0719 00       		.byte	0
+ 1911 071a FA       		.byte	-6
+ 1912 071b 05       		.byte	5
+ 1913 071c 10       		.byte	16
+ 1914 071d B5       		.byte	-75
+ 1915 071e 04       		.byte	4
+ 1916 071f 1C       		.byte	28
+ 1917 0720 80       		.byte	-128
+ 1918 0721 22       		.byte	34
+ 1919 0722 07       		.byte	7
+ 1920 0723 4B       		.byte	75
+ 1921 0724 10       		.byte	16
+ 1922 0725 02       		.byte	2
+ 1923 0726 84       		.byte	-124
+ 1924 0727 42       		.byte	66
+ 1925 0728 05       		.byte	5
+ 1926 0729 D9       		.byte	-39
+ 1927 072a 18       		.byte	24
+ 1928 072b 68       		.byte	104
+ 1929 072c FF       		.byte	-1
+ 1930 072d F7       		.byte	-9
+ 1931 072e D8       		.byte	-40
+ 1932 072f FF       		.byte	-1
+ 1933 0730 04       		.byte	4
+ 1934 0731 49       		.byte	73
+ 1935 0732 64       		.byte	100
+ 1936 0733 18       		.byte	24
+ 1937 0734 F4       		.byte	-12
+ 1938 0735 E7       		.byte	-25
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 35
+
+
+ 1939 0736 58       		.byte	88
+ 1940 0737 68       		.byte	104
+ 1941 0738 60       		.byte	96
+ 1942 0739 43       		.byte	67
+ 1943 073a FF       		.byte	-1
+ 1944 073b F7       		.byte	-9
+ 1945 073c D1       		.byte	-47
+ 1946 073d FF       		.byte	-1
+ 1947 073e 10       		.byte	16
+ 1948 073f BD       		.byte	-67
+ 1949 0740 D4       		.byte	-44
+ 1950 0741 00       		.byte	0
+ 1951 0742 00       		.byte	0
+ 1952 0743 20       		.byte	32
+ 1953 0744 00       		.byte	0
+ 1954 0745 80       		.byte	-128
+ 1955 0746 FF       		.byte	-1
+ 1956 0747 FF       		.byte	-1
+ 1957 0748 08       		.byte	8
+ 1958 0749 B5       		.byte	-75
+ 1959 074a 03       		.byte	3
+ 1960 074b 4B       		.byte	75
+ 1961 074c 19       		.byte	25
+ 1962 074d 7A       		.byte	122
+ 1963 074e 48       		.byte	72
+ 1964 074f 43       		.byte	67
+ 1965 0750 FF       		.byte	-1
+ 1966 0751 F7       		.byte	-9
+ 1967 0752 C6       		.byte	-58
+ 1968 0753 FF       		.byte	-1
+ 1969 0754 08       		.byte	8
+ 1970 0755 BD       		.byte	-67
+ 1971 0756 C0       		.byte	-64
+ 1972 0757 46       		.byte	70
+ 1973 0758 D4       		.byte	-44
+ 1974 0759 00       		.byte	0
+ 1975 075a 00       		.byte	0
+ 1976 075b 20       		.byte	32
+ 1977 075c 00       		.byte	0
+ 1978 075d 47       		.byte	71
+ 1979 075e 00       		.byte	0
+ 1980 075f 00       		.byte	0
+ 1981 0760 38       		.byte	56
+ 1982 0761 B5       		.byte	-75
+ 1983 0762 04       		.byte	4
+ 1984 0763 1C       		.byte	28
+ 1985 0764 01       		.byte	1
+ 1986 0765 38       		.byte	56
+ 1987 0766 06       		.byte	6
+ 1988 0767 28       		.byte	40
+ 1989 0768 0B       		.byte	11
+ 1990 0769 D8       		.byte	-40
+ 1991 076a 00       		.byte	0
+ 1992 076b F0       		.byte	-16
+ 1993 076c 3D       		.byte	61
+ 1994 076d FB       		.byte	-5
+ 1995 076e 24       		.byte	36
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 36
+
+
+ 1996 076f 06       		.byte	6
+ 1997 0770 26       		.byte	38
+ 1998 0771 0F       		.byte	15
+ 1999 0772 11       		.byte	17
+ 2000 0773 08       		.byte	8
+ 2001 0774 04       		.byte	4
+ 2002 0775 00       		.byte	0
+ 2003 0776 17       		.byte	23
+ 2004 0777 48       		.byte	72
+ 2005 0778 20       		.byte	32
+ 2006 0779 E0       		.byte	-32
+ 2007 077a 17       		.byte	23
+ 2008 077b 4B       		.byte	75
+ 2009 077c 09       		.byte	9
+ 2010 077d E0       		.byte	-32
+ 2011 077e 17       		.byte	23
+ 2012 077f 4B       		.byte	75
+ 2013 0780 07       		.byte	7
+ 2014 0781 E0       		.byte	-32
+ 2015 0782 00       		.byte	0
+ 2016 0783 20       		.byte	32
+ 2017 0784 FF       		.byte	-1
+ 2018 0785 F7       		.byte	-9
+ 2019 0786 BC       		.byte	-68
+ 2020 0787 FF       		.byte	-1
+ 2021 0788 00       		.byte	0
+ 2022 0789 23       		.byte	35
+ 2023 078a 02       		.byte	2
+ 2024 078b E0       		.byte	-32
+ 2025 078c 14       		.byte	20
+ 2026 078d 4B       		.byte	75
+ 2027 078e 00       		.byte	0
+ 2028 078f E0       		.byte	-32
+ 2029 0790 14       		.byte	20
+ 2030 0791 4B       		.byte	75
+ 2031 0792 5A       		.byte	90
+ 2032 0793 78       		.byte	120
+ 2033 0794 18       		.byte	24
+ 2034 0795 78       		.byte	120
+ 2035 0796 00       		.byte	0
+ 2036 0797 02       		.byte	2
+ 2037 0798 10       		.byte	16
+ 2038 0799 43       		.byte	67
+ 2039 079a 02       		.byte	2
+ 2040 079b 2C       		.byte	44
+ 2041 079c 04       		.byte	4
+ 2042 079d D0       		.byte	-48
+ 2043 079e 03       		.byte	3
+ 2044 079f 2C       		.byte	44
+ 2045 07a0 07       		.byte	7
+ 2046 07a1 D0       		.byte	-48
+ 2047 07a2 01       		.byte	1
+ 2048 07a3 2C       		.byte	44
+ 2049 07a4 15       		.byte	21
+ 2050 07a5 D1       		.byte	-47
+ 2051 07a6 04       		.byte	4
+ 2052 07a7 E0       		.byte	-32
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 37
+
+
+ 2053 07a8 04       		.byte	4
+ 2054 07a9 0A       		.byte	10
+ 2055 07aa 03       		.byte	3
+ 2056 07ab 02       		.byte	2
+ 2057 07ac 23       		.byte	35
+ 2058 07ad 43       		.byte	67
+ 2059 07ae 98       		.byte	-104
+ 2060 07af B2       		.byte	-78
+ 2061 07b0 0F       		.byte	15
+ 2062 07b1 E0       		.byte	-32
+ 2063 07b2 00       		.byte	0
+ 2064 07b3 BA       		.byte	-70
+ 2065 07b4 0D       		.byte	13
+ 2066 07b5 E0       		.byte	-32
+ 2067 07b6 0C       		.byte	12
+ 2068 07b7 48       		.byte	72
+ 2069 07b8 00       		.byte	0
+ 2070 07b9 E0       		.byte	-32
+ 2071 07ba 0C       		.byte	12
+ 2072 07bb 48       		.byte	72
+ 2073 07bc C5       		.byte	-59
+ 2074 07bd 78       		.byte	120
+ 2075 07be 81       		.byte	-127
+ 2076 07bf 78       		.byte	120
+ 2077 07c0 42       		.byte	66
+ 2078 07c1 78       		.byte	120
+ 2079 07c2 03       		.byte	3
+ 2080 07c3 78       		.byte	120
+ 2081 07c4 18       		.byte	24
+ 2082 07c5 06       		.byte	6
+ 2083 07c6 28       		.byte	40
+ 2084 07c7 43       		.byte	67
+ 2085 07c8 0D       		.byte	13
+ 2086 07c9 02       		.byte	2
+ 2087 07ca 28       		.byte	40
+ 2088 07cb 43       		.byte	67
+ 2089 07cc 11       		.byte	17
+ 2090 07cd 04       		.byte	4
+ 2091 07ce 08       		.byte	8
+ 2092 07cf 43       		.byte	67
+ 2093 07d0 E3       		.byte	-29
+ 2094 07d1 E7       		.byte	-25
+ 2095 07d2 38       		.byte	56
+ 2096 07d3 BD       		.byte	-67
+ 2097 07d4 D8       		.byte	-40
+ 2098 07d5 7F       		.byte	127
+ 2099 07d6 00       		.byte	0
+ 2100 07d7 00       		.byte	0
+ 2101 07d8 C5       		.byte	-59
+ 2102 07d9 7F       		.byte	127
+ 2103 07da 00       		.byte	0
+ 2104 07db 00       		.byte	0
+ 2105 07dc D4       		.byte	-44
+ 2106 07dd 7F       		.byte	127
+ 2107 07de 00       		.byte	0
+ 2108 07df 00       		.byte	0
+ 2109 07e0 D2       		.byte	-46
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 38
+
+
+ 2110 07e1 7F       		.byte	127
+ 2111 07e2 00       		.byte	0
+ 2112 07e3 00       		.byte	0
+ 2113 07e4 D6       		.byte	-42
+ 2114 07e5 7F       		.byte	127
+ 2115 07e6 00       		.byte	0
+ 2116 07e7 00       		.byte	0
+ 2117 07e8 C1       		.byte	-63
+ 2118 07e9 7F       		.byte	127
+ 2119 07ea 00       		.byte	0
+ 2120 07eb 00       		.byte	0
+ 2121 07ec C9       		.byte	-55
+ 2122 07ed 7F       		.byte	127
+ 2123 07ee 00       		.byte	0
+ 2124 07ef 00       		.byte	0
+ 2125 07f0 38       		.byte	56
+ 2126 07f1 B5       		.byte	-75
+ 2127 07f2 02       		.byte	2
+ 2128 07f3 20       		.byte	32
+ 2129 07f4 FF       		.byte	-1
+ 2130 07f5 F7       		.byte	-9
+ 2131 07f6 B4       		.byte	-76
+ 2132 07f7 FF       		.byte	-1
+ 2133 07f8 05       		.byte	5
+ 2134 07f9 1C       		.byte	28
+ 2135 07fa 03       		.byte	3
+ 2136 07fb 20       		.byte	32
+ 2137 07fc FF       		.byte	-1
+ 2138 07fd F7       		.byte	-9
+ 2139 07fe B0       		.byte	-80
+ 2140 07ff FF       		.byte	-1
+ 2141 0800 6C       		.byte	108
+ 2142 0801 1C       		.byte	28
+ 2143 0802 E1       		.byte	-31
+ 2144 0803 01       		.byte	1
+ 2145 0804 0C       		.byte	12
+ 2146 0805 18       		.byte	24
+ 2147 0806 02       		.byte	2
+ 2148 0807 20       		.byte	32
+ 2149 0808 FF       		.byte	-1
+ 2150 0809 F7       		.byte	-9
+ 2151 080a AA       		.byte	-86
+ 2152 080b FF       		.byte	-1
+ 2153 080c 00       		.byte	0
+ 2154 080d 23       		.byte	35
+ 2155 080e 42       		.byte	66
+ 2156 080f 1C       		.byte	28
+ 2157 0810 D2       		.byte	-46
+ 2158 0811 01       		.byte	1
+ 2159 0812 19       		.byte	25
+ 2160 0813 1C       		.byte	28
+ 2161 0814 A2       		.byte	-94
+ 2162 0815 42       		.byte	66
+ 2163 0816 09       		.byte	9
+ 2164 0817 D2       		.byte	-46
+ 2165 0818 10       		.byte	16
+ 2166 0819 78       		.byte	120
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 39
+
+
+ 2167 081a 45       		.byte	69
+ 2168 081b 1E       		.byte	30
+ 2169 081c ED       		.byte	-19
+ 2170 081d B2       		.byte	-78
+ 2171 081e FD       		.byte	-3
+ 2172 081f 2D       		.byte	45
+ 2173 0820 00       		.byte	0
+ 2174 0821 D8       		.byte	-40
+ 2175 0822 01       		.byte	1
+ 2176 0823 21       		.byte	33
+ 2177 0824 C3       		.byte	-61
+ 2178 0825 18       		.byte	24
+ 2179 0826 DB       		.byte	-37
+ 2180 0827 B2       		.byte	-78
+ 2181 0828 01       		.byte	1
+ 2182 0829 32       		.byte	50
+ 2183 082a F3       		.byte	-13
+ 2184 082b E7       		.byte	-25
+ 2185 082c 05       		.byte	5
+ 2186 082d 48       		.byte	72
+ 2187 082e 5B       		.byte	91
+ 2188 082f 42       		.byte	66
+ 2189 0830 05       		.byte	5
+ 2190 0831 78       		.byte	120
+ 2191 0832 DC       		.byte	-36
+ 2192 0833 B2       		.byte	-78
+ 2193 0834 AC       		.byte	-84
+ 2194 0835 42       		.byte	66
+ 2195 0836 01       		.byte	1
+ 2196 0837 D0       		.byte	-48
+ 2197 0838 06       		.byte	6
+ 2198 0839 20       		.byte	32
+ 2199 083a 02       		.byte	2
+ 2200 083b E0       		.byte	-32
+ 2201 083c 00       		.byte	0
+ 2202 083d 29       		.byte	41
+ 2203 083e FB       		.byte	-5
+ 2204 083f D0       		.byte	-48
+ 2205 0840 00       		.byte	0
+ 2206 0841 20       		.byte	32
+ 2207 0842 38       		.byte	56
+ 2208 0843 BD       		.byte	-67
+ 2209 0844 C0       		.byte	-64
+ 2210 0845 7F       		.byte	127
+ 2211 0846 00       		.byte	0
+ 2212 0847 00       		.byte	0
+ 2213 0848 F0       		.byte	-16
+ 2214 0849 B5       		.byte	-75
+ 2215 084a A3       		.byte	-93
+ 2216 084b 4C       		.byte	76
+ 2217 084c A5       		.byte	-91
+ 2218 084d 44       		.byte	68
+ 2219 084e FF       		.byte	-1
+ 2220 084f F7       		.byte	-9
+ 2221 0850 25       		.byte	37
+ 2222 0851 FD       		.byte	-3
+ 2223 0852 62       		.byte	98
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 40
+
+
+ 2224 0853 B6       		.byte	-74
+ 2225 0854 00       		.byte	0
+ 2226 0855 25       		.byte	37
+ 2227 0856 00       		.byte	0
+ 2228 0857 95       		.byte	-107
+ 2229 0858 00       		.byte	0
+ 2230 0859 26       		.byte	38
+ 2231 085a 03       		.byte	3
+ 2232 085b AF       		.byte	-81
+ 2233 085c 96       		.byte	-106
+ 2234 085d 21       		.byte	33
+ 2235 085e 24       		.byte	36
+ 2236 085f A8       		.byte	-88
+ 2237 0860 49       		.byte	73
+ 2238 0861 00       		.byte	0
+ 2239 0862 3A       		.byte	58
+ 2240 0863 1C       		.byte	28
+ 2241 0864 FF       		.byte	-1
+ 2242 0865 23       		.byte	35
+ 2243 0866 FF       		.byte	-1
+ 2244 0867 F7       		.byte	-9
+ 2245 0868 2F       		.byte	47
+ 2246 0869 FD       		.byte	-3
+ 2247 086a 00       		.byte	0
+ 2248 086b 28       		.byte	40
+ 2249 086c F5       		.byte	-11
+ 2250 086d D1       		.byte	-47
+ 2251 086e 39       		.byte	57
+ 2252 086f 88       		.byte	-120
+ 2253 0870 04       		.byte	4
+ 2254 0871 23       		.byte	35
+ 2255 0872 06       		.byte	6
+ 2256 0873 29       		.byte	41
+ 2257 0874 67       		.byte	103
+ 2258 0875 D9       		.byte	-39
+ 2259 0876 24       		.byte	36
+ 2260 0877 AA       		.byte	-86
+ 2261 0878 14       		.byte	20
+ 2262 0879 78       		.byte	120
+ 2263 087a 01       		.byte	1
+ 2264 087b 2C       		.byte	44
+ 2265 087c 63       		.byte	99
+ 2266 087d D1       		.byte	-47
+ 2267 087e 93       		.byte	-109
+ 2268 087f 23       		.byte	35
+ 2269 0880 6B       		.byte	107
+ 2270 0881 44       		.byte	68
+ 2271 0882 92       		.byte	-110
+ 2272 0883 22       		.byte	34
+ 2273 0884 1F       		.byte	31
+ 2274 0885 78       		.byte	120
+ 2275 0886 6A       		.byte	106
+ 2276 0887 44       		.byte	68
+ 2277 0888 13       		.byte	19
+ 2278 0889 78       		.byte	120
+ 2279 088a 3C       		.byte	60
+ 2280 088b 02       		.byte	2
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 41
+
+
+ 2281 088c 1C       		.byte	28
+ 2282 088d 43       		.byte	67
+ 2283 088e 24       		.byte	36
+ 2284 088f AF       		.byte	-81
+ 2285 0890 3A       		.byte	58
+ 2286 0891 19       		.byte	25
+ 2287 0892 17       		.byte	23
+ 2288 0893 79       		.byte	121
+ 2289 0894 53       		.byte	83
+ 2290 0895 79       		.byte	121
+ 2291 0896 01       		.byte	1
+ 2292 0897 97       		.byte	-105
+ 2293 0898 E7       		.byte	-25
+ 2294 0899 1D       		.byte	29
+ 2295 089a 9C       		.byte	-100
+ 2296 089b 46       		.byte	70
+ 2297 089c 03       		.byte	3
+ 2298 089d 23       		.byte	35
+ 2299 089e 8F       		.byte	-113
+ 2300 089f 42       		.byte	66
+ 2301 08a0 51       		.byte	81
+ 2302 08a1 D8       		.byte	-40
+ 2303 08a2 91       		.byte	-111
+ 2304 08a3 79       		.byte	121
+ 2305 08a4 04       		.byte	4
+ 2306 08a5 23       		.byte	35
+ 2307 08a6 17       		.byte	23
+ 2308 08a7 29       		.byte	41
+ 2309 08a8 4D       		.byte	77
+ 2310 08a9 D1       		.byte	-47
+ 2311 08aa E3       		.byte	-29
+ 2312 08ab 18       		.byte	24
+ 2313 08ac 9B       		.byte	-101
+ 2314 08ad B2       		.byte	-78
+ 2315 08ae 00       		.byte	0
+ 2316 08af 2B       		.byte	43
+ 2317 08b0 08       		.byte	8
+ 2318 08b1 D0       		.byte	-48
+ 2319 08b2 BA       		.byte	-70
+ 2320 08b3 AA       		.byte	-86
+ 2321 08b4 89       		.byte	-119
+ 2322 08b5 49       		.byte	73
+ 2323 08b6 D7       		.byte	-41
+ 2324 08b7 18       		.byte	24
+ 2325 08b8 7A       		.byte	122
+ 2326 08b9 18       		.byte	24
+ 2327 08ba 17       		.byte	23
+ 2328 08bb 78       		.byte	120
+ 2329 08bc 01       		.byte	1
+ 2330 08bd 3B       		.byte	59
+ 2331 08be C0       		.byte	-64
+ 2332 08bf 19       		.byte	25
+ 2333 08c0 80       		.byte	-128
+ 2334 08c1 B2       		.byte	-78
+ 2335 08c2 F3       		.byte	-13
+ 2336 08c3 E7       		.byte	-25
+ 2337 08c4 62       		.byte	98
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 42
+
+
+ 2338 08c5 46       		.byte	70
+ 2339 08c6 40       		.byte	64
+ 2340 08c7 42       		.byte	66
+ 2341 08c8 01       		.byte	1
+ 2342 08c9 9F       		.byte	-97
+ 2343 08ca 11       		.byte	17
+ 2344 08cb 02       		.byte	2
+ 2345 08cc 82       		.byte	-126
+ 2346 08cd B2       		.byte	-78
+ 2347 08ce 39       		.byte	57
+ 2348 08cf 43       		.byte	67
+ 2349 08d0 08       		.byte	8
+ 2350 08d1 23       		.byte	35
+ 2351 08d2 91       		.byte	-111
+ 2352 08d3 42       		.byte	66
+ 2353 08d4 37       		.byte	55
+ 2354 08d5 D1       		.byte	-47
+ 2355 08d6 68       		.byte	104
+ 2356 08d7 E0       		.byte	-32
+ 2357 08d8 34       		.byte	52
+ 2358 08d9 29       		.byte	41
+ 2359 08da 00       		.byte	0
+ 2360 08db D0       		.byte	-48
+ 2361 08dc 9A       		.byte	-102
+ 2362 08dd E0       		.byte	-32
+ 2363 08de 01       		.byte	1
+ 2364 08df 2D       		.byte	45
+ 2365 08e0 00       		.byte	0
+ 2366 08e1 D0       		.byte	-48
+ 2367 08e2 F6       		.byte	-10
+ 2368 08e3 E0       		.byte	-32
+ 2369 08e4 03       		.byte	3
+ 2370 08e5 2C       		.byte	44
+ 2371 08e6 00       		.byte	0
+ 2372 08e7 D0       		.byte	-48
+ 2373 08e8 F3       		.byte	-13
+ 2374 08e9 E0       		.byte	-32
+ 2375 08ea 6F       		.byte	111
+ 2376 08eb A8       		.byte	-88
+ 2377 08ec 00       		.byte	0
+ 2378 08ed 21       		.byte	33
+ 2379 08ee 80       		.byte	-128
+ 2380 08ef 22       		.byte	34
+ 2381 08f0 00       		.byte	0
+ 2382 08f1 F0       		.byte	-16
+ 2383 08f2 B3       		.byte	-77
+ 2384 08f3 FA       		.byte	-6
+ 2385 08f4 80       		.byte	-128
+ 2386 08f5 26       		.byte	38
+ 2387 08f6 6F       		.byte	111
+ 2388 08f7 A9       		.byte	-87
+ 2389 08f8 88       		.byte	-120
+ 2390 08f9 19       		.byte	25
+ 2391 08fa 35       		.byte	53
+ 2392 08fb 19       		.byte	25
+ 2393 08fc 26       		.byte	38
+ 2394 08fd 39       		.byte	57
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 43
+
+
+ 2395 08fe E2       		.byte	-30
+ 2396 08ff 1E       		.byte	30
+ 2397 0900 FF       		.byte	-1
+ 2398 0901 39       		.byte	57
+ 2399 0902 AE       		.byte	-82
+ 2400 0903 B2       		.byte	-78
+ 2401 0904 00       		.byte	0
+ 2402 0905 F0       		.byte	-16
+ 2403 0906 A0       		.byte	-96
+ 2404 0907 FA       		.byte	-6
+ 2405 0908 83       		.byte	-125
+ 2406 0909 2E       		.byte	46
+ 2407 090a 00       		.byte	0
+ 2408 090b D0       		.byte	-48
+ 2409 090c DA       		.byte	-38
+ 2410 090d E0       		.byte	-32
+ 2411 090e BC       		.byte	-68
+ 2412 090f 79       		.byte	121
+ 2413 0910 79       		.byte	121
+ 2414 0911 79       		.byte	121
+ 2415 0912 00       		.byte	0
+ 2416 0913 9F       		.byte	-97
+ 2417 0914 26       		.byte	38
+ 2418 0915 02       		.byte	2
+ 2419 0916 0E       		.byte	14
+ 2420 0917 43       		.byte	67
+ 2421 0918 00       		.byte	0
+ 2422 0919 2F       		.byte	47
+ 2423 091a 0A       		.byte	10
+ 2424 091b D1       		.byte	-47
+ 2425 091c 39       		.byte	57
+ 2426 091d 1C       		.byte	28
+ 2427 091e 80       		.byte	-128
+ 2428 091f 22       		.byte	34
+ 2429 0920 04       		.byte	4
+ 2430 0921 A8       		.byte	-88
+ 2431 0922 00       		.byte	0
+ 2432 0923 F0       		.byte	-16
+ 2433 0924 9A       		.byte	-102
+ 2434 0925 FA       		.byte	-6
+ 2435 0926 FF       		.byte	-1
+ 2436 0927 20       		.byte	32
+ 2437 0928 04       		.byte	4
+ 2438 0929 A9       		.byte	-87
+ 2439 092a 00       		.byte	0
+ 2440 092b F0       		.byte	-16
+ 2441 092c F3       		.byte	-13
+ 2442 092d F9       		.byte	-7
+ 2443 092e 01       		.byte	1
+ 2444 092f 20       		.byte	32
+ 2445 0930 00       		.byte	0
+ 2446 0931 90       		.byte	-112
+ 2447 0932 30       		.byte	48
+ 2448 0933 1C       		.byte	28
+ 2449 0934 6F       		.byte	111
+ 2450 0935 A9       		.byte	-87
+ 2451 0936 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 44
+
+
+ 2452 0937 F0       		.byte	-16
+ 2453 0938 ED       		.byte	-19
+ 2454 0939 F9       		.byte	-7
+ 2455 093a 01       		.byte	1
+ 2456 093b 25       		.byte	37
+ 2457 093c 00       		.byte	0
+ 2458 093d 28       		.byte	40
+ 2459 093e 00       		.byte	0
+ 2460 093f D1       		.byte	-47
+ 2461 0940 C3       		.byte	-61
+ 2462 0941 E0       		.byte	-32
+ 2463 0942 00       		.byte	0
+ 2464 0943 26       		.byte	38
+ 2465 0944 0A       		.byte	10
+ 2466 0945 23       		.byte	35
+ 2467 0946 00       		.byte	0
+ 2468 0947 21       		.byte	33
+ 2469 0948 68       		.byte	104
+ 2470 0949 46       		.byte	70
+ 2471 094a 91       		.byte	-111
+ 2472 094b 30       		.byte	48
+ 2473 094c 01       		.byte	1
+ 2474 094d 27       		.byte	39
+ 2475 094e 03       		.byte	3
+ 2476 094f 70       		.byte	112
+ 2477 0950 6A       		.byte	106
+ 2478 0951 46       		.byte	70
+ 2479 0952 24       		.byte	36
+ 2480 0953 AC       		.byte	-84
+ 2481 0954 6B       		.byte	107
+ 2482 0955 46       		.byte	70
+ 2483 0956 92       		.byte	-110
+ 2484 0957 33       		.byte	51
+ 2485 0958 0E       		.byte	14
+ 2486 0959 32       		.byte	50
+ 2487 095a 27       		.byte	39
+ 2488 095b 70       		.byte	112
+ 2489 095c 00       		.byte	0
+ 2490 095d 20       		.byte	32
+ 2491 095e 0F       		.byte	15
+ 2492 095f 1D       		.byte	29
+ 2493 0960 19       		.byte	25
+ 2494 0961 70       		.byte	112
+ 2495 0962 58       		.byte	88
+ 2496 0963 70       		.byte	112
+ 2497 0964 11       		.byte	17
+ 2498 0965 80       		.byte	-128
+ 2499 0966 BB       		.byte	-69
+ 2500 0967 B2       		.byte	-78
+ 2501 0968 5C       		.byte	92
+ 2502 0969 4F       		.byte	79
+ 2503 096a BA       		.byte	-70
+ 2504 096b AC       		.byte	-84
+ 2505 096c E4       		.byte	-28
+ 2506 096d 18       		.byte	24
+ 2507 096e E4       		.byte	-28
+ 2508 096f 19       		.byte	25
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 45
+
+
+ 2509 0970 27       		.byte	39
+ 2510 0971 78       		.byte	120
+ 2511 0972 01       		.byte	1
+ 2512 0973 3B       		.byte	59
+ 2513 0974 C0       		.byte	-64
+ 2514 0975 19       		.byte	25
+ 2515 0976 9B       		.byte	-101
+ 2516 0977 B2       		.byte	-78
+ 2517 0978 80       		.byte	-128
+ 2518 0979 B2       		.byte	-78
+ 2519 097a 00       		.byte	0
+ 2520 097b 2B       		.byte	43
+ 2521 097c F4       		.byte	-12
+ 2522 097d D1       		.byte	-47
+ 2523 097e 44       		.byte	68
+ 2524 097f 42       		.byte	66
+ 2525 0980 A0       		.byte	-96
+ 2526 0981 B2       		.byte	-78
+ 2527 0982 BA       		.byte	-70
+ 2528 0983 AF       		.byte	-81
+ 2529 0984 56       		.byte	86
+ 2530 0985 4C       		.byte	76
+ 2531 0986 7B       		.byte	123
+ 2532 0987 18       		.byte	24
+ 2533 0988 1F       		.byte	31
+ 2534 0989 19       		.byte	25
+ 2535 098a 56       		.byte	86
+ 2536 098b 4C       		.byte	76
+ 2537 098c 38       		.byte	56
+ 2538 098d 70       		.byte	112
+ 2539 098e 1F       		.byte	31
+ 2540 098f 19       		.byte	25
+ 2541 0990 55       		.byte	85
+ 2542 0991 4C       		.byte	76
+ 2543 0992 00       		.byte	0
+ 2544 0993 0A       		.byte	10
+ 2545 0994 38       		.byte	56
+ 2546 0995 70       		.byte	112
+ 2547 0996 1B       		.byte	27
+ 2548 0997 19       		.byte	25
+ 2549 0998 17       		.byte	23
+ 2550 0999 27       		.byte	39
+ 2551 099a 07       		.byte	7
+ 2552 099b 31       		.byte	49
+ 2553 099c 1F       		.byte	31
+ 2554 099d 70       		.byte	112
+ 2555 099e 89       		.byte	-119
+ 2556 099f B2       		.byte	-78
+ 2557 09a0 24       		.byte	36
+ 2558 09a1 A8       		.byte	-88
+ 2559 09a2 96       		.byte	-106
+ 2560 09a3 23       		.byte	35
+ 2561 09a4 FF       		.byte	-1
+ 2562 09a5 F7       		.byte	-9
+ 2563 09a6 82       		.byte	-126
+ 2564 09a7 FC       		.byte	-4
+ 2565 09a8 57       		.byte	87
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 46
+
+
+ 2566 09a9 E7       		.byte	-25
+ 2567 09aa 24       		.byte	36
+ 2568 09ab AF       		.byte	-81
+ 2569 09ac 79       		.byte	121
+ 2570 09ad 78       		.byte	120
+ 2571 09ae 3B       		.byte	59
+ 2572 09af 79       		.byte	121
+ 2573 09b0 08       		.byte	8
+ 2574 09b1 1C       		.byte	28
+ 2575 09b2 31       		.byte	49
+ 2576 09b3 38       		.byte	56
+ 2577 09b4 0A       		.byte	10
+ 2578 09b5 28       		.byte	40
+ 2579 09b6 01       		.byte	1
+ 2580 09b7 D9       		.byte	-39
+ 2581 09b8 05       		.byte	5
+ 2582 09b9 23       		.byte	35
+ 2583 09ba C4       		.byte	-60
+ 2584 09bb E7       		.byte	-25
+ 2585 09bc 00       		.byte	0
+ 2586 09bd F0       		.byte	-16
+ 2587 09be 0A       		.byte	10
+ 2588 09bf FA       		.byte	-6
+ 2589 09c0 06       		.byte	6
+ 2590 09c1 11       		.byte	17
+ 2591 09c2 FC       		.byte	-4
+ 2592 09c3 8C       		.byte	-116
+ 2593 09c4 2F       		.byte	47
+ 2594 09c5 FC       		.byte	-4
+ 2595 09c6 32       		.byte	50
+ 2596 09c7 42       		.byte	66
+ 2597 09c8 8C       		.byte	-116
+ 2598 09c9 50       		.byte	80
+ 2599 09ca 78       		.byte	120
+ 2600 09cb 00       		.byte	0
+ 2601 09cc 01       		.byte	1
+ 2602 09cd 2D       		.byte	45
+ 2603 09ce 00       		.byte	0
+ 2604 09cf D0       		.byte	-48
+ 2605 09d0 7F       		.byte	127
+ 2606 09d1 E0       		.byte	-32
+ 2607 09d2 00       		.byte	0
+ 2608 09d3 2C       		.byte	44
+ 2609 09d4 7D       		.byte	125
+ 2610 09d5 D1       		.byte	-47
+ 2611 09d6 FF       		.byte	-1
+ 2612 09d7 F7       		.byte	-9
+ 2613 09d8 0B       		.byte	11
+ 2614 09d9 FF       		.byte	-1
+ 2615 09da 43       		.byte	67
+ 2616 09db 42       		.byte	66
+ 2617 09dc 43       		.byte	67
+ 2618 09dd 41       		.byte	65
+ 2619 09de 3B       		.byte	59
+ 2620 09df 71       		.byte	113
+ 2621 09e0 63       		.byte	99
+ 2622 09e1 E0       		.byte	-32
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 47
+
+
+ 2623 09e2 01       		.byte	1
+ 2624 09e3 2D       		.byte	45
+ 2625 09e4 75       		.byte	117
+ 2626 09e5 D1       		.byte	-47
+ 2627 09e6 01       		.byte	1
+ 2628 09e7 2C       		.byte	44
+ 2629 09e8 73       		.byte	115
+ 2630 09e9 D1       		.byte	-47
+ 2631 09ea 00       		.byte	0
+ 2632 09eb 2B       		.byte	43
+ 2633 09ec 71       		.byte	113
+ 2634 09ed D1       		.byte	-47
+ 2635 09ee 3F       		.byte	63
+ 2636 09ef 4A       		.byte	74
+ 2637 09f0 25       		.byte	37
+ 2638 09f1 A8       		.byte	-88
+ 2639 09f2 14       		.byte	20
+ 2640 09f3 68       		.byte	104
+ 2641 09f4 21       		.byte	33
+ 2642 09f5 88       		.byte	-120
+ 2643 09f6 95       		.byte	-107
+ 2644 09f7 24       		.byte	36
+ 2645 09f8 CF       		.byte	-49
+ 2646 09f9 09       		.byte	9
+ 2647 09fa 07       		.byte	7
+ 2648 09fb 70       		.byte	112
+ 2649 09fc 3A       		.byte	58
+ 2650 09fd 0A       		.byte	10
+ 2651 09fe 97       		.byte	-105
+ 2652 09ff 20       		.byte	32
+ 2653 0a00 96       		.byte	-106
+ 2654 0a01 27       		.byte	39
+ 2655 0a02 FF       		.byte	-1
+ 2656 0a03 21       		.byte	33
+ 2657 0a04 6C       		.byte	108
+ 2658 0a05 44       		.byte	68
+ 2659 0a06 6F       		.byte	111
+ 2660 0a07 44       		.byte	68
+ 2661 0a08 68       		.byte	104
+ 2662 0a09 44       		.byte	68
+ 2663 0a0a 39       		.byte	57
+ 2664 0a0b 70       		.byte	112
+ 2665 0a0c 22       		.byte	34
+ 2666 0a0d 70       		.byte	112
+ 2667 0a0e 03       		.byte	3
+ 2668 0a0f 70       		.byte	112
+ 2669 0a10 04       		.byte	4
+ 2670 0a11 21       		.byte	33
+ 2671 0a12 99       		.byte	-103
+ 2672 0a13 E7       		.byte	-25
+ 2673 0a14 01       		.byte	1
+ 2674 0a15 2D       		.byte	45
+ 2675 0a16 5C       		.byte	92
+ 2676 0a17 D1       		.byte	-47
+ 2677 0a18 02       		.byte	2
+ 2678 0a19 2C       		.byte	44
+ 2679 0a1a 5A       		.byte	90
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 48
+
+
+ 2680 0a1b D9       		.byte	-39
+ 2681 0a1c 6B       		.byte	107
+ 2682 0a1d E7       		.byte	-25
+ 2683 0a1e 01       		.byte	1
+ 2684 0a1f 2D       		.byte	45
+ 2685 0a20 57       		.byte	87
+ 2686 0a21 D1       		.byte	-47
+ 2687 0a22 19       		.byte	25
+ 2688 0a23 E7       		.byte	-25
+ 2689 0a24 01       		.byte	1
+ 2690 0a25 2D       		.byte	45
+ 2691 0a26 54       		.byte	84
+ 2692 0a27 D1       		.byte	-47
+ 2693 0a28 96       		.byte	-106
+ 2694 0a29 20       		.byte	32
+ 2695 0a2a 37       		.byte	55
+ 2696 0a2b 19       		.byte	25
+ 2697 0a2c 43       		.byte	67
+ 2698 0a2d 00       		.byte	0
+ 2699 0a2e 9F       		.byte	-97
+ 2700 0a2f 42       		.byte	66
+ 2701 0a30 4D       		.byte	77
+ 2702 0a31 D8       		.byte	-40
+ 2703 0a32 6F       		.byte	111
+ 2704 0a33 AA       		.byte	-86
+ 2705 0a34 90       		.byte	-112
+ 2706 0a35 19       		.byte	25
+ 2707 0a36 25       		.byte	37
+ 2708 0a37 A9       		.byte	-87
+ 2709 0a38 22       		.byte	34
+ 2710 0a39 1C       		.byte	28
+ 2711 0a3a 00       		.byte	0
+ 2712 0a3b F0       		.byte	-16
+ 2713 0a3c 05       		.byte	5
+ 2714 0a3d FA       		.byte	-6
+ 2715 0a3e BE       		.byte	-66
+ 2716 0a3f B2       		.byte	-78
+ 2717 0a40 00       		.byte	0
+ 2718 0a41 23       		.byte	35
+ 2719 0a42 80       		.byte	-128
+ 2720 0a43 E7       		.byte	-25
+ 2721 0a44 00       		.byte	0
+ 2722 0a45 2C       		.byte	44
+ 2723 0a46 44       		.byte	68
+ 2724 0a47 D1       		.byte	-47
+ 2725 0a48 04       		.byte	4
+ 2726 0a49 AB       		.byte	-85
+ 2727 0a4a 29       		.byte	41
+ 2728 0a4b 4A       		.byte	74
+ 2729 0a4c 19       		.byte	25
+ 2730 0a4d 1C       		.byte	28
+ 2731 0a4e A0       		.byte	-96
+ 2732 0a4f CA       		.byte	-54
+ 2733 0a50 A0       		.byte	-96
+ 2734 0a51 C1       		.byte	-63
+ 2735 0a52 25       		.byte	37
+ 2736 0a53 AF       		.byte	-81
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 49
+
+
+ 2737 0a54 21       		.byte	33
+ 2738 0a55 CB       		.byte	-53
+ 2739 0a56 21       		.byte	33
+ 2740 0a57 C7       		.byte	-57
+ 2741 0a58 08       		.byte	8
+ 2742 0a59 21       		.byte	33
+ 2743 0a5a 01       		.byte	1
+ 2744 0a5b 25       		.byte	37
+ 2745 0a5c 23       		.byte	35
+ 2746 0a5d 1C       		.byte	28
+ 2747 0a5e 73       		.byte	115
+ 2748 0a5f E7       		.byte	-25
+ 2749 0a60 01       		.byte	1
+ 2750 0a61 2D       		.byte	45
+ 2751 0a62 36       		.byte	54
+ 2752 0a63 D1       		.byte	-47
+ 2753 0a64 03       		.byte	3
+ 2754 0a65 2C       		.byte	44
+ 2755 0a66 34       		.byte	52
+ 2756 0a67 D1       		.byte	-47
+ 2757 0a68 96       		.byte	-106
+ 2758 0a69 22       		.byte	34
+ 2759 0a6a 6A       		.byte	106
+ 2760 0a6b 44       		.byte	68
+ 2761 0a6c 95       		.byte	-107
+ 2762 0a6d 21       		.byte	33
+ 2763 0a6e 17       		.byte	23
+ 2764 0a6f 78       		.byte	120
+ 2765 0a70 69       		.byte	105
+ 2766 0a71 44       		.byte	68
+ 2767 0a72 0C       		.byte	12
+ 2768 0a73 78       		.byte	120
+ 2769 0a74 38       		.byte	56
+ 2770 0a75 02       		.byte	2
+ 2771 0a76 1A       		.byte	26
+ 2772 0a77 02       		.byte	2
+ 2773 0a78 20       		.byte	32
+ 2774 0a79 43       		.byte	67
+ 2775 0a7a 87       		.byte	-121
+ 2776 0a7b 18       		.byte	24
+ 2777 0a7c FF       		.byte	-1
+ 2778 0a7d 01       		.byte	1
+ 2779 0a7e 00       		.byte	0
+ 2780 0a7f 22       		.byte	34
+ 2781 0a80 80       		.byte	-128
+ 2782 0a81 21       		.byte	33
+ 2783 0a82 01       		.byte	1
+ 2784 0a83 39       		.byte	57
+ 2785 0a84 CC       		.byte	-52
+ 2786 0a85 5D       		.byte	93
+ 2787 0a86 12       		.byte	18
+ 2788 0a87 19       		.byte	25
+ 2789 0a88 D2       		.byte	-46
+ 2790 0a89 B2       		.byte	-78
+ 2791 0a8a 00       		.byte	0
+ 2792 0a8b 29       		.byte	41
+ 2793 0a8c F9       		.byte	-7
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 50
+
+
+ 2794 0a8d D1       		.byte	-47
+ 2795 0a8e 00       		.byte	0
+ 2796 0a8f 2B       		.byte	43
+ 2797 0a90 08       		.byte	8
+ 2798 0a91 D1       		.byte	-47
+ 2799 0a92 FF       		.byte	-1
+ 2800 0a93 28       		.byte	40
+ 2801 0a94 06       		.byte	6
+ 2802 0a95 D1       		.byte	-47
+ 2803 0a96 17       		.byte	23
+ 2804 0a97 4B       		.byte	75
+ 2805 0a98 17       		.byte	23
+ 2806 0a99 49       		.byte	73
+ 2807 0a9a 18       		.byte	24
+ 2808 0a9b 78       		.byte	120
+ 2809 0a9c 0C       		.byte	12
+ 2810 0a9d 78       		.byte	120
+ 2811 0a9e 17       		.byte	23
+ 2812 0a9f 1A       		.byte	26
+ 2813 0aa0 3A       		.byte	58
+ 2814 0aa1 1B       		.byte	27
+ 2815 0aa2 D2       		.byte	-46
+ 2816 0aa3 B2       		.byte	-78
+ 2817 0aa4 50       		.byte	80
+ 2818 0aa5 42       		.byte	66
+ 2819 0aa6 24       		.byte	36
+ 2820 0aa7 AB       		.byte	-85
+ 2821 0aa8 18       		.byte	24
+ 2822 0aa9 71       		.byte	113
+ 2823 0aaa 00       		.byte	0
+ 2824 0aab 23       		.byte	35
+ 2825 0aac 01       		.byte	1
+ 2826 0aad 21       		.byte	33
+ 2827 0aae 4B       		.byte	75
+ 2828 0aaf E7       		.byte	-25
+ 2829 0ab0 FF       		.byte	-1
+ 2830 0ab1 F7       		.byte	-9
+ 2831 0ab2 9E       		.byte	-98
+ 2832 0ab3 FE       		.byte	-2
+ 2833 0ab4 00       		.byte	0
+ 2834 0ab5 28       		.byte	40
+ 2835 0ab6 02       		.byte	2
+ 2836 0ab7 D1       		.byte	-47
+ 2837 0ab8 10       		.byte	16
+ 2838 0ab9 48       		.byte	72
+ 2839 0aba 80       		.byte	-128
+ 2840 0abb 24       		.byte	36
+ 2841 0abc 04       		.byte	4
+ 2842 0abd 60       		.byte	96
+ 2843 0abe FF       		.byte	-1
+ 2844 0abf F7       		.byte	-9
+ 2845 0ac0 21       		.byte	33
+ 2846 0ac1 FE       		.byte	-2
+ 2847 0ac2 06       		.byte	6
+ 2848 0ac3 E0       		.byte	-32
+ 2849 0ac4 01       		.byte	1
+ 2850 0ac5 25       		.byte	37
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 51
+
+
+ 2851 0ac6 00       		.byte	0
+ 2852 0ac7 26       		.byte	38
+ 2853 0ac8 01       		.byte	1
+ 2854 0ac9 E0       		.byte	-32
+ 2855 0aca 06       		.byte	6
+ 2856 0acb 1C       		.byte	28
+ 2857 0acc B8       		.byte	-72
+ 2858 0acd E7       		.byte	-25
+ 2859 0ace 03       		.byte	3
+ 2860 0acf 23       		.byte	35
+ 2861 0ad0 39       		.byte	57
+ 2862 0ad1 E7       		.byte	-25
+ 2863 0ad2 04       		.byte	4
+ 2864 0ad3 23       		.byte	35
+ 2865 0ad4 37       		.byte	55
+ 2866 0ad5 E7       		.byte	-25
+ 2867 0ad6 C0       		.byte	-64
+ 2868 0ad7 46       		.byte	70
+ 2869 0ad8 14       		.byte	20
+ 2870 0ad9 FD       		.byte	-3
+ 2871 0ada FF       		.byte	-1
+ 2872 0adb FF       		.byte	-1
+ 2873 0adc A7       		.byte	-89
+ 2874 0add FD       		.byte	-3
+ 2875 0ade FF       		.byte	-1
+ 2876 0adf FF       		.byte	-1
+ 2877 0ae0 AC       		.byte	-84
+ 2878 0ae1 FD       		.byte	-3
+ 2879 0ae2 FF       		.byte	-1
+ 2880 0ae3 FF       		.byte	-1
+ 2881 0ae4 AD       		.byte	-83
+ 2882 0ae5 FD       		.byte	-3
+ 2883 0ae6 FF       		.byte	-1
+ 2884 0ae7 FF       		.byte	-1
+ 2885 0ae8 AE       		.byte	-82
+ 2886 0ae9 FD       		.byte	-3
+ 2887 0aea FF       		.byte	-1
+ 2888 0aeb FF       		.byte	-1
+ 2889 0aec E4       		.byte	-28
+ 2890 0aed 00       		.byte	0
+ 2891 0aee 00       		.byte	0
+ 2892 0aef 20       		.byte	32
+ 2893 0af0 9C       		.byte	-100
+ 2894 0af1 0E       		.byte	14
+ 2895 0af2 00       		.byte	0
+ 2896 0af3 00       		.byte	0
+ 2897 0af4 D0       		.byte	-48
+ 2898 0af5 7F       		.byte	127
+ 2899 0af6 00       		.byte	0
+ 2900 0af7 00       		.byte	0
+ 2901 0af8 D1       		.byte	-47
+ 2902 0af9 7F       		.byte	127
+ 2903 0afa 00       		.byte	0
+ 2904 0afb 00       		.byte	0
+ 2905 0afc C0       		.byte	-64
+ 2906 0afd 00       		.byte	0
+ 2907 0afe 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 52
+
+
+ 2908 0aff 20       		.byte	32
+ 2909 0b00 14       		.byte	20
+ 2910 0b01 48       		.byte	72
+ 2911 0b02 10       		.byte	16
+ 2912 0b03 B5       		.byte	-75
+ 2913 0b04 03       		.byte	3
+ 2914 0b05 68       		.byte	104
+ 2915 0b06 00       		.byte	0
+ 2916 0b07 22       		.byte	34
+ 2917 0b08 19       		.byte	25
+ 2918 0b09 68       		.byte	104
+ 2919 0b0a 0B       		.byte	11
+ 2920 0b0b 1C       		.byte	28
+ 2921 0b0c 01       		.byte	1
+ 2922 0b0d 3B       		.byte	59
+ 2923 0b0e BF       		.byte	-65
+ 2924 0b0f 2B       		.byte	43
+ 2925 0b10 03       		.byte	3
+ 2926 0b11 D0       		.byte	-48
+ 2927 0b12 1C       		.byte	28
+ 2928 0b13 78       		.byte	120
+ 2929 0b14 12       		.byte	18
+ 2930 0b15 19       		.byte	25
+ 2931 0b16 D2       		.byte	-46
+ 2932 0b17 B2       		.byte	-78
+ 2933 0b18 F8       		.byte	-8
+ 2934 0b19 E7       		.byte	-25
+ 2935 0b1a 40       		.byte	64
+ 2936 0b1b 68       		.byte	104
+ 2937 0b1c 04       		.byte	4
+ 2938 0b1d 78       		.byte	120
+ 2939 0b1e A2       		.byte	-94
+ 2940 0b1f 1A       		.byte	26
+ 2941 0b20 D3       		.byte	-45
+ 2942 0b21 B2       		.byte	-78
+ 2943 0b22 A3       		.byte	-93
+ 2944 0b23 42       		.byte	66
+ 2945 0b24 01       		.byte	1
+ 2946 0b25 D1       		.byte	-47
+ 2947 0b26 00       		.byte	0
+ 2948 0b27 29       		.byte	41
+ 2949 0b28 02       		.byte	2
+ 2950 0b29 D1       		.byte	-47
+ 2951 0b2a 00       		.byte	0
+ 2952 0b2b 20       		.byte	32
+ 2953 0b2c FF       		.byte	-1
+ 2954 0b2d F7       		.byte	-9
+ 2955 0b2e E8       		.byte	-24
+ 2956 0b2f FD       		.byte	-3
+ 2957 0b30 FF       		.byte	-1
+ 2958 0b31 F7       		.byte	-9
+ 2959 0b32 5E       		.byte	94
+ 2960 0b33 FE       		.byte	-2
+ 2961 0b34 08       		.byte	8
+ 2962 0b35 4C       		.byte	76
+ 2963 0b36 21       		.byte	33
+ 2964 0b37 68       		.byte	104
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 53
+
+
+ 2965 0b38 22       		.byte	34
+ 2966 0b39 1C       		.byte	28
+ 2967 0b3a 40       		.byte	64
+ 2968 0b3b 29       		.byte	41
+ 2969 0b3c 01       		.byte	1
+ 2970 0b3d D0       		.byte	-48
+ 2971 0b3e 00       		.byte	0
+ 2972 0b3f 28       		.byte	40
+ 2973 0b40 03       		.byte	3
+ 2974 0b41 D0       		.byte	-48
+ 2975 0b42 00       		.byte	0
+ 2976 0b43 23       		.byte	35
+ 2977 0b44 13       		.byte	19
+ 2978 0b45 60       		.byte	96
+ 2979 0b46 FF       		.byte	-1
+ 2980 0b47 F7       		.byte	-9
+ 2981 0b48 7F       		.byte	127
+ 2982 0b49 FE       		.byte	-2
+ 2983 0b4a 80       		.byte	-128
+ 2984 0b4b 20       		.byte	32
+ 2985 0b4c 20       		.byte	32
+ 2986 0b4d 60       		.byte	96
+ 2987 0b4e FF       		.byte	-1
+ 2988 0b4f F7       		.byte	-9
+ 2989 0b50 D9       		.byte	-39
+ 2990 0b51 FD       		.byte	-3
+ 2991 0b52 10       		.byte	16
+ 2992 0b53 BD       		.byte	-67
+ 2993 0b54 E4       		.byte	-28
+ 2994 0b55 00       		.byte	0
+ 2995 0b56 00       		.byte	0
+ 2996 0b57 20       		.byte	32
+ 2997 0b58 C0       		.byte	-64
+ 2998 0b59 00       		.byte	0
+ 2999 0b5a 00       		.byte	0
+ 3000 0b5b 20       		.byte	32
+ 3001 0b5c 08       		.byte	8
+ 3002 0b5d B5       		.byte	-75
+ 3003 0b5e 0B       		.byte	11
+ 3004 0b5f 4B       		.byte	75
+ 3005 0b60 10       		.byte	16
+ 3006 0b61 20       		.byte	32
+ 3007 0b62 1A       		.byte	26
+ 3008 0b63 68       		.byte	104
+ 3009 0b64 0A       		.byte	10
+ 3010 0b65 49       		.byte	73
+ 3011 0b66 02       		.byte	2
+ 3012 0b67 40       		.byte	64
+ 3013 0b68 00       		.byte	0
+ 3014 0b69 D1       		.byte	-47
+ 3015 0b6a 0A       		.byte	10
+ 3016 0b6b 60       		.byte	96
+ 3017 0b6c 0B       		.byte	11
+ 3018 0b6d 68       		.byte	104
+ 3019 0b6e 80       		.byte	-128
+ 3020 0b6f 2B       		.byte	43
+ 3021 0b70 0B       		.byte	11
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 54
+
+
+ 3022 0b71 D1       		.byte	-47
+ 3023 0b72 00       		.byte	0
+ 3024 0b73 22       		.byte	34
+ 3025 0b74 01       		.byte	1
+ 3026 0b75 20       		.byte	32
+ 3027 0b76 0A       		.byte	10
+ 3028 0b77 60       		.byte	96
+ 3029 0b78 FF       		.byte	-1
+ 3030 0b79 F7       		.byte	-9
+ 3031 0b7a F2       		.byte	-14
+ 3032 0b7b FD       		.byte	-3
+ 3033 0b7c 00       		.byte	0
+ 3034 0b7d 28       		.byte	40
+ 3035 0b7e 04       		.byte	4
+ 3036 0b7f D0       		.byte	-48
+ 3037 0b80 01       		.byte	1
+ 3038 0b81 20       		.byte	32
+ 3039 0b82 FF       		.byte	-1
+ 3040 0b83 F7       		.byte	-9
+ 3041 0b84 ED       		.byte	-19
+ 3042 0b85 FD       		.byte	-3
+ 3043 0b86 FF       		.byte	-1
+ 3044 0b87 F7       		.byte	-9
+ 3045 0b88 E9       		.byte	-23
+ 3046 0b89 FD       		.byte	-3
+ 3047 0b8a 08       		.byte	8
+ 3048 0b8b BD       		.byte	-67
+ 3049 0b8c 00       		.byte	0
+ 3050 0b8d 03       		.byte	3
+ 3051 0b8e 0B       		.byte	11
+ 3052 0b8f 40       		.byte	64
+ 3053 0b90 C0       		.byte	-64
+ 3054 0b91 00       		.byte	0
+ 3055 0b92 00       		.byte	0
+ 3056 0b93 20       		.byte	32
+ 3057 0b94 0D       		.byte	13
+ 3058 0b95 4B       		.byte	75
+ 3059 0b96 84       		.byte	-124
+ 3060 0b97 22       		.byte	34
+ 3061 0b98 D0       		.byte	-48
+ 3062 0b99 04       		.byte	4
+ 3063 0b9a 18       		.byte	24
+ 3064 0b9b 60       		.byte	96
+ 3065 0b9c 19       		.byte	25
+ 3066 0b9d 68       		.byte	104
+ 3067 0b9e 80       		.byte	-128
+ 3068 0b9f 22       		.byte	34
+ 3069 0ba0 50       		.byte	80
+ 3070 0ba1 02       		.byte	2
+ 3071 0ba2 08       		.byte	8
+ 3072 0ba3 43       		.byte	67
+ 3073 0ba4 18       		.byte	24
+ 3074 0ba5 60       		.byte	96
+ 3075 0ba6 19       		.byte	25
+ 3076 0ba7 68       		.byte	104
+ 3077 0ba8 09       		.byte	9
+ 3078 0ba9 48       		.byte	72
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 55
+
+
+ 3079 0baa 19       		.byte	25
+ 3080 0bab 60       		.byte	96
+ 3081 0bac C3       		.byte	-61
+ 3082 0bad 23       		.byte	35
+ 3083 0bae 9A       		.byte	-102
+ 3084 0baf 00       		.byte	0
+ 3085 0bb0 02       		.byte	2
+ 3086 0bb1 60       		.byte	96
+ 3087 0bb2 08       		.byte	8
+ 3088 0bb3 4B       		.byte	75
+ 3089 0bb4 08       		.byte	8
+ 3090 0bb5 4A       		.byte	74
+ 3091 0bb6 09       		.byte	9
+ 3092 0bb7 48       		.byte	72
+ 3093 0bb8 00       		.byte	0
+ 3094 0bb9 21       		.byte	33
+ 3095 0bba 19       		.byte	25
+ 3096 0bbb 60       		.byte	96
+ 3097 0bbc 02       		.byte	2
+ 3098 0bbd 60       		.byte	96
+ 3099 0bbe 08       		.byte	8
+ 3100 0bbf 49       		.byte	73
+ 3101 0bc0 08       		.byte	8
+ 3102 0bc1 4B       		.byte	75
+ 3103 0bc2 09       		.byte	9
+ 3104 0bc3 48       		.byte	72
+ 3105 0bc4 1C       		.byte	28
+ 3106 0bc5 22       		.byte	34
+ 3107 0bc6 19       		.byte	25
+ 3108 0bc7 60       		.byte	96
+ 3109 0bc8 02       		.byte	2
+ 3110 0bc9 60       		.byte	96
+ 3111 0bca 70       		.byte	112
+ 3112 0bcb 47       		.byte	71
+ 3113 0bcc 00       		.byte	0
+ 3114 0bcd 01       		.byte	1
+ 3115 0bce 05       		.byte	5
+ 3116 0bcf 40       		.byte	64
+ 3117 0bd0 24       		.byte	36
+ 3118 0bd1 01       		.byte	1
+ 3119 0bd2 05       		.byte	5
+ 3120 0bd3 40       		.byte	64
+ 3121 0bd4 38       		.byte	56
+ 3122 0bd5 01       		.byte	1
+ 3123 0bd6 05       		.byte	5
+ 3124 0bd7 40       		.byte	64
+ 3125 0bd8 10       		.byte	16
+ 3126 0bd9 27       		.byte	39
+ 3127 0bda 00       		.byte	0
+ 3128 0bdb 00       		.byte	0
+ 3129 0bdc 14       		.byte	20
+ 3130 0bdd 01       		.byte	1
+ 3131 0bde 05       		.byte	5
+ 3132 0bdf 40       		.byte	64
+ 3133 0be0 88       		.byte	-120
+ 3134 0be1 13       		.byte	19
+ 3135 0be2 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 56
+
+
+ 3136 0be3 00       		.byte	0
+ 3137 0be4 0C       		.byte	12
+ 3138 0be5 01       		.byte	1
+ 3139 0be6 05       		.byte	5
+ 3140 0be7 40       		.byte	64
+ 3141 0be8 28       		.byte	40
+ 3142 0be9 01       		.byte	1
+ 3143 0bea 05       		.byte	5
+ 3144 0beb 40       		.byte	64
+ 3145 0bec 08       		.byte	8
+ 3146 0bed B5       		.byte	-75
+ 3147 0bee FF       		.byte	-1
+ 3148 0bef F7       		.byte	-9
+ 3149 0bf0 80       		.byte	-128
+ 3150 0bf1 FD       		.byte	-3
+ 3151 0bf2 04       		.byte	4
+ 3152 0bf3 4B       		.byte	75
+ 3153 0bf4 01       		.byte	1
+ 3154 0bf5 21       		.byte	33
+ 3155 0bf6 1A       		.byte	26
+ 3156 0bf7 68       		.byte	104
+ 3157 0bf8 0A       		.byte	10
+ 3158 0bf9 43       		.byte	67
+ 3159 0bfa 1A       		.byte	26
+ 3160 0bfb 60       		.byte	96
+ 3161 0bfc FF       		.byte	-1
+ 3162 0bfd F7       		.byte	-9
+ 3163 0bfe 7D       		.byte	125
+ 3164 0bff FD       		.byte	-3
+ 3165 0c00 08       		.byte	8
+ 3166 0c01 BD       		.byte	-67
+ 3167 0c02 C0       		.byte	-64
+ 3168 0c03 46       		.byte	70
+ 3169 0c04 00       		.byte	0
+ 3170 0c05 00       		.byte	0
+ 3171 0c06 05       		.byte	5
+ 3172 0c07 40       		.byte	64
+ 3173 0c08 10       		.byte	16
+ 3174 0c09 B5       		.byte	-75
+ 3175 0c0a 05       		.byte	5
+ 3176 0c0b 4C       		.byte	76
+ 3177 0c0c 23       		.byte	35
+ 3178 0c0d 78       		.byte	120
+ 3179 0c0e 00       		.byte	0
+ 3180 0c0f 2B       		.byte	43
+ 3181 0c10 03       		.byte	3
+ 3182 0c11 D1       		.byte	-47
+ 3183 0c12 FF       		.byte	-1
+ 3184 0c13 F7       		.byte	-9
+ 3185 0c14 BF       		.byte	-65
+ 3186 0c15 FF       		.byte	-1
+ 3187 0c16 01       		.byte	1
+ 3188 0c17 20       		.byte	32
+ 3189 0c18 20       		.byte	32
+ 3190 0c19 70       		.byte	112
+ 3191 0c1a FF       		.byte	-1
+ 3192 0c1b F7       		.byte	-9
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 57
+
+
+ 3193 0c1c E7       		.byte	-25
+ 3194 0c1d FF       		.byte	-1
+ 3195 0c1e 10       		.byte	16
+ 3196 0c1f BD       		.byte	-67
+ 3197 0c20 18       		.byte	24
+ 3198 0c21 01       		.byte	1
+ 3199 0c22 00       		.byte	0
+ 3200 0c23 20       		.byte	32
+ 3201 0c24 02       		.byte	2
+ 3202 0c25 4B       		.byte	75
+ 3203 0c26 18       		.byte	24
+ 3204 0c27 68       		.byte	104
+ 3205 0c28 01       		.byte	1
+ 3206 0c29 06       		.byte	6
+ 3207 0c2a C8       		.byte	-56
+ 3208 0c2b 0F       		.byte	15
+ 3209 0c2c 70       		.byte	112
+ 3210 0c2d 47       		.byte	71
+ 3211 0c2e C0       		.byte	-64
+ 3212 0c2f 46       		.byte	70
+ 3213 0c30 04       		.byte	4
+ 3214 0c31 00       		.byte	0
+ 3215 0c32 04       		.byte	4
+ 3216 0c33 40       		.byte	64
+ 3217 0c34 26       		.byte	38
+ 3218 0c35 4B       		.byte	75
+ 3219 0c36 10       		.byte	16
+ 3220 0c37 B5       		.byte	-75
+ 3221 0c38 18       		.byte	24
+ 3222 0c39 68       		.byte	104
+ 3223 0c3a 00       		.byte	0
+ 3224 0c3b 28       		.byte	40
+ 3225 0c3c 00       		.byte	0
+ 3226 0c3d D0       		.byte	-48
+ 3227 0c3e 80       		.byte	-128
+ 3228 0c3f 47       		.byte	71
+ 3229 0c40 24       		.byte	36
+ 3230 0c41 49       		.byte	73
+ 3231 0c42 0A       		.byte	10
+ 3232 0c43 68       		.byte	104
+ 3233 0c44 52       		.byte	82
+ 3234 0c45 07       		.byte	7
+ 3235 0c46 1D       		.byte	29
+ 3236 0c47 D5       		.byte	-43
+ 3237 0c48 23       		.byte	35
+ 3238 0c49 4C       		.byte	76
+ 3239 0c4a 23       		.byte	35
+ 3240 0c4b 68       		.byte	104
+ 3241 0c4c 1A       		.byte	26
+ 3242 0c4d 07       		.byte	7
+ 3243 0c4e 16       		.byte	22
+ 3244 0c4f D0       		.byte	-48
+ 3245 0c50 22       		.byte	34
+ 3246 0c51 4B       		.byte	75
+ 3247 0c52 23       		.byte	35
+ 3248 0c53 4A       		.byte	74
+ 3249 0c54 18       		.byte	24
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 58
+
+
+ 3250 0c55 68       		.byte	104
+ 3251 0c56 11       		.byte	17
+ 3252 0c57 68       		.byte	104
+ 3253 0c58 4B       		.byte	75
+ 3254 0c59 1C       		.byte	28
+ 3255 0c5a 40       		.byte	64
+ 3256 0c5b 39       		.byte	57
+ 3257 0c5c 4C       		.byte	76
+ 3258 0c5d 1E       		.byte	30
+ 3259 0c5e A1       		.byte	-95
+ 3260 0c5f 41       		.byte	65
+ 3261 0c60 4C       		.byte	76
+ 3262 0c61 42       		.byte	66
+ 3263 0c62 20       		.byte	32
+ 3264 0c63 49       		.byte	73
+ 3265 0c64 23       		.byte	35
+ 3266 0c65 40       		.byte	64
+ 3267 0c66 0C       		.byte	12
+ 3268 0c67 68       		.byte	104
+ 3269 0c68 A3       		.byte	-93
+ 3270 0c69 42       		.byte	66
+ 3271 0c6a 03       		.byte	3
+ 3272 0c6b D1       		.byte	-47
+ 3273 0c6c 1E       		.byte	30
+ 3274 0c6d 4B       		.byte	75
+ 3275 0c6e 20       		.byte	32
+ 3276 0c6f 22       		.byte	34
+ 3277 0c70 1A       		.byte	26
+ 3278 0c71 70       		.byte	112
+ 3279 0c72 E9       		.byte	-23
+ 3280 0c73 E7       		.byte	-25
+ 3281 0c74 1D       		.byte	29
+ 3282 0c75 49       		.byte	73
+ 3283 0c76 C0       		.byte	-64
+ 3284 0c77 B2       		.byte	-78
+ 3285 0c78 C8       		.byte	-56
+ 3286 0c79 54       		.byte	84
+ 3287 0c7a 13       		.byte	19
+ 3288 0c7b 60       		.byte	96
+ 3289 0c7c E4       		.byte	-28
+ 3290 0c7d E7       		.byte	-25
+ 3291 0c7e 1C       		.byte	28
+ 3292 0c7f 49       		.byte	73
+ 3293 0c80 04       		.byte	4
+ 3294 0c81 20       		.byte	32
+ 3295 0c82 08       		.byte	8
+ 3296 0c83 60       		.byte	96
+ 3297 0c84 1B       		.byte	27
+ 3298 0c85 4A       		.byte	74
+ 3299 0c86 14       		.byte	20
+ 3300 0c87 68       		.byte	104
+ 3301 0c88 A2       		.byte	-94
+ 3302 0c89 07       		.byte	7
+ 3303 0c8a 20       		.byte	32
+ 3304 0c8b D5       		.byte	-43
+ 3305 0c8c 1A       		.byte	26
+ 3306 0c8d 4B       		.byte	75
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 59
+
+
+ 3307 0c8e 0F       		.byte	15
+ 3308 0c8f 21       		.byte	33
+ 3309 0c90 18       		.byte	24
+ 3310 0c91 68       		.byte	104
+ 3311 0c92 01       		.byte	1
+ 3312 0c93 40       		.byte	64
+ 3313 0c94 08       		.byte	8
+ 3314 0c95 29       		.byte	41
+ 3315 0c96 17       		.byte	23
+ 3316 0c97 D0       		.byte	-48
+ 3317 0c98 18       		.byte	24
+ 3318 0c99 4A       		.byte	74
+ 3319 0c9a 19       		.byte	25
+ 3320 0c9b 4B       		.byte	75
+ 3321 0c9c 14       		.byte	20
+ 3322 0c9d 68       		.byte	104
+ 3323 0c9e 18       		.byte	24
+ 3324 0c9f 68       		.byte	104
+ 3325 0ca0 84       		.byte	-124
+ 3326 0ca1 42       		.byte	66
+ 3327 0ca2 0C       		.byte	12
+ 3328 0ca3 D0       		.byte	-48
+ 3329 0ca4 1C       		.byte	28
+ 3330 0ca5 68       		.byte	104
+ 3331 0ca6 62       		.byte	98
+ 3332 0ca7 1C       		.byte	28
+ 3333 0ca8 3F       		.byte	63
+ 3334 0ca9 3C       		.byte	60
+ 3335 0caa 60       		.byte	96
+ 3336 0cab 1E       		.byte	30
+ 3337 0cac 84       		.byte	-124
+ 3338 0cad 41       		.byte	65
+ 3339 0cae 61       		.byte	97
+ 3340 0caf 42       		.byte	66
+ 3341 0cb0 14       		.byte	20
+ 3342 0cb1 48       		.byte	72
+ 3343 0cb2 0A       		.byte	10
+ 3344 0cb3 40       		.byte	64
+ 3345 0cb4 84       		.byte	-124
+ 3346 0cb5 5C       		.byte	92
+ 3347 0cb6 14       		.byte	20
+ 3348 0cb7 49       		.byte	73
+ 3349 0cb8 0C       		.byte	12
+ 3350 0cb9 60       		.byte	96
+ 3351 0cba 1A       		.byte	26
+ 3352 0cbb 60       		.byte	96
+ 3353 0cbc E6       		.byte	-26
+ 3354 0cbd E7       		.byte	-25
+ 3355 0cbe 13       		.byte	19
+ 3356 0cbf 4C       		.byte	76
+ 3357 0cc0 02       		.byte	2
+ 3358 0cc1 21       		.byte	33
+ 3359 0cc2 22       		.byte	34
+ 3360 0cc3 68       		.byte	104
+ 3361 0cc4 8A       		.byte	-118
+ 3362 0cc5 43       		.byte	67
+ 3363 0cc6 22       		.byte	34
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 60
+
+
+ 3364 0cc7 60       		.byte	96
+ 3365 0cc8 11       		.byte	17
+ 3366 0cc9 4B       		.byte	75
+ 3367 0cca 02       		.byte	2
+ 3368 0ccb 20       		.byte	32
+ 3369 0ccc 18       		.byte	24
+ 3370 0ccd 60       		.byte	96
+ 3371 0cce 10       		.byte	16
+ 3372 0ccf BD       		.byte	-67
+ 3373 0cd0 14       		.byte	20
+ 3374 0cd1 01       		.byte	1
+ 3375 0cd2 00       		.byte	0
+ 3376 0cd3 20       		.byte	32
+ 3377 0cd4 CC       		.byte	-52
+ 3378 0cd5 0F       		.byte	15
+ 3379 0cd6 06       		.byte	6
+ 3380 0cd7 40       		.byte	64
+ 3381 0cd8 08       		.byte	8
+ 3382 0cd9 03       		.byte	3
+ 3383 0cda 06       		.byte	6
+ 3384 0cdb 40       		.byte	64
+ 3385 0cdc 40       		.byte	64
+ 3386 0cdd 03       		.byte	3
+ 3387 0cde 06       		.byte	6
+ 3388 0cdf 40       		.byte	64
+ 3389 0ce0 AC       		.byte	-84
+ 3390 0ce1 01       		.byte	1
+ 3391 0ce2 00       		.byte	0
+ 3392 0ce3 20       		.byte	32
+ 3393 0ce4 24       		.byte	36
+ 3394 0ce5 01       		.byte	1
+ 3395 0ce6 00       		.byte	0
+ 3396 0ce7 20       		.byte	32
+ 3397 0ce8 A9       		.byte	-87
+ 3398 0ce9 01       		.byte	1
+ 3399 0cea 00       		.byte	0
+ 3400 0ceb 20       		.byte	32
+ 3401 0cec 68       		.byte	104
+ 3402 0ced 01       		.byte	1
+ 3403 0cee 00       		.byte	0
+ 3404 0cef 20       		.byte	32
+ 3405 0cf0 C0       		.byte	-64
+ 3406 0cf1 0F       		.byte	15
+ 3407 0cf2 06       		.byte	6
+ 3408 0cf3 40       		.byte	64
+ 3409 0cf4 8C       		.byte	-116
+ 3410 0cf5 0F       		.byte	15
+ 3411 0cf6 06       		.byte	6
+ 3412 0cf7 40       		.byte	64
+ 3413 0cf8 08       		.byte	8
+ 3414 0cf9 02       		.byte	2
+ 3415 0cfa 06       		.byte	6
+ 3416 0cfb 40       		.byte	64
+ 3417 0cfc 20       		.byte	32
+ 3418 0cfd 01       		.byte	1
+ 3419 0cfe 00       		.byte	0
+ 3420 0cff 20       		.byte	32
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 61
+
+
+ 3421 0d00 1C       		.byte	28
+ 3422 0d01 01       		.byte	1
+ 3423 0d02 00       		.byte	0
+ 3424 0d03 20       		.byte	32
+ 3425 0d04 28       		.byte	40
+ 3426 0d05 01       		.byte	1
+ 3427 0d06 00       		.byte	0
+ 3428 0d07 20       		.byte	32
+ 3429 0d08 40       		.byte	64
+ 3430 0d09 02       		.byte	2
+ 3431 0d0a 06       		.byte	6
+ 3432 0d0b 40       		.byte	64
+ 3433 0d0c 88       		.byte	-120
+ 3434 0d0d 0F       		.byte	15
+ 3435 0d0e 06       		.byte	6
+ 3436 0d0f 40       		.byte	64
+ 3437 0d10 80       		.byte	-128
+ 3438 0d11 0F       		.byte	15
+ 3439 0d12 06       		.byte	6
+ 3440 0d13 40       		.byte	64
+ 3441 0d14 F0       		.byte	-16
+ 3442 0d15 B5       		.byte	-75
+ 3443 0d16 00       		.byte	0
+ 3444 0d17 23       		.byte	35
+ 3445 0d18 A7       		.byte	-89
+ 3446 0d19 B0       		.byte	-80
+ 3447 0d1a 07       		.byte	7
+ 3448 0d1b 1C       		.byte	28
+ 3449 0d1c 01       		.byte	1
+ 3450 0d1d 93       		.byte	-109
+ 3451 0d1e FF       		.byte	-1
+ 3452 0d1f 28       		.byte	40
+ 3453 0d20 45       		.byte	69
+ 3454 0d21 D8       		.byte	-40
+ 3455 0d22 99       		.byte	-103
+ 3456 0d23 42       		.byte	66
+ 3457 0d24 43       		.byte	67
+ 3458 0d25 D0       		.byte	-48
+ 3459 0d26 24       		.byte	36
+ 3460 0d27 4A       		.byte	74
+ 3461 0d28 24       		.byte	36
+ 3462 0d29 4C       		.byte	76
+ 3463 0d2a 04       		.byte	4
+ 3464 0d2b AE       		.byte	-82
+ 3465 0d2c 26       		.byte	38
+ 3466 0d2d 60       		.byte	96
+ 3467 0d2e 7F       		.byte	127
+ 3468 0d2f 25       		.byte	37
+ 3469 0d30 04       		.byte	4
+ 3470 0d31 92       		.byte	-110
+ 3471 0d32 06       		.byte	6
+ 3472 0d33 A8       		.byte	-88
+ 3473 0d34 80       		.byte	-128
+ 3474 0d35 22       		.byte	34
+ 3475 0d36 75       		.byte	117
+ 3476 0d37 60       		.byte	96
+ 3477 0d38 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 62
+
+
+ 3478 0d39 F0       		.byte	-16
+ 3479 0d3a 86       		.byte	-122
+ 3480 0d3b F8       		.byte	-8
+ 3481 0d3c 20       		.byte	32
+ 3482 0d3d 4D       		.byte	77
+ 3483 0d3e 21       		.byte	33
+ 3484 0d3f 49       		.byte	73
+ 3485 0d40 29       		.byte	41
+ 3486 0d41 60       		.byte	96
+ 3487 0d42 2B       		.byte	43
+ 3488 0d43 68       		.byte	104
+ 3489 0d44 00       		.byte	0
+ 3490 0d45 2B       		.byte	43
+ 3491 0d46 FC       		.byte	-4
+ 3492 0d47 DB       		.byte	-37
+ 3493 0d48 20       		.byte	32
+ 3494 0d49 68       		.byte	104
+ 3495 0d4a A0       		.byte	-96
+ 3496 0d4b 21       		.byte	33
+ 3497 0d4c 02       		.byte	2
+ 3498 0d4d 90       		.byte	-112
+ 3499 0d4e 02       		.byte	2
+ 3500 0d4f 9A       		.byte	-102
+ 3501 0d50 0B       		.byte	11
+ 3502 0d51 06       		.byte	6
+ 3503 0d52 9A       		.byte	-102
+ 3504 0d53 42       		.byte	66
+ 3505 0d54 01       		.byte	1
+ 3506 0d55 D1       		.byte	-47
+ 3507 0d56 00       		.byte	0
+ 3508 0d57 20       		.byte	32
+ 3509 0d58 04       		.byte	4
+ 3510 0d59 E0       		.byte	-32
+ 3511 0d5a 02       		.byte	2
+ 3512 0d5b 98       		.byte	-104
+ 3513 0d5c 02       		.byte	2
+ 3514 0d5d 0F       		.byte	15
+ 3515 0d5e 0F       		.byte	15
+ 3516 0d5f 2A       		.byte	42
+ 3517 0d60 02       		.byte	2
+ 3518 0d61 D1       		.byte	-47
+ 3519 0d62 09       		.byte	9
+ 3520 0d63 20       		.byte	32
+ 3521 0d64 01       		.byte	1
+ 3522 0d65 90       		.byte	-112
+ 3523 0d66 03       		.byte	3
+ 3524 0d67 E0       		.byte	-32
+ 3525 0d68 21       		.byte	33
+ 3526 0d69 68       		.byte	104
+ 3527 0d6a 0B       		.byte	11
+ 3528 0d6b 0F       		.byte	15
+ 3529 0d6c 0A       		.byte	10
+ 3530 0d6d 2B       		.byte	43
+ 3531 0d6e FB       		.byte	-5
+ 3532 0d6f D1       		.byte	-47
+ 3533 0d70 01       		.byte	1
+ 3534 0d71 9A       		.byte	-102
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 63
+
+
+ 3535 0d72 00       		.byte	0
+ 3536 0d73 2A       		.byte	42
+ 3537 0d74 1D       		.byte	29
+ 3538 0d75 D1       		.byte	-47
+ 3539 0d76 26       		.byte	38
+ 3540 0d77 60       		.byte	96
+ 3541 0d78 13       		.byte	19
+ 3542 0d79 4E       		.byte	78
+ 3543 0d7a 3F       		.byte	63
+ 3544 0d7b 04       		.byte	4
+ 3545 0d7c 37       		.byte	55
+ 3546 0d7d 43       		.byte	67
+ 3547 0d7e 04       		.byte	4
+ 3548 0d7f 97       		.byte	-105
+ 3549 0d80 FF       		.byte	-1
+ 3550 0d81 F7       		.byte	-9
+ 3551 0d82 B7       		.byte	-73
+ 3552 0d83 FC       		.byte	-4
+ 3553 0d84 11       		.byte	17
+ 3554 0d85 49       		.byte	73
+ 3555 0d86 12       		.byte	18
+ 3556 0d87 4A       		.byte	74
+ 3557 0d88 0B       		.byte	11
+ 3558 0d89 68       		.byte	104
+ 3559 0d8a 03       		.byte	3
+ 3560 0d8b 93       		.byte	-109
+ 3561 0d8c 2A       		.byte	42
+ 3562 0d8d 60       		.byte	96
+ 3563 0d8e 2F       		.byte	47
+ 3564 0d8f 68       		.byte	104
+ 3565 0d90 00       		.byte	0
+ 3566 0d91 2F       		.byte	47
+ 3567 0d92 FC       		.byte	-4
+ 3568 0d93 DB       		.byte	-37
+ 3569 0d94 03       		.byte	3
+ 3570 0d95 9D       		.byte	-99
+ 3571 0d96 A0       		.byte	-96
+ 3572 0d97 26       		.byte	38
+ 3573 0d98 0D       		.byte	13
+ 3574 0d99 60       		.byte	96
+ 3575 0d9a FF       		.byte	-1
+ 3576 0d9b F7       		.byte	-9
+ 3577 0d9c AE       		.byte	-82
+ 3578 0d9d FC       		.byte	-4
+ 3579 0d9e 24       		.byte	36
+ 3580 0d9f 68       		.byte	104
+ 3581 0da0 31       		.byte	49
+ 3582 0da1 06       		.byte	6
+ 3583 0da2 02       		.byte	2
+ 3584 0da3 94       		.byte	-108
+ 3585 0da4 02       		.byte	2
+ 3586 0da5 98       		.byte	-104
+ 3587 0da6 88       		.byte	-120
+ 3588 0da7 42       		.byte	66
+ 3589 0da8 03       		.byte	3
+ 3590 0da9 D0       		.byte	-48
+ 3591 0daa 02       		.byte	2
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 64
+
+
+ 3592 0dab 98       		.byte	-104
+ 3593 0dac 00       		.byte	0
+ 3594 0dad E0       		.byte	-32
+ 3595 0dae 01       		.byte	1
+ 3596 0daf 20       		.byte	32
+ 3597 0db0 01       		.byte	1
+ 3598 0db1 90       		.byte	-112
+ 3599 0db2 01       		.byte	1
+ 3600 0db3 98       		.byte	-104
+ 3601 0db4 27       		.byte	39
+ 3602 0db5 B0       		.byte	-80
+ 3603 0db6 F0       		.byte	-16
+ 3604 0db7 BD       		.byte	-67
+ 3605 0db8 B6       		.byte	-74
+ 3606 0db9 D7       		.byte	-41
+ 3607 0dba 00       		.byte	0
+ 3608 0dbb 00       		.byte	0
+ 3609 0dbc 08       		.byte	8
+ 3610 0dbd 00       		.byte	0
+ 3611 0dbe 00       		.byte	0
+ 3612 0dbf 40       		.byte	64
+ 3613 0dc0 04       		.byte	4
+ 3614 0dc1 00       		.byte	0
+ 3615 0dc2 00       		.byte	0
+ 3616 0dc3 40       		.byte	64
+ 3617 0dc4 04       		.byte	4
+ 3618 0dc5 00       		.byte	0
+ 3619 0dc6 00       		.byte	0
+ 3620 0dc7 80       		.byte	-128
+ 3621 0dc8 B6       		.byte	-74
+ 3622 0dc9 D8       		.byte	-40
+ 3623 0dca 00       		.byte	0
+ 3624 0dcb 00       		.byte	0
+ 3625 0dcc 08       		.byte	8
+ 3626 0dcd 01       		.byte	1
+ 3627 0dce 0B       		.byte	11
+ 3628 0dcf 40       		.byte	64
+ 3629 0dd0 05       		.byte	5
+ 3630 0dd1 00       		.byte	0
+ 3631 0dd2 00       		.byte	0
+ 3632 0dd3 80       		.byte	-128
+ 3633 0dd4 02       		.byte	2
+ 3634 0dd5 B4       		.byte	-76
+ 3635 0dd6 71       		.byte	113
+ 3636 0dd7 46       		.byte	70
+ 3637 0dd8 49       		.byte	73
+ 3638 0dd9 08       		.byte	8
+ 3639 0dda 49       		.byte	73
+ 3640 0ddb 00       		.byte	0
+ 3641 0ddc 09       		.byte	9
+ 3642 0ddd 56       		.byte	86
+ 3643 0dde 49       		.byte	73
+ 3644 0ddf 00       		.byte	0
+ 3645 0de0 8E       		.byte	-114
+ 3646 0de1 44       		.byte	68
+ 3647 0de2 02       		.byte	2
+ 3648 0de3 BC       		.byte	-68
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 65
+
+
+ 3649 0de4 70       		.byte	112
+ 3650 0de5 47       		.byte	71
+ 3651 0de6 C0       		.byte	-64
+ 3652 0de7 46       		.byte	70
+ 3653 0de8 02       		.byte	2
+ 3654 0de9 B4       		.byte	-76
+ 3655 0dea 71       		.byte	113
+ 3656 0deb 46       		.byte	70
+ 3657 0dec 49       		.byte	73
+ 3658 0ded 08       		.byte	8
+ 3659 0dee 49       		.byte	73
+ 3660 0def 00       		.byte	0
+ 3661 0df0 09       		.byte	9
+ 3662 0df1 5C       		.byte	92
+ 3663 0df2 49       		.byte	73
+ 3664 0df3 00       		.byte	0
+ 3665 0df4 8E       		.byte	-114
+ 3666 0df5 44       		.byte	68
+ 3667 0df6 02       		.byte	2
+ 3668 0df7 BC       		.byte	-68
+ 3669 0df8 70       		.byte	112
+ 3670 0df9 47       		.byte	71
+ 3671 0dfa C0       		.byte	-64
+ 3672 0dfb 46       		.byte	70
+ 3673 0dfc 70       		.byte	112
+ 3674 0dfd B5       		.byte	-75
+ 3675 0dfe 0E       		.byte	14
+ 3676 0dff 4B       		.byte	75
+ 3677 0e00 0E       		.byte	14
+ 3678 0e01 4D       		.byte	77
+ 3679 0e02 00       		.byte	0
+ 3680 0e03 24       		.byte	36
+ 3681 0e04 E8       		.byte	-24
+ 3682 0e05 1A       		.byte	26
+ 3683 0e06 85       		.byte	-123
+ 3684 0e07 10       		.byte	16
+ 3685 0e08 1E       		.byte	30
+ 3686 0e09 1C       		.byte	28
+ 3687 0e0a AC       		.byte	-84
+ 3688 0e0b 42       		.byte	66
+ 3689 0e0c 04       		.byte	4
+ 3690 0e0d D0       		.byte	-48
+ 3691 0e0e A1       		.byte	-95
+ 3692 0e0f 00       		.byte	0
+ 3693 0e10 72       		.byte	114
+ 3694 0e11 58       		.byte	88
+ 3695 0e12 90       		.byte	-112
+ 3696 0e13 47       		.byte	71
+ 3697 0e14 01       		.byte	1
+ 3698 0e15 34       		.byte	52
+ 3699 0e16 F8       		.byte	-8
+ 3700 0e17 E7       		.byte	-25
+ 3701 0e18 00       		.byte	0
+ 3702 0e19 F0       		.byte	-16
+ 3703 0e1a 44       		.byte	68
+ 3704 0e1b F8       		.byte	-8
+ 3705 0e1c 08       		.byte	8
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 66
+
+
+ 3706 0e1d 49       		.byte	73
+ 3707 0e1e 09       		.byte	9
+ 3708 0e1f 4A       		.byte	74
+ 3709 0e20 0E       		.byte	14
+ 3710 0e21 1C       		.byte	28
+ 3711 0e22 54       		.byte	84
+ 3712 0e23 1A       		.byte	26
+ 3713 0e24 A5       		.byte	-91
+ 3714 0e25 10       		.byte	16
+ 3715 0e26 00       		.byte	0
+ 3716 0e27 24       		.byte	36
+ 3717 0e28 AC       		.byte	-84
+ 3718 0e29 42       		.byte	66
+ 3719 0e2a 04       		.byte	4
+ 3720 0e2b D0       		.byte	-48
+ 3721 0e2c A3       		.byte	-93
+ 3722 0e2d 00       		.byte	0
+ 3723 0e2e F0       		.byte	-16
+ 3724 0e2f 58       		.byte	88
+ 3725 0e30 80       		.byte	-128
+ 3726 0e31 47       		.byte	71
+ 3727 0e32 01       		.byte	1
+ 3728 0e33 34       		.byte	52
+ 3729 0e34 F8       		.byte	-8
+ 3730 0e35 E7       		.byte	-25
+ 3731 0e36 70       		.byte	112
+ 3732 0e37 BD       		.byte	-67
+ 3733 0e38 B0       		.byte	-80
+ 3734 0e39 0E       		.byte	14
+ 3735 0e3a 00       		.byte	0
+ 3736 0e3b 00       		.byte	0
+ 3737 0e3c B0       		.byte	-80
+ 3738 0e3d 0E       		.byte	14
+ 3739 0e3e 00       		.byte	0
+ 3740 0e3f 00       		.byte	0
+ 3741 0e40 B0       		.byte	-80
+ 3742 0e41 0E       		.byte	14
+ 3743 0e42 00       		.byte	0
+ 3744 0e43 00       		.byte	0
+ 3745 0e44 B8       		.byte	-72
+ 3746 0e45 0E       		.byte	14
+ 3747 0e46 00       		.byte	0
+ 3748 0e47 00       		.byte	0
+ 3749 0e48 10       		.byte	16
+ 3750 0e49 B5       		.byte	-75
+ 3751 0e4a 00       		.byte	0
+ 3752 0e4b 23       		.byte	35
+ 3753 0e4c 93       		.byte	-109
+ 3754 0e4d 42       		.byte	66
+ 3755 0e4e 03       		.byte	3
+ 3756 0e4f D0       		.byte	-48
+ 3757 0e50 CC       		.byte	-52
+ 3758 0e51 5C       		.byte	92
+ 3759 0e52 C4       		.byte	-60
+ 3760 0e53 54       		.byte	84
+ 3761 0e54 01       		.byte	1
+ 3762 0e55 33       		.byte	51
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 67
+
+
+ 3763 0e56 F9       		.byte	-7
+ 3764 0e57 E7       		.byte	-25
+ 3765 0e58 10       		.byte	16
+ 3766 0e59 BD       		.byte	-67
+ 3767 0e5a 00       		.byte	0
+ 3768 0e5b B5       		.byte	-75
+ 3769 0e5c 82       		.byte	-126
+ 3770 0e5d 18       		.byte	24
+ 3771 0e5e 03       		.byte	3
+ 3772 0e5f 1C       		.byte	28
+ 3773 0e60 93       		.byte	-109
+ 3774 0e61 42       		.byte	66
+ 3775 0e62 02       		.byte	2
+ 3776 0e63 D0       		.byte	-48
+ 3777 0e64 19       		.byte	25
+ 3778 0e65 70       		.byte	112
+ 3779 0e66 01       		.byte	1
+ 3780 0e67 33       		.byte	51
+ 3781 0e68 FA       		.byte	-6
+ 3782 0e69 E7       		.byte	-25
+ 3783 0e6a 00       		.byte	0
+ 3784 0e6b BD       		.byte	-67
+ 3785 0e6c F8       		.byte	-8
+ 3786 0e6d 0E       		.byte	14
+ 3787 0e6e 00       		.byte	0
+ 3788 0e6f 00       		.byte	0
+ 3789 0e70 46       		.byte	70
+ 3790 0e71 00       		.byte	0
+ 3791 0e72 00       		.byte	0
+ 3792 0e73 00       		.byte	0
+ 3793 0e74 00       		.byte	0
+ 3794 0e75 00       		.byte	0
+ 3795 0e76 00       		.byte	0
+ 3796 0e77 00       		.byte	0
+ 3797 0e78 01       		.byte	1
+ 3798 0e79 33       		.byte	51
+ 3799 0e7a 0F       		.byte	15
+ 3800 0e7b 40       		.byte	64
+ 3801 0e7c 03       		.byte	3
+ 3802 0e7d 41       		.byte	65
+ 3803 0e7e 0F       		.byte	15
+ 3804 0e7f 40       		.byte	64
+ 3805 0e80 04       		.byte	4
+ 3806 0e81 43       		.byte	67
+ 3807 0e82 0F       		.byte	15
+ 3808 0e83 40       		.byte	64
+ 3809 0e84 02       		.byte	2
+ 3810 0e85 60       		.byte	96
+ 3811 0e86 0F       		.byte	15
+ 3812 0e87 40       		.byte	64
+ 3813 0e88 E6       		.byte	-26
+ 3814 0e89 10       		.byte	16
+ 3815 0e8a 62       		.byte	98
+ 3816 0e8b 04       		.byte	4
+ 3817 0e8c 8E       		.byte	-114
+ 3818 0e8d 04       		.byte	4
+ 3819 0e8e D8       		.byte	-40
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 68
+
+
+ 3820 0e8f 40       		.byte	64
+ 3821 0e90 18       		.byte	24
+ 3822 0e91 80       		.byte	-128
+ 3823 0e92 8C       		.byte	-116
+ 3824 0e93 40       		.byte	64
+ 3825 0e94 C6       		.byte	-58
+ 3826 0e95 08       		.byte	8
+ 3827 0e96 E6       		.byte	-26
+ 3828 0e97 08       		.byte	8
+ 3829 0e98 02       		.byte	2
+ 3830 0e99 01       		.byte	1
+ 3831 0e9a 11       		.byte	17
+ 3832 0e9b 01       		.byte	1
+ 3833 0e9c 93       		.byte	-109
+ 3834 0e9d 11       		.byte	17
+ 3835 0e9e C8       		.byte	-56
+ 3836 0e9f 04       		.byte	4
+ 3837 0ea0 11       		.byte	17
+ 3838 0ea1 14       		.byte	20
+ 3839 0ea2 01       		.byte	1
+ 3840 0ea3 01       		.byte	1
+ 3841 0ea4 F8       		.byte	-8
+ 3842 0ea5 B5       		.byte	-75
+ 3843 0ea6 C0       		.byte	-64
+ 3844 0ea7 46       		.byte	70
+ 3845 0ea8 F8       		.byte	-8
+ 3846 0ea9 BC       		.byte	-68
+ 3847 0eaa 08       		.byte	8
+ 3848 0eab BC       		.byte	-68
+ 3849 0eac 9E       		.byte	-98
+ 3850 0ead 46       		.byte	70
+ 3851 0eae 70       		.byte	112
+ 3852 0eaf 47       		.byte	71
+ 3853 0eb0 2D       		.byte	45
+ 3854 0eb1 02       		.byte	2
+ 3855 0eb2 00       		.byte	0
+ 3856 0eb3 00       		.byte	0
+ 3857 0eb4 CD       		.byte	-51
+ 3858 0eb5 03       		.byte	3
+ 3859 0eb6 00       		.byte	0
+ 3860 0eb7 00       		.byte	0
+ 3861 0eb8 F8       		.byte	-8
+ 3862 0eb9 B5       		.byte	-75
+ 3863 0eba C0       		.byte	-64
+ 3864 0ebb 46       		.byte	70
+ 3865 0ebc F8       		.byte	-8
+ 3866 0ebd BC       		.byte	-68
+ 3867 0ebe 08       		.byte	8
+ 3868 0ebf BC       		.byte	-68
+ 3869 0ec0 9E       		.byte	-98
+ 3870 0ec1 46       		.byte	70
+ 3871 0ec2 70       		.byte	112
+ 3872 0ec3 47       		.byte	71
+ 3873 0ec4 05       		.byte	5
+ 3874 0ec5 02       		.byte	2
+ 3875 0ec6 00       		.byte	0
+ 3876 0ec7 00       		.byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 69
+
+
+ 3877 0ec8 D8       		.byte	-40
+ 3878 0ec9 0E       		.byte	14
+ 3879 0eca 00       		.byte	0
+ 3880 0ecb 00       		.byte	0
+ 3881 0ecc D0       		.byte	-48
+ 3882 0ecd 00       		.byte	0
+ 3883 0ece 00       		.byte	0
+ 3884 0ecf 20       		.byte	32
+ 3885 0ed0 20       		.byte	32
+ 3886 0ed1 00       		.byte	0
+ 3887 0ed2 00       		.byte	0
+ 3888 0ed3 00       		.byte	0
+ 3889 0ed4 C0       		.byte	-64
+ 3890 0ed5 00       		.byte	0
+ 3891 0ed6 00       		.byte	0
+ 3892 0ed7 00       		.byte	0
+ 3893 0ed8 00       		.byte	0
+ 3894 0ed9 00       		.byte	0
+ 3895 0eda 00       		.byte	0
+ 3896 0edb 00       		.byte	0
+ 3897 0edc 00       		.byte	0
+ 3898 0edd 00       		.byte	0
+ 3899 0ede E0       		.byte	-32
+ 3900 0edf 2E       		.byte	46
+ 3901 0ee0 C0       		.byte	-64
+ 3902 0ee1 5D       		.byte	93
+ 3903 0ee2 00       		.byte	0
+ 3904 0ee3 00       		.byte	0
+ 3905 0ee4 18       		.byte	24
+ 3906 0ee5 00       		.byte	0
+ 3907 0ee6 00       		.byte	0
+ 3908 0ee7 00       		.byte	0
+ 3909 0ee8 00       		.byte	0
+ 3910 0ee9 36       		.byte	54
+ 3911 0eea 6E       		.byte	110
+ 3912 0eeb 01       		.byte	1
+ 3913 0eec 6C       		.byte	108
+ 3914 0eed 0E       		.byte	14
+ 3915 0eee 00       		.byte	0
+ 3916 0eef 00       		.byte	0
+ 3917 0ef0 70       		.byte	112
+ 3918 0ef1 0E       		.byte	14
+ 3919 0ef2 00       		.byte	0
+ 3920 0ef3 00       		.byte	0
+ 3921 0ef4 00       		.byte	0
+ 3922 0ef5 00       		.byte	0
+ 3923 0ef6 00       		.byte	0
+ 3924 0ef7 00       		.byte	0
+ 3925 0ef8 00       		.byte	0
+ 3926 0ef9 00       		.byte	0
+ 3927 0efa 00       		.byte	0
+ 3928 0efb 00       		.byte	0
+ 3929 0efc 00       		.byte	0
+ 3930 0efd 00       		.byte	0
+ 3931 0efe 00       		.byte	0
+ 3932 0eff 00       		.byte	0
+ 3933              		.global	cy_metadata
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 70
+
+
+ 3934              		.section	.cymeta,"a",%progbits
+ 3935              		.align	2
+ 3936              		.type	cy_metadata, %object
+ 3937              		.size	cy_metadata, 12
+ 3938              	cy_metadata:
+ 3939 0000 00       		.byte	0
+ 3940 0001 02       		.byte	2
+ 3941 0002 04       		.byte	4
+ 3942 0003 C8       		.byte	-56
+ 3943 0004 11       		.byte	17
+ 3944 0005 93       		.byte	-109
+ 3945 0006 11       		.byte	17
+ 3946 0007 01       		.byte	1
+ 3947 0008 04       		.byte	4
+ 3948 0009 CC       		.byte	-52
+ 3949 000a D0       		.byte	-48
+ 3950 000b 73       		.byte	115
+ 3951              		.global	cy_meta_flashprotect
+ 3952              		.section	.cyflashprotect,"a",%progbits
+ 3953              		.align	2
+ 3954              		.type	cy_meta_flashprotect, %object
+ 3955              		.size	cy_meta_flashprotect, 32
+ 3956              	cy_meta_flashprotect:
+ 3957 0000 FF       		.byte	-1
+ 3958 0001 FF       		.byte	-1
+ 3959 0002 01       		.byte	1
+ 3960 0003 00       		.byte	0
+ 3961 0004 00       		.byte	0
+ 3962 0005 00       		.byte	0
+ 3963 0006 00       		.byte	0
+ 3964 0007 00       		.byte	0
+ 3965 0008 00       		.byte	0
+ 3966 0009 00       		.byte	0
+ 3967 000a 00       		.byte	0
+ 3968 000b 00       		.byte	0
+ 3969 000c 00       		.byte	0
+ 3970 000d 00       		.byte	0
+ 3971 000e 00       		.byte	0
+ 3972 000f 00       		.byte	0
+ 3973 0010 00       		.byte	0
+ 3974 0011 00       		.byte	0
+ 3975 0012 00       		.byte	0
+ 3976 0013 00       		.byte	0
+ 3977 0014 00       		.byte	0
+ 3978 0015 00       		.byte	0
+ 3979 0016 00       		.byte	0
+ 3980 0017 00       		.byte	0
+ 3981 0018 00       		.byte	0
+ 3982 0019 00       		.byte	0
+ 3983 001a 00       		.byte	0
+ 3984 001b 00       		.byte	0
+ 3985 001c 00       		.byte	0
+ 3986 001d 00       		.byte	0
+ 3987 001e 00       		.byte	0
+ 3988 001f 00       		.byte	0
+ 3989              		.global	cy_meta_chipprotect
+ 3990              		.section	.cychipprotect,"a",%progbits
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 71
+
+
+ 3991              		.align	2
+ 3992              		.type	cy_meta_chipprotect, %object
+ 3993              		.size	cy_meta_chipprotect, 1
+ 3994              	cy_meta_chipprotect:
+ 3995 0000 01       		.byte	1
+ 3996 0001 000000   		.text
+ 3997              	.Letext0:
+ 3998              		.file 1 ".\\Generated_Source\\PSoC4\\cybootloader.c"
+ 3999              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 4000              		.section	.debug_info,"",%progbits
+ 4001              	.Ldebug_info0:
+ 4002 0000 4E010000 		.4byte	0x14e
+ 4003 0004 0200     		.2byte	0x2
+ 4004 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 4005 000a 04       		.byte	0x4
+ 4006 000b 01       		.uleb128 0x1
+ 4007 000c 62010000 		.4byte	.LASF18
+ 4008 0010 01       		.byte	0x1
+ 4009 0011 8A000000 		.4byte	.LASF19
+ 4010 0015 FA000000 		.4byte	.LASF20
+ 4011 0019 00000000 		.4byte	.Ldebug_line0
+ 4012 001d 02       		.uleb128 0x2
+ 4013 001e 01       		.byte	0x1
+ 4014 001f 06       		.byte	0x6
+ 4015 0020 B4010000 		.4byte	.LASF0
+ 4016 0024 02       		.uleb128 0x2
+ 4017 0025 01       		.byte	0x1
+ 4018 0026 08       		.byte	0x8
+ 4019 0027 43000000 		.4byte	.LASF1
+ 4020 002b 02       		.uleb128 0x2
+ 4021 002c 02       		.byte	0x2
+ 4022 002d 05       		.byte	0x5
+ 4023 002e 52010000 		.4byte	.LASF2
+ 4024 0032 02       		.uleb128 0x2
+ 4025 0033 02       		.byte	0x2
+ 4026 0034 07       		.byte	0x7
+ 4027 0035 63000000 		.4byte	.LASF3
+ 4028 0039 02       		.uleb128 0x2
+ 4029 003a 04       		.byte	0x4
+ 4030 003b 05       		.byte	0x5
+ 4031 003c AB010000 		.4byte	.LASF4
+ 4032 0040 02       		.uleb128 0x2
+ 4033 0041 04       		.byte	0x4
+ 4034 0042 07       		.byte	0x7
+ 4035 0043 51000000 		.4byte	.LASF5
+ 4036 0047 02       		.uleb128 0x2
+ 4037 0048 08       		.byte	0x8
+ 4038 0049 05       		.byte	0x5
+ 4039 004a E7000000 		.4byte	.LASF6
+ 4040 004e 02       		.uleb128 0x2
+ 4041 004f 08       		.byte	0x8
+ 4042 0050 07       		.byte	0x7
+ 4043 0051 B2000000 		.4byte	.LASF7
+ 4044 0055 03       		.uleb128 0x3
+ 4045 0056 04       		.byte	0x4
+ 4046 0057 05       		.byte	0x5
+ 4047 0058 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 72
+
+
+ 4048 005c 02       		.uleb128 0x2
+ 4049 005d 04       		.byte	0x4
+ 4050 005e 07       		.byte	0x7
+ 4051 005f 7D000000 		.4byte	.LASF8
+ 4052 0063 04       		.uleb128 0x4
+ 4053 0064 5C010000 		.4byte	.LASF21
+ 4054 0068 02       		.byte	0x2
+ 4055 0069 5B       		.byte	0x5b
+ 4056 006a 24000000 		.4byte	0x24
+ 4057 006e 02       		.uleb128 0x2
+ 4058 006f 04       		.byte	0x4
+ 4059 0070 04       		.byte	0x4
+ 4060 0071 3D000000 		.4byte	.LASF9
+ 4061 0075 02       		.uleb128 0x2
+ 4062 0076 08       		.byte	0x8
+ 4063 0077 04       		.byte	0x4
+ 4064 0078 76000000 		.4byte	.LASF10
+ 4065 007c 02       		.uleb128 0x2
+ 4066 007d 01       		.byte	0x1
+ 4067 007e 08       		.byte	0x8
+ 4068 007f F5000000 		.4byte	.LASF11
+ 4069 0083 05       		.uleb128 0x5
+ 4070 0084 63000000 		.4byte	0x63
+ 4071 0088 93000000 		.4byte	0x93
+ 4072 008c 06       		.uleb128 0x6
+ 4073 008d 93000000 		.4byte	0x93
+ 4074 0091 3F       		.byte	0x3f
+ 4075 0092 00       		.byte	0
+ 4076 0093 02       		.uleb128 0x2
+ 4077 0094 04       		.byte	0x4
+ 4078 0095 07       		.byte	0x7
+ 4079 0096 DE000000 		.4byte	.LASF12
+ 4080 009a 07       		.uleb128 0x7
+ 4081 009b 22000000 		.4byte	.LASF13
+ 4082 009f 01       		.byte	0x1
+ 4083 00a0 0D       		.byte	0xd
+ 4084 00a1 AC000000 		.4byte	0xac
+ 4085 00a5 01       		.byte	0x1
+ 4086 00a6 05       		.byte	0x5
+ 4087 00a7 03       		.byte	0x3
+ 4088 00a8 00000000 		.4byte	cy_meta_loader
+ 4089 00ac 08       		.uleb128 0x8
+ 4090 00ad 83000000 		.4byte	0x83
+ 4091 00b1 05       		.uleb128 0x5
+ 4092 00b2 63000000 		.4byte	0x63
+ 4093 00b6 C2000000 		.4byte	0xc2
+ 4094 00ba 09       		.uleb128 0x9
+ 4095 00bb 93000000 		.4byte	0x93
+ 4096 00bf FF0E     		.2byte	0xeff
+ 4097 00c1 00       		.byte	0
+ 4098 00c2 07       		.uleb128 0x7
+ 4099 00c3 14000000 		.4byte	.LASF14
+ 4100 00c7 01       		.byte	0x1
+ 4101 00c8 1E       		.byte	0x1e
+ 4102 00c9 D4000000 		.4byte	0xd4
+ 4103 00cd 01       		.byte	0x1
+ 4104 00ce 05       		.byte	0x5
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 73
+
+
+ 4105 00cf 03       		.byte	0x3
+ 4106 00d0 00000000 		.4byte	cy_bootloader
+ 4107 00d4 08       		.uleb128 0x8
+ 4108 00d5 B1000000 		.4byte	0xb1
+ 4109 00d9 05       		.uleb128 0x5
+ 4110 00da 63000000 		.4byte	0x63
+ 4111 00de E9000000 		.4byte	0xe9
+ 4112 00e2 06       		.uleb128 0x6
+ 4113 00e3 93000000 		.4byte	0x93
+ 4114 00e7 0B       		.byte	0xb
+ 4115 00e8 00       		.byte	0
+ 4116 00e9 0A       		.uleb128 0xa
+ 4117 00ea 31000000 		.4byte	.LASF15
+ 4118 00ee 01       		.byte	0x1
+ 4119 00ef 0702     		.2byte	0x207
+ 4120 00f1 FC000000 		.4byte	0xfc
+ 4121 00f5 01       		.byte	0x1
+ 4122 00f6 05       		.byte	0x5
+ 4123 00f7 03       		.byte	0x3
+ 4124 00f8 00000000 		.4byte	cy_metadata
+ 4125 00fc 08       		.uleb128 0x8
+ 4126 00fd D9000000 		.4byte	0xd9
+ 4127 0101 05       		.uleb128 0x5
+ 4128 0102 63000000 		.4byte	0x63
+ 4129 0106 11010000 		.4byte	0x111
+ 4130 010a 06       		.uleb128 0x6
+ 4131 010b 93000000 		.4byte	0x93
+ 4132 010f 1F       		.byte	0x1f
+ 4133 0110 00       		.byte	0
+ 4134 0111 0A       		.uleb128 0xa
+ 4135 0112 C9000000 		.4byte	.LASF16
+ 4136 0116 01       		.byte	0x1
+ 4137 0117 1202     		.2byte	0x212
+ 4138 0119 24010000 		.4byte	0x124
+ 4139 011d 01       		.byte	0x1
+ 4140 011e 05       		.byte	0x5
+ 4141 011f 03       		.byte	0x3
+ 4142 0120 00000000 		.4byte	cy_meta_flashprotect
+ 4143 0124 08       		.uleb128 0x8
+ 4144 0125 01010000 		.4byte	0x101
+ 4145 0129 05       		.uleb128 0x5
+ 4146 012a 63000000 		.4byte	0x63
+ 4147 012e 39010000 		.4byte	0x139
+ 4148 0132 06       		.uleb128 0x6
+ 4149 0133 93000000 		.4byte	0x93
+ 4150 0137 00       		.byte	0
+ 4151 0138 00       		.byte	0
+ 4152 0139 0A       		.uleb128 0xa
+ 4153 013a 00000000 		.4byte	.LASF17
+ 4154 013e 01       		.byte	0x1
+ 4155 013f 1F02     		.2byte	0x21f
+ 4156 0141 4C010000 		.4byte	0x14c
+ 4157 0145 01       		.byte	0x1
+ 4158 0146 05       		.byte	0x5
+ 4159 0147 03       		.byte	0x3
+ 4160 0148 00000000 		.4byte	cy_meta_chipprotect
+ 4161 014c 08       		.uleb128 0x8
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 74
+
+
+ 4162 014d 29010000 		.4byte	0x129
+ 4163 0151 00       		.byte	0
+ 4164              		.section	.debug_abbrev,"",%progbits
+ 4165              	.Ldebug_abbrev0:
+ 4166 0000 01       		.uleb128 0x1
+ 4167 0001 11       		.uleb128 0x11
+ 4168 0002 01       		.byte	0x1
+ 4169 0003 25       		.uleb128 0x25
+ 4170 0004 0E       		.uleb128 0xe
+ 4171 0005 13       		.uleb128 0x13
+ 4172 0006 0B       		.uleb128 0xb
+ 4173 0007 03       		.uleb128 0x3
+ 4174 0008 0E       		.uleb128 0xe
+ 4175 0009 1B       		.uleb128 0x1b
+ 4176 000a 0E       		.uleb128 0xe
+ 4177 000b 10       		.uleb128 0x10
+ 4178 000c 06       		.uleb128 0x6
+ 4179 000d 00       		.byte	0
+ 4180 000e 00       		.byte	0
+ 4181 000f 02       		.uleb128 0x2
+ 4182 0010 24       		.uleb128 0x24
+ 4183 0011 00       		.byte	0
+ 4184 0012 0B       		.uleb128 0xb
+ 4185 0013 0B       		.uleb128 0xb
+ 4186 0014 3E       		.uleb128 0x3e
+ 4187 0015 0B       		.uleb128 0xb
+ 4188 0016 03       		.uleb128 0x3
+ 4189 0017 0E       		.uleb128 0xe
+ 4190 0018 00       		.byte	0
+ 4191 0019 00       		.byte	0
+ 4192 001a 03       		.uleb128 0x3
+ 4193 001b 24       		.uleb128 0x24
+ 4194 001c 00       		.byte	0
+ 4195 001d 0B       		.uleb128 0xb
+ 4196 001e 0B       		.uleb128 0xb
+ 4197 001f 3E       		.uleb128 0x3e
+ 4198 0020 0B       		.uleb128 0xb
+ 4199 0021 03       		.uleb128 0x3
+ 4200 0022 08       		.uleb128 0x8
+ 4201 0023 00       		.byte	0
+ 4202 0024 00       		.byte	0
+ 4203 0025 04       		.uleb128 0x4
+ 4204 0026 16       		.uleb128 0x16
+ 4205 0027 00       		.byte	0
+ 4206 0028 03       		.uleb128 0x3
+ 4207 0029 0E       		.uleb128 0xe
+ 4208 002a 3A       		.uleb128 0x3a
+ 4209 002b 0B       		.uleb128 0xb
+ 4210 002c 3B       		.uleb128 0x3b
+ 4211 002d 0B       		.uleb128 0xb
+ 4212 002e 49       		.uleb128 0x49
+ 4213 002f 13       		.uleb128 0x13
+ 4214 0030 00       		.byte	0
+ 4215 0031 00       		.byte	0
+ 4216 0032 05       		.uleb128 0x5
+ 4217 0033 01       		.uleb128 0x1
+ 4218 0034 01       		.byte	0x1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 75
+
+
+ 4219 0035 49       		.uleb128 0x49
+ 4220 0036 13       		.uleb128 0x13
+ 4221 0037 01       		.uleb128 0x1
+ 4222 0038 13       		.uleb128 0x13
+ 4223 0039 00       		.byte	0
+ 4224 003a 00       		.byte	0
+ 4225 003b 06       		.uleb128 0x6
+ 4226 003c 21       		.uleb128 0x21
+ 4227 003d 00       		.byte	0
+ 4228 003e 49       		.uleb128 0x49
+ 4229 003f 13       		.uleb128 0x13
+ 4230 0040 2F       		.uleb128 0x2f
+ 4231 0041 0B       		.uleb128 0xb
+ 4232 0042 00       		.byte	0
+ 4233 0043 00       		.byte	0
+ 4234 0044 07       		.uleb128 0x7
+ 4235 0045 34       		.uleb128 0x34
+ 4236 0046 00       		.byte	0
+ 4237 0047 03       		.uleb128 0x3
+ 4238 0048 0E       		.uleb128 0xe
+ 4239 0049 3A       		.uleb128 0x3a
+ 4240 004a 0B       		.uleb128 0xb
+ 4241 004b 3B       		.uleb128 0x3b
+ 4242 004c 0B       		.uleb128 0xb
+ 4243 004d 49       		.uleb128 0x49
+ 4244 004e 13       		.uleb128 0x13
+ 4245 004f 3F       		.uleb128 0x3f
+ 4246 0050 0C       		.uleb128 0xc
+ 4247 0051 02       		.uleb128 0x2
+ 4248 0052 0A       		.uleb128 0xa
+ 4249 0053 00       		.byte	0
+ 4250 0054 00       		.byte	0
+ 4251 0055 08       		.uleb128 0x8
+ 4252 0056 26       		.uleb128 0x26
+ 4253 0057 00       		.byte	0
+ 4254 0058 49       		.uleb128 0x49
+ 4255 0059 13       		.uleb128 0x13
+ 4256 005a 00       		.byte	0
+ 4257 005b 00       		.byte	0
+ 4258 005c 09       		.uleb128 0x9
+ 4259 005d 21       		.uleb128 0x21
+ 4260 005e 00       		.byte	0
+ 4261 005f 49       		.uleb128 0x49
+ 4262 0060 13       		.uleb128 0x13
+ 4263 0061 2F       		.uleb128 0x2f
+ 4264 0062 05       		.uleb128 0x5
+ 4265 0063 00       		.byte	0
+ 4266 0064 00       		.byte	0
+ 4267 0065 0A       		.uleb128 0xa
+ 4268 0066 34       		.uleb128 0x34
+ 4269 0067 00       		.byte	0
+ 4270 0068 03       		.uleb128 0x3
+ 4271 0069 0E       		.uleb128 0xe
+ 4272 006a 3A       		.uleb128 0x3a
+ 4273 006b 0B       		.uleb128 0xb
+ 4274 006c 3B       		.uleb128 0x3b
+ 4275 006d 05       		.uleb128 0x5
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 76
+
+
+ 4276 006e 49       		.uleb128 0x49
+ 4277 006f 13       		.uleb128 0x13
+ 4278 0070 3F       		.uleb128 0x3f
+ 4279 0071 0C       		.uleb128 0xc
+ 4280 0072 02       		.uleb128 0x2
+ 4281 0073 0A       		.uleb128 0xa
+ 4282 0074 00       		.byte	0
+ 4283 0075 00       		.byte	0
+ 4284 0076 00       		.byte	0
+ 4285              		.section	.debug_aranges,"",%progbits
+ 4286 0000 14000000 		.4byte	0x14
+ 4287 0004 0200     		.2byte	0x2
+ 4288 0006 00000000 		.4byte	.Ldebug_info0
+ 4289 000a 04       		.byte	0x4
+ 4290 000b 00       		.byte	0
+ 4291 000c 0000     		.2byte	0
+ 4292 000e 0000     		.2byte	0
+ 4293 0010 00000000 		.4byte	0
+ 4294 0014 00000000 		.4byte	0
+ 4295              		.section	.debug_line,"",%progbits
+ 4296              	.Ldebug_line0:
+ 4297 0000 51000000 		.section	.debug_str,"MS",%progbits,1
+ 4297      02004B00 
+ 4297      00000201 
+ 4297      FB0E0D00 
+ 4297      01010101 
+ 4298              	.LASF17:
+ 4299 0000 63795F6D 		.ascii	"cy_meta_chipprotect\000"
+ 4299      6574615F 
+ 4299      63686970 
+ 4299      70726F74 
+ 4299      65637400 
+ 4300              	.LASF14:
+ 4301 0014 63795F62 		.ascii	"cy_bootloader\000"
+ 4301      6F6F746C 
+ 4301      6F616465 
+ 4301      7200
+ 4302              	.LASF13:
+ 4303 0022 63795F6D 		.ascii	"cy_meta_loader\000"
+ 4303      6574615F 
+ 4303      6C6F6164 
+ 4303      657200
+ 4304              	.LASF15:
+ 4305 0031 63795F6D 		.ascii	"cy_metadata\000"
+ 4305      65746164 
+ 4305      61746100 
+ 4306              	.LASF9:
+ 4307 003d 666C6F61 		.ascii	"float\000"
+ 4307      7400
+ 4308              	.LASF1:
+ 4309 0043 756E7369 		.ascii	"unsigned char\000"
+ 4309      676E6564 
+ 4309      20636861 
+ 4309      7200
+ 4310              	.LASF5:
+ 4311 0051 6C6F6E67 		.ascii	"long unsigned int\000"
+ 4311      20756E73 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 77
+
+
+ 4311      69676E65 
+ 4311      6420696E 
+ 4311      7400
+ 4312              	.LASF3:
+ 4313 0063 73686F72 		.ascii	"short unsigned int\000"
+ 4313      7420756E 
+ 4313      7369676E 
+ 4313      65642069 
+ 4313      6E7400
+ 4314              	.LASF10:
+ 4315 0076 646F7562 		.ascii	"double\000"
+ 4315      6C6500
+ 4316              	.LASF8:
+ 4317 007d 756E7369 		.ascii	"unsigned int\000"
+ 4317      676E6564 
+ 4317      20696E74 
+ 4317      00
+ 4318              	.LASF19:
+ 4319 008a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\cybootloader.c\000"
+ 4319      6E657261 
+ 4319      7465645F 
+ 4319      536F7572 
+ 4319      63655C50 
+ 4320              	.LASF7:
+ 4321 00b2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 4321      206C6F6E 
+ 4321      6720756E 
+ 4321      7369676E 
+ 4321      65642069 
+ 4322              	.LASF16:
+ 4323 00c9 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 4323      6574615F 
+ 4323      666C6173 
+ 4323      6870726F 
+ 4323      74656374 
+ 4324              	.LASF12:
+ 4325 00de 73697A65 		.ascii	"sizetype\000"
+ 4325      74797065 
+ 4325      00
+ 4326              	.LASF6:
+ 4327 00e7 6C6F6E67 		.ascii	"long long int\000"
+ 4327      206C6F6E 
+ 4327      6720696E 
+ 4327      7400
+ 4328              	.LASF11:
+ 4329 00f5 63686172 		.ascii	"char\000"
+ 4329      00
+ 4330              	.LASF20:
+ 4331 00fa 433A5C55 		.ascii	"C:\\Users\\vrnk\\Desktop\\ES100 FW -049\\SCB_Bootlo"
+ 4331      73657273 
+ 4331      5C76726E 
+ 4331      6B5C4465 
+ 4331      736B746F 
+ 4332 0128 61646572 		.ascii	"ader_42xx\\Bootloadable Blinking LED.cydsn\000"
+ 4332      5F343278 
+ 4332      785C426F 
+ 4332      6F746C6F 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccR644xn.s 			page 78
+
+
+ 4332      61646162 
+ 4333              	.LASF2:
+ 4334 0152 73686F72 		.ascii	"short int\000"
+ 4334      7420696E 
+ 4334      7400
+ 4335              	.LASF21:
+ 4336 015c 75696E74 		.ascii	"uint8\000"
+ 4336      3800
+ 4337              	.LASF18:
+ 4338 0162 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 4338      4320342E 
+ 4338      372E3320 
+ 4338      32303133 
+ 4338      30333132 
+ 4339 0195 616E6368 		.ascii	"anch revision 196615]\000"
+ 4339      20726576 
+ 4339      6973696F 
+ 4339      6E203139 
+ 4339      36363135 
+ 4340              	.LASF4:
+ 4341 01ab 6C6F6E67 		.ascii	"long int\000"
+ 4341      20696E74 
+ 4341      00
+ 4342              	.LASF0:
+ 4343 01b4 7369676E 		.ascii	"signed char\000"
+ 4343      65642063 
+ 4343      68617200 
+ 4344              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

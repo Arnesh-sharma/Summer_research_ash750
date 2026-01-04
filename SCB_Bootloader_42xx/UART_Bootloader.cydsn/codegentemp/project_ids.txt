@@ -1,0 +1,15 @@
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\SCB_Bootloader_42xx\UART_Bootloader.cydsn\UART_Bootloader.cyprj|7033ffac-335a-48cf-ae01-38f6acea0af1
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1da507d9-f4f5-4b55-8cb3-d49e904af4c4
+C:\Users\npat025\OneDrive - The University of Auckland\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|a92ffa74-db2b-4fff-ae5e-426a6d6eb3dd
+C:\Users\npat025\OneDrive - The University of Auckland\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|610b8e4b-26f9-47ec-b993-557abeff8ca9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3d32b0ce-c4b5-4083-9df1-f603f100634e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|8d46c3e7-7939-4167-96c2-92dd090eee27
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|8557366d-7498-440b-938d-60e3e510189e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|32805b06-ba34-45c6-b171-a61b6854871d
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\SCB_Bootloader_42xx\Bootloadable Blinking LED.cydsn\Bootloadable Blinking LED.cyprj|628fb270-62e7-41d7-a4f4-bfb44dfe839f
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\V0_uart.cydsn\V0_uart.cyprj|f145ec5a-284d-4b3e-8360-1b5b262c4bb9
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\CE224431_PSoC4_UART_printf01.cydsn\CE224431_PSoC4_UART_printf01.cyprj|b5c69623-8c7e-4ce2-9af6-e933be48d31c
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\CE195366_PSoC4_SCB_UART01.cydsn\CE195366_PSoC4_SCB_UART01.cyprj|421ab69b-30c9-40df-b9d7-dd01c96891ac
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\CE210291_CapSense_P4_One_Button01.cydsn\CE210291_CapSense_P4_One_Button01.cyprj|08461667-5bd2-4354-a849-b12b5364f012
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\V0_capsense1B_uart.cydsn\V0_capsense1B_uart.cyprj|8210eba9-f5bc-407e-8919-4d436de54470
+C:\Users\npat025\Dropbox (Uni of Auckland)\moisture\moisturesensor\kit049\watersense\V0_uart_NO_BOOTLOADER.cydsn\V0_uart_NO_BOOTLOADER.cyprj|69686967-7b8f-487d-9301-dbef3ba662ef

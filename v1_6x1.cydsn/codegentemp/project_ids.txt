@@ -1,0 +1,6 @@
+C:\Users\ash750\Documents\GitHub\Summer_research_ash750\v1_6x1.cydsn\v1_6x1.cyprj|f07f8afa-e694-4688-8e69-c86d1fc77ef0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|a1168ee3-1957-47b6-bf93-e8453f0ac42d
+C:\Users\ash750\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|48919435-fa5a-4bf0-ad52-b04a6b0f5c77
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|68f361f0-ae48-48aa-9b05-432b0577f418
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|829288d3-5232-4c51-b1e6-cea46f464fa9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5739ca12-4036-4290-a955-55b2017b5f7b

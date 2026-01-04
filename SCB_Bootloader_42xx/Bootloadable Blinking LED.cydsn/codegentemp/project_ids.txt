@@ -1,0 +1,9 @@
+C:\Users\npat025\Dropbox (Uni of Auckland)\kit049\Workspace01\SCB_Bootloader_42xx\UART_Bootloader.cydsn\UART_Bootloader.cyprj|b687f7af-5198-4e88-bc88-3c164697abbc
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|389f08ff-433d-4494-91e0-651e6a2903ac
+C:\Users\npat025\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|54efedf2-ba58-49cd-b890-31909dc29062
+C:\Users\npat025\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|aba7a9e1-8de0-4cac-bf7f-63cbac624aaf
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|43db5050-82f8-49c9-9155-6264286c4a1a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|e8061f78-83c0-40d5-bb39-11ff92c4b55b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a69e8fa2-ce6a-4456-be85-a057613fc2f6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|b79e4b0a-44a6-48f4-bd70-d3fe86b45e3a
+C:\Users\npat025\Dropbox (Uni of Auckland)\kit049\Workspace01\SCB_Bootloader_42xx\Bootloadable Blinking LED.cydsn\Bootloadable Blinking LED.cyprj|8e195ee9-9da4-471a-8608-3c487c159517

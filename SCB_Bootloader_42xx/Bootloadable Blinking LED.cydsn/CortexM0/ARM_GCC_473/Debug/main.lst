@@ -1,0 +1,416 @@
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccDCm6D0.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.main,"ax",%progbits
+  18              		.align	2
+  19              		.global	main
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	main, %function
+  23              	main:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /******************************************************************************
+   2:.\main.c      **** * Project Name		: Bootloadable Blinking LED
+   3:.\main.c      **** * File Name			: main.c
+   4:.\main.c      **** * Version 			: 1.0
+   5:.\main.c      **** * Device Used		: CY8C4245AXI-483
+   6:.\main.c      **** * Software Used		: PSoC Creator 3.0
+   7:.\main.c      **** * Compiler    		: ARMGCC 4.7.3, ARM RVDS Generic, ARM MDK Generic
+   8:.\main.c      **** * Related Hardware	: CY8CKIT-049-42xx PSoC 4 Prototyping Kit 
+   9:.\main.c      **** *
+  10:.\main.c      **** ********************************************************************************
+  11:.\main.c      **** * Copyright (2014), Cypress Semiconductor Corporation. All Rights Reserved.
+  12:.\main.c      **** ********************************************************************************
+  13:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation (Cypress)
+  14:.\main.c      **** * and is protected by and subject to worldwide patent protection (United
+  15:.\main.c      **** * States and foreign), United States copyright laws and international treaty
+  16:.\main.c      **** * provisions. Cypress hereby grants to licensee a personal, non-exclusive,
+  17:.\main.c      **** * non-transferable license to copy, use, modify, create derivative works of,
+  18:.\main.c      **** * and compile the Cypress Source Code and derivative works for the sole
+  19:.\main.c      **** * purpose of creating custom software in support of licensee product to be
+  20:.\main.c      **** * used only in conjunction with a Cypress integrated circuit as specified in
+  21:.\main.c      **** * the applicable agreement. Any reproduction, modification, translation,
+  22:.\main.c      **** * compilation, or representation of this software except as specified above 
+  23:.\main.c      **** * is prohibited without the express written permission of Cypress.
+  24:.\main.c      **** *
+  25:.\main.c      **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+  26:.\main.c      **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:.\main.c      **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  28:.\main.c      **** * Cypress reserves the right to make changes without further notice to the 
+  29:.\main.c      **** * materials described herein. Cypress does not assume any liability arising out 
+  30:.\main.c      **** * of the application or use of any product or circuit described herein. Cypress 
+  31:.\main.c      **** * does not authorize its products for use as critical components in life-support 
+  32:.\main.c      **** * systems where a malfunction or failure may reasonably be expected to result in 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccDCm6D0.s 			page 2
+
+
+  33:.\main.c      **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  34:.\main.c      **** * support systems application implies that the manufacturer assumes all risk of 
+  35:.\main.c      **** * such use and in doing so indemnifies Cypress against all charges. 
+  36:.\main.c      **** *
+  37:.\main.c      **** * Use of this Software may be limited by and subject to the applicable Cypress
+  38:.\main.c      **** * software license agreement. 
+  39:.\main.c      **** *******************************************************************************/
+  40:.\main.c      **** 
+  41:.\main.c      **** /******************************************************************************
+  42:.\main.c      **** *                           THEORY OF OPERATION
+  43:.\main.c      **** * This is a blinking LED project. A PWM component drives the pin to blink the 
+  44:.\main.c      **** * LED at regular intervals. This project contains a bootloadable component so 
+  45:.\main.c      **** * that it can be bootloaded into PSoC 4 which has a bootloader already programmed 
+  46:.\main.c      **** * into it.
+  47:.\main.c      **** * Default UART Port Configuration for bootloading the PSoC 4 in CY8CKIT-049-42xx
+  48:.\main.c      **** * Baud Rate : 115200 bps
+  49:.\main.c      **** * Data Bits : 8
+  50:.\main.c      **** * Stop Bits : 1
+  51:.\main.c      **** * Parity    : None
+  52:.\main.c      **** ******************************************************************************/
+  53:.\main.c      **** #include <project.h>
+  54:.\main.c      **** 
+  55:.\main.c      **** int main()
+  56:.\main.c      **** {
+  26              		.loc 1 56 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              	.LCFI0:
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 7, -8
+  32              		.cfi_offset 14, -4
+  33 0002 00AF     		add	r7, sp, #0
+  34              	.LCFI1:
+  35              		.cfi_def_cfa_register 7
+  57:.\main.c      **** 	PWM_Start();
+  36              		.loc 1 57 0
+  37 0004 FFF7FEFF 		bl	PWM_Start
+  38              	.L2:
+  58:.\main.c      ****     
+  59:.\main.c      **** 	for(;;)
+  60:.\main.c      ****     {
+  61:.\main.c      ****         /* The PSoC 4 is put into Sleep Mode as the PWM component is used to 
+  62:.\main.c      **** 		blink the LED */
+  63:.\main.c      **** 		CySysPmSleep();
+  39              		.loc 1 63 0 discriminator 1
+  40 0008 FFF7FEFF 		bl	CySysPmSleep
+  64:.\main.c      ****     }
+  41              		.loc 1 64 0 discriminator 1
+  42 000c FCE7     		b	.L2
+  43              		.cfi_endproc
+  44              	.LFE33:
+  45              		.size	main, .-main
+  46 000e C046     		.text
+  47              	.Letext0:
+  48              		.section	.debug_info,"",%progbits
+  49              	.Ldebug_info0:
+  50 0000 A1000000 		.4byte	0xa1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccDCm6D0.s 			page 3
+
+
+  51 0004 0200     		.2byte	0x2
+  52 0006 00000000 		.4byte	.Ldebug_abbrev0
+  53 000a 04       		.byte	0x4
+  54 000b 01       		.uleb128 0x1
+  55 000c 20000000 		.4byte	.LASF13
+  56 0010 01       		.byte	0x1
+  57 0011 3C010000 		.4byte	.LASF14
+  58 0015 92000000 		.4byte	.LASF15
+  59 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  60 001d 00000000 		.4byte	0
+  61 0021 00000000 		.4byte	0
+  62 0025 00000000 		.4byte	.Ldebug_line0
+  63 0029 02       		.uleb128 0x2
+  64 002a 01       		.byte	0x1
+  65 002b 06       		.byte	0x6
+  66 002c 2A010000 		.4byte	.LASF0
+  67 0030 02       		.uleb128 0x2
+  68 0031 01       		.byte	0x1
+  69 0032 08       		.byte	0x8
+  70 0033 EA000000 		.4byte	.LASF1
+  71 0037 02       		.uleb128 0x2
+  72 0038 02       		.byte	0x2
+  73 0039 05       		.byte	0x5
+  74 003a 06010000 		.4byte	.LASF2
+  75 003e 02       		.uleb128 0x2
+  76 003f 02       		.byte	0x2
+  77 0040 07       		.byte	0x7
+  78 0041 17010000 		.4byte	.LASF3
+  79 0045 02       		.uleb128 0x2
+  80 0046 04       		.byte	0x4
+  81 0047 05       		.byte	0x5
+  82 0048 FD000000 		.4byte	.LASF4
+  83 004c 02       		.uleb128 0x2
+  84 004d 04       		.byte	0x4
+  85 004e 07       		.byte	0x7
+  86 004f 69000000 		.4byte	.LASF5
+  87 0053 02       		.uleb128 0x2
+  88 0054 08       		.byte	0x8
+  89 0055 05       		.byte	0x5
+  90 0056 00000000 		.4byte	.LASF6
+  91 005a 02       		.uleb128 0x2
+  92 005b 08       		.byte	0x8
+  93 005c 07       		.byte	0x7
+  94 005d 7B000000 		.4byte	.LASF7
+  95 0061 03       		.uleb128 0x3
+  96 0062 04       		.byte	0x4
+  97 0063 05       		.byte	0x5
+  98 0064 696E7400 		.ascii	"int\000"
+  99 0068 02       		.uleb128 0x2
+ 100 0069 04       		.byte	0x4
+ 101 006a 07       		.byte	0x7
+ 102 006b 0E000000 		.4byte	.LASF8
+ 103 006f 02       		.uleb128 0x2
+ 104 0070 04       		.byte	0x4
+ 105 0071 04       		.byte	0x4
+ 106 0072 36010000 		.4byte	.LASF9
+ 107 0076 02       		.uleb128 0x2
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccDCm6D0.s 			page 4
+
+
+ 108 0077 08       		.byte	0x8
+ 109 0078 04       		.byte	0x4
+ 110 0079 10010000 		.4byte	.LASF10
+ 111 007d 02       		.uleb128 0x2
+ 112 007e 01       		.byte	0x1
+ 113 007f 08       		.byte	0x8
+ 114 0080 F8000000 		.4byte	.LASF11
+ 115 0084 02       		.uleb128 0x2
+ 116 0085 04       		.byte	0x4
+ 117 0086 07       		.byte	0x7
+ 118 0087 45010000 		.4byte	.LASF12
+ 119 008b 04       		.uleb128 0x4
+ 120 008c 01       		.byte	0x1
+ 121 008d 1B000000 		.4byte	.LASF16
+ 122 0091 01       		.byte	0x1
+ 123 0092 37       		.byte	0x37
+ 124 0093 61000000 		.4byte	0x61
+ 125 0097 00000000 		.4byte	.LFB33
+ 126 009b 0E000000 		.4byte	.LFE33
+ 127 009f 00000000 		.4byte	.LLST0
+ 128 00a3 01       		.byte	0x1
+ 129 00a4 00       		.byte	0
+ 130              		.section	.debug_abbrev,"",%progbits
+ 131              	.Ldebug_abbrev0:
+ 132 0000 01       		.uleb128 0x1
+ 133 0001 11       		.uleb128 0x11
+ 134 0002 01       		.byte	0x1
+ 135 0003 25       		.uleb128 0x25
+ 136 0004 0E       		.uleb128 0xe
+ 137 0005 13       		.uleb128 0x13
+ 138 0006 0B       		.uleb128 0xb
+ 139 0007 03       		.uleb128 0x3
+ 140 0008 0E       		.uleb128 0xe
+ 141 0009 1B       		.uleb128 0x1b
+ 142 000a 0E       		.uleb128 0xe
+ 143 000b 55       		.uleb128 0x55
+ 144 000c 06       		.uleb128 0x6
+ 145 000d 11       		.uleb128 0x11
+ 146 000e 01       		.uleb128 0x1
+ 147 000f 52       		.uleb128 0x52
+ 148 0010 01       		.uleb128 0x1
+ 149 0011 10       		.uleb128 0x10
+ 150 0012 06       		.uleb128 0x6
+ 151 0013 00       		.byte	0
+ 152 0014 00       		.byte	0
+ 153 0015 02       		.uleb128 0x2
+ 154 0016 24       		.uleb128 0x24
+ 155 0017 00       		.byte	0
+ 156 0018 0B       		.uleb128 0xb
+ 157 0019 0B       		.uleb128 0xb
+ 158 001a 3E       		.uleb128 0x3e
+ 159 001b 0B       		.uleb128 0xb
+ 160 001c 03       		.uleb128 0x3
+ 161 001d 0E       		.uleb128 0xe
+ 162 001e 00       		.byte	0
+ 163 001f 00       		.byte	0
+ 164 0020 03       		.uleb128 0x3
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccDCm6D0.s 			page 5
+
+
+ 165 0021 24       		.uleb128 0x24
+ 166 0022 00       		.byte	0
+ 167 0023 0B       		.uleb128 0xb
+ 168 0024 0B       		.uleb128 0xb
+ 169 0025 3E       		.uleb128 0x3e
+ 170 0026 0B       		.uleb128 0xb
+ 171 0027 03       		.uleb128 0x3
+ 172 0028 08       		.uleb128 0x8
+ 173 0029 00       		.byte	0
+ 174 002a 00       		.byte	0
+ 175 002b 04       		.uleb128 0x4
+ 176 002c 2E       		.uleb128 0x2e
+ 177 002d 00       		.byte	0
+ 178 002e 3F       		.uleb128 0x3f
+ 179 002f 0C       		.uleb128 0xc
+ 180 0030 03       		.uleb128 0x3
+ 181 0031 0E       		.uleb128 0xe
+ 182 0032 3A       		.uleb128 0x3a
+ 183 0033 0B       		.uleb128 0xb
+ 184 0034 3B       		.uleb128 0x3b
+ 185 0035 0B       		.uleb128 0xb
+ 186 0036 49       		.uleb128 0x49
+ 187 0037 13       		.uleb128 0x13
+ 188 0038 11       		.uleb128 0x11
+ 189 0039 01       		.uleb128 0x1
+ 190 003a 12       		.uleb128 0x12
+ 191 003b 01       		.uleb128 0x1
+ 192 003c 40       		.uleb128 0x40
+ 193 003d 06       		.uleb128 0x6
+ 194 003e 9642     		.uleb128 0x2116
+ 195 0040 0C       		.uleb128 0xc
+ 196 0041 00       		.byte	0
+ 197 0042 00       		.byte	0
+ 198 0043 00       		.byte	0
+ 199              		.section	.debug_loc,"",%progbits
+ 200              	.Ldebug_loc0:
+ 201              	.LLST0:
+ 202 0000 00000000 		.4byte	.LFB33
+ 203 0004 02000000 		.4byte	.LCFI0
+ 204 0008 0200     		.2byte	0x2
+ 205 000a 7D       		.byte	0x7d
+ 206 000b 00       		.sleb128 0
+ 207 000c 02000000 		.4byte	.LCFI0
+ 208 0010 04000000 		.4byte	.LCFI1
+ 209 0014 0200     		.2byte	0x2
+ 210 0016 7D       		.byte	0x7d
+ 211 0017 08       		.sleb128 8
+ 212 0018 04000000 		.4byte	.LCFI1
+ 213 001c 0E000000 		.4byte	.LFE33
+ 214 0020 0200     		.2byte	0x2
+ 215 0022 77       		.byte	0x77
+ 216 0023 08       		.sleb128 8
+ 217 0024 00000000 		.4byte	0
+ 218 0028 00000000 		.4byte	0
+ 219              		.section	.debug_aranges,"",%progbits
+ 220 0000 1C000000 		.4byte	0x1c
+ 221 0004 0200     		.2byte	0x2
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccDCm6D0.s 			page 6
+
+
+ 222 0006 00000000 		.4byte	.Ldebug_info0
+ 223 000a 04       		.byte	0x4
+ 224 000b 00       		.byte	0
+ 225 000c 0000     		.2byte	0
+ 226 000e 0000     		.2byte	0
+ 227 0010 00000000 		.4byte	.LFB33
+ 228 0014 0E000000 		.4byte	.LFE33-.LFB33
+ 229 0018 00000000 		.4byte	0
+ 230 001c 00000000 		.4byte	0
+ 231              		.section	.debug_ranges,"",%progbits
+ 232              	.Ldebug_ranges0:
+ 233 0000 00000000 		.4byte	.LFB33
+ 234 0004 0E000000 		.4byte	.LFE33
+ 235 0008 00000000 		.4byte	0
+ 236 000c 00000000 		.4byte	0
+ 237              		.section	.debug_line,"",%progbits
+ 238              	.Ldebug_line0:
+ 239 0000 3F000000 		.section	.debug_str,"MS",%progbits,1
+ 239      02001F00 
+ 239      00000201 
+ 239      FB0E0D00 
+ 239      01010101 
+ 240              	.LASF6:
+ 241 0000 6C6F6E67 		.ascii	"long long int\000"
+ 241      206C6F6E 
+ 241      6720696E 
+ 241      7400
+ 242              	.LASF8:
+ 243 000e 756E7369 		.ascii	"unsigned int\000"
+ 243      676E6564 
+ 243      20696E74 
+ 243      00
+ 244              	.LASF16:
+ 245 001b 6D61696E 		.ascii	"main\000"
+ 245      00
+ 246              	.LASF13:
+ 247 0020 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 247      4320342E 
+ 247      372E3320 
+ 247      32303133 
+ 247      30333132 
+ 248 0053 616E6368 		.ascii	"anch revision 196615]\000"
+ 248      20726576 
+ 248      6973696F 
+ 248      6E203139 
+ 248      36363135 
+ 249              	.LASF5:
+ 250 0069 6C6F6E67 		.ascii	"long unsigned int\000"
+ 250      20756E73 
+ 250      69676E65 
+ 250      6420696E 
+ 250      7400
+ 251              	.LASF7:
+ 252 007b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 252      206C6F6E 
+ 252      6720756E 
+ 252      7369676E 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccDCm6D0.s 			page 7
+
+
+ 252      65642069 
+ 253              	.LASF15:
+ 254 0092 433A5C55 		.ascii	"C:\\Users\\vrnk\\Desktop\\ES100 FW -049\\SCB_Bootlo"
+ 254      73657273 
+ 254      5C76726E 
+ 254      6B5C4465 
+ 254      736B746F 
+ 255 00c0 61646572 		.ascii	"ader_42xx\\Bootloadable Blinking LED.cydsn\000"
+ 255      5F343278 
+ 255      785C426F 
+ 255      6F746C6F 
+ 255      61646162 
+ 256              	.LASF1:
+ 257 00ea 756E7369 		.ascii	"unsigned char\000"
+ 257      676E6564 
+ 257      20636861 
+ 257      7200
+ 258              	.LASF11:
+ 259 00f8 63686172 		.ascii	"char\000"
+ 259      00
+ 260              	.LASF4:
+ 261 00fd 6C6F6E67 		.ascii	"long int\000"
+ 261      20696E74 
+ 261      00
+ 262              	.LASF2:
+ 263 0106 73686F72 		.ascii	"short int\000"
+ 263      7420696E 
+ 263      7400
+ 264              	.LASF10:
+ 265 0110 646F7562 		.ascii	"double\000"
+ 265      6C6500
+ 266              	.LASF3:
+ 267 0117 73686F72 		.ascii	"short unsigned int\000"
+ 267      7420756E 
+ 267      7369676E 
+ 267      65642069 
+ 267      6E7400
+ 268              	.LASF0:
+ 269 012a 7369676E 		.ascii	"signed char\000"
+ 269      65642063 
+ 269      68617200 
+ 270              	.LASF9:
+ 271 0136 666C6F61 		.ascii	"float\000"
+ 271      7400
+ 272              	.LASF14:
+ 273 013c 2E5C6D61 		.ascii	".\\main.c\000"
+ 273      696E2E63 
+ 273      00
+ 274              	.LASF12:
+ 275 0145 73697A65 		.ascii	"sizetype\000"
+ 275      74797065 
+ 275      00
+ 276              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
