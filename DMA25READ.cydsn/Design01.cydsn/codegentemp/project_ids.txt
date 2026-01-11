@@ -1,0 +1,8 @@
+C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj|6ba6c65c-e2f2-4363-bc7d-0ec821abf52a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|0ff81161-d10a-4d58-8e7c-d95fbfe6b181
+C:\Users\ash750\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|8d063a76-946b-416b-9124-83d82e73628e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|40b7a881-b6b5-4b78-87ce-f76fa18f1946
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|3eac7ac4-a220-4781-80d4-b70908245c96
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|3eeb54a2-6259-4707-8c70-44d23971f2df
+C:\Users\ash750\Downloads\esf_adc25_1.cyprj.Archive02\esf_adc25_1.cydsn\esf_adc25_1.cyprj|a240565a-fb04-4397-89c9-e43f5c8e98fe
+C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\Design01.cydsn\Design01.cyprj|d215b5e2-f462-4dab-91ef-0fa7c41a29ab

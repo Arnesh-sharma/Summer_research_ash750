@@ -31,8 +31,9 @@ void handle_usb();
 //some global vars
 int16_t result_of_conversion; 
 char buffer[64];
-uint16_t bank1[25]; 
-uint16_t tempBank[26];
+uint16_t *bank1; 
+//uint16_t tempBank;
+uint16_t Bank1New[26];
 void init_dma_1_CHAINED();
 int sample_window = 100; 
 float voltage_of_reading = 0.0; 
@@ -44,6 +45,21 @@ float current_min[25] = {0.0};
 float dc_offset[25] = {0.0};
 float vpp[25] = {0.0}; 
 int16_t sensor_sample_count[25] = {0}; 
+uint8_t flag = 10; 
+uint8_t flag1 = 0;
+
+
+
+CY_ISR(ADC_READ)
+{
+/* ISR Code here */
+    flag1 += 1;
+    //RX_Write(1);
+    DB8_Write(1);
+    //DB8_Write(0);
+    
+}
+
 
 int main()
 {
@@ -51,16 +67,20 @@ int main()
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
+    
+    bank1 = &Bank1New[1];
+    Bank1New[8] = 10; 
+    Bank1New[0] = 0xFFFF; 
     #ifdef USE_DMA_CHAINED
     init_dma_1_CHAINED();    
     #endif
     
     ADC_Start();
-    // ADC_SAR_StartConvert(); 
-    CyDelay(1);
-    
-    Timer_1_WritePeriod(100);
     Timer_1_Start();
+    Timer_1_WritePeriod(10);
+    isr_eoc_StartEx(ADC_READ); 
+    
+
    
     
 
@@ -70,6 +90,9 @@ int main()
 #endif        
     for(;;)
     {
+       
+    
+    
         /* Place your application code here. */
         handle_usb();
         if (flag_KB_string == 1)
@@ -121,17 +144,86 @@ int main()
 //        
 //        }
         
-        //have a flag/special character as an acknowledgement of the whole packet 
+        uint16_t i = 0; 
+        uint16_t min = 4096; 
+        uint16_t max = 0; 
+        uint16_t diff = 0; 
+        uint16_t diff1 = 0; 
+        uint16_t min1 = 4096; 
+        uint16_t max1 = 0;
+        uint16_t new_diff = 0; 
+        if(flag == 1){
+        while(i<400){
+        //calculate the voltage readings
+        voltage_of_reading = ADC_GetResult16(8); 
+        uint16_t bank_voltage = bank1[8]; 
+        //sprintf(buffer,"SEN%d:%d(%d)-- %d.%d%dV (%d.%d%dV)\n",8,ADC_GetResult16(8), bank1[8], (int16_t)voltage_of_reading,  1000*(int16_t)voltage_of_reading/100%10, 1000*(int16_t)voltage_of_reading/10%10,(int16_t)bank_voltage,  1000*(int16_t)bank_voltage/100%10, 1000*(int16_t)bank_voltage/10%10 );
+        if(min > bank_voltage){
+            min = bank_voltage; 
+        }
         
-        tempBank[0] = 0xFFFF; 
+   
+        
+        if(max<bank_voltage){
+            max = bank_voltage; 
+        }
+        
+         if(min1 > voltage_of_reading){
+            min1 = voltage_of_reading; 
+        }
+        
+      
+        
+        if(max1<voltage_of_reading){
+            max1 = voltage_of_reading; 
+        }
+        
+        diff = max - min; 
+        
+        diff1 = max1 - min1; 
+        
+        new_diff = diff - diff1;
+        
+        
+        
+        sprintf(buffer, "MAX: %d.%d%d -- MIN: %d.%d%d -- DIFF: %d.%d%d \n", (int16_t)max,  1000*(int16_t)max/100%10, 1000*(int16_t)max/10%10,(int16_t)min,  1000*(int16_t)min/100%10, 1000*(int16_t)min/10%10, (int16_t)diff,  1000*(int16_t)diff/100%10, 1000*(int16_t)diff/10%10); 
+        usbPutString(buffer);
+        sprintf(buffer, "MAX1: %d.%d%d -- MIN1: %d.%d%d -- DIFF1: %d.%d%d \n", (int16_t)max1,  1000*(int16_t)max1/100%10, 1000*(int16_t)max1/10%10,(int16_t)min1,  1000*(int16_t)min1/100%10, 1000*(int16_t)min1/10%10, (int16_t)diff,  1000*(int16_t)diff1/100%10, 1000*(int16_t)diff1/10%10);
+        usbPutString(buffer);
+        sprintf(buffer, "DIFFDIFF: %d.%d%d\n", (int16_t)new_diff,  1000*(int16_t)new_diff/100%10, 1000*(int16_t)new_diff/10%10);
+        usbPutString(buffer);
+        i++; 
+       
+        }    
+        }else{
+             
+            if(flag1 >= 1){
+                
+             
+                
+             //have a flag/special character as an acknowledgement of the whole packet 
+            // tempBank[0] = 0xFFFF; 
      
-        //make a copy of the DMA data 
-        memcpy(&tempBank[1], bank1, 50);
+            //make a copy of the DMA data 
+            //memcpy(&tempBank[1], bank1, 50);
         
-        //send the entire array as raw binary, so with 26 elements thats about 52 bytes since 2 bytes each 
-        usbPutBin(tempBank, PACKET_ELEMENTS); 
+            //send the entire array as raw binary, so with 26 elements thats about 52 bytes since 2 bytes each 
+            usbPutBin(Bank1New, PACKET_ELEMENTS); 
+            //sprintf(buffer, "HERE %d \n", DB8_Read() );
+            DB8_Write(0);
+            //sprintf(buffer, "DONE %d \n", DB8_Read());
+            //usbPutString(buffer); 
+            flag1 = 0; 
+        }
+            
+        }
+        
+        //CyDelay(1000);  
+        
+        
+        
     }   
-    CyDelay(100);
+    
 }
 //* ========================================
 void usbPutString(char *s)
@@ -160,14 +252,23 @@ void usbPutChar(char c)
 
 void usbPutBin(uint16_t *buffer, uint16_t count)
 {
-    uint16_t totalBytes = count *2; 
-    
+    uint16_t totalBytes = count * 2; // 16-bit numbers = 2 bytes each
+
     #ifdef USE_USB
-        //wait until usb ready then send 
-        while (USBUART_CDCIsReady() == 0);
+        // 1. TIMEOUT CHECK
+        // Don't wait forever. If USB is stuck, skip this packet and keep running.
+        // (Simple loop counter as a timeout)
+        uint32_t timeout = 10000; 
+        
+        while (USBUART_CDCIsReady() == 0)
+        {
+            timeout--;
+            if(timeout == 0) return; // USB is busy/unplugged. Abort to save the system.
+        }
+
+        // 2. SEND DATA
         USBUART_PutData((uint8*)buffer, totalBytes);
-#endif
-    
+    #endif
 }
 
 
@@ -271,30 +372,56 @@ DMA_1_TD[24] = CyDmaTdAllocate();
 
 
 
-CyDmaTdSetConfiguration(DMA_1_TD[0],  2, DMA_1_TD[1], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[1],  2, DMA_1_TD[2], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[2],  2, DMA_1_TD[3], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[3],  2, DMA_1_TD[4], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[4],  2, DMA_1_TD[5], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[5],  2, DMA_1_TD[6], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[6],  2, DMA_1_TD[7], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[7],  2, DMA_1_TD[8], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[8],  2, DMA_1_TD[9], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[9],  2, DMA_1_TD[10],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[10], 2, DMA_1_TD[11],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[11], 2, DMA_1_TD[12],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[12],  2, DMA_1_TD[13], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[13],  2, DMA_1_TD[14], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[14],  2, DMA_1_TD[15], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[15],  2, DMA_1_TD[16], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[16],  2, DMA_1_TD[17], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[17],  2, DMA_1_TD[18], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[18],  2, DMA_1_TD[19], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[19],  2, DMA_1_TD[20], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[20],  2, DMA_1_TD[21], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[21],  2, DMA_1_TD[22],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[22], 2, DMA_1_TD[23],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
-CyDmaTdSetConfiguration(DMA_1_TD[23], 2, DMA_1_TD[24],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[0],  2, DMA_1_TD[1], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[1],  2, DMA_1_TD[2], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[2],  2, DMA_1_TD[3], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[3],  2, DMA_1_TD[4], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[4],  2, DMA_1_TD[5], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[5],  2, DMA_1_TD[6], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[6],  2, DMA_1_TD[7], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[7],  2, DMA_1_TD[8], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[8],  2, DMA_1_TD[9], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[9],  2, DMA_1_TD[10],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[10], 2, DMA_1_TD[11],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[11], 2, DMA_1_TD[12],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[12],  2, DMA_1_TD[13], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[13],  2, DMA_1_TD[14], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[14],  2, DMA_1_TD[15], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[15],  2, DMA_1_TD[16], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[16],  2, DMA_1_TD[17], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[17],  2, DMA_1_TD[18], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[18],  2, DMA_1_TD[19], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[19],  2, DMA_1_TD[20], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[20],  2, DMA_1_TD[21], TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[21],  2, DMA_1_TD[22],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[22], 2, DMA_1_TD[23],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[23], 2, DMA_1_TD[24],TD_AUTO_EXEC_NEXT | DMA_1__TD_TERMOUT_EN);
+//CyDmaTdSetConfiguration(DMA_1_TD[24], 2, DMA_1_TD[0], DMA_1__TD_TERMOUT_EN);
+
+CyDmaTdSetConfiguration(DMA_1_TD[0],  2, DMA_1_TD[1], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[1],  2, DMA_1_TD[2], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[2],  2, DMA_1_TD[3], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[3],  2, DMA_1_TD[4], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[4],  2, DMA_1_TD[5], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[5],  2, DMA_1_TD[6], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[6],  2, DMA_1_TD[7], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[7],  2, DMA_1_TD[8], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[8],  2, DMA_1_TD[9], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[9],  2, DMA_1_TD[10],TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[10], 2, DMA_1_TD[11],TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[11], 2, DMA_1_TD[12],TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[12],  2, DMA_1_TD[13], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[13],  2, DMA_1_TD[14], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[14],  2, DMA_1_TD[15], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[15],  2, DMA_1_TD[16], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[16],  2, DMA_1_TD[17], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[17],  2, DMA_1_TD[18], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[18],  2, DMA_1_TD[19], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[19],  2, DMA_1_TD[20], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[20],  2, DMA_1_TD[21], TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[21],  2, DMA_1_TD[22],TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[22], 2, DMA_1_TD[23],TD_AUTO_EXEC_NEXT);
+CyDmaTdSetConfiguration(DMA_1_TD[23], 2, DMA_1_TD[24],TD_AUTO_EXEC_NEXT);
 CyDmaTdSetConfiguration(DMA_1_TD[24], 2, DMA_1_TD[0], DMA_1__TD_TERMOUT_EN);
 
 CyDmaTdSetAddress(DMA_1_TD[0],   LO16((uint32)&ADC_finalArray[0]),  LO16((uint32)&bank1[24]));

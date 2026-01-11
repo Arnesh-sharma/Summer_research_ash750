@@ -1,5 +1,5 @@
 -- Project:   DMA25READ
--- Generated: 01/05/2026 12:58:54
+-- Generated: 01/12/2026 08:40:29
 -- PSoC Creator  4.2
 
 ENTITY DMA25READ IS
@@ -49,11 +49,11 @@ ARCHITECTURE __DEFAULT__ OF DMA25READ IS
     ATTRIBUTE udbclken_assigned OF Net_10 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
     SIGNAL Net_10_local : bit;
-    SIGNAL Net_1497 : bit;
     SIGNAL Net_4334 : bit;
     SIGNAL Net_4611 : bit;
     SIGNAL Net_4748 : bit;
-    SIGNAL Net_4758 : bit;
+    SIGNAL Net_4775 : bit;
+    SIGNAL Net_4778 : bit;
     SIGNAL Pin_1(0)__PA : bit;
     SIGNAL Pin_10(0)__PA : bit;
     SIGNAL Pin_11(0)__PA : bit;
@@ -231,29 +231,29 @@ ARCHITECTURE __DEFAULT__ OF DMA25READ IS
     SIGNAL \ClockBlock.dclk_glb_ff_0__sig\ : bit;
     ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_is_active_split\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Pin_11(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Pin_11(0) : LABEL IS "P0[3]";
+    ATTRIBUTE Location OF Pin_11(0) : LABEL IS "P15[3]";
     ATTRIBUTE lib_model OF Pin_25(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Pin_25(0) : LABEL IS "P15[5]";
+    ATTRIBUTE Location OF Pin_25(0) : LABEL IS "P2[1]";
     ATTRIBUTE lib_model OF Pin_24(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF Pin_24(0) : LABEL IS "P15[3]";
+    ATTRIBUTE Location OF Pin_24(0) : LABEL IS "P2[2]";
     ATTRIBUTE lib_model OF Pin_23(0) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF Pin_23(0) : LABEL IS "P15[2]";
+    ATTRIBUTE Location OF Pin_23(0) : LABEL IS "P2[3]";
     ATTRIBUTE lib_model OF Pin_14(0) : LABEL IS "iocell5";
-    ATTRIBUTE Location OF Pin_14(0) : LABEL IS "P0[7]";
+    ATTRIBUTE Location OF Pin_14(0) : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF Pin_16(0) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF Pin_16(0) : LABEL IS "P2[1]";
+    ATTRIBUTE Location OF Pin_16(0) : LABEL IS "P0[4]";
     ATTRIBUTE lib_model OF Pin_17(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF Pin_17(0) : LABEL IS "P2[2]";
+    ATTRIBUTE Location OF Pin_17(0) : LABEL IS "P0[6]";
     ATTRIBUTE lib_model OF Pin_22(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF Pin_22(0) : LABEL IS "P15[1]";
+    ATTRIBUTE Location OF Pin_22(0) : LABEL IS "P2[5]";
     ATTRIBUTE lib_model OF Pin_21(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF Pin_21(0) : LABEL IS "P2[7]";
+    ATTRIBUTE Location OF Pin_21(0) : LABEL IS "P2[6]";
     ATTRIBUTE lib_model OF Pin_20(0) : LABEL IS "iocell10";
-    ATTRIBUTE Location OF Pin_20(0) : LABEL IS "P2[6]";
+    ATTRIBUTE Location OF Pin_20(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF Pin_19(0) : LABEL IS "iocell11";
-    ATTRIBUTE Location OF Pin_19(0) : LABEL IS "P2[5]";
+    ATTRIBUTE Location OF Pin_19(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF Pin_18(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF Pin_18(0) : LABEL IS "P2[3]";
+    ATTRIBUTE Location OF Pin_18(0) : LABEL IS "P0[7]";
     ATTRIBUTE lib_model OF Pin_8(0) : LABEL IS "iocell13";
     ATTRIBUTE Location OF Pin_8(0) : LABEL IS "P3[7]";
     ATTRIBUTE lib_model OF Pin_7(0) : LABEL IS "iocell14";
@@ -275,15 +275,15 @@ ARCHITECTURE __DEFAULT__ OF DMA25READ IS
     ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell22";
     ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
     ATTRIBUTE lib_model OF Pin_15(0) : LABEL IS "iocell23";
-    ATTRIBUTE Location OF Pin_15(0) : LABEL IS "P1[7]";
+    ATTRIBUTE Location OF Pin_15(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF Pin_13(0) : LABEL IS "iocell24";
-    ATTRIBUTE Location OF Pin_13(0) : LABEL IS "P0[6]";
+    ATTRIBUTE Location OF Pin_13(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Pin_12(0) : LABEL IS "iocell25";
-    ATTRIBUTE Location OF Pin_12(0) : LABEL IS "P0[4]";
+    ATTRIBUTE Location OF Pin_12(0) : LABEL IS "P15[5]";
     ATTRIBUTE lib_model OF Pin_10(0) : LABEL IS "iocell26";
-    ATTRIBUTE Location OF Pin_10(0) : LABEL IS "P0[2]";
+    ATTRIBUTE Location OF Pin_10(0) : LABEL IS "P15[2]";
     ATTRIBUTE lib_model OF Pin_9(0) : LABEL IS "iocell27";
-    ATTRIBUTE Location OF Pin_9(0) : LABEL IS "P0[0]";
+    ATTRIBUTE Location OF Pin_9(0) : LABEL IS "P15[1]";
     ATTRIBUTE lib_model OF DB1(0) : LABEL IS "iocell28";
     ATTRIBUTE Location OF DB1(0) : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF DB3(0) : LABEL IS "iocell29";
@@ -384,7 +384,7 @@ ARCHITECTURE __DEFAULT__ OF DMA25READ IS
     ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_61\ : LABEL IS "macrocell72";
     ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_62\ : LABEL IS "macrocell73";
     ATTRIBUTE lib_model OF \ADC:AMuxHw_2_Decoder_one_hot_63\ : LABEL IS "macrocell74";
-    ATTRIBUTE lib_model OF Net_1497 : LABEL IS "macrocell75";
+    ATTRIBUTE lib_model OF Net_4775 : LABEL IS "macrocell75";
     ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:bus_clk_nrq_reg\ : LABEL IS "macrocell76";
     ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:nrq_reg\ : LABEL IS "macrocell77";
     ATTRIBUTE lib_model OF \ADC:bSAR_SEQ:soc_in\ : LABEL IS "macrocell78";
@@ -3807,7 +3807,7 @@ BEGIN
             drive_mode => "110",
             ibuf_enabled => "1",
             id => "ed51f2d2-faca-42a5-b3d4-e3f24f41410a",
-            init_dr_st => "0",
+            init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "1",
@@ -3826,7 +3826,7 @@ BEGIN
             oe_sync => "0",
             output_clk_en => 0,
             output_clock_mode => "0",
-            output_conn => "1",
+            output_conn => "0",
             output_mode => "0",
             output_reset => 0,
             output_sync => "0",
@@ -3974,7 +3974,7 @@ BEGIN
         PORT MAP(
             pa_out => RX(0)__PA,
             oe => open,
-            pin_input => Net_1497,
+            pin_input => Net_4775,
             pad_out => RX(0)_PAD,
             pad_in => RX(0)_PAD,
             in_clock => open,
@@ -4066,7 +4066,7 @@ BEGIN
         PORT MAP(
             pa_out => TX(0)__PA,
             oe => open,
-            pin_input => Net_4758,
+            pin_input => Net_4778,
             pad_out => TX(0)_PAD,
             pad_in => TX(0)_PAD,
             in_clock => open,
@@ -4203,7 +4203,7 @@ BEGIN
             status_3 => open,
             status_2 => open,
             status_1 => open,
-            status_0 => Net_1497,
+            status_0 => Net_4775,
             clk_en => \ADC:bSAR_SEQ:enable\);
 
     \ADC:TempBuf\:drqcell
@@ -4231,7 +4231,7 @@ BEGIN
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_1497,
+            interrupt => Net_4775,
             clock => ClockBlock_BUS_CLK);
 
     \ADC:Sync:genblk1[0]:INST\:synccell
@@ -4339,7 +4339,7 @@ BEGIN
             int_type => "00",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_1497,
+            interrupt => Net_4775,
             clock => ClockBlock_BUS_CLK);
 
     \Timer_1:TimerHW\:timercell
@@ -4360,9 +4360,9 @@ BEGIN
             drq_type => "00",
             num_tds => 0)
         PORT MAP(
-            dmareq => Net_1497,
+            dmareq => Net_4775,
             termin => '0',
-            termout => Net_4758,
+            termout => Net_4778,
             clock => ClockBlock_BUS_CLK);
 
     \ADC:AMuxHw_2_Decoder_old_id_5\:macrocell
@@ -5519,7 +5519,7 @@ BEGIN
             main_5 => \ADC:AMuxHw_2_Decoder_old_id_1\,
             main_6 => \ADC:AMuxHw_2_Decoder_old_id_0\);
 
-    Net_1497:macrocell
+    Net_4775:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
             regmode => 1,
@@ -5527,7 +5527,7 @@ BEGIN
             clken_inv => '0',
             clken_mode => 3)
         PORT MAP(
-            q => Net_1497,
+            q => Net_4775,
             clk_en => \ADC:bSAR_SEQ:enable\,
             clock_0 => Net_10,
             main_0 => \ADC:bSAR_SEQ:bus_clk_nrq_reg\,
@@ -5544,7 +5544,7 @@ BEGIN
             clock_0 => ClockBlock_BUS_CLK,
             main_0 => \ADC:bSAR_SEQ:bus_clk_nrq_reg\,
             main_1 => \ADC:Net_3935\,
-            main_2 => Net_1497);
+            main_2 => Net_4775);
 
     \ADC:bSAR_SEQ:nrq_reg\:macrocell
         GENERIC MAP(

@@ -1,0 +1,148 @@
+clear; 
+clc; 
+
+
+%assign the PORT and BAUD
+port = "COM8"; 
+baudRate = 115200; 
+
+disp(['Connecting to ' port '...']); 
+s = serialport(port,baudRate); 
+x_data = []; 
+y_data=[]; 
+x_inc = 0; 
+max = 0; 
+min =  4096; 
+diff = 0;
+sampleWindow = 1000;
+count = 0; 
+
+%remove previous data 
+flush(s); 
+
+disp('Reading now'); 
+
+databuffer = zeros(sampleWindow,1);
+x_axis = 1:sampleWindow; 
+
+
+figure; 
+hPlot = plot(x_axis, databuffer, 'LineWidth',1.5);
+title('Sensor 33 data'); 
+xlabel('sample window'); 
+ylabel('ADC value');
+ylim([0,4096]);
+grid on;
+
+
+packet_size = 52; 
+elements_per_pack = 26; 
+
+
+while true
+
+
+    %flush(s, "input"); 
+    %read each element at a time until the header i.e 0xFFFF is found 
+
+    while (read(s, 1, "uint16") ~= 65535)   
+        %do nothing
+    end 
+
+    %look at how many bytes wating to be draw/in queue
+    bytesAvailable = s.NumBytesAvailable; 
+
+    if bytesAvailable>= packet_size
+        %find how many full packets
+        numPacket = floor(bytesAvailable/packet_size); 
+        
+        %gather the data
+        allData = read(s, numPacket*elements_per_pack, "uint16"); 
+        
+        %get the data for sensor 9 
+        newPoints = allData(9:elements_per_pack:end); 
+
+        n = length(newPoints); 
+
+    % %flip the data since its in reverse from PSoC
+    % sensorData = (rawData);
+    % x_inc = x_inc+1; 
+
+    % %vis data 
+    % if length(sensorData) == 26
+        % for i = 1:25
+        % 
+        % for t = 0:5
+        % 
+        % if(min > sensorData(i))
+        %     min = sensorData(i);
+        % end 
+        % 
+        % if (max < sensorData(i))
+        %     max = sensorData(i);
+        % end 
+        % 
+        % diff = max - min; 
+        % end 
+        % 
+        % fprintf('SEN %d --MAX: %.2f -- MIN: %.2f -- DIFF: %.2f \n', i, max, min, diff)
+        % fprintf('========================================================\n')
+        % max = 0; 
+        % min =  4096; 
+        % diff = 0;
+        % 
+        % end
+       
+        % x_data = [x_data, x_inc];    
+        % y_data = [y_data,sensorData(9)]; 
+        %  plot(x_data, y_data, 'LineWidth', 1.5); 
+        % 
+        %  ylim("auto"); 
+
+       % ylim([1100,2000]);   
+        % drawnow;
+
+        %like a queue so data buffer keeps adding new readings cause its a
+        %circular buffer essenitially 
+        databuffer = [databuffer(n+1:end); newPoints(:)]; 
+
+        tempBuffer = [databuffer(:); newPoints(:)];
+
+
+        if length(tempBuffer) > sampleWindow
+             databuffer = tempBuffer(end-sampleWindow+1 : end);
+        else
+             % Handle rare startup case where we have <100 points total
+             databuffer = tempBuffer; 
+             % Pad with zeros if needed to match plot X-axis
+             if length(databuffer) < sampleWindow
+                 databuffer = [zeros(sampleWindow-length(databuffer),1); databuffer];
+             end
+        end
+
+        set(hPlot, 'Ydata', databuffer);
+
+        ylim("auto"); 
+
+        drawnow; 
+
+
+       
+        
+
+       % i = 17;  
+       % 
+       % if(min > sensorData(i))
+       %      min = sensorData(i);
+       %  end 
+       % 
+       %  if (max < sensorData(i))
+       %      max = sensorData(i);
+       %  end 
+       % 
+       %  diff = max - min; 
+       %  fprintf('SEN %d --MAX: %.2f -- MIN: %.2f -- DIFF: %.2f \n', i, max, min, diff)
+       %  fprintf('========================================================\n')
+
+    end
+end 

@@ -2,7 +2,7 @@
 --	Conversion of DMA25READ.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Jan 05 12:58:46 2026
+--	Mon Jan 12 08:40:21 2026
 --
 
 USE cypress.cypress.all;
@@ -292,7 +292,7 @@ SIGNAL \ADC:bSAR_SEQ:bus_clk_nrq_reg\ : bit;
 SIGNAL \ADC:Net_3935\ : bit;
 SIGNAL \ADC:bSAR_SEQ:nrq_reg\ : bit;
 SIGNAL \ADC:bSAR_SEQ:nrq_edge_detect\ : bit;
-SIGNAL Net_1497 : bit;
+SIGNAL Net_4775 : bit;
 SIGNAL \ADC:bSAR_SEQ:soc_in\ : bit;
 SIGNAL \ADC:bSAR_SEQ:soc_edge_detect_reg\ : bit;
 SIGNAL \ADC:bSAR_SEQ:state_0\ : bit;
@@ -534,7 +534,7 @@ SIGNAL \Timer_1:Net_57\ : bit;
 SIGNAL Net_4722 : bit;
 SIGNAL \Timer_1:Net_102\ : bit;
 SIGNAL Net_4753 : bit;
-SIGNAL Net_4758 : bit;
+SIGNAL Net_4778 : bit;
 SIGNAL tmpOE__DB1_net_0 : bit;
 SIGNAL tmpFB_0__DB1_net_0 : bit;
 SIGNAL tmpIO_0__DB1_net_0 : bit;
@@ -865,7 +865,7 @@ tmpOE__Pin_11_net_0 <=  ('1') ;
 \ADC:bSAR_SEQ:cnt_enable\ <= (\ADC:bSAR_SEQ:load_period\
 	OR Net_4611);
 
-\ADC:bSAR_SEQ:bus_clk_nrq_reg\\D\ <= ((not Net_1497 and \ADC:bSAR_SEQ:bus_clk_nrq_reg\)
+\ADC:bSAR_SEQ:bus_clk_nrq_reg\\D\ <= ((not Net_4775 and \ADC:bSAR_SEQ:bus_clk_nrq_reg\)
 	OR \ADC:Net_3935\);
 
 \ADC:bSAR_SEQ:nrq_edge_detect\ <= ((not \ADC:bSAR_SEQ:nrq_reg\ and \ADC:bSAR_SEQ:bus_clk_nrq_reg\));
@@ -1956,7 +1956,7 @@ Pin_8:cy_psoc3_pins_v1_10
 	PORT MAP(reset=>zero,
 		clock=>\ADC:bSAR_SEQ:clk_fin\,
 		status=>(zero, zero, zero, zero,
-			zero, zero, zero, Net_1497));
+			zero, zero, zero, Net_4775));
 \ADC:TempBuf\:cy_dma_v1_0
 	GENERIC MAP(drq_type=>"00",
 		num_tds=>0)
@@ -1982,7 +1982,7 @@ Pin_8:cy_psoc3_pins_v1_10
 \ADC:IRQ\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_1497);
+	PORT MAP(int_signal=>Net_4775);
 \ADC:Sync:genblk1[0]:INST\:cy_psoc3_sync
 	PORT MAP(clock=>\ADC:Net_3710\,
 		sc_in=>\ADC:nrq\,
@@ -2748,7 +2748,7 @@ Pin_15:cy_psoc3_pins_v1_10
 isr_eoc:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00",
 		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_1497);
+	PORT MAP(int_signal=>Net_4775);
 Pin_13:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"317cc572-30cd-4282-a72e-ac4d2c22bd11",
 		drive_mode=>"000",
@@ -3044,7 +3044,7 @@ timer_clock:cy_clock_v1_0
 		id=>"c0fb34bd-1044-4931-9788-16b01ce89812",
 		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
 		divisor=>0,
-		period=>"976562500",
+		period=>"1000000000",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_10,
@@ -3052,9 +3052,9 @@ timer_clock:cy_clock_v1_0
 DMA_1:cy_dma_v1_0
 	GENERIC MAP(drq_type=>"00",
 		num_tds=>0)
-	PORT MAP(drq=>Net_1497,
+	PORT MAP(drq=>Net_4775,
 		trq=>zero,
-		nrq=>Net_4758);
+		nrq=>Net_4778);
 DB1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
 		drive_mode=>"110",
@@ -3549,7 +3549,7 @@ DB8:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"ed51f2d2-faca-42a5-b3d4-e3f24f41410a",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
-		init_dr_st=>"0",
+		init_dr_st=>"1",
 		input_sync=>"1",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
@@ -3562,7 +3562,7 @@ DB8:cy_psoc3_pins_v1_10
 		invert_out_reset=>'0',
 		io_voltage=>"",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
+		output_conn=>"0",
 		output_sync=>"0",
 		output_clk_en=>'0',
 		output_mode=>"0",
@@ -3602,7 +3602,7 @@ DB8:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Pin_11_net_0),
-		y=>zero,
+		y=>(zero),
 		fb=>(tmpFB_0__DB8_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__DB8_net_0),
@@ -3672,7 +3672,7 @@ RX:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Pin_11_net_0),
-		y=>Net_1497,
+		y=>Net_4775,
 		fb=>(tmpFB_0__RX_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__RX_net_0),
@@ -3742,7 +3742,7 @@ TX:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__Pin_11_net_0),
-		y=>Net_4758,
+		y=>Net_4778,
 		fb=>(tmpFB_0__TX_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__TX_net_0),
@@ -4038,7 +4038,7 @@ TX:cy_psoc3_pins_v1_10
 \ADC:bSAR_SEQ:nrq_edge_detect_reg\:cy_dff
 	PORT MAP(d=>\ADC:bSAR_SEQ:nrq_edge_detect\,
 		clk=>\ADC:bSAR_SEQ:clk_fin\,
-		q=>Net_1497);
+		q=>Net_4775);
 \ADC:bSAR_SEQ:bus_clk_nrq_reg\:cy_dff
 	PORT MAP(d=>\ADC:bSAR_SEQ:bus_clk_nrq_reg\\D\,
 		clk=>\ADC:Net_3710\,

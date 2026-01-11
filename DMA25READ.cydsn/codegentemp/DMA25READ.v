@@ -1,6 +1,6 @@
 // ======================================================================
 // DMA25READ.v generated from TopDesign.cysch
-// 01/05/2026 at 12:58
+// 01/12/2026 at 08:40
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -375,7 +375,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v"
 `endif
 
-// ADC_SAR_SEQ_v2_10(ADC_Clock_Frequency=1024800, Adjust=0, ClockSource=1, InputRange=1, NumChannels=25, Reference=0, Resolution=12, rm_int=false, SampleMode=2, SamplePrecharge=4, SampleRate=64050, SampleRate_def=631579, VrefValue=2.5, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=ADC_SAR_SEQ_v2_10, CY_CONFIG_TITLE=ADC, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=ADC, CY_INSTANCE_SHORT_NAME=ADC, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=ADC, )
+// ADC_SAR_SEQ_v2_10(ADC_Clock_Frequency=1016944, Adjust=0, ClockSource=1, InputRange=1, NumChannels=25, Reference=0, Resolution=12, rm_int=false, SampleMode=2, SamplePrecharge=4, SampleRate=63559, SampleRate_def=631579, VrefValue=2.5, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=ADC_SAR_SEQ_v2_10, CY_CONFIG_TITLE=ADC, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=ADC, CY_INSTANCE_SHORT_NAME=ADC, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=ADC, )
 module ADC_SAR_SEQ_v2_10_1 (
     soc,
     aclk,
@@ -1311,7 +1311,7 @@ endmodule
 module top ;
 
           wire  Net_4701;
-          wire  Net_4721;
+          wire  Net_4770;
           wire  Net_4726;
           wire  Net_4725;
           wire  Net_4724;
@@ -1392,11 +1392,11 @@ module top ;
     electrical  Net_4612;
           wire  Net_4611;
           wire  Net_10;
-          wire  Net_4758;
+          wire  Net_4778;
           wire  Net_4753;
           wire  Net_4748;
           wire  Net_12;
-          wire  Net_1497;
+          wire  Net_4775;
     electrical  Net_4643;
     electrical  Net_4642;
     electrical  Net_4640;
@@ -2415,7 +2415,7 @@ module top ;
         .soc(Net_4748),
         .aclk(Net_10),
         .sdone(Net_4611),
-        .eoc(Net_1497),
+        .eoc(Net_4775),
         .AIN_10(Net_4746),
         .AIN1(Net_4745),
         .AIN_20(Net_4612),
@@ -3130,7 +3130,7 @@ module top ;
 	cy_isr_v1_0
 		#(.int_type(2'b00))
 		isr_eoc
-		 (.int_signal(Net_1497));
+		 (.int_signal(Net_4775));
 
 
 	wire [0:0] tmpOE__Pin_13_net;
@@ -3462,7 +3462,7 @@ module top ;
 		#(.id("c0fb34bd-1044-4931-9788-16b01ce89812"),
 		  .source_clock_id("61737EF6-3B74-48f9-8B91-F7473A442AE7"),
 		  .divisor(0),
-		  .period("976562500"),
+		  .period("1000000000"),
 		  .is_direct(0),
 		  .is_digital(1))
 		timer_clock
@@ -3475,9 +3475,9 @@ module top ;
 	cy_dma_v1_0
 		#(.drq_type(2'b00))
 		DMA_1
-		 (.drq(Net_1497),
+		 (.drq(Net_4775),
 		  .trq(1'b0),
-		  .nrq(Net_4758));
+		  .nrq(Net_4778));
 
 
 	wire [0:0] tmpOE__DB1_net;
@@ -4015,7 +4015,7 @@ module top ;
 		#(.id("ed51f2d2-faca-42a5-b3d4-e3f24f41410a"),
 		  .drive_mode(3'b110),
 		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
+		  .init_dr_st(1'b1),
 		  .input_clk_en(0),
 		  .input_sync(1'b1),
 		  .input_sync_mode(1'b0),
@@ -4033,7 +4033,7 @@ module top ;
 		  .oe_sync(1'b0),
 		  .output_clk_en(0),
 		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
+		  .output_conn(1'b0),
 		  .output_mode(1'b0),
 		  .output_reset(0),
 		  .output_sync(1'b0),
@@ -4066,7 +4066,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		DB8
 		 (.oe(tmpOE__DB8_net),
-		  .y({Net_4753}),
+		  .y({1'b0}),
 		  .fb({tmpFB_0__DB8_net[0:0]}),
 		  .io({tmpIO_0__DB8_net[0:0]}),
 		  .siovref(tmpSIOVREF__DB8_net),
@@ -4141,7 +4141,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		RX
 		 (.oe(tmpOE__RX_net),
-		  .y({Net_1497}),
+		  .y({Net_4775}),
 		  .fb({tmpFB_0__RX_net[0:0]}),
 		  .io({tmpIO_0__RX_net[0:0]}),
 		  .siovref(tmpSIOVREF__RX_net),
@@ -4216,7 +4216,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		TX
 		 (.oe(tmpOE__TX_net),
-		  .y({Net_4758}),
+		  .y({Net_4778}),
 		  .fb({tmpFB_0__TX_net[0:0]}),
 		  .io({tmpIO_0__TX_net[0:0]}),
 		  .siovref(tmpSIOVREF__TX_net),

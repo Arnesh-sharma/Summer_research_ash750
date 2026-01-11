@@ -786,6 +786,15 @@
 <v>Generated_Source\PSoC5\TX_aliases.h</v>
 <v>Generated_Source\PSoC5\TX.c</v>
 <v>Generated_Source\PSoC5\TX.h</v>
+<v>Generated_Source\PSoC5\RX_1_aliases.h</v>
+<v>Generated_Source\PSoC5\RX_1.c</v>
+<v>Generated_Source\PSoC5\RX_1.h</v>
+<v>Generated_Source\PSoC5\PinTest_aliases.h</v>
+<v>Generated_Source\PSoC5\PinTest.c</v>
+<v>Generated_Source\PSoC5\PinTest.h</v>
+<v>Generated_Source\PSoC5\myPin_aliases.h</v>
+<v>Generated_Source\PSoC5\myPin.c</v>
+<v>Generated_Source\PSoC5\myPin.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -794,7 +803,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cy_psoc3_inc.v</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 </warp_dep>
-<deps_time v="134120447399671579" />
+<deps_time v="134126340370386722" />
 <top_block v="TopDesign" />
 <last_generation v="12" />
 <pdl_path v="" />
@@ -2144,6 +2153,45 @@
 <file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
 <file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+<file name=".\Generated_Source\PSoC5\myPin.h" />
+<file name=".\Generated_Source\PSoC5\myPin_aliases.h" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\myPin.o">
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\myPin.c" />
+<dep name=".\Generated_Source\PSoC5\myPin.h" />
+<dep name=".\Generated_Source\PSoC5\myPin_aliases.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\myPin.c" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\PinTest.o">
+<dep name=".\Generated_Source\PSoC5\PinTest.c" />
+<dep name=".\Generated_Source\PSoC5\PinTest.h" />
+<dep name=".\Generated_Source\PSoC5\PinTest_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\PinTest.c" />
+<file name=".\Generated_Source\PSoC5\PinTest.h" />
+<file name=".\Generated_Source\PSoC5\PinTest_aliases.h" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\RX_1.o">
+<dep name=".\Generated_Source\PSoC5\RX_1.c" />
+<dep name=".\Generated_Source\PSoC5\RX_1.h" />
+<dep name=".\Generated_Source\PSoC5\RX_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\RX_1.c" />
+<file name=".\Generated_Source\PSoC5\RX_1.h" />
+<file name=".\Generated_Source\PSoC5\RX_1_aliases.h" />
 </CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
 </dependency_info>
 </CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256>
@@ -2320,7 +2368,10 @@
 <name_val_pair name="Generated_Source\PSoC5\DB8.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="Generated_Source\PSoC5\RX.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="Generated_Source\PSoC5\TX.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
-<name_val_pair name="C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\CortexM3\ARM_GCC_541\Debug\DMA25READ.hex" v="-mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name="C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\CortexM3\ARM_GCC_541\Debug\DMA25READ.hex" v="-mcpu=cortex-m3 -mthumb -l m -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -u _printf_float -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name="Generated_Source\PSoC5\RX_1.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\PinTest.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\myPin.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\ash750\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj -d CY8C5888LTI-LP097 -s C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -2335,7 +2386,7 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="134120447461679552" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="134126340456309131" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
