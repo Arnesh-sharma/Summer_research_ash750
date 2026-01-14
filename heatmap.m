@@ -23,8 +23,6 @@ axis square;
 xticks(1:5);
 yticks(1:5);
 grid on; 
-%added custom pixel map to correct output/disp
-pixelMap = [1, 2, 3, 4, 5, 6, 7, 8, 22, 23, 24, 25, 9, 10, 11, 12, 13, 14, 15, 21, 20, 19, 18, 17, 16 ]; 
 
 %connection process
 disp(['Connecting to ' port '...']); 

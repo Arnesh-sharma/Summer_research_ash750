@@ -1,0 +1,31 @@
+clear; 
+clc; 
+global selectedSensor; 
+selectedSensor = 1; 
+
+%setup 
+port = "COM8"; 
+baudRate = 115200; 
+packet_size = 52; 
+elements_per_pack = 26; 
+gridSize = [5,5]; 
+
+%tuning for FFT and heatmap 
+Fs = 2085; 
+sampleWindow = 1024; 
+targetFps = 30; 
+drawTime = 1/targetFps; 
+
+%make data storage buffer 
+dataBuffer = zeros(sampleWindow, 25); 
+
+%setup figure 
+fig = figure('Name', 'Sensor Frequency Analysis', 'Color', 'White');
+set(fig, 'Units', 'normalized', 'Position', [0.1 0.1 0.8 0.7]);
+
+%setup heatmap 
+subplot(2,2, [1,3]);
+heatMap = imagesc(zeros(gridSize));
+colormap('jet'); 
+colorbar; 
+clim([0, 4096]); 
