@@ -1,0 +1,19 @@
+* C:\Users\ash750\Documents\GitHub\Summer_research_ash750\esf_op-amp.asc
+V1 vpos 0 5
+V2 0 vneg 0
+C3 0 N001 {CS}
+V4 N001 0 SINE(0 1 100) AC 1
+B1 vgnd 0 V=(v(vpos)+v(vneg))/2
+XU1 vgnd N003 vpos vneg vo LT6220
+B2 vgnd N004 I=I(V4)
+R3 N003 N004 0.1
+C1 vo N003 110p
+R1 vo N003 30Meg
+;.tran 500m
+.ac dec 100 1 100k
+.param VS1=1 VS2=VS1*1.01
+* PULSE({VS1} {VS2} 0 10n 10n 1m 2m)
+.param CS=440p
+.lib LTC4.LIB
+.backanno
+.end
