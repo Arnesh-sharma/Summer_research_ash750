@@ -44,14 +44,14 @@ set(hMap, 'ButtonDownFcn', @mapClicked); % Enable clicking
 
 % ---------------------------------------------------------
 % 2. ROTATION BUTTONS (Bottom Left)
-% ---------------------------------------------------------
+% FIX: We must wrap the callback in braces {} to pass hAxMap as the 3rd argument
 btnLeft = uicontrol('Parent', fig, 'Style', 'pushbutton', 'String', '↺ Rotate Left', ...
     'Units', 'normalized', 'Position', [0.15 0.02 0.1 0.05], ...
-    'Callback', @rotateLeft);
+    'Callback', {@rotateLeft, hAxMap});  % <--- ADD CURLY BRACES & hAxMap
 
 btnRight = uicontrol('Parent', fig, 'Style', 'pushbutton', 'String', 'Rotate Right ↻', ...
     'Units', 'normalized', 'Position', [0.26 0.02 0.1 0.05], ...
-    'Callback', @rotateRight);
+    'Callback', {@rotateRight, hAxMap}); % <--- ADD CURLY BRACES & hAxMap
 
 % ---------------------------------------------------------
 % 3. TIME PLOT (Top Right)
