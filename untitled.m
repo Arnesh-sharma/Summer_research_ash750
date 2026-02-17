@@ -34,7 +34,7 @@ subplot(2, 2, [1 3]); % Span left column
 hMap = imagesc(zeros(gridSize)); 
 colormap('jet'); 
 colorbar; 
-clim([0, 2000]);      % Adjust color sensitivity here
+clim([0, 300]);      % Adjust color sensitivity here
 title('Signal Strength (P2P)'); 
 axis square; 
 xticks(1:5); yticks(1:5);
