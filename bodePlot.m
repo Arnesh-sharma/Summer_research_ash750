@@ -4,8 +4,9 @@ clc;
 figure; 
 hold on; 
 
-for i = 0:5
-filename = sprintf('S%dNP.csv', i);
+for i = 0:2:8
+filename = sprintf('S1%dMMP.csv', i);
+ fprintf('reading %s :)\n', filename); 
 %filename = sprintf('S%d2P.csv', i);
 %filename = sprintf('S%d4P.csv', i);
 %filename = sprintf('S%d8PCN.csv', i);
@@ -39,4 +40,8 @@ elseif contains(filename, "4P")
     title('Bode response of sensors with 4mm perspex and source 20mm away')
 elseif contains(filename, "8P")
     title('Bode response of sensors with 8mm perspex and source 20mm away')
+elseif contains(filename, "MMP")
+     title('Bode response of Sensor 1 with different perspex thicknesses and source 20mm away')
+     legend ('0mm', '2mm', '4mm', '8mm'); 
+     xlim ([10,2000]); 
 end
