@@ -1,4 +1,4 @@
---------------- Build Started: 01/12/2026 08:40:01 Project: DMA25READ, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 03/06/2026 12:00:17 Project: DMA25READ, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 cydsfit.exe -.appdatapath "C:\Users\ash750\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj -d CY8C5888LTI-LP097 -s C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is unconnected.
@@ -147,4 +147,4 @@ Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\CortexM3\ARM_GCC_541\Debug\DMA25READ.elf
 Flash used: 29356 of 262144 bytes (11.2%).
 SRAM used: 4045 of 65536 bytes (6.2%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 01/12/2026 08:40:45 ---------------
+--------------- Build Succeeded: 03/06/2026 12:00:45 ---------------

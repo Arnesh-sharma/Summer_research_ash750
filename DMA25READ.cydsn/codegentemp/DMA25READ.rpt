@@ -1,4 +1,4 @@
-Loading plugins phase: Elapsed time ==> 4s.223ms
+Loading plugins phase: Elapsed time ==> 0s.192ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj -d CY8C5888LTI-LP097 -s C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 </CYPRESSTAG>
@@ -9,10 +9,10 @@ ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is 
  * C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Shape_885)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 10s.759ms
+Elaboration phase: Elapsed time ==> 1s.272ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.058ms
+HDL generation phase: Elapsed time ==> 0s.060ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -46,7 +46,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ash75
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Mon Jan 12 08:40:20 2026
+Fri Mar 06 12:00:19 2026
 
 
 ======================================================================
@@ -56,7 +56,7 @@ Options  :    -yv2 -q10 DMA25READ.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Mon Jan 12 08:40:20 2026
+Fri Mar 06 12:00:20 2026
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_AMUX_v2_0\ADC_AMUX_v2_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.v'
@@ -100,7 +100,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ash75
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Mon Jan 12 08:40:20 2026
+Fri Mar 06 12:00:20 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -137,7 +137,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ash75
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Mon Jan 12 08:40:21 2026
+Fri Mar 06 12:00:20 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -792,14 +792,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj -dcpsoc3 DMA25READ.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.762ms
+Warp synthesis phase: Elapsed time ==> 1s.148ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Monday, 12 January 2026 08:40:21
+cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Friday, 06 March 2026 12:00:20
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj -d CY8C5888LTI-LP097 DMA25READ.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.067ms
+Design parsing phase: Elapsed time ==> 0s.062ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -3990,8 +3990,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.385ms
-Tech Mapping phase: Elapsed time ==> 0s.494ms
+Technology Mapping: Elapsed time ==> 0s.377ms
+Tech Mapping phase: Elapsed time ==> 0s.473ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "Net_4645" is connected to one terminal only. (App=cydsfit)
@@ -4117,10 +4117,10 @@ SAR[0]@[FFB(SAR,0)] : \ADC:SAR:ADC_SAR\
 Vref[13]@[FFB(Vref,13)] : \ADC:SAR:vRef_Vdda_1\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 
-Analog Placement phase: Elapsed time ==> 6s.868ms
+Analog Placement phase: Elapsed time ==> 6s.792ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.014ms
+Analog Routing phase: Elapsed time ==> 0s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -5069,7 +5069,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = True
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.173ms
+Analog Code Generation phase: Elapsed time ==> 0s.132ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
@@ -8961,34 +8961,34 @@ Port | Pin | Fixed |      Type |       Drive Mode |            Name | Connection
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.073ms
-Digital Placement phase: Elapsed time ==> 1s.925ms
+Digital component placer commit/Report: Elapsed time ==> 0s.069ms
+Digital Placement phase: Elapsed time ==> 1s.903ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata" --vh2-path "DMA25READ_r.vh2" --pcf-path "DMA25READ.pco" --des-name "DMA25READ" --dsf-path "DMA25READ.dsf" --sdc-path "DMA25READ.sdc" --lib-path "DMA25READ_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.267ms
+Digital Routing phase: Elapsed time ==> 1s.276ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.183ms
+Bitstream Generation phase: Elapsed time ==> 0s.205ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.049ms
+Bitstream Verification phase: Elapsed time ==> 0s.050ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Warning: sta.M0021: DMA25READ_timing.html: Warning-1350: Asynchronous path(s) exist from "ClockBlock/dclk_glb_ff_0" to "timer_clock". See the timing report for details. (File=C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ_timing.html)
 Timing report is in DMA25READ_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.324ms
+Static timing analysis phase: Elapsed time ==> 0s.280ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.004ms
+Data reporting phase: Elapsed time ==> 0s.002ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.157ms
+Design database save phase: Elapsed time ==> 0s.126ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 11s.632ms
+cydsfit: Elapsed time ==> 11s.387ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 11s.639ms
-API generation phase: Elapsed time ==> 3s.606ms
+Fitter phase: Elapsed time ==> 11s.394ms
+API generation phase: Elapsed time ==> 2s.449ms
 Dependency generation phase: Elapsed time ==> 0s.014ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Cleanup phase: Elapsed time ==> 0s.000ms

@@ -1,8 +1,7 @@
-C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj|18b34973-114d-453a-96aa-456a73d447a7
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e66f83b0-6ece-4deb-b7bf-6def97aaf336
-C:\Users\ash750\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|bcfe9958-a14b-4fae-8f53-c39af40e7572
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|7b25a308-a763-4592-a5aa-bb54e919099d
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2560639d-3ffa-4136-8a3b-6f931e0090ee
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|19dad352-9e66-4b1f-95fa-bf1cd34682cd
-C:\Users\ash750\Downloads\esf_adc25_1.cyprj.Archive02\esf_adc25_1.cydsn\esf_adc25_1.cyprj|376f8ad3-e0d1-424c-9276-20e2736a6151
-C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\Design01.cydsn\Design01.cyprj|15cbd0b6-733f-464d-a378-aff3b52d2461
+C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\DMA25READ.cyprj|828738c0-8d86-4830-bcf9-f8ec6d1d1234
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|292297b1-c2bf-469e-8c5e-2a22d13bb9a9
+C:\Users\ash750\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|d01900b2-f885-4971-9434-9dbc151e131c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|ad5ec2cd-e8e9-434e-add2-49a231f0597b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|a7bfba0a-2463-42e4-ba27-2fb660b7197f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|721ed75b-e258-4673-98b4-a2527291c3fa
+C:\Users\ash750\Documents\GitHub\Summer_research_ash750\DMA25READ.cydsn\Design01.cydsn\Design01.cyprj|92cf5a6e-0b23-423c-b3dc-3b0305d92714

@@ -7,15 +7,15 @@ global rotationState; % 0=0deg, 1=90deg, 2=180deg, 3=270deg
 selectedSensor = 1; 
 rotationState = 0;    % Start in default orientation
 
-% --- CONFIGURATION (EDIT THESE) ---
-port = "COM8";        % <--- Update with your actual COM port
+% --- CONFIGS ---
+port = "COM13";        
 baudRate = 115200; 
 packet_size = 52;     % 26 uint16s * 2 bytes
 elements_per_pack = 26; 
 
 % --- SIGNAL TUNING ---
-Fs = 2055;             % <--- Update with your ACTUAL Sample Rate (Hz)
-sampleWindow = 1024;   % History size for FFT (powers of 2 are best: 256, 512, 1024)
+Fs = 2055;             
+sampleWindow = 1024;   
 gridSize = [5, 5]; 
 targetFPS = 30;       % Refresh rate limit
 drawInterval = 1 / targetFPS; 
@@ -44,14 +44,13 @@ set(hMap, 'ButtonDownFcn', @mapClicked); % Enable clicking
 
 % ---------------------------------------------------------
 % 2. ROTATION BUTTONS (Bottom Left)
-% FIX: We must wrap the callback in braces {} to pass hAxMap as the 3rd argument
 btnLeft = uicontrol('Parent', fig, 'Style', 'pushbutton', 'String', '↺ Rotate Left', ...
     'Units', 'normalized', 'Position', [0.15 0.02 0.1 0.05], ...
-    'Callback', {@rotateLeft, hAxMap});  % <--- ADD CURLY BRACES & hAxMap
+    'Callback', {@rotateLeft, hAxMap}); 
 
 btnRight = uicontrol('Parent', fig, 'Style', 'pushbutton', 'String', 'Rotate Right ↻', ...
     'Units', 'normalized', 'Position', [0.26 0.02 0.1 0.05], ...
-    'Callback', {@rotateRight, hAxMap}); % <--- ADD CURLY BRACES & hAxMap
+    'Callback', {@rotateRight, hAxMap});
 
 % ---------------------------------------------------------
 % 3. TIME PLOT (Top Right)
@@ -141,10 +140,6 @@ while ishandle(fig) % Runs until you close the window
                 
                 set(hMap, 'CData', finalGrid);
                 
-                % OPTIONAL: Auto-scale colors because FFT Magnitude is 
-                % usually much smaller than P2P raw values.
-                % clim('auto'); % Uncomment this if the map looks too dark/blue
-                
                 % =========================================================
                 % UPDATE INDIVIDUAL PLOTS (For Selected Sensor)
                 % =========================================================
@@ -156,7 +151,7 @@ while ishandle(fig) % Runs until you close the window
                 set(hLineTime, 'YData', timeSignal);
                 title(subplot(2, 2, 2), ['Sensor ' num2str(selectedSensor) ' (Time)']);
                 
-                % 3. Update FFT Plot (We already calculated P1_all, just pick column)
+                % 3. Update FFT Plot
                 P1_selected = P1_all(:, selectedSensor);
                 
                 set(hLineFFT, 'YData', P1_selected);
