@@ -30,7 +30,6 @@ end
 xlabel('Frequnecy (Hz)'); 
 ylabel('Magnitude (dB)'); 
 legend ('air', '2mm Perspex', '4mm Perspex', '8mm Perspex', '2mm PLA', '4mm PLA', '8mm PLA', '2mm Glass', '4mm Glass'); 
-% xlim([0,1000])
 
 title('Bode response of sensors with different materials and source 20mm away and exciter over sensor 1')
 
@@ -57,64 +56,9 @@ end
 
 xlabel('Frequnecy (Hz)'); 
 ylabel('Magnitude (dB)'); 
-legend ('air', '2mm Perspex', '4mm Perspex', '8mm Perspex'); 
+legend ('air', '2mm Perspex', '4mm Perspex', '8mm Perspex', '2mm PLA', '4mm PLA', '8mm PLA', '2mm Glass', '4mm Glass'); 
 
-title('Bode response of sensors with different Perspex thicknesses and source 20mm away and exciter over sensor 1')
-
-figure;
-for i = [1, 5:7]
-filename = sprintf(myData{i});
- fprintf('reading %s :)\n', filename); 
-
- if isfile(filename)
-    data = readmatrix(filename); 
-
-    freq = data(:,2);
-    mag = data(:,3); 
-
-
-    h = semilogx(freq, mag, 'LineWidth', 1.5); 
-    grid on; 
-    hold on; 
-else
-    fprintf('No file detected put files in same directory plz :)\n')
-
- end 
-end 
-
-xlabel('Frequnecy (Hz)'); 
-ylabel('Magnitude (dB)'); 
-legend ('air', '2mm PLA', '4mm PLA', '8mm PLA'); 
-
-title('Bode response of sensors with different PLA thicknesses and source 20mm away and exciter over sensor 1')
-
-figure;
-for i = [1, 8:9]
-filename = sprintf(myData{i});
- fprintf('reading %s :)\n', filename); 
-
- if isfile(filename)
-    data = readmatrix(filename); 
-
-    freq = data(:,2);
-    mag = data(:,3); 
-
-
-    h = semilogx(freq, mag, 'LineWidth', 1.5); 
-    grid on; 
-    hold on; 
-else
-    fprintf('No file detected put files in same directory plz :)\n')
-
- end 
-end 
-
-xlabel('Frequnecy (Hz)'); 
-ylabel('Magnitude (dB)'); 
-legend ('air', '2mm Glass', '4mm Glass'); 
-
-title('Bode response of sensors with different Glass thicknesses and source 20mm away and exciter over sensor 1')
-
+title('Bode response of sensors with different materials and source 20mm away and exciter over sensor 1')
 
 
 % figure; 
