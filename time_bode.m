@@ -117,30 +117,30 @@ title('Bode response of sensors with different Glass thicknesses and source 20mm
 
 
 
-% figure; 
-% for i = 2:4
-% filename = sprintf("S%d5V1KN.CSV", i);
-%  fprintf('reading %s :)\n', filename); 
-% 
-%  if isfile(filename)
-%     data = readmatrix(filename); 
-% 
-%      x = data(:,1);
-%     y = data(:,2); 
-% 
-% 
-%     plot(x,y);
-%     grid on; 
-%     hold on; 
-% else
-%     fprintf('No file detected put files in same directory plz :)\n')
-% 
-%  end 
-% end 
-% xlabel('time (s)'); 
-% ylabel('Volts (V)'); 
-% legend ( 'sen2', 'sen3', 'sen4'); 
-% xlim([-0.0121, 0.0121]);
-% 
-% title('Time domain response of sensors with no perspex and source 20mm away and exciter (5Vpp 1K Hz) over sensor 2')
+figure; 
+for i = 2:4
+filename = sprintf("CUPT.CSV", i);
+ fprintf('reading %s :)\n', filename); 
+
+ if isfile(filename)
+    data = readmatrix(filename); 
+
+     x = data(:,1);
+    y = data(:,2); 
+
+
+    plot(x,y);
+    grid on; 
+    hold on; 
+else
+    fprintf('No file detected put files in same directory plz :)\n')
+
+ end 
+end 
+xlabel('time (s)'); 
+ylabel('Volts (V)'); 
+legend ( 'sen2', 'sen3', 'sen4'); 
+xlim([-0.0121, 0.0121]);
+
+title('Time domain response of sensors with no perspex and source 20mm away and exciter (5Vpp 1K Hz) over sensor 2')
 
