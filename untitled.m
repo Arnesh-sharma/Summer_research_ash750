@@ -34,7 +34,7 @@ subplot(2, 2, [1 3]); % Span left column
 hMap = imagesc(zeros(gridSize)); 
 colormap('jet'); 
 colorbar; 
-clim([0, 300]);      % Adjust color sensitivity here
+clim([0, 100]);      % Adjust color sensitivity here
 title('Signal Strength (P2P)'); 
 axis square; 
 xticks(1:5); yticks(1:5);
@@ -95,7 +95,7 @@ while ishandle(fig) % Runs until you close the window
         
         % Reshape to [Packets x 26]
         matrixStream = reshape(rawStream, elements_per_pack, numPacketsToRead)';
-        sensorDataOnly = matrixStream(:, 2:26); % Drop sync byte (index 1)
+        sensorDataOnly = matrixStream(:, 2:26) % Drop sync byte (index 1)
         
         % --- B. UPDATE HISTORY BUFFER ---
         k = size(sensorDataOnly, 1); 

@@ -4,7 +4,7 @@ global selectedSensor;
 selectedSensor = 1; 
 
 % --- CONFIGURATION ---
-port = "COM8"; 
+port = "COM3"; 
 baudRate = 115200; 
 packet_size = 52; 
 elements_per_pack = 26; 

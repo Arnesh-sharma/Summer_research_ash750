@@ -1,0 +1,84 @@
+
+myData = {'L0.CSV', 'L1.CSV','L2.CSV', 'L3.CSV',... 
+    'L5.CSV, 'L5.CSV}; 
+
+figure; 
+for i = 1:3
+filename = sprintf(myData{i});
+ fprintf('reading %s :)\n', filename); 
+
+ if isfile(filename)
+    data = readmatrix(filename); 
+
+     x = data(:,1);
+    y = smooth(data(:,2));  
+
+
+    plot(x,y);
+    grid on; 
+    hold on; 
+else
+    fprintf('No file detected put files in same directory plz :)\n')
+
+ end 
+end 
+xlabel('time (s)'); 
+ylabel('Volts (V)'); 
+legend ( 'sen2', 'sen3', 'sen4'); 
+
+
+title('Time domain response of sensors with no perspex and source 20mm away and exciter (5Vpp 10K Hz) over sensor 2')
+
+figure; 
+for i = 4:6
+filename = sprintf(myData{i});
+ fprintf('reading %s :)\n', filename); 
+
+ if isfile(filename)
+    data = readmatrix(filename); 
+
+     x = data(:,1);
+    y = smooth(data(:,2)); 
+
+
+    plot(x,y);
+    grid on; 
+    hold on; 
+else
+    fprintf('No file detected put files in same directory plz :)\n')
+
+ end 
+end 
+xlabel('time (s)'); 
+ylabel('Volts (V)'); 
+legend ( 'sen2', 'sen3', 'sen4'); 
+
+
+title('Time domain response of sensors with no perspex and source 20mm away and exciter (5Vpp 10K Hz) over sensor 3')
+
+figure; 
+for i = 7:9
+filename = sprintf(myData{i});
+ fprintf('reading %s :)\n', filename); 
+
+ if isfile(filename)
+    data = readmatrix(filename); 
+
+     x = data(:,1);
+    y = smooth(data(:,2)); 
+
+
+    plot(x,y);
+    grid on; 
+    hold on; 
+else
+    fprintf('No file detected put files in same directory plz :)\n')
+
+ end 
+end 
+xlabel('time (s)'); 
+ylabel('Volts (V)'); 
+legend ( 'sen2', 'sen3', 'sen4'); 
+
+
+title('Time domain response of sensors with no perspex and source 20mm away and exciter (5Vpp 10K Hz) over sensor 4')
